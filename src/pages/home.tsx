@@ -11,10 +11,6 @@ import Yay2 from "/Yay2.png";
 const HomePage: React.FC = () => {
   const { data, isLoading, error } = useGlobal();
 
-  console.log(data)
-  console.log("This is: title", data.siteName);
-  console.log("This is: title", data.siteDescription);
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -22,6 +18,8 @@ const HomePage: React.FC = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+
+  console.log(data);
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
