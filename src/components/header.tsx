@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <nav
       className={`fixed top-0 left-0 py-4 w-full z-100 transition-all duration-300 ${
-        isScrolled ? "bg-[#0A4A60] text-white" : "bg-transparent text-white"
+        isScrolled ? "bg-[#0A4A60]/90 text-white" : "bg-transparent text-white"
       }`}
     >
       <div className="container sticky top-0 flex justify-between items-center gap-10">

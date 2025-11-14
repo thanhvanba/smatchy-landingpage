@@ -5,8 +5,10 @@ import Tiktok from "/Tiktok.png";
 import Facebook from "/Facebook.png";
 import Youtube from "/Youtube.png";
 import LinkedIn from "/LinkedIn.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+  const navigate = useNavigate();
   return (
     <div className="relative w-full">
       <div
@@ -66,11 +68,13 @@ export default function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="flex gap-[60px] mt-8 text-[16px]">
-                <p>Legal Notices</p>
-                <p>Terms of Use</p>
-                <p>Privacy Policy</p>
-                <p>Cookies</p>
+              <div className="flex gap-[60px] mt-8 text-[16px] cursor-pointer">
+                <p onClick={() => navigate("/legal-otice")}>Legal Notices</p>
+                <p onClick={() => navigate("/terms-use")}>Terms of Use</p>
+                <p onClick={() => navigate("/privacy-policy")}>
+                  Privacy Policy
+                </p>
+                <p onClick={() => navigate("/cookie-olicy")}>Cookies</p>
               </div>
             </div>
           </div>
