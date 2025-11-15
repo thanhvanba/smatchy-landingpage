@@ -18,14 +18,6 @@ interface IHomePage {
   defaultSeo: string;
 }
 
-
-interface ITeamPage {
-  siteName: string;
-  siteDescription: string;
-  favicon: string;
-  defaultSeo: string;
-}
-
 interface IInvestorPage {
   siteName: string;
   siteDescription: string;
@@ -57,7 +49,6 @@ interface IContact {
 export type {
   IGlobalAttributes,
   IHomePage,
-  ITeamPage,
   IInvestorPage,
   IEventPage,
   IEventDetail,

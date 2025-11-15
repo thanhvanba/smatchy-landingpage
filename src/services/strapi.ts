@@ -3,12 +3,12 @@ import axios from "axios";
 import type {
   IGlobalAttributes,
   IHomePage,
-  ITeamPage,
   IInvestorPage,
   IEventPage,
   IEventDetail,
   IContact,
 } from "./types/global";
+import type { Person, Team } from "./types/team";
 
 const STRAPI_URL =
   import.meta.env.VITE_STRAPI_URL || "https://strapi.annk.info/api";
@@ -36,7 +36,9 @@ export const fetchGlobal = async () => {
   const response = await fetchStrapi<
     any,
     { data: IGlobalAttributes; meta: any }
-  >("/global?fields[0]=siteName&fields[1]=siteDescription&populate[favicon][fields][0]=name&populate[favicon][fields][1]=url");
+  >(
+    "/global?fields[0]=siteName&fields[1]=siteDescription&populate[favicon][fields][0]=name&populate[favicon][fields][1]=url"
+  );
   if (response.data) {
     return response.data as IGlobalAttributes;
   }
@@ -55,12 +57,23 @@ export const fetchHome = async () => {
   return null;
 };
 
-export const fetchTeam = async () => {
-  const response = await fetchStrapi<any, { data: ITeamPage; meta: any }>(
-    "/teams?populate[team_members][populate]=image"
+export const fetchTeamMember = async () => {
+  const response = await fetchStrapi<any, { data: Person; meta: any }>(
+    "/team-members?populate=*"
   );
   if (response.data) {
-    return response.data as ITeamPage;
+    return response.data as Person;
+  }
+
+  return null;
+};
+
+export const fetchTeam = async () => {
+  const response = await fetchStrapi<any, { data: Team; meta: any }>(
+    "/team?populate=*"
+  );
+  if (response.data) {
+    return response.data as Team;
   }
 
   return null;
@@ -99,7 +112,6 @@ export const fetchEventDetail = async (slug: string) => {
   return null;
 };
 
-
 export const fetchContact = async () => {
   const response = await fetchStrapi<any, { data: IContact; meta: any }>(
     "/contact?populate=*"
@@ -110,5 +122,3 @@ export const fetchContact = async () => {
 
   return null;
 };
-
-

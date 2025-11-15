@@ -2,9 +2,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchHome } from "../services/strapi";
 
-// 👇 Có thể thay bằng type từ IHomePage nếu bạn đã định nghĩa sẵn
-// mình định nghĩa local cho dễ nhìn (chỉ cần đúng những field đang dùng trong FE)
-
 interface StrapiMedia {
   id: number;
   name: string;

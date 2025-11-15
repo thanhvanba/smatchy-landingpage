@@ -1,10 +1,11 @@
+import { useTeam } from "../../../hooks/useTeam";
 import TeamList from "./teamList";
 import background from "/background.png";
 import line from "/line_bg.svg";
-import mem1 from "/team/lead-partner.png";
 import mem2 from "/team/CEO.png";
 import mem3 from "/team/lead-partner-2.png";
-const teamMembers = [
+import mem1 from "/team/lead-partner.png";
+const teamMembers_data = [
   {
     name: "Philippe Nguyen",
     title: "Lead Partner – Amagumo Labs",
@@ -40,12 +41,23 @@ const teamMembers = [
   },
 ];
 export default function Members() {
+  const { data, isLoading, error } = useTeam();
+
+  if (isLoading) return <p>Loading…</p>;
+  if (error) return <p>Error loading team.</p>;
+  if (!data) return <p>No data available.</p>;
+
+  const teamMembers = [];
+
+  //console.log(teamMembers)
+
   return (
     <div>
       <div className="relative flex flex-col gap-[30px]">
         <div className="-mt-28">
-          <TeamList teamMembers={teamMembers} />
+          <TeamList teamMembers={data.teamMembers} />
         </div>
+
         <div>
           <div className="relative w-full z-20">
             <div
@@ -75,8 +87,9 @@ export default function Members() {
             ></div>
           </div>
 
-          <TeamList teamMembers={teamMembers} />
+          <TeamList teamMembers={data.teamMembers} />
         </div>
+
         <div className="relative w-full mt-5">
           <div className="relative z-30 container">
             <img
@@ -95,7 +108,7 @@ export default function Members() {
             }}
           ></div>
           <div className="relative -mt-[380px]">
-            <TeamList teamMembers={teamMembers} />
+            <TeamList teamMembers={data.teamMembers} />
           </div>
         </div>
       </div>

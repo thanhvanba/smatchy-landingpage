@@ -1,5 +1,12 @@
 import type { TeamMember } from "../types";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaTwitter,
+  FaGithub,
+  FaFacebook,
+  FaGlobe,
+} from "react-icons/fa";
 
 const socialIcons = [
   {
@@ -16,12 +23,25 @@ const socialIcons = [
   },
 ];
 
+const SOCIAL_ICONS: Record<string, React.ElementType> = {
+  linkedin: FaLinkedin,
+  twitter: FaTwitter,
+  github: FaGithub,
+  facebook: FaFacebook,
+  website: FaGlobe,
+};
+
 export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
+  // console.log(teamMember);
+
+  const avatar = teamMember.avatar.url;
+
   return (
     <div className="group flex flex-col items-center text-center border-[6px] border-[#FFFFFF5C] rounded-full bg-[#ECEEEF] hover:bg-[#0A4A60] px-6 pb-20 w-full transition-colors duration-300">
       {/* Avatar */}
       <img
-        src={teamMember.avatar}
+        src={`https://strapi.annk.info${avatar}`}
+        //src={teamMember.avatar}
         alt={teamMember.name}
         className="object-cover mb-6 rounded-full"
       />
@@ -32,24 +52,43 @@ export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
           {teamMember.name}
         </h3>
         <p className="text-[16px] font-semibold text-[#FCA13B] mb-4">
-          {teamMember.title}
+          {teamMember.role}
         </p>
       </div>
 
       {/* Bio */}
       <p className="text-[14px] text-[#0F262E] group-hover:text-white leading-relaxed mb-6 transition-colors duration-300">
-        {teamMember.bio}
+        {teamMember.description}
       </p>
 
       {/* Social Icons */}
-      <div className="flex gap-4 mt-auto">
-        {socialIcons.map(({ name, icon: Icon }) => {
+      {/* <div className="flex gap-4 mt-auto">
+        {bio.map(({ name, icon: Icon }) => {
           const url = teamMember.social[name as keyof typeof teamMember.social];
           if (!url) return null;
 
           return (
             <a
               key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0A4A60] text-white group-hover:text-[#0A4A60] p-3 rounded-full group-hover:bg-white transition"
+            >
+              <Icon size={28} />
+            </a>
+          );
+        })}
+      </div> */}
+      <div className="flex gap-4 mt-auto justify-center pt-4">
+        {teamMember.bio.map(({ id, platform, url }) => {
+          const key = platform.toLowerCase();
+          const Icon = SOCIAL_ICONS[key] || SOCIAL_ICONS.website;
+          if (!url) return null;
+
+          return (
+            <a
+              key={id}
               href={url}
               target="_blank"
               rel="noopener noreferrer"
