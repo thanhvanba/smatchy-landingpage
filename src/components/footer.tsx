@@ -74,7 +74,7 @@ export default function Footer() {
                 <p onClick={() => navigate("/privacy-policy")}>
                   Privacy Policy
                 </p>
-                <p onClick={() => navigate("/cookie-olicy")}>Cookies</p>
+                <p onClick={() => navigate("/cookie-policy")}>Cookies</p>
               </div>
             </div>
           </div>

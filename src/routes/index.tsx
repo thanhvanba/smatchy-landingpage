@@ -23,7 +23,7 @@ export default function AppRoutes() {
       <Route path="legal-otice" element={<LegalNotice />} />
       <Route path="terms-use" element={<TermsUse />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="cookie-olicy" element={<CookiePolicy />} />
+      <Route path="cookie-policy" element={<CookiePolicy />} />
       {/* <Route path="annk" element={<AnNK />} /> */}
 
       {/* <Route path="/posts/:slug" element={<Navigate to=".." replace />} />
