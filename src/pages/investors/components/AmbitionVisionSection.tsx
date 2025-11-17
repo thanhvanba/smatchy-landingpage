@@ -32,7 +32,7 @@ const ambitionVisionData = [
 
 export default function AmbitionVisionSection() {
   return (
-    <div className="relative z-30 w-full h-[640px] mb-40">
+    <div className="relative z-30 w-full mb-40">
       <div className="container pt-20!">
         <div className="flex flex-col items-center">
           <div className=" inline-flex">

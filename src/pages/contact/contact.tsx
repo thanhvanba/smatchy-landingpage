@@ -7,7 +7,7 @@ import ChatBot from "./components/ChatBot";
 
 export default function ContactPage() {
   return (
-    <div className="relative pb-56">
+    <div className="relative pb-4">
       <div className="relative w-full">
         <div className="relative container">
           {/* Line background */}
@@ -42,7 +42,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 right-10 z-40">
+      <div className="flex justify-end z-40 px-10 mt-52">
         <ChatBot />
       </div>
     </div>

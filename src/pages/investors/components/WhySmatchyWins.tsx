@@ -32,7 +32,7 @@ export default function WhySmatchyWins() {
       </div>
       <div className="">
         <div
-          className="relative z-30 w-full h-[360px] mb-60 bg-cover bg-bottom"
+          className="relative z-30 w-full bg-cover bg-bottom"
           style={{
             backgroundImage: `url(${background})`,
             backgroundRepeat: "no-repeat",

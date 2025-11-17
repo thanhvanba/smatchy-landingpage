@@ -45,6 +45,7 @@ import { useEffect, useState } from "react";
 //import MiniForm from "./MiniForm";
 import ContactFormCard from "./ContactFormCard";
 import { useChatFlow, type ChatStep } from "../../../hooks/useChatFlow";
+import ContactFormChatBot from "./ContactFormChatBot";
 
 interface Message {
   id: number;
@@ -87,10 +88,10 @@ export default function ChatBot() {
   }, [openChatbot, botText, setStep]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end w-96 gap-4">
+    <div className="relative z-50 flex flex-col items-end w-[400px] gap-4">
       {/* ---------- MODAL ---------- */}
       {openChatbot && (
-        <div className="flex flex-col w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="absolute bottom-24 flex flex-col w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="flex justify-between items-center gap-2 bg-[#FCA13B] px-4 py-3">
             <div className="flex gap-2">
@@ -104,14 +105,14 @@ export default function ChatBot() {
           </div>
 
           {/* Body – chỉ 1 dòng bot hiện tại (không lưu history) */}
-          <div className="flex-1 flex flex-col gap-2 min-h-[160px] max-h-[320px] overflow-y-auto px-4 py-4">
+          <div className="flex-1 flex flex-col gap-2 min-h-60 max-h-96 overflow-y-auto px-4 py-4">
             {history.map((m) => (
               <div
                 key={m.id}
-                className={`inline-block px-3 py-2 rounded-xl text-sm ${
+                className={`inline-block px-3 py-2 rounded-3xl text-white ${
                   m.sender === "bot"
-                    ? "bg-gray-100 text-gray-800 self-start"
-                    : "bg-[#0A4A60] text-white self-end"
+                    ? "bg-[#0A4A60] self-start"
+                    : "bg-[#FCA13B] self-end"
                 }`}
               >
                 {m.text}
@@ -120,28 +121,22 @@ export default function ChatBot() {
           </div>
 
           {/* Footer – buttons hoặc form */}
-          <div className="flex flex-wrap gap-3 bg-[#FFF3E6] p-4">
-            {actions.map((a, idx) =>
-              a.type === "button" ? (
-                <button
-                  key={idx}
-                  onClick={() => handleBtn(a.label, a.next)}
-                  className="px-4 py-2 rounded-full bg-white text-sm text-[#0A4A60] border border-[#0A4A60] hover:bg-[#0A4A60] hover:text-white transition"
-                >
-                  {a.label}
-                </button>
-              ) : (
-                // <MiniForm
-                //   key={idx}
-                //   fields={a.fields}
-                //   onSubmit={(values) => {
-                //     addUserMsg("Form submitted"); // feedback
-                //     a.onSubmit(values);
-                //   }}
-                // />
-                <ContactFormCard key={idx} />
-              )
-            )}
+          <div className="drop-shadow-2xl shadow-2xl">
+            <div className="flex flex-wrap justify-end gap-3 bg-[#FFF3E6] p-4">
+              {actions.map((a, idx) =>
+                a.type === "button" ? (
+                  <button
+                    key={idx}
+                    onClick={() => handleBtn(a.label, a.next)}
+                    className="inline-block px-3 py-2 rounded-3xl text-sm font-medium text-white bg-[#FCA13B]"
+                  >
+                    {a.label}
+                  </button>
+                ) : (
+                  <ContactFormChatBot key={idx} />
+                )
+              )}
+            </div>
           </div>
         </div>
       )}
