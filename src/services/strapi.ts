@@ -116,7 +116,7 @@ export const fetchEventList = async () => {
 
 export const fetchEventDetail = async (slug: string) => {
   const response = await fetchStrapi<any, { data: IEventDetail; meta: any }>(
-    `/events?filters[slug][$eq]=sunday-league-clash-5-a-side-football&populate[sports][populate][0]=image&populate[sports][populate][1]=iconType`
+    `/events?filters[slug][$eq]=${slug}&populate[sports][populate][0]=image&populate[sports][populate][1]=iconType`
   );
   if (response.data) {
     return response.data as IEventDetail;
