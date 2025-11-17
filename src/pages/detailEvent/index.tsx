@@ -10,8 +10,8 @@ import event5 from "/events/event5.png";
 import event6 from "/events/event6.jpg";
 import golf from "/events/golf.png";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import type { Event } from "../events/type";
+
+import { useEventDetail } from "../../hooks/useEventDetail";
 const events = [
   {
     id: 1,
@@ -225,16 +225,44 @@ const events = [
   },
 ];
 export default function DetailEvent() {
-  const { id } = useParams<{ id: string }>();
-  const [detail, setDetail] = useState<Event>();
-  const handleGetDetailEvent = () => {
-    // ép kiểu id từ string sang number
-    const eventDetail = events.find((e) => e.id === Number(id));
-    setDetail(eventDetail);
-  };
-  useEffect(() => {
-    handleGetDetailEvent();
-  }, []);
+  const { slug } = useParams<{ slug: string }>();
+  const { data: apiData, isLoading, error } = useEventDetail(slug || "");
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+  console.log(apiData);
+  // Flatten API data
+  const detail =
+    apiData && Array.isArray(apiData) && apiData.length > 0
+      ? {
+          id: apiData[0].id,
+          title: apiData[0].title,
+          date: apiData[0].date,
+          location: apiData[0].location?.replace(" ", "-") || "",
+          type: apiData[0].type,
+          level: Number(apiData[0].level?.replace(/\D/g, "") || 0),
+          price: apiData[0].price,
+          participants: apiData[0].participants,
+          duration: apiData[0].duration,
+          image: apiData[0].sports?.[0]?.image?.url
+            ? `https://strapi.annk.info${apiData[0].sports[0].image.url}`
+            : "",
+          iconType: apiData[0].sports?.[0]?.iconType?.url
+            ? `https://strapi.annk.info${apiData[0].sports[0].iconType.url}`
+            : "",
+          iconLevel: "",
+          desc: apiData[0].desc || "",
+        }
+      : events.find(
+          (e) => e.title.toLowerCase().replace(/[^\w]/g, "-") === slug
+        );
+
+  console.log(detail);
   return (
     <div className="relative w-full min-h-screen">
       <div className="relative container">

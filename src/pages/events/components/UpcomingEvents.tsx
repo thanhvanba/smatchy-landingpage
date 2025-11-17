@@ -13,7 +13,8 @@ import golf from "/events/golf.png";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import EventCard from "./EventCard";
 import { useNavigate } from "react-router-dom";
-const events = [
+import { useEventList } from "../../../hooks/useEvent";
+const events1 = [
   {
     id: 1,
     title: "Sunday League Clash – 5-a-Side Football",
@@ -228,6 +229,48 @@ const events = [
 export default function UpcomingEvents() {
   const navigate = useNavigate();
   const swiperRef = useRef<any>(null);
+
+  const { data, isLoading, error } = useEventList();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  console.log(data);
+
+  const flattenEvent = (api: any) => {
+    const levelMatch = (api.level || "").match(/\d+/);
+    const levelNum = levelMatch ? Number(levelMatch[0]) : 0;
+
+    const sport = api.sports?.[0] ?? {};
+
+    return {
+      id: api.id,
+      title: api.title,
+      date: api.date,
+      location: api.location?.replaceAll(" ", "-") ?? api.location,
+      type: api.type || sport.name || "",
+      level: levelNum,
+      price: api.price ?? 0,
+      participants: api.participants,
+      duration: api.duration,
+      desc: api.desc,
+      slug: api.slug,
+      image: sport.image?.url || "", // hình môn thể thao
+      iconType: sport.iconType?.url || "", // icon nhỏ
+      iconLevel: "",
+    };
+  };
+
+  /* ---------- flatten ---------- */
+  const flatEvents = Array.isArray(data) ? data.map(flattenEvent) : [];
+
+  console.log(flatEvents);
+
   return (
     <div className="mb-52">
       <div className="relative w-full z-20">
@@ -272,7 +315,7 @@ export default function UpcomingEvents() {
           <div className="absolute top-1/2 left-1/2 -translate-1/2">
             <div className="inline-flex">
               <h2 className="text-[20px] font-bold">
-                <span className="text-[#FCA13B]">{events.length}</span>{" "}
+                <span className="text-[#FCA13B]">{flatEvents.length}</span>{" "}
                 activities
               </h2>
             </div>
@@ -303,9 +346,9 @@ export default function UpcomingEvents() {
               fill: "row", // điền theo hàng ngang
             }}
           >
-            {events.map((event) => (
+            {flatEvents.map((event) => (
               <SwiperSlide key={event.id}>
-                <div onClick={() => navigate(`/event/${event.id}`)}>
+                <div onClick={() => navigate(`/events/${event.slug}`)}>
                   <EventCard event={event} />
                 </div>
               </SwiperSlide>

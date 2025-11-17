@@ -54,7 +54,7 @@ export default function EventHeroBanner() {
     banner: img.url, // url gốc (có thể dùng img.formats.large.url nếu muốn)
   }));
 
-  console.log(data?.heros[0].heading);
+  //console.log(data?.heros[0].heading);
 
   return (
     <div className="relative z-30 overflow-hidden product-slider-container w-full h-[564px] mb-20">

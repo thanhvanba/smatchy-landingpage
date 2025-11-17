@@ -18,7 +18,8 @@ export default function AppRoutes() {
       <Route path="/team" element={<TeamPage />} />
       <Route path="/investors" element={<InvestorsPage />} />
       <Route path="events" element={<EventsPage />} />
-      <Route path="event/:id" element={<DetailEvent />} />
+      {/* <Route path="event/:id" element={<DetailEvent />} /> */}
+      <Route path="events/:slug" element={<DetailEvent />} />
       <Route path="contact" element={<ContactPage />} />
       <Route path="legal-otice" element={<LegalNotice />} />
       <Route path="terms-use" element={<TermsUse />} />

@@ -6,11 +6,14 @@ import level from "/events/level.png";
 import PriceActive from "./PriceActive";
 
 export default function EventCard({ event }: { event: Event }) {
+  console.log(event);
   return (
     <div className="group max-w-sm rounded-2xl overflow-hidden shadow-lg cursor-pointer">
       <div
         className="relative h-[297px] w-[337px ] bg-cover bg-center"
-        style={{ backgroundImage: `url(${event.image})` }}
+        style={{
+          backgroundImage: `url(https://strapi.annk.info${event.image})`,
+        }}
       >
         <button className="hidden group-hover:block absolute top-4 right-2 text-white bg-[#FCA13B] rounded-full p-2">
           <FaArrowRightLong size={32} />
@@ -39,7 +42,7 @@ export default function EventCard({ event }: { event: Event }) {
                 <p className="flex gap-1">
                   <img
                     className="w-[18px] h-[18px]"
-                    src={event.iconType}
+                    src={`https://strapi.annk.info${event.iconType}`}
                     alt=""
                   />{" "}
                   {event.type}

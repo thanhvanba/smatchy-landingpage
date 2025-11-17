@@ -106,18 +106,17 @@ export const fetchHeroById = async (id: string) => {
 
 export const fetchEventList = async () => {
   const response = await fetchStrapi<any, { data: IEventPage; meta: any }>(
-    "/events?populate[thumbnail]=*"
+    "/events?populate[sports][populate]=*"
   );
   if (response.data) {
     return response.data as IEventPage;
   }
-
   return null;
 };
 
 export const fetchEventDetail = async (slug: string) => {
   const response = await fetchStrapi<any, { data: IEventDetail; meta: any }>(
-    "/events?populate[thumbnail]=*"
+    `/events?filters[slug][$eq]=sunday-league-clash-5-a-side-football&populate[sports][populate][0]=image&populate[sports][populate][1]=iconType`
   );
   if (response.data) {
     return response.data as IEventDetail;
@@ -153,7 +152,7 @@ export const postContact = async (payload: ContactForm) => {
 
 export const fetchSport = async () => {
   const response = await fetchStrapi<any, { data: ISport; meta: any }>(
-    "/sports?fields[0]=name&populate[icon][fields][0]=url"
+    "/sports?fields[0]=name&populate[image][fields][0]=url"
   );
   if (response.data) {
     return response.data as ISport;

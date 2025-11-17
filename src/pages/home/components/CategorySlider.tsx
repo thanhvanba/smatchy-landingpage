@@ -47,12 +47,14 @@ export default function CategorySlider() {
     return <div>Error: {error.message}</div>;
   }
 
+  console.log(data)
+
   // 2. Helper flatten
   const slides = data.map((s) => ({
     id: s.id,
     documentId: s.documentId,
     name: s.name,
-    image: s.icon.url, // ← phẳng hóa
+    image: s.image.url, // ← phẳng hóa
   }));
 
   console.log(slides);
