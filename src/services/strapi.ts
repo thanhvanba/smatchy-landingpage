@@ -9,6 +9,7 @@ import type {
   IContact,
 } from "./types/global";
 import type { Person, Team } from "./types/team";
+import type { ContactForm, ContactPage } from "./types/contact";
 
 const STRAPI_URL =
   import.meta.env.VITE_STRAPI_URL || "https://strapi.annk.info/api";
@@ -90,6 +91,17 @@ export const fetchInvestor = async () => {
   return null;
 };
 
+export const fetchHeroById = async (id: string) => {
+  const response = await fetchStrapi<any, { data: Hero; meta: any }>(
+    `/heroes/${id}?populate[heros][populate]=*`
+  );
+  if (response.data) {
+    return response.data as IInvestorPage;
+  }
+
+  return null;
+};
+
 export const fetchEventList = async () => {
   const response = await fetchStrapi<any, { data: IEventPage; meta: any }>(
     "/events?populate[thumbnail]=*"
@@ -112,13 +124,27 @@ export const fetchEventDetail = async (slug: string) => {
   return null;
 };
 
-export const fetchContact = async () => {
-  const response = await fetchStrapi<any, { data: IContact; meta: any }>(
-    "/contact?populate=*"
-  );
-  if (response.data) {
-    return response.data as IContact;
-  }
+// export const fetchContact = async () => {
+//   const response = await fetchStrapi<any, { data: IContact; meta: any }>(
+//     "/contact?populate=*"
+//   );
+//   if (response.data) {
+//     return response.data as IContact;
+//   }
 
-  return null;
+//   return null;
+// };
+
+/* gửi form liên hệ */
+export const postContact = async (payload: ContactForm) => {
+  try {
+    const response = await strapiApi.post<ContactForm>(
+      "/contact-form",
+      payload
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error posting contact:", error);
+    throw error;
+  }
 };
