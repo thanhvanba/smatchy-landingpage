@@ -63,6 +63,17 @@ interface IHero {
   };
 }
 
+interface ISport {
+  id: number;
+  documentId: string;
+  name: string;
+  slug: string | null;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
 export type {
   IGlobalAttributes,
   IHomePage,
@@ -71,4 +82,5 @@ export type {
   IEventDetail,
   IContact,
   IHero,
+  ISport,
 };

@@ -17,8 +17,9 @@ import sports11 from "/sports/table-tennis.jpg";
 import sports12 from "/sports/tennis.png";
 import sports13 from "/sports/trail.jpg";
 import sports14 from "/sports/trampoline.jpg";
+import { useSport } from "../../../hooks/useSport";
 
-const slides = [
+const slides1 = [
   { id: 1, image: sports1, name: "Badminton" },
   { id: 2, image: sports2, name: "Basketball" },
   { id: 3, image: sports3, name: "Bike" },
@@ -36,6 +37,26 @@ const slides = [
 ];
 
 export default function CategorySlider() {
+  const { data, isLoading, error } = useSport();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  // 2. Helper flatten
+  const slides = data.map((s) => ({
+    id: s.id,
+    documentId: s.documentId,
+    name: s.name,
+    image: s.icon.url, // ← phẳng hóa
+  }));
+
+  console.log(slides);
+
   return (
     <div className="relative w-full">
       <div
@@ -99,12 +120,17 @@ export default function CategorySlider() {
         >
           {slides.map((slide, idx) => (
             <SwiperSlide key={idx}>
-              <div className="relative w-[342px] h-[237px]">
+              <div className="relative w-[342px] h-[237px] group">
                 <img
-                  src={slide.image}
-                  alt=""
+                  src={`https://strapi.annk.info${slide.image}`}
+                  alt={slide.name}
                   className="w-full h-full rounded-[30px] object-cover"
                 />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent rounded-[30px] p-4 flex items-end h-24">
+                  <p className="text-white font-semibold text-2xl text-right w-full">
+                    {slide.name}
+                  </p>
+                </div>
               </div>
             </SwiperSlide>
           ))}

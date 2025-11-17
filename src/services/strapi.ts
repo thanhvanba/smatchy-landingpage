@@ -8,6 +8,7 @@ import type {
   IEventDetail,
   IContact,
   IHero,
+  ISport,
 } from "./types/global";
 import type { Person, Team } from "./types/team";
 import type { ContactForm, ContactPage } from "./types/contact";
@@ -56,7 +57,6 @@ export const fetchHome = async () => {
   if (response.data) {
     return response.data as IHomePage;
   }
-
   return null;
 };
 
@@ -148,4 +148,14 @@ export const postContact = async (payload: ContactForm) => {
     console.error("Error posting contact:", error);
     throw error;
   }
+};
+
+export const fetchSport = async () => {
+  const response = await fetchStrapi<any, { data: ISport; meta: any }>(
+    "/sports?fields[0]=name&populate[icon][fields][0]=url"
+  );
+  if (response.data) {
+    return response.data as ISport;
+  }
+  return null;
 };

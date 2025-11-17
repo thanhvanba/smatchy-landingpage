@@ -1,4 +1,3 @@
-import { useGlobal } from "../../hooks/useGlobal";
 import { useHome } from "../../hooks/useHome";
 import AwardsSection from "./components/AwardsSection";
 import CategorySlider from "./components/CategorySlider";
@@ -10,7 +9,6 @@ import Yay2 from "/Yay2.png";
 //@ts-nocheck
 export default function HomePage() {
   const { isLoading, error, titles } = useHome();
-
   if (isLoading) {
     return <div>Loading...</div>;
   }

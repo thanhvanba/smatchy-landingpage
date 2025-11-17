@@ -9,9 +9,16 @@ import { useNavigate } from "react-router-dom";
 import { useGlobal } from "../hooks/useGlobal";
 
 export default function Footer() {
-  const { data } = useGlobal();
-
+  const { data, isLoading, error } = useGlobal();
   const navigate = useNavigate();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div className="relative w-full">
       <div
