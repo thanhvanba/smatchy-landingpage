@@ -85,6 +85,8 @@ export const useHome = () => {
   const home = query.data as IHomePage | null;
   const blocks = (home?.blocks ?? []) as HomeBlock[];
 
+  console.log(home);
+
   // Helpers type guard nhỏ nhỏ
   const isHeroImageText = (b: HomeBlock): b is HeroImageTextBlock =>
     b.__component === "hero.image-text";

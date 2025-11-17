@@ -39,7 +39,8 @@ export const fetchGlobal = async () => {
     any,
     { data: IGlobalAttributes; meta: any }
   >(
-    "/global?fields[0]=siteName&fields[1]=siteDescription&populate[favicon][fields][0]=name&populate[favicon][fields][1]=url"
+    //"/global?fields[0]=siteName&fields[1]=siteDescription&populate[favicon][fields][0]=name&populate[favicon][fields][1]=url"
+    "/global?populate=*"
   );
   if (response.data) {
     return response.data as IGlobalAttributes;

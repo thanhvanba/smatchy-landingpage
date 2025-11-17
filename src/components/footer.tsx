@@ -6,8 +6,11 @@ import Facebook from "/Facebook.png";
 import Youtube from "/Youtube.png";
 import LinkedIn from "/LinkedIn.png";
 import { useNavigate } from "react-router-dom";
+import { useGlobal } from "../hooks/useGlobal";
 
 export default function Footer() {
+  const { data } = useGlobal();
+
   const navigate = useNavigate();
   return (
     <div className="relative w-full">
@@ -42,9 +45,9 @@ export default function Footer() {
                 <div>
                   <h3 className="text-2xl">Contact</h3>
                   <div className="text-[16px] space-y-1 mt-6">
-                    <p>Phone </p>
-                    <p>E-mail </p>
-                    <p>Address </p>
+                    <p>Phone: {data.phone} </p>
+                    <p>E-mail: {data.email} </p>
+                    <p>Address: {data.address} </p>
                   </div>
                 </div>
                 <div>

@@ -1,3 +1,4 @@
+import { useGlobal } from "../../hooks/useGlobal";
 import { useHome } from "../../hooks/useHome";
 import AwardsSection from "./components/AwardsSection";
 import CategorySlider from "./components/CategorySlider";
