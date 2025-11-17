@@ -12,6 +12,7 @@ import type {
 } from "./types/global";
 import type { Person, Team } from "./types/team";
 import type { ContactForm, ContactPage } from "./types/contact";
+import type { TestimonialList } from "./types/testimonial";
 
 const STRAPI_URL =
   import.meta.env.VITE_STRAPI_URL || "https://strapi.annk.info/api";
@@ -158,4 +159,13 @@ export const fetchSport = async () => {
     return response.data as ISport;
   }
   return null;
+};
+
+export const fetchTestimonialsByPosition = async (
+  position: "home" | "investor" | "about"
+) => {
+  const res = await fetchStrapi<any, TestimonialList>(
+    `/testimonials?filters[position][$eq]=${position}&populate=*`
+  );
+  return res.data; // Testimonial[]
 };

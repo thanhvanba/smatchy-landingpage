@@ -12,11 +12,11 @@ export default function Presentation() {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(reasons);
+  //console.log(reasons);
 
   const presentation = reasons.map((r) => r.reason);
 
-  console.log(presentation);
+  //console.log(presentation);
 
   return (
     <>

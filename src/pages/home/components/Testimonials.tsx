@@ -5,7 +5,8 @@ import worldmap from "/world-map.png";
 import Yay from "/Yay.png";
 import avt1 from "/avt1.png";
 import avt2 from "/avt2.png";
-const testimonials = [
+import { useTestimonials } from "../../../hooks/useTestimonials";
+const testimonials1 = [
   {
     id: 1,
     name: "Thomas Nguyen",
@@ -38,6 +39,26 @@ const renderStars = (rating: number) => {
 };
 
 export default function Testimonials() {
+  const { data, isLoading, error } = useTestimonials("home");
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const testimonials = data.map((s) => ({
+    id: s.id,
+    name: s.author,
+    text: s.content,
+    rating: 5, // default
+    image: s.avatar.url, // "/uploads/avatar1_d95a6afcff.png"
+  }));
+
+  console.log(testimonials);
+
   const settings = {
     centerMode: true,
     infinite: true,
@@ -95,7 +116,7 @@ export default function Testimonials() {
                   </p>
                   <div className="flex items-center gap-3">
                     <img
-                      src={testimonial.image}
+                      src={`https://strapi.annk.info${testimonial.image}`}
                       alt={testimonial.name}
                       className="w-20 h-20 rounded-full mb-4 object-cover"
                     />
