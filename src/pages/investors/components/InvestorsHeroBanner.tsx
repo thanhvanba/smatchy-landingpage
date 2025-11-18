@@ -1,5 +1,5 @@
 import { useHero } from "../../../hooks/useHero";
-import heroBanner from "/hero-banner.png";
+//import heroBanner from "/hero-banner.png";
 import Yay from "/Yay.png";
 import { MdLocalPhone, MdOutlineFileDownload } from "react-icons/md";
 export default function InvestorsHeroBanner() {

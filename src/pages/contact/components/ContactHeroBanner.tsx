@@ -1,12 +1,30 @@
+import { useHero } from "../../../hooks/useHero";
 import heroBanner from "/hero-banner.png";
 import Yay from "/Yay.png";
 export default function ContactHeroBanner() {
+  const { data, isLoading, error } = useHero("k8pxj4vdpa46rs41wsc94o63");
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const slider = data?.heros?.find((h) => h.__component === "hero.slider");
+  if (!slider) return [];
+
+  const listBaner = slider.slider_images.map((img: any) => ({
+    id: img.id,
+    banner: img.url, // url gốc (có thể dùng img.formats.large.url nếu muốn)
+  }));
+  console.log(listBaner);
   return (
     <>
       <div
         className="relative w-full h-full pt-10 md:pt-20 z-50"
         style={{
-          backgroundImage: `url(${heroBanner})`,
+          backgroundImage: `url(https://strapi.annk.info${listBaner[0].banner})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "bottom",
