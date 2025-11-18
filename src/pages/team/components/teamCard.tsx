@@ -1,5 +1,5 @@
 import type { TeamMember } from "../types";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+//import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import {
   FaLinkedin,
   FaTwitter,
@@ -8,20 +8,20 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 
-const socialIcons = [
-  {
-    name: "facebook",
-    icon: FaFacebookF,
-  },
-  {
-    name: "instagram",
-    icon: FaInstagram,
-  },
-  {
-    name: "linkedin",
-    icon: FaLinkedinIn,
-  },
-];
+// const socialIcons = [
+//   {
+//     name: "facebook",
+//     icon: FaFacebookF,
+//   },
+//   {
+//     name: "instagram",
+//     icon: FaInstagram,
+//   },
+//   {
+//     name: "linkedin",
+//     icon: FaLinkedinIn,
+//   },
+// ];
 
 const SOCIAL_ICONS: Record<string, React.ElementType> = {
   linkedin: FaLinkedin,
@@ -34,7 +34,7 @@ const SOCIAL_ICONS: Record<string, React.ElementType> = {
 export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
   // console.log(teamMember);
 
-  const avatar = teamMember.avatar.url;
+  const avatar = (teamMember.avatar as { url?: string })?.url;
 
   return (
     <div className="group flex flex-col items-center text-center border-[6px] border-[#FFFFFF5C] rounded-full bg-[#ECEEEF] hover:bg-[#0A4A60] px-6 pb-20 w-full transition-colors duration-300">
@@ -81,7 +81,7 @@ export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
         })}
       </div> */}
       <div className="flex gap-4 mt-auto justify-center pt-4">
-        {teamMember.bio.map(({ id, platform, url }) => {
+        {/* {teamMember.bio?.map(({ id, platform, url }) => {
           const key = platform.toLowerCase();
           const Icon = SOCIAL_ICONS[key] || SOCIAL_ICONS.website;
           if (!url) return null;
@@ -97,7 +97,32 @@ export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
               <Icon size={28} />
             </a>
           );
-        })}
+        })} */}
+
+        {(Array.isArray(teamMember.bio) ? teamMember.bio : []).map(
+          (item: any) => {
+            const { id, platform, url } = item as {
+              id: string | number;
+              platform: string;
+              url?: string;
+            };
+            const key = platform.toLowerCase();
+            const Icon = SOCIAL_ICONS[key] || SOCIAL_ICONS.website;
+            if (!url) return null;
+
+            return (
+              <a
+                key={id}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#0A4A60] text-white group-hover:text-[#0A4A60] p-3 rounded-full group-hover:bg-white transition"
+              >
+                <Icon size={28} />
+              </a>
+            );
+          }
+        )}
       </div>
     </div>
   );

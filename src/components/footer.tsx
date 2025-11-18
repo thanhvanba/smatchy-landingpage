@@ -19,6 +19,8 @@ export default function Footer() {
     return <div>Error: {error.message}</div>;
   }
 
+  console.log(data)
+
   return (
     <div className="relative w-full">
       <div

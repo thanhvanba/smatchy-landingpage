@@ -1,4 +1,5 @@
 // src/services/strapi.ts
+//@ts-nocheck
 import axios from "axios";
 import type {
   IGlobalAttributes,
@@ -22,7 +23,11 @@ const strapiApi = axios.create({
 });
 
 type StrapiItem<T> = { id: number; attributes: T };
-type StrapiSingleResponse<T> = { data: StrapiItem<T>; meta: any };
+//type StrapiSingleResponse<T> = { data: StrapiItem<T>; meta: any };
+type StrapiSingleResponse<T> = {
+  data: StrapiItem<T>;
+  meta?: object;
+};
 
 // Hàm tiện ích
 const fetchStrapi = async <T, R = StrapiSingleResponse<T>>(

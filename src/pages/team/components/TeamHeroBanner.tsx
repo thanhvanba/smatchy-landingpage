@@ -25,10 +25,10 @@ export default function TeamHeroBanner() {
         <div className="absolute z-50 top-1/2 -translate-1/2 left-1/2  flex flex-col items-center">
           <div className="text-5xl font-bold text-white">
             <img className="absolute -top-24 -right-20" src={Yay} alt="" />
-            <div dangerouslySetInnerHTML={{ __html: heading }} />
+            <div dangerouslySetInnerHTML={{ __html: heading ? heading : "" }} />
           </div>
           <div className="text-2xl font-medium text-center text-white mt-4">
-            <div dangerouslySetInnerHTML={{ __html: sub_heading }} />
+            <div dangerouslySetInnerHTML={{ __html: sub_heading ? sub_heading : "" }} />
           </div>
 
           {/* <h2 className="text-5xl font-bold text-white">
