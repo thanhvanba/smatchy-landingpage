@@ -58,11 +58,19 @@ export default function PeopleSay() {
   };
   return (
     <div className="my-12 md:my-16 lg:my-20 px-4">
-      <div className="flex flex-col items-center">
+      <div
+        className="flex flex-col items-center"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <div className=" inline-flex">
           <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-6 md:mb-8">
             WHAT <span className="text-[#FCA13B]">PEOPLE</span> SAY
-            <img className="absolute -top-12 -right-12 md:-top-20 md:-right-20 w-8 md:w-auto" src={Yay3} alt="" />
+            <img
+              className="absolute -top-12 -right-12 md:-top-20 md:-right-20 w-8 md:w-auto"
+              src={Yay3}
+              alt=""
+            />
           </h2>
         </div>
         <div className="mb-8 md:mb-10">
@@ -71,7 +79,11 @@ export default function PeopleSay() {
           </button>
         </div>
       </div>
-      <div className="relative z-30">
+      <div
+        className="relative z-30"
+        data-aos="zoom-in-up"
+        data-aos-duration="1000"
+      >
         <Slider {...settings}>
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="px-2 md:px-4">

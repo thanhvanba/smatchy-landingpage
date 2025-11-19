@@ -27,7 +27,11 @@ export default function DetailHeroBanner({ detail }: { detail: Event }) {
             />{" "}
             Back to events
           </button>
-          <div className="z-50 w-full flex flex-col items-start justify-center">
+          <div
+            className="z-50 w-full flex flex-col items-start justify-center"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white uppercase">
               {detail?.title}
             </h2>

@@ -31,7 +31,11 @@ export default function ProductFeatures() {
           }}
         ></div>
       </div>
-      <div className="container relative z-30 py-8! md:py-10! lg:py-12!">
+      <div
+        className="container relative z-30 py-8! md:py-10! lg:py-12!"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <div className="flex flex-col items-center">
           <div className=" inline-flex">
             <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-4 md:mb-6 lg:mb-8">

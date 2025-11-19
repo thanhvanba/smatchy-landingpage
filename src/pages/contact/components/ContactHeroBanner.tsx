@@ -30,7 +30,11 @@ export default function ContactHeroBanner() {
         }}
       >
         <div className="container z-50 mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-4 md:gap-6 py-16 md:py-24 lg:py-32">
+          <div
+            className="flex flex-col items-center gap-4 md:gap-6 py-16 md:py-24 lg:py-32"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h2 className="relative font-bold text-2xl md:text-3xl lg:text-5xl leading-8 md:leading-12 lg:leading-14 text-white text-center">
               <span className="text-[#FCA13B]">CONTACT</span> US
               <img

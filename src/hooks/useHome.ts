@@ -38,7 +38,7 @@ interface GroupWhyBlock {
   __component: "blocks.group-why";
   id: number;
   title: string;
-  reason: { id: number; title: string; content: string }[];
+  reason: { id: number; title: string; description: string }[];
 }
 
 interface HeroSliderBlock {

@@ -14,6 +14,8 @@ export default function TeamList({
             className={
               index === 0 || index === 2 ? "pt-0 md:pt-0 lg:pt-20" : ""
             }
+            data-aos="fade-up"
+            data-aos-duration={index === 0 ? "500" : "2000"}
             key={index}
           >
             <TeamCard teamMember={member} />

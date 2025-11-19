@@ -23,7 +23,11 @@ export default function TermsUse() {
           />
         </div>
         <div className="relative flex flex-col gap-4 md:gap-5 lg:gap-6 bg-[#E2F6F6] shadow rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 mt-10 md:mt-14 lg:mt-20 mb-52 z-30">
-          <div className="inline-flex">
+          <div
+            className="inline-flex"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h2 className="relative text-center text-xl md:text-2xl lg:text-5xl text-[#0A4A60] font-bold pt-2 md:pt-3 lg:pt-4">
               <span className="text-[#FCA13B]">TERMS OF </span>
               USE
@@ -35,7 +39,11 @@ export default function TermsUse() {
             </h2>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div
+            className="flex flex-col gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               1. Purpose
             </h3>
@@ -52,7 +60,11 @@ export default function TermsUse() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               2. Access Conditions
             </h3>
@@ -61,7 +73,11 @@ export default function TermsUse() {
               be 18 years or older; minors require guardian supervision.
             </p>
           </div>
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               3. Application Content
             </h3>
@@ -71,7 +87,11 @@ export default function TermsUse() {
               Conditions of Sale.
             </p>
           </div>
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               4. Application Management
             </h3>
@@ -81,7 +101,11 @@ export default function TermsUse() {
               at any time.
             </p>
           </div>
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               5. User Obligations
             </h3>
@@ -95,7 +119,11 @@ export default function TermsUse() {
               are prohibited.
             </p>
           </div>
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               6. Liability
             </h3>
@@ -105,7 +133,11 @@ export default function TermsUse() {
               third-party content. Claims expire after 6 months.
             </p>
           </div>
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               7. Hyperlinks
             </h3>
@@ -116,7 +148,11 @@ export default function TermsUse() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               8. Personal Data and Cookies
             </h3>
@@ -130,7 +166,11 @@ export default function TermsUse() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               9. Intellectual Property
             </h3>
@@ -139,7 +179,11 @@ export default function TermsUse() {
               non-transferable personal use rights.
             </p>
           </div>
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               10. General Provisions
             </h3>
@@ -149,7 +193,11 @@ export default function TermsUse() {
               the others
             </p>
           </div>
-          <div className="flex flex-col gap-2">
+          <div
+            className="flex flex-col gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-xl text-[#0A4A60]">
               11. Law and Jurisdiction
             </h3>
@@ -159,7 +207,11 @@ export default function TermsUse() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0A4A6026]">
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="leading-relaxed text-[#0F262E]">
               <p className="">
                 <span className="font-bold">Version: </span>

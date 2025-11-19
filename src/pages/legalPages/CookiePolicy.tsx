@@ -23,7 +23,11 @@ export default function CookiePolicy() {
           />
         </div>
         <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-30">
-          <div className="inline-flex">
+          <div
+            className="inline-flex"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h2 className="relative text-center text-xl md:text-2xl lg:text-5xl text-[#0A4A60] font-bold pt-2 md:pt-3 lg:pt-4">
               <span className="text-[#FCA13B]">COOKIE </span>
               POLICY
@@ -35,7 +39,11 @@ export default function CookiePolicy() {
             </h2>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="inline-flex">
               <p className="">
                 <span className="font-bold text-[#0F262E]">Publisher: </span>
@@ -50,7 +58,11 @@ export default function CookiePolicy() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div
+            className="flex flex-col gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]\">
               Types of Cookies
             </h3>
@@ -66,7 +78,11 @@ export default function CookiePolicy() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Purpose
             </h3>
@@ -76,7 +92,11 @@ export default function CookiePolicy() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Third-Party Tools
             </h3>
@@ -89,7 +109,11 @@ export default function CookiePolicy() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Retention
             </h3>
@@ -98,7 +122,11 @@ export default function CookiePolicy() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Consent
             </h3>
@@ -108,7 +136,11 @@ export default function CookiePolicy() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0A4A6026]">
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="leading-relaxed text-[#0F262E]">
               <p>
                 <span className="font-bold">Last updated: </span>March 12, 2025

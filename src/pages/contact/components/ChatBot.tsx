@@ -91,12 +91,20 @@ export default function ChatBot() {
     <div className="relative z-50 flex flex-col items-end w-[400px] gap-4">
       {/* ---------- MODAL ---------- */}
       {openChatbot && (
-        <div className="absolute bottom-24 flex flex-col w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh]">
+        <div
+          className="absolute bottom-24 flex flex-col w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh]"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
           {/* Header */}
           <div className="flex justify-between items-center gap-2 bg-[#FCA13B] px-4 py-3">
             <div className="flex gap-2 items-center">
               <img src={LogoFondjaune} alt="" className="h-16" />
-              <img className="h-4 w-32 object-contain" src={Logo3Blanc} alt="" />
+              <img
+                className="h-4 w-32 object-contain"
+                src={Logo3Blanc}
+                alt=""
+              />
             </div>
             <HiMiniXMark
               onClick={() => setOpenChatbot(false)}

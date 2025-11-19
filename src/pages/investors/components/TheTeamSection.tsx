@@ -81,7 +81,11 @@ export default function TheTeamSection() {
       </div>
       <div className="container relative z-30 py-8! md:py-10! lg:py-12!">
         <div className="flex flex-col items-center">
-          <div className=" inline-flex">
+          <div
+            className=" inline-flex"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-4 md:mb-6 lg:mb-8">
               THE <span className="text-[#FCA13B]">TEAM</span>
               <img
@@ -91,12 +95,20 @@ export default function TheTeamSection() {
               />
             </h2>
           </div>
-          <p className="text-center text-[#0A4A60] mb-4 md:mb-5 lg:mb-6 text-xs md:text-sm lg:text-base">
+          <p
+            className="text-center text-[#0A4A60] mb-4 md:mb-5 lg:mb-6 text-xs md:text-sm lg:text-base"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             A proven team with deep expertise in sports, technology, and scaling
             consumer platforms
           </p>
 
-          <div className="mb-6 md:mb-7 lg:mb-8">
+          <div
+            className="mb-6 md:mb-7 lg:mb-8"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <button className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold bg-[#FCA13B] transition">
               Learn More <FaArrowRightLong />
             </button>

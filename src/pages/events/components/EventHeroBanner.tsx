@@ -99,7 +99,11 @@ export default function EventHeroBanner() {
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-30 mx-auto">
         <div className="container">
           <div className="flex flex-col items-center gap-3 md:gap-4 lg:gap-5">
-            <div className="relative font-bold text-2xl md:text-3xl lg:text-5xl leading-8 md:leading-12 lg:leading-14 text-white text-center">
+            <div
+              className="relative font-bold text-2xl md:text-3xl lg:text-5xl leading-8 md:leading-12 lg:leading-14 text-white text-center"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               <div
                 dangerouslySetInnerHTML={{
                   __html: data?.heros[0].heading ?? "",
@@ -111,7 +115,11 @@ export default function EventHeroBanner() {
                 alt=""
               />
             </div>
-            <div className="font-medium text-base md:text-lg lg:text-2xl text-white text-center">
+            <div
+              className="font-medium text-base md:text-lg lg:text-2xl text-white text-center"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               <div
                 dangerouslySetInnerHTML={{
                   __html: data?.heros[0].sub_heading ?? "",
@@ -122,11 +130,15 @@ export default function EventHeroBanner() {
               <img
                 src={AppStoreImage}
                 alt=""
+                data-aos="fade-right"
+                data-aos-duration="1000"
                 className="h-8 md:h-10 lg:h-auto w-auto"
               />
               <img
                 src={image3}
                 alt=""
+                data-aos="fade-left"
+                data-aos-duration="1000"
                 className="h-8 md:h-10 lg:h-auto w-auto"
               />
             </div>

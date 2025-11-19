@@ -40,7 +40,11 @@ export default function WhySmatchyWins() {
             backgroundPosition: "bottom",
           }}
         >
-          <div className="container py-8! md:py-12! lg:py-16! px-4! md:px-6! lg:px-8!">
+          <div
+            className="container py-8! md:py-12! lg:py-16! px-4! md:px-6! lg:px-8!"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="flex flex-col items-center">
               <div className=" inline-flex">
                 <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-white font-bold mb-6 md:mb-8 lg:mb-12">

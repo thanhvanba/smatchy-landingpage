@@ -100,7 +100,11 @@ export default function Testimonials() {
             backgroundPosition: "bottom",
           }}
         >
-          <div className="flex justify-center items-center py-8 md:py-16">
+          <div
+            className="flex justify-center items-center py-8 md:py-16"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h2 className="relative inline-flex text-2xl md:text-3xl lg:text-5xl text-white font-bold text-center px-4">
               YOUR{" "}
               <span className="text-[#FCA13B] ml-1 md:ml-2"> TESTIMONIALS</span>
@@ -113,7 +117,12 @@ export default function Testimonials() {
           </div>
           <Slider {...settings}>
             {testimonials?.map((testimonial) => (
-              <div key={testimonial.id} className="px-2 md:px-4">
+              <div
+                key={testimonial.id}
+                className="px-2 md:px-4"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
                 <div className="slide-item bg-[#E2F6F6] rounded-xl md:rounded-2xl p-4 md:p-8 text-center transition-all duration-300">
                   <p className="text-gray-600 mb-3 md:mb-4 text-xs md:text-base lg:text-lg">
                     "{testimonial.text}"
@@ -140,7 +149,11 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="container px-4! md:px-8! lg:px-24! pb-28! md:py-20! lg:py-18! relative flex justify-center z-30">
+      <div
+        className="container px-4! md:px-8! lg:px-24! pb-28! md:py-20! lg:py-18! relative flex justify-center z-30"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
         <img className="w-full h-auto" src={worldmap} alt="" />
       </div>
     </div>

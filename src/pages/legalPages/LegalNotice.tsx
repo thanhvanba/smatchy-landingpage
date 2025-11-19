@@ -24,7 +24,11 @@ export default function LegalNotice() {
           />
         </div>
         <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-30">
-          <div className="inline-flex">
+          <div
+            className="inline-flex"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h2 className="relative text-center text-xl md:text-2xl lg:text-5xl text-[#0A4A60] font-bold pt-2 md:pt-3 lg:pt-4">
               <span className="text-[#FCA13B]">LEGAL </span>
               NOTICE
@@ -36,7 +40,11 @@ export default function LegalNotice() {
             </h2>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="inline-flex">
               <p className="">
                 <span className="font-bold text-[#0F262E]">Reference: </span>
@@ -51,7 +59,11 @@ export default function LegalNotice() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Publisher
             </h3>
@@ -67,7 +79,11 @@ export default function LegalNotice() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0A4A6026]">
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="leading-relaxed text-[#0F262E]">
               <p className="font-bold">LES BORNEES DIGITAL COMPANY</p>
               <p>5 rue de l’Industrie</p>
@@ -81,7 +97,11 @@ export default function LegalNotice() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Publication Director
             </h3>
@@ -90,7 +110,11 @@ export default function LegalNotice() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Web Host
             </h3>
@@ -101,7 +125,11 @@ export default function LegalNotice() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0A4A6026]">
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="leading-relaxed text-[#0F262E]">
               <p>Address: 7 Place de la Gare, 57200 SARREGUEMINES</p>
               <p>Phone: 0970 808 911</p>
@@ -114,7 +142,11 @@ export default function LegalNotice() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Application Database Host
             </h3>
@@ -124,7 +156,11 @@ export default function LegalNotice() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0A4A6026]">
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="leading-relaxed text-[#0F262E]">
               <p>
                 Building Two, Number One Ballsbridge, Ballsbridge, Dublin 4,
@@ -138,7 +174,11 @@ export default function LegalNotice() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Application Image Host
             </h3>
@@ -148,7 +188,11 @@ export default function LegalNotice() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0A4A6026]">
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="leading-relaxed text-[#0F262E]">
               <p>410 Terry Avenue North, Seattle, Washington, 98109</p>
             </div>
