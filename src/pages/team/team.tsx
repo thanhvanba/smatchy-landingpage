@@ -12,7 +12,7 @@ export default function TeamPage() {
   if (error) return <p>Error loading team.</p>;
   if (!data) return <p>No team data available.</p>;
 
-  console.log("Team Data:", { teamMembers: data.teamMembers, teamPage: data.teamPage });
+  //console.log("Team Data:", { teamMembers: data.teamMembers, teamPage: data.teamPage });
 
   return (
     <div className="relative w-full min-h-screen">
