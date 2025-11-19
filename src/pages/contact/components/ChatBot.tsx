@@ -37,7 +37,7 @@
 //   );
 // }
 // src/components/ChatBot/ChatBot.tsx
-import LogoFondjaune from "/contact/Logo_fondjaune.png";
+import LogoFondjaune from "/contact/Logo_fondjaune.svg";
 import Logo3Blanc from "/contact/Logo3_blanc.png";
 import { HiMiniXMark } from "react-icons/hi2";
 import { BsChatDotsFill } from "react-icons/bs";
@@ -94,9 +94,9 @@ export default function ChatBot() {
         <div className="absolute bottom-24 flex flex-col w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="flex justify-between items-center gap-2 bg-[#FCA13B] px-4 py-3">
-            <div className="flex gap-2">
-              <img src={LogoFondjaune} alt="" className="h-8" />
-              <img className="h-8 object-contain" src={Logo3Blanc} alt="" />
+            <div className="flex gap-2 items-center">
+              <img src={LogoFondjaune} alt="" className="h-16" />
+              <img className="h-4 w-32 object-contain" src={Logo3Blanc} alt="" />
             </div>
             <HiMiniXMark
               onClick={() => setOpenChatbot(false)}
