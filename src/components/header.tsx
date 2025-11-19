@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import logo from "/Logo.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
+import LangSwitch from "./LangSwitch";
 
 const menu = [
   { title: "Home", link: "/" },
@@ -63,6 +64,17 @@ export default function Header() {
               );
             })}
           </ul>
+        </div>
+
+        {/* Desktop Buttons */}
+        <div className="hidden lg:flex items-center gap-2">
+          <button
+            className="bg-[#FCA13B] text-white rounded-3xl py-1 px-4 text-sm"
+            onClick={() => alert("Get the app clicked")}
+          >
+            Get the app
+          </button>
+          <LangSwitch />
         </div>
 
         {/* Mobile Menu Button */}

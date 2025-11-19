@@ -21,6 +21,12 @@ const strapiApi = axios.create({
   baseURL: STRAPI_URL,
 });
 
+strapiApi.interceptors.request.use((config) => {
+  const locale = localStorage.getItem("locale") || "en";
+  config.params = { ...config.params, locale };
+  return config;
+});
+
 type StrapiItem<T> = { id: number; attributes: T };
 //type StrapiSingleResponse<T> = { data: StrapiItem<T>; meta: any };
 type StrapiSingleResponse<T> = {
