@@ -13,7 +13,10 @@ import image3 from "/image 3.png";
 
 import "../event.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { Autoplay } from "swiper/modules";
+import Loading from "../../../components/Loading";
 import { useHero } from "../../../hooks/useHero";
+
 // const listBaner = [
 //   {
 //     id: 1,
@@ -34,13 +37,12 @@ import { useHero } from "../../../hooks/useHero";
 // ];
 export default function EventHeroBanner() {
   // const [isHovered, setIsHovered] = useState(false);
+
   const swiperRef = useRef<any>(null);
 
   const { data, isLoading, error } = useHero("gywnpx9at0x32dob6f4n725x");
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -59,7 +61,16 @@ export default function EventHeroBanner() {
   return (
     <div className="relative z-30 overflow-hidden product-slider-container w-full md:h-[400px] lg:h-[564px] mb-10 md:mb-16 lg:mb-20">
       <div className="absolute inset-0 z-30 bg-[#00000054] md:h-[400px] lg:h-[564px]"></div>
-      <Swiper ref={swiperRef} modules={[Pagination]} className="">
+      <Swiper
+        ref={swiperRef}
+        modules={[Pagination, Autoplay]}
+        className=""
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        loop
+      >
         {listBaner.map((banner: any) => (
           <SwiperSlide key={banner.id}>
             <img

@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
 import "swiper/swiper-bundle.css";
 
 import look1 from "/1.png";
@@ -23,6 +25,11 @@ export default function Slider() {
       <Swiper
         spaceBetween={0}
         centeredSlides
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay]}
         className="w-full overflow-hidden"
         loop
         ref={swiperRef}

@@ -5,6 +5,7 @@ import worldmap from "/world-map.png";
 import Yay from "/Yay.png";
 // import avt1 from "/avt1.png";
 // import avt2 from "/avt2.png";
+import Loading from "../../../components/Loading";
 import { useTestimonials } from "../../../hooks/useTestimonials";
 // const testimonials1 = [
 //   {
@@ -41,9 +42,7 @@ const renderStars = (rating: number) => {
 export default function Testimonials() {
   const { data, isLoading, error } = useTestimonials("home");
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

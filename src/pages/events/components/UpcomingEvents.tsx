@@ -13,6 +13,7 @@ import { Grid, Pagination } from "swiper/modules";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import EventCard from "./EventCard";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../../components/Loading";
 import { useEventList } from "../../../hooks/useEvent";
 // const events1 = [
 //   {
@@ -232,9 +233,7 @@ export default function UpcomingEvents() {
 
   const { data, isLoading, error } = useEventList();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

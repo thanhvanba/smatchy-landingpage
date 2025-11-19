@@ -17,6 +17,7 @@ import "swiper/swiper-bundle.css";
 // import sports12 from "/sports/tennis.png";
 // import sports13 from "/sports/trail.jpg";
 // import sports14 from "/sports/trampoline.jpg";
+import Loading from "../../../components/Loading";
 import { useSport } from "../../../hooks/useSport";
 
 // const slides1 = [
@@ -39,9 +40,7 @@ import { useSport } from "../../../hooks/useSport";
 export default function CategorySlider() {
   const { data, isLoading, error } = useSport();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

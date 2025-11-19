@@ -11,6 +11,7 @@ import event6 from "/events/event6.jpg";
 import golf from "/events/golf.png";
 import { useParams } from "react-router-dom";
 
+import Loading from "../../components/Loading";
 import { useEventDetail } from "../../hooks/useEventDetail";
 const events = [
   {
@@ -228,9 +229,7 @@ export default function DetailEvent() {
   const { slug } = useParams<{ slug: string }>();
   const { data: apiData, isLoading, error } = useEventDetail(slug || "");
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

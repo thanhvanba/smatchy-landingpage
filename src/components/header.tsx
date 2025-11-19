@@ -93,7 +93,6 @@ export default function Header() {
           </button>
           <LangSwitch />
         </div> */}
-
       </div>
       {/* Mobile Menu Dropdown */}
       {isOpen && (

@@ -1,12 +1,11 @@
+import Loading from "../../../components/Loading";
 import { useHero } from "../../../hooks/useHero";
 //import heroBanner from "/hero-banner.png";
 import Yay from "/Yay.png";
 import { MdLocalPhone, MdOutlineFileDownload } from "react-icons/md";
 export default function InvestorsHeroBanner() {
   const { data, isLoading, error } = useHero("k8pxj4vdpa46rs41wsc94o63");
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

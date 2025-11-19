@@ -1,3 +1,4 @@
+import Loading from "../../../components/Loading";
 import { useTeam } from "../../../hooks/useTeam";
 import TeamList from "./teamList";
 import background from "/background.png";
@@ -45,7 +46,7 @@ export default function Members() {
   const { data, isLoading, error } = useTeam();
   console.log("🚀 ~ Members ~ data:", data);
 
-  if (isLoading) return <p>Loading…</p>;
+  if (isLoading) return <Loading />;
   if (error) return <p>Error loading team.</p>;
   if (!data?.teamMembers) return <p>No data available.</p>;
 

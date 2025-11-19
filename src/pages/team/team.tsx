@@ -1,3 +1,4 @@
+import Loading from "../../components/Loading";
 import { useTeam } from "../../hooks/useTeam";
 import TeamHeroBanner from "./components/TeamHeroBanner";
 import LittleStory from "./components/littleStory";
@@ -7,7 +8,7 @@ import line from "/line_bg.svg";
 export default function TeamPage() {
   const { data, isLoading, error } = useTeam();
 
-  if (isLoading) return <p>Loading…</p>;
+  if (isLoading) return <Loading />;
   if (error) return <p>Error loading team.</p>;
   if (!data) return <p>No team data available.</p>;
 

@@ -3,13 +3,12 @@
 import Yay from "/Yay.png";
 import AppStoreImage from "/App_Store_Image.png";
 import image3 from "/image 3.png";
+import Loading from "../../../components/Loading";
 import { useHome } from "../../../hooks/useHome";
 export default function HeroBanner() {
   const { isLoading, error, hero } = useHome();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

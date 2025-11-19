@@ -2,6 +2,7 @@ import GoEntrepreneurs from "/Go_Entrepreneurs.png";
 import Choiseul2 from "/Choiseul 02.png";
 import Choiseil3 from "/Choiseul 3.png";
 import Choiseil4 from "/Choiseul 4.png";
+import Loading from "../../../components/Loading";
 import { useHome } from "../../../hooks/useHome";
 
 export default function AwardsSection() {
@@ -13,9 +14,7 @@ export default function AwardsSection() {
   ];
 
   const { isLoading, error, sliders } = useHome();
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

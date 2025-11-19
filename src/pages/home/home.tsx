@@ -1,4 +1,5 @@
 import { useHome } from "../../hooks/useHome";
+import Loading from "../../components/Loading";
 import AwardsSection from "./components/AwardsSection";
 import CategorySlider from "./components/CategorySlider";
 import HeroBanner from "./components/HeroBanner";
@@ -9,9 +10,7 @@ import Yay2 from "/Yay2.png";
 //@ts-nocheck
 export default function HomePage() {
   const { isLoading, error, titles } = useHome();
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

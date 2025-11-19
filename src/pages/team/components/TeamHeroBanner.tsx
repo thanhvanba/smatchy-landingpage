@@ -1,10 +1,11 @@
+import Loading from "../../../components/Loading";
 import { useTeam } from "../../../hooks/useTeam";
 import heroBanner from "/team/team-background.jpg";
 import Yay from "/Yay.png";
 export default function TeamHeroBanner() {
   const { data, isLoading, error } = useTeam();
 
-  if (isLoading) return <p>Loading…</p>;
+  if (isLoading) return <Loading />;
   if (error) return <p>Error loading team.</p>;
 
   const heading = data?.teamPage?.blocks?.[0].heading;
