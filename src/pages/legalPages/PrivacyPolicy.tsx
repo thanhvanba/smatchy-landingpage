@@ -23,7 +23,11 @@ export default function PrivacyPolicy() {
           />
         </div>
         <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-30">
-          <div className="inline-flex">
+          <div
+            className="inline-flex"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h2 className="relative text-center text-xl md:text-2xl lg:text-5xl text-[#0A4A60] font-bold pt-2 md:pt-3 lg:pt-4">
               <span className="text-[#FCA13B]">PRIVACY </span>
               POLICY
@@ -34,14 +38,22 @@ export default function PrivacyPolicy() {
               />
             </h2>
           </div>
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
               LBDC Organisation (Smatchy) collects and processes personal data
               in accordance with GDPR.
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Data Collected
             </h3>
@@ -51,7 +63,11 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Purpose
             </h3>
@@ -61,7 +77,11 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Legal Basis
             </h3>
@@ -70,7 +90,11 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Recipients
             </h3>
@@ -80,7 +104,11 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               International Transfers
             </h3>
@@ -91,7 +119,11 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               Retention
             </h3>
@@ -101,7 +133,11 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
               User Rights
             </h3>
@@ -111,7 +147,11 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0A4A6026]">
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="leading-relaxed text-[#0F262E] space-y-3">
               <div>
                 <h3 className="font-bold">Contact</h3>
@@ -131,7 +171,11 @@ export default function PrivacyPolicy() {
             </div>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0A4A6026]">
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="leading-relaxed text-[#0F262E]">
               <p>
                 <span className="font-bold">Last updated: </span>March 12, 2025

@@ -20,7 +20,11 @@ export default function Presentation() {
   return (
     <>
       {presentation[0] && (
-        <div className="relative container">
+        <div
+          className="relative container mb-20! z-50"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <div className="mt-12 flex flex-col items-center md:items-start gap-8 md:gap-28">
             {presentation[0].map((item, index) => {
               const baseClass =

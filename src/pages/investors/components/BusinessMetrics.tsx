@@ -17,7 +17,11 @@ const metrics = [
 
 const BusinessMetrics = () => {
   return (
-    <div className="relative z-40 container">
+    <div
+      className="relative z-40 container"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
       <div className="bg-[#0A4A60] p-4 md:p-5 lg:p-6 rounded-2xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
           {metrics.map((metric, index) => (

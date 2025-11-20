@@ -86,7 +86,11 @@ export default function CategorySlider() {
         }}
       ></div>
 
-      <div className="relative w-full z-50 h-full mt-20">
+      <div
+        className="relative w-full z-50 h-full mt-20"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <Swiper
           modules={[Autoplay]}
           spaceBetween={4}

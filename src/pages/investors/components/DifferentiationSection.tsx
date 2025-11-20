@@ -3,7 +3,11 @@ import differentiation from "/investors/differentiation.png";
 import Yay3 from "/Yay3.png";
 const DifferentiationSection = () => {
   return (
-    <div className="container relative z-30 pb-8! md:pb-12! lg:pb-16!">
+    <div
+      className="container relative z-30 pb-8! md:pb-12! lg:pb-16!"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
       <div className="flex flex-col items-center">
         <div className=" inline-flex">
           <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-6 md:mb-8 lg:mb-12">

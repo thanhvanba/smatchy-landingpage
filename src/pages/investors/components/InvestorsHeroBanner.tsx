@@ -37,7 +37,11 @@ export default function InvestorsHeroBanner() {
           backgroundPosition: "bottom",
         }}
       >
-        <div className="container z-50 mx-auto">
+        <div
+          className="container z-50 mx-auto"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <div className="flex flex-col items-center gap-4 md:gap-6 py-16 md:py-32">
             <div className="relative font-bold text-2xl md:text-3xl lg:text-5xl leading-8 md:leading-12 lg:leading-14 text-white text-center">
               <div

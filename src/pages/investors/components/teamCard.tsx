@@ -18,7 +18,11 @@ const socialIcons = [
 
 export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
   return (
-    <div className="group flex flex-col items-center text-center border-[6px] border-[#FFFFFF5C] rounded-full bg-[#ECEEEF] hover:bg-[#0A4A60] px-6 pb-20 w-full transition-colors duration-300">
+    <div
+      data-aos="zoom-in-up"
+      data-aos-duration="1000"
+      className="group flex flex-col items-center text-center border-[6px] border-[#FFFFFF5C] rounded-full bg-[#ECEEEF] hover:bg-[#0A4A60] px-6 pb-20 w-full transition-colors duration-300"
+    >
       {/* Avatar */}
       <img
         src={teamMember.avatar}

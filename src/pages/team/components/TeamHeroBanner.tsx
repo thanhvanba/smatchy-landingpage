@@ -23,7 +23,11 @@ export default function TeamHeroBanner() {
         }}
       >
         <div className="absolute inset-0 z-40 bg-[#00000054]"></div>
-        <div className="absolute z-50 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col items-center px-4">
+        <div
+          className="absolute z-50 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col items-center px-4"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <div className="text-xl md:text-4xl lg:text-5xl font-bold text-white text-center">
             <img
               className="absolute -top-16 md:-top-24 -right-8 md:-right-20 w-12 md:w-auto"

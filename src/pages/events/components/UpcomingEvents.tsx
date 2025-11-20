@@ -301,7 +301,11 @@ export default function UpcomingEvents() {
       </div>
 
       <div className="flex flex-col items-center">
-        <div className=" inline-flex">
+        <div
+          className=" inline-flex"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-10">
             UP COMMING<span className="text-[#FCA13B]"> EVENTS</span>
             <img
@@ -316,7 +320,11 @@ export default function UpcomingEvents() {
         {/* Custom Navigation Buttons */}
         <div className="relative z-30 flex justify-end items-center gap-4 mb-3">
           <div className="absolute top-1/2 left-1/2 -translate-1/2">
-            <div className="inline-flex">
+            <div
+              className="inline-flex"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               <h2 className="text-base md:text-lg lg:text-[20px] font-bold">
                 <span className="text-[#FCA13B]">{flatEvents.length}</span>{" "}
                 activities
@@ -325,19 +333,27 @@ export default function UpcomingEvents() {
           </div>
           <button
             className="text-[#FCA13B] h-10 md:h-12 w-10 md:w-12"
+            data-aos="fade-left"
+            data-aos-duration="1000"
             onClick={() => swiperRef.current?.swiper.slidePrev()}
           >
             <FaArrowLeftLong className="text-6 md:text-8" />
           </button>
           <button
             className="text-[#FCA13B] h-10 md:h-12 w-10 md:w-12"
+            data-aos="fade-left"
+            data-aos-duration="1000"
             onClick={() => swiperRef.current?.swiper.slideNext()}
           >
             <FaArrowRightLong className="text-6 md:text-8" />
           </button>
         </div>
 
-        <div className="relative z-40">
+        <div
+          className="relative z-40"
+          data-aos="zoom-in-up"
+          data-aos-duration="1000"
+        >
           <Swiper
             ref={swiperRef}
             modules={[Grid, Pagination]}
@@ -347,6 +363,32 @@ export default function UpcomingEvents() {
             grid={{
               rows: 2, // 2 dòng
               fill: "row", // điền theo hàng ngang
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                grid: {
+                  rows: 2,
+                  fill: "row",
+                },
+              },
+              640: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                grid: {
+                  rows: 2,
+                  fill: "row",
+                },
+              },
+              1024: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+                grid: {
+                  rows: 2,
+                  fill: "row",
+                },
+              },
             }}
           >
             {flatEvents.map((event) => (

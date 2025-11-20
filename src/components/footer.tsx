@@ -45,7 +45,7 @@ export default function Footer() {
           backgroundPosition: "top",
         }}
       >
-        <div className="container px-4! pt-6! md:pt-12!">
+        <div className="container px-4! pt-6! md:pt-10!">
           <div className="flex flex-col md:flex-row md:space-x-20 lg:space-x-48 items-start md:items-center">
             <img
               className="h-10 w-10 md:h-32 md:w-32 mb-6 md:mb-0"
@@ -83,7 +83,7 @@ export default function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="flex flex-row gap-2 md:gap-[60px] mt-4 md:mt-8 text-xs md:text-base cursor-pointer">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-[60px] mb-2 mt-4 md:mt-8 text-xs md:text-base cursor-pointer">
                 <p onClick={() => navigate("/legal-otice")}>Legal Notices</p>
                 <p onClick={() => navigate("/terms-use")}>Terms of Use</p>
                 <p onClick={() => navigate("/privacy-policy")}>

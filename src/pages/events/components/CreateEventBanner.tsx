@@ -22,7 +22,11 @@ export default function CreateEventBanner() {
           backgroundPosition: "bottom",
         }}
       >
-        <div className="container py-8! md:py-12! lg:py-16!">
+        <div
+          className="container py-8! md:py-12! lg:py-16!"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <div className="flex flex-col items-center gap-4 md:gap-6 lg:gap-8">
             <div className=" inline-flex">
               <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-white font-bold">

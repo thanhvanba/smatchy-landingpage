@@ -59,7 +59,7 @@ const ProblemSolution = () => {
   };
 
   return (
-    <div className="relative z-40">
+    <div className="relative z-40" data-aos="fade-up" data-aos-duration="1000">
       <div className="container py-6! md:py-8! lg:py-10! px-2! md:px-4! lg:px-6!">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
           <ListProblemSolution

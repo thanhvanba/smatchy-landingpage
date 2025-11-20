@@ -61,7 +61,11 @@ export default function MarketOpportunity() {
           }}
         ></div>
       </div>
-      <div className="relative z-30 container px-4 md:px-6 lg:px-8">
+      <div
+        className="relative z-30 container px-4 md:px-6 lg:px-8"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <div className="flex flex-col justify-center items-center py-8 md:py-10 lg:py-12 gap-8 md:gap-10 lg:gap-12">
           {/* Section Title */}
           <div className=" inline-flex">
@@ -105,7 +109,11 @@ export default function MarketOpportunity() {
           </div>
         </div>
       </div>
-      <div className="relative z-40 container px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20 lg:gap-36 justify-items-center">
+      <div
+        className="relative z-40 container px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20 lg:gap-36 justify-items-center"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         {growthImages.map((src, index) => (
           <div key={index} className=" rounded-full overflow-hidden shadow-lg">
             <img

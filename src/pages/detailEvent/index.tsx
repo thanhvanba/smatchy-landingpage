@@ -275,7 +275,11 @@ export default function DetailEvent() {
       {detail && (
         <div>
           <DetailHeroBanner detail={detail} />
-          <div className="relative z-50 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 container -mt-8! md:-mt-16! lg:-mt-24! mb-20! md:mb-32! lg:mb-40!">
+          <div
+            className="relative z-50 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 container -mt-8! md:-mt-16! lg:-mt-24! mb-20! md:mb-32! lg:mb-40!"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <EventInfoCard detail={detail} />
             <EventSummaryCard detail={detail} />
           </div>

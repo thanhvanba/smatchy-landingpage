@@ -1,4 +1,3 @@
-import Slider from "react-slick";
 import background from "/background.png";
 import line from "/line_bg.svg";
 import worldmap from "/world-map.png";
@@ -7,6 +6,10 @@ import Yay from "/Yay.png";
 // import avt2 from "/avt2.png";
 import Loading from "../../../components/Loading";
 import { useTestimonials } from "../../../hooks/useTestimonials";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow } from "swiper/modules";
+import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+import { useRef } from "react";
 // const testimonials1 = [
 //   {
 //     id: 1,
@@ -41,6 +44,7 @@ const renderStars = (rating: number) => {
 
 export default function Testimonials() {
   const { data, isLoading, error } = useTestimonials("home");
+  const swiperRef = useRef<any>(null);
 
   if (isLoading) return <Loading />;
 
@@ -55,30 +59,6 @@ export default function Testimonials() {
     rating: 5, // default
     image: s.avatar?.url, // "/uploads/avatar1_d95a6afcff.png"
   }));
-
-  console.log(testimonials);
-
-  const settings = {
-    centerMode: true,
-    infinite: true,
-    centerPadding: "0px",
-    slidesToShow: 3,
-    speed: 500,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -100,9 +80,19 @@ export default function Testimonials() {
             backgroundPosition: "bottom",
           }}
         >
-          <div className="flex justify-center items-center py-8 md:py-16">
+          <div
+            className="container flex justify-center items-center py-8! md:py-16!"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <button
+              className="cursor-pointer absolute left-0 top-1/2 z-10 transform -translate-y-1/2 text-[#FCA13B] px-4 py-2 rounded-full"
+              onClick={() => swiperRef.current?.swiper?.slidePrev()}
+            >
+              <BsArrowLeftShort className="text-2xl md:text-6xl" />
+            </button>
             <h2 className="relative inline-flex text-2xl md:text-3xl lg:text-5xl text-white font-bold text-center px-4">
-              YOUR{" "}
+              YOUR
               <span className="text-[#FCA13B] ml-1 md:ml-2"> TESTIMONIALS</span>
               <img
                 className="absolute -top-6 -right-2 md:-top-20 md:-right-12 lg:-top-24 lg:-right-16 w-8 md:w-auto"
@@ -110,37 +100,73 @@ export default function Testimonials() {
                 alt=""
               />
             </h2>
+            <button
+              className="cursor-pointer absolute right-0 top-1/2 z-10 transform -translate-y-1/2 text-[#FCA13B] px-4 py-2 rounded-full"
+              onClick={() => swiperRef.current?.swiper?.slideNext()}
+            >
+              <BsArrowRightShort className="text-2xl md:text-6xl" />
+            </button>
           </div>
-          <Slider {...settings}>
+
+          <Swiper
+            modules={[EffectCoverflow]}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView="auto"
+            spaceBetween={100}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+              slideShadows: false,
+            }}
+            className="mySwiper"
+            ref={swiperRef}
+          >
             {testimonials?.map((testimonial) => (
-              <div key={testimonial.id} className="px-2 md:px-4">
-                <div className="slide-item bg-[#E2F6F6] rounded-xl md:rounded-2xl p-4 md:p-8 text-center transition-all duration-300">
-                  <p className="text-gray-600 mb-3 md:mb-4 text-xs md:text-base lg:text-lg">
-                    "{testimonial.text}"
-                  </p>
-                  <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3">
-                    <img
-                      src={`https://strapi.annk.info${testimonial.image}`}
-                      alt={testimonial.name}
-                      className="w-16 md:w-20 h-16 md:h-20 rounded-full object-cover"
-                    />
-                    <div className="flex-1">
-                      <div className="text-start text-lg md:text-3xl flex justify-center md:justify-start">
-                        {renderStars(testimonial.rating)}
+              <SwiperSlide
+                key={testimonial.id}
+                className="w-[60%]! md:w-[60%]! lg:w-[40%]!"
+              >
+                <div
+                  className="px-2 md:px-4"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
+                  <div className="slide-item bg-[#E2F6F6] rounded-xl md:rounded-2xl p-4 md:p-8 text-center transition-all duration-300">
+                    <p className="text-gray-600 mb-3 md:mb-4 text-xs md:text-base lg:text-lg">
+                      "{testimonial.text}"
+                    </p>
+                    <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3">
+                      <img
+                        src={`https://strapi.annk.info${testimonial.image}`}
+                        alt={testimonial.name}
+                        className="w-16 md:w-20 h-16 md:h-20 rounded-full object-cover"
+                      />
+                      <div className="flex-1">
+                        <div className="text-start text-lg md:text-3xl flex justify-center md:justify-start">
+                          {renderStars(testimonial.rating)}
+                        </div>
+                        <h3 className="text-[#0A4A60] text-base md:text-2xl lg:text-[32px] font-semibold">
+                          - {testimonial.name}
+                        </h3>
                       </div>
-                      <h3 className="text-[#0A4A60] text-base md:text-2xl lg:text-[32px] font-semibold">
-                        - {testimonial.name}
-                      </h3>
                     </div>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </Slider>
+          </Swiper>
         </div>
       </div>
 
-      <div className="container px-4! md:px-8! lg:px-24! pb-28! md:py-20! lg:py-18! relative flex justify-center z-30">
+      <div
+        className="container px-4! md:px-8! lg:px-24! pb-28! md:py-20! lg:py-18! relative flex justify-center z-30"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
         <img className="w-full h-auto" src={worldmap} alt="" />
       </div>
     </div>

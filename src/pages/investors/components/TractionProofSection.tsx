@@ -56,7 +56,11 @@ const TractionProofSection = () => {
       <div className="relative container z-30 -mt-[500px]! lg:-mt-[640px]! py-8! md:py-12! lg:py-16!">
         <div className="flex flex-col items-center">
           <div className=" inline-flex">
-            <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-white font-bold mb-6 md:mb-8 lg:mb-12">
+            <h2
+              className="relative text-center text-2xl md:text-3xl lg:text-5xl text-white font-bold mb-6 md:mb-8 lg:mb-12"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               <span className="text-[#FCA13B]">TRACTION </span>& PROOF
               <img
                 className="absolute -top-10 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-8 md:w-12 lg:w-auto"
@@ -73,17 +77,29 @@ const TractionProofSection = () => {
               key={index}
               className="flex flex-col gap-2 md:gap-2.5 lg:gap-3 text-center text-white"
             >
-              <div className="w-10 md:w-12 lg:w-16 h-10 md:h-12 lg:h-16 mx-auto">
+              <div
+                className="w-10 md:w-12 lg:w-16 h-10 md:h-12 lg:h-16 mx-auto"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
                 <img
                   src={item.icon}
                   alt="icon"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold">
+              <h3
+                className="text-2xl md:text-3xl lg:text-5xl font-bold"
+                data-aos="zoom-in-up"
+                data-aos-duration="1000"
+              >
                 {item.title}
               </h3>
-              <p className="text-[#DADEDF] text-xs md:text-sm lg:text-base leading-relaxed whitespace-pre-line">
+              <p
+                className="text-[#DADEDF] text-xs md:text-sm lg:text-base leading-relaxed whitespace-pre-line"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
                 {item.subtitle}
               </p>
             </div>
@@ -91,7 +107,11 @@ const TractionProofSection = () => {
         </div>
 
         {/* 3 box mô tả bên dưới */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-6"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           {tractionBoxes.map((item, i) => (
             <div
               key={i}

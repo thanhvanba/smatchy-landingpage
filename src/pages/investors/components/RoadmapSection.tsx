@@ -36,7 +36,11 @@ const roadmap = [
 ];
 export default function RoadmapSection() {
   return (
-    <div className="container relative z-30 pb-8! md:pb-12! lg:pb-16!">
+    <div
+      className="container relative z-30 pb-8! md:pb-12! lg:pb-16!"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
       {/* Tiêu đề */}
       <div className="flex flex-col items-center">
         <div className="inline-flex">

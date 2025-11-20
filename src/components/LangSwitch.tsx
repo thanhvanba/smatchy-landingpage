@@ -19,13 +19,13 @@ export default function LangSwitch() {
     <div className="relative inline-block">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-2 rounded-full border-2 border-white bg-white/80 px-1 py-1 shadow focus:outline-none"
+        className="flex items-center gap-0.5 md:gap-2 rounded-full px-1 py-1 focus:outline-none"
         aria-label="Change language"
       >
         <img
           src={flags[locale as keyof typeof flags]}
           alt={LABELS[locale as keyof typeof flags]}
-          className="w-8 h-8 rounded-full object-cover"
+          className="w-5 h-5 md:w-8 md:h-8 rounded-full object-cover"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"

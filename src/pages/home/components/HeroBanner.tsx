@@ -32,12 +32,18 @@ export default function HeroBanner() {
         <div className="container z-50 mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4 md:gap-20 items-center md:items-start">
             <img
+              data-aos="fade-right"
+              data-aos-duration="1000"
               className="z-50 w-full md:w-1/2 lg:w-auto h-auto"
               src={`https://strapi.annk.info${main_img}`}
               //src={image7}
               alt=""
             />
-            <div className="flex flex-col mb-8 md:mb-0 items-center gap-6 md:gap-10 w-full md:w-1/2">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              className="flex flex-col mb-8 md:mb-0 items-center gap-6 md:gap-10 w-full md:w-1/2"
+            >
               <div className="relative font-bold text-3xl md:text-4xl lg:text-5xl leading-10 md:leading-[50px] lg:leading-[55px] text-white text-center mt-8 md:mt-14 lg:mt-32">
                 <img
                   className="absolute -top-8 right-0 md:-top-24 md:-right-12 w-12 md:w-auto"

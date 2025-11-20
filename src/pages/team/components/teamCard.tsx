@@ -39,13 +39,13 @@ export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
   const avatar = (teamMember.avatar as { url?: string })?.url;
 
   return (
-    <div className="group flex flex-col items-center text-center border-[6px] border-[#FFFFFF5C] rounded-[120px] md:rounded-full bg-[#ECEEEF] hover:bg-[#0A4A60] px-6 pb-20 w-full transition-colors duration-300">
+    <div className="group flex flex-col items-center text-center border-[6px] border-[#FFFFFF5C] rounded-full bg-[#ECEEEF] hover:bg-[#0A4A60] px-6 pb-20 w-full transition-colors duration-300">
       {/* Avatar */}
       <img
         src={`https://strapi.annk.info${avatar}`}
         //src={teamMember.avatar}
         alt={teamMember.name}
-        className="object-cover mb-3 md:mb-4 lg:mb-6 rounded-full w-20 md:w-24 lg:w-auto h-20 md:h-24 lg:h-auto"
+        className="object-cover mb-6 rounded-full"
       />
 
       {/* Name & Title */}
