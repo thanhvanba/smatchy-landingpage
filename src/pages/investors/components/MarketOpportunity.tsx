@@ -1,8 +1,8 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import Yay3 from "/Yay3.png";
-import global from "/investors/Global.png";
-import branded from "/investors/Branded.png";
-import flashon from "/investors/Flashon.png";
+// import global from "/investors/Global.png";
+// import branded from "/investors/Branded.png";
+// import flashon from "/investors/Flashon.png";
 import choiseul1 from "/investors/Choiseul 01.png";
 import choiseul2 from "/investors/Choiseul 4.png";
 import choiseul3 from "/investors/Choiseul 5.png";
@@ -10,52 +10,71 @@ import { useInvestor } from "../../../hooks/useInvestor";
 import Loading from "../../../components/Loading";
 import { InvestorPopulateType } from "../../../services/strapi";
 
-const marketData = [
-  {
-    image: global,
-    label: "TAM (Total Addressable Market)",
-    value: "14.7B€",
-    description: "European adult sports practitioners market.",
-  },
-  {
-    image: branded,
-    label: "SAM (Serviceable Available Market)",
-    value: "2.94B€",
-    description:
-      "Segment interested in social sports and addressable by Smatchy. Assumption: 23M at 100€/year.",
-  },
-  {
-    image: flashon,
-    label: "SOM (Serviceable Obtainable Market)",
-    value: "2.9M€ (2028)",
-    description: "Smatchy’s 5-year revenue target. Assumption: 0.098% of SAM.",
-  },
-];
+// const marketData1 = [
+//   {
+//     image: global,
+//     label: "TAM (Total Addressable Market)",
+//     value: "14.7B€",
+//     description: "European adult sports practitioners market.",
+//   },
+//   {
+//     image: branded,
+//     label: "SAM (Serviceable Available Market)",
+//     value: "2.94B€",
+//     description:
+//       "Segment interested in social sports and addressable by Smatchy. Assumption: 23M at 100€/year.",
+//   },
+//   {
+//     image: flashon,
+//     label: "SOM (Serviceable Obtainable Market)",
+//     value: "2.9M€ (2028)",
+//     description: "Smatchy’s 5-year revenue target. Assumption: 0.098% of SAM.",
+//   },
+// ];
 
-const growthImages = [choiseul1, choiseul2, choiseul3];
+// const growthImages = [choiseul1, choiseul2, choiseul3];
 
 export default function MarketOpportunity() {
-  const { data, isLoading, error } = useInvestor(InvestorPopulateType.TITLE);
+  const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
+  const {
+    data: stats,
+    isLoading: isLoadingStats,
+    error: errorStats,
+  } = useInvestor(InvestorPopulateType.STATS);
 
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  //console.log(data);
+  if (isLoadingStats) return <Loading />;
+  if (errorStats) return null;
 
-  const block = data?.blocks?.find((b: any) => b.id === 156);
+  console.log(data);
+  //  console.log(stats);
 
-  if (!block) return null;
+  const titleBlock = data?.blocks?.find(
+    (block: any): block is any =>
+      block.__component === "blocks.title" && block.id === 156
+  );
 
-  console.log(block);
+  const marketData = stats?.blocks?.find(
+    (block: any): block is any =>
+      block.__component === "blocks.stats" && block.id === 126
+  );
 
-  // const marketData1 = block.stats_item.map((item: any) => ({
-  //   title: item.title,
+  const growthImages = data?.blocks?.find(
+    (block: any): block is any =>
+      block.__component === "hero.slider" && block.id === 113
+  );
+
+  console.log(growthImages);
+
+  // const marketData1 = statsBlock.stats_icon.map((item: any) => ({
   //   heading: item.heading,
-  //   btn_label: item.button.label,
-  //   btn_url: item.button.link,
+  //   sub_heading: item.sub_heading,
+  //   description: item.description,
   // }));
 
-  //console.log(metrics);
+  //console.log(marketData1);
 
   return (
     <div>
@@ -97,7 +116,7 @@ export default function MarketOpportunity() {
             <div className="relative z-40 text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold uppercase">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: block.title ? block.title : "",
+                  __html: titleBlock.title ? titleBlock.title : "",
                 }}
               />
               <img
@@ -115,13 +134,13 @@ export default function MarketOpportunity() {
               />
             </h2> */}
           </div>
-          {block.button.map((item: any, id: number) => (
+          {titleBlock.button.map((item: any, id: number) => (
             <>
               {/* <button className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold bg-[#FCA13B] transition">
               {item.label} <FaArrowRightLong />
             </button> */}
               <button
-                key={id}
+                key={item.id}
                 onClick={() =>
                   item.link &&
                   window.open(item.link, "_blank", "noopener,noreferrer")
@@ -136,22 +155,24 @@ export default function MarketOpportunity() {
 
           {/* Market Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
-            {marketData.map((item, index) => (
+            {marketData.stats_icon.map((item: any, index) => (
               <div
                 key={index}
                 className="bg-white rounded-2xl p-6 border shadow-sm flex flex-col items-center text-center"
                 style={{ borderColor: "#0A4A605C" }}
               >
                 <img
-                  src={item.image}
+                  src={`https://strapi.annk.info${item.icon.url}`}
                   alt={item.label}
                   className="w-10 md:w-12 lg:w-14 h-10 md:h-12 lg:h-14 rounded-full object-cover mb-2"
                 />
                 <div className="text-2xl md:text-3xl lg:text-[38px] font-bold tracking-tight mb-2 text-[#0A4A60]">
-                  {item.value}
+                  {item.heading}
                 </div>
-                <div className="text-base md:text-lg lg:text-xl font-bold text-[#0F262E] mb-1 whitespace-pre-line">
-                  {item.label.replace("(", "\n(")}
+                <div className="text-base md:text-lg lg:text-2xl font-bold text-[#0F262E] mb-1 whitespace-pre-line">
+                  {/* {item.label.replace("(", "\n(")}
+                   */}
+                  {item.sub_heading.replace("(", "\n(")}
                 </div>
                 <p className="text-xs md:text-sm lg:text-sm text-[#0F262E] leading-relaxed">
                   {item.description}
@@ -166,11 +187,11 @@ export default function MarketOpportunity() {
         data-aos="fade-up"
         data-aos-duration="1000"
       >
-        {growthImages.map((src, index) => (
-          <div key={index} className=" rounded-full overflow-hidden shadow-lg">
+        {growthImages.slider_images.map((src: any, id: number) => (
+          <div key={id} className=" rounded-full overflow-hidden shadow-lg">
             <img
-              src={src}
-              alt={`Growth visual ${index + 1}`}
+              src={`https://strapi.annk.info${src.url}`}
+              alt={`Growth visual ${id + 1}`}
               className="w-full h-full object-cover"
             />
           </div>

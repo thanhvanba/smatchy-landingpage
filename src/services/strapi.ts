@@ -103,7 +103,7 @@ export enum InvestorPopulateType {
 const investorEndpoints: Record<InvestorPopulateType, string> = {
   [InvestorPopulateType.BASIC]: "/investor?populate[blocks][populate]=*",
   [InvestorPopulateType.STATS]:
-    "/investor?populate[blocks][on][blocks.stats][populate][stats_item][populate][button]=*",
+    "/investor?populate[blocks][populate]=*&populate[blocks][on][blocks.stats][populate][stats_item][populate]=*&populate[blocks][on][blocks.stats][populate][stats_icon][populate]=*",
   [InvestorPopulateType.FULL]: "/investor?populate=*",
   [InvestorPopulateType.TITLE]:
     "/investor?populate[blocks][on][blocks.title][populate]=*",
