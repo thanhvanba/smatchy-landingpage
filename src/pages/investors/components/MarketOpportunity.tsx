@@ -48,25 +48,25 @@ export default function MarketOpportunity() {
   if (isLoadingStats) return <Loading />;
   if (errorStats) return null;
 
-  console.log(data);
+  //console.log(data);
   //  console.log(stats);
 
   const titleBlock = data?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "blocks.title" && block.id === 156
+      block.__component === "blocks.title" && block.id === 158
   );
 
   const marketData = stats?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "blocks.stats" && block.id === 126
+      block.__component === "blocks.stats" && block.id === 134
   );
 
   const growthImages = data?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "hero.slider" && block.id === 113
+      block.__component === "hero.slider" && block.id === 115
   );
 
-  console.log(growthImages);
+  //console.log(growthImages);
 
   // const marketData1 = statsBlock.stats_icon.map((item: any) => ({
   //   heading: item.heading,
@@ -134,23 +134,18 @@ export default function MarketOpportunity() {
               />
             </h2> */}
           </div>
-          {titleBlock.button.map((item: any, id: number) => (
-            <>
-              {/* <button className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold bg-[#FCA13B] transition">
+          {titleBlock.button.map((item: any) => (
+            <button
+              key={item.id}
+              onClick={() =>
+                item.link &&
+                window.open(item.link, "_blank", "noopener,noreferrer")
+              }
+              disabled={!item.link}
+              className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold bg-[#FCA13B] transition"
+            >
               {item.label} <FaArrowRightLong />
-            </button> */}
-              <button
-                key={item.id}
-                onClick={() =>
-                  item.link &&
-                  window.open(item.link, "_blank", "noopener,noreferrer")
-                }
-                disabled={!item.link}
-                className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold bg-[#FCA13B] transition"
-              >
-                {item.label} <FaArrowRightLong />
-              </button>
-            </>
+            </button>
           ))}
 
           {/* Market Metrics */}
