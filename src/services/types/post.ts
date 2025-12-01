@@ -52,6 +52,7 @@ export interface Post {
   title: string;
   slug: string;
   content: ContentBlock[];
+  contents: ContentBlock[];
   excerpt: string | null;
   createdAt: string;
   updatedAt: string;
@@ -73,7 +74,7 @@ export interface StrapiResponse<T> {
   };
 }
 
-export interface PostsResponse   extends StrapiResponse<Post[]> {}
+export interface PostsResponse extends StrapiResponse<Post[]> {}
 
 // Params cho fetch function
 export interface FetchPostsParams {
