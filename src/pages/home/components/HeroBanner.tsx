@@ -49,7 +49,7 @@ export default function HeroBanner() {
             >
               <div className="relative font-bold text-3xl md:text-4xl lg:text-5xl leading-10 md:leading-[50px] lg:leading-[55px] text-white text-center mt-8 md:mt-14 lg:mt-32">
                 <img
-                  className="absolute -top-8 right-0 md:-top-24 md:-right-12 w-12 md:w-auto"
+                  className="absolute -top-8 right-0 sm:-right-8 md:-top-14 lg:-top-24 md:right-4 lg:-right-12 w-12 md:w-20 lg:w-auto"
                   src={Yay}
                   alt=""
                 />

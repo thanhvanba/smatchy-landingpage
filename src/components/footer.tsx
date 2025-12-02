@@ -117,7 +117,20 @@ export default function Footer() {
     //     </div>
     //   </div>
     // </div>
-    <footer className="relative bg-[#E2F6F6] overflow-hidden">
+    <footer className="relative bg-[#E2F6F6">
+      <div
+        className="z-30"
+        style={{
+          width: "120vw",
+          height: "497.33px",
+          position: "absolute",
+          top: "-132px",
+          left: "0px",
+          transform: "rotate(-7.67deg)",
+          opacity: 1,
+          backgroundColor: "#E2F6F6",
+        }}
+      ></div>
       {/* Background rotated layer */}
       <div
         className="absolute inset-0 -z-10"
@@ -129,11 +142,17 @@ export default function Footer() {
           height: "140%",
         }}
       />
-
       {/* Main footer content */}
       <div
-        className="relative z-10 bg-cover bg-no-repeat bg-top"
-        style={{ backgroundImage: `url(${backgroundFooter})` }}
+        // className="relative z-10 bg-cover bg-no-repeat bg-top"
+        // style={{ backgroundImage: `url(${backgroundFooter})` }}
+        className="relative w-full h-auto lg:h-[270px] mt-4 z-30"
+        style={{
+          backgroundImage: `url(${backgroundFooter})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+        }}
       >
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12 py-8 md:py-12">
@@ -205,7 +224,7 @@ export default function Footer() {
                     >
                       <button
                         onClick={() => navigate(link.slug)}
-                        className="text-white/90 hover:text-white transition-colors py-2 px-1 hover:underline underline-offset-4 w-full md:w-auto"
+                        className="text-white/90 hover:text-white transition-colors py-2 px-1 hover:underline underline-offset-4 w-full md:w-auto cursor-pointer"
                       >
                         {link.title}
                       </button>

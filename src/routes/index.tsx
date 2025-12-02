@@ -25,10 +25,10 @@ export default function AppRoutes() {
       <Route path="professional" element={<Professional />} />
       <Route path="blog" element={<Blog />} />
       <Route path="contact" element={<ContactPage />} />
-      <Route path="legal-notice" element={<LegalNotice />} />
+      <Route path="legal-notices" element={<LegalNotice />} />
       <Route path="terms-of-use" element={<TermsUse />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="cookie-policy" element={<CookiePolicy />} />
+      <Route path="cookies" element={<CookiePolicy />} />
       {/* <Route path="annk" element={<AnNK />} /> */}
 
       {/* <Route path="/posts/:slug" element={<Navigate to=".." replace />} />

@@ -30,7 +30,7 @@ export default function TeamHeroBanner() {
         >
           <div className="text-xl md:text-4xl lg:text-5xl font-bold text-white text-center">
             <img
-              className="absolute -top-16 md:-top-24 -right-8 md:-right-20 w-12 md:w-auto"
+              className="absolute -top-10 md:-top-14 lg:-top-24 right-2 md:-right-8 lg:-right-20 w-12 md:w-20 lg:w-auto"
               src={Yay}
               alt=""
             />

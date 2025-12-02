@@ -75,7 +75,7 @@ const UserJourneySection = () => {
                 }}
               />
               <img
-                className="absolute -top-10 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-8 md:w-12 lg:w-auto"
+                className="absolute -top-8 -right-8 md:-top-10 md:-right-12 lg:-top-20 lg:-right-20 w-12 md:w-16 lg:w-auto"
                 src={Yay3}
                 alt=""
               />
@@ -100,7 +100,7 @@ const UserJourneySection = () => {
                 )
               }
               disabled={!titleBlock.button.link}
-              className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold bg-[#FCA13B] transition"
+              className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold cursor-pointer hover:bg-[#FCA13B] bg-[#FCA13B]/90 transition"
             >
               {titleBlock.button.label}
               <FaArrowRightLong />
@@ -112,11 +112,11 @@ const UserJourneySection = () => {
             data-aos-duration="1000"
           >
             {steps.stats_icon.map((step: any, index: number) => (
-              <div key={index}>
-                <div className="text-5xl md:text-6xl lg:text-7xl font-medium text-[#A2ABAF] mb-1 md:mb-2 lg:mb-2">
+              <div key={index} className="group cursor-pointer">
+                <div className="inline-flex rounded-2xl text-5xl md:text-6xl lg:text-7xl p-5 font-semibold group-hover:text-[#FCA13B] text-[#A2ABAF] bg mb-1 md:mb-2 lg:mb-4 group-hover:bg-linear-to-b from-[#FCA13B]/0 via-[#FCA13B]/10 to-[#FCA13B]/40">
                   {step.title}
                 </div>
-                <div className="bg-[#E2F6F6] rounded-xl p-6 flex gap-4 items-start shadow-sm">
+                <div className="bg-[#E2F6F6] group-hover:bg-[#0A4A60] rounded-xl p-6 flex gap-4 items-start shadow-sm">
                   <div>
                     {/* <div className="text-sm inline-flex font-semibold py-1 px-6 rounded-2xl bg-[#D9D9D9A8] bg-linear-to-r from-[#0A4A60]/.88 via-[#7F9EA6]/31 to-[#0A4A60]/65 mb-6">
                       {step.heading}
@@ -135,10 +135,10 @@ const UserJourneySection = () => {
                     </div>
 
                     <div>
-                      <h3 className="text-2xl font-bold text-[#0A4A60] mb-1">
+                      <h3 className="text-2xl font-bold text-[#0A4A60] group-hover:text-white mb-1">
                         {step.sub_heading}
                       </h3>
-                      <p className="text-[#0F262E] leading-relaxed">
+                      <p className="text-[#0F262E] group-hover:text-white leading-relaxed">
                         {step.description}
                       </p>
                     </div>

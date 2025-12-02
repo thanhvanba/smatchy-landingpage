@@ -23,18 +23,18 @@ export default function ContactPage() {
           data-aos="fade-up"
           data-aos-duration="1000"
         >
-          <div className="relative flex items-center justify-center text-center leading-6 md:leading-8 lg:leading-10 bg-[#F49F3F] rounded-2xl md:rounded-3xl lg:rounded-[30px] text-white font-bold text-sm md:text-lg lg:text-[32px] w-full md:w-[700px] lg:w-[930px] p-4 md:p-5 lg:p-6 ">
+          <div className="relative inline-flex items-center justify-center text-center leading-6 md:leading-8 lg:leading-10 bg-[#F49F3F] rounded-2xl md:rounded-3xl lg:rounded-[30px] text-white font-bold text-sm md:text-lg lg:text-[32px] w-full md:w-[700px] lg:w-[930px] p-4 md:p-5 lg:p-6 ">
             For any technical questions or assistance with the app, contact us
             directly via the app or by email.
             <img
-              className="absolute -top-1 lg:-top-4 left-1 lg:-left-1 w-4 md:w-12 lg:w-auto"
+              className="absolute top-0  md:-top-1 lg:-top-4 left-0 lg:-left-1 w-8 md:w-12 lg:w-auto"
               src={Yay2}
               alt=""
             />
           </div>
         </div>
 
-        <div className="relative container z-40 pb-16! md:pb-24! lg:pb-32!">
+        <div className="flex flex-col justify-center items-center relative container z-40 pb-16! md:pb-24! lg:pb-32!">
           <div
             data-aos="fade-right"
             data-aos-duration="1000"
@@ -42,27 +42,36 @@ export default function ContactPage() {
           >
             Send us a message
           </div>
-          <div className="relative z-40 flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-0">
+          <div
+            className="h-full -bg-conic-0 bg-white border border-[#d8d9da5c] rounded-2xl md:rounded-3xl shadow-2xl w-full lg:w-1/2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <div className="w-full">
+              <ContactFormCard />
+            </div>
+          </div>
+          {/* <div className="relative z-40 flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-0">
             <div
               className="h-full -bg-conic-0 bg-white border border-[#d8d9da5c] rounded-2xl md:rounded-3xl shadow-2xl w-full lg:w-3/4"
               data-aos="fade-up"
               data-aos-duration="1000"
             >
-              <div className="w-full lg:w-2/3">
+              <div className="w-full">
                 <ContactFormCard />
               </div>
             </div>
-            <div
+            {/* <div
               className="w-full lg:absolute lg:top-32 lg:right-0 lg:w-1/2"
               data-aos="zoom-out-up"
               data-aos-duration="1000"
             >
               <ContactInfoCard />
-            </div>
-          </div>
+            </div> *
+          </div> */}
         </div>
       </div>
-      <div className="flex justify-end z-40 px-4 md:px-6 lg:px-10 mt-20 md:mt-32 lg:mt-52">
+      <div className="flex justify-end z-40 px-4 md:px-6 lg:px-10">
         <ChatBot />
       </div>
     </div>

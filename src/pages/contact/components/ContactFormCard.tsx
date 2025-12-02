@@ -111,7 +111,7 @@ export default function ContactFormCard() {
       <button
         type="submit"
         disabled={loading}
-        className="bg-[#FCA13B] text-white py-3 rounded-full font-medium transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-[#FCA13B]/90 hover:bg-[#FCA13B] text-white py-3 rounded-full font-medium transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? "Sending..." : "Send Message"}
       </button>

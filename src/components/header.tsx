@@ -71,7 +71,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-2">
           <button
-            className="bg-[#FCA13B] text-white rounded-3xl py-1 md:py-3 px-4 text-sm"
+            className="bg-[#FCA13B] hover:bg-[#FCA13B]/90 cursor-pointer text-white rounded-3xl py-1 md:py-3 px-4 text-sm"
             onClick={() => alert("Get the app clicked")}
           >
             Get the app

@@ -32,7 +32,7 @@ export default function CreateEventBanner() {
               <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-white font-bold">
                 CREATE <span className="text-[#FCA13B]"> YOUR OWN</span> EVENT
                 <img
-                  className="absolute -top-10 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-8 md:w-12 lg:w-auto"
+                  className="absolute -top-10 -right-8 md:-top-12 md:-right-10 lg:-top-20 lg:-right-20 w-12 md:w-16 lg:w-auto"
                   src={Yay}
                   alt=""
                 />
@@ -42,7 +42,7 @@ export default function CreateEventBanner() {
               With the Smatchy app, organize your own sports activities and
               invite your community
             </p>
-            <button className="flex justify-center items-center gap-2 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full bg-[#F49F3F] text-white text-xs md:text-sm lg:text-base">
+            <button className="flex justify-center items-center gap-2 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full cursor-pointer bg-[#F49F3F] hover:bg-[#F49F3F]/90 text-white text-xs md:text-sm lg:text-base">
               Download the app now
             </button>
           </div>

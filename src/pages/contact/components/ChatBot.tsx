@@ -152,7 +152,7 @@ export default function ChatBot() {
       {/* ---------- FLOAT BUTTON ---------- */}
       <div
         onClick={() => setOpenChatbot((v) => !v)}
-        className="bg-[#FCA13B] text-white p-4 rounded-full cursor-pointer shadow-lg"
+        className="bg-[#FCA13B] hover:bg-[#FCA13B]/90 text-white p-4 rounded-full cursor-pointer shadow-lg"
       >
         {openChatbot ? <HiMiniXMark size={36} /> : <BsChatDotsFill size={36} />}
       </div>

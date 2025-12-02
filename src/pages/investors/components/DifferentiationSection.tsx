@@ -8,7 +8,7 @@ const DifferentiationSection = () => {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
   if (isLoading) return <Loading />;
   if (error) return null;
- // console.log(data);
+  // console.log(data);
 
   const titleBlock = data?.blocks?.find(
     (block: any): block is any =>
@@ -37,7 +37,7 @@ const DifferentiationSection = () => {
               }}
             />
             <img
-              className="absolute -top-10 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-8 md:w-12 lg:w-auto"
+              className="absolute -top-10 -right-8 md:-top-14 md:-right-14 lg:-top-20 lg:-right-20 w-8 md:w-20 lg:w-auto"
               src={Yay3}
               alt=""
             />
@@ -66,7 +66,7 @@ const DifferentiationSection = () => {
               )
             }
             disabled={!titleBlock.button.link}
-            className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold bg-[#FCA13B] transition"
+            className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold cursor-pointer hover:bg-[#FCA13B] bg-[#FCA13B]/90 transition"
           >
             {titleBlock.button.label} <FaArrowRightLong />
           </button>

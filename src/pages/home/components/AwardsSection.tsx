@@ -33,14 +33,16 @@ export default function AwardsSection() {
   return (
     <div data-aos="fade-up" data-aos-duration="1000">
       <div className="container my-12! md:my-20!">
-        <div className="grid grid-cols-4 justify-center items-end gap-2 md:gap-4">
+        <div className="grid grid-cols-4 items-end gap-2 md:gap-4">
           {awardsUrls.map((award) => (
-            <img
-              key={award.documentId}
-              src={`https://strapi.annk.info${award.url}`}
-              alt={award.alternativeText}
-              className="h-auto w-auto z-50"
-            />
+            <div className="flex justify-center">
+              <img
+                key={award.documentId}
+                src={`https://strapi.annk.info${award.url}`}
+                alt={award.alternativeText}
+                className="h-auto w-auto z-50"
+              />
+            </div>
           ))}
         </div>
       </div>

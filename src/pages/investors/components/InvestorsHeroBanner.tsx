@@ -50,7 +50,7 @@ export default function InvestorsHeroBanner() {
                 }}
               />
               <img
-                className="absolute -top-12 -right-4 md:-top-20 md:-right-6 lg:-top-24 lg:-right-8 w-8 md:w-12 lg:w-auto"
+                className="absolute -top-10 right-0 sm:-right-8 md:-top-16 md:-right-14 lg:-top-24 lg:-right-8 w-12 md:w-20 lg:w-auto"
                 src={Yay}
                 alt=""
               />
@@ -77,7 +77,7 @@ export default function InvestorsHeroBanner() {
               {btn1.label && (
                 <a
                   href={btn1.link || "#"}
-                  className="flex justify-center items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full bg-[#F49F3F] text-white text-sm md:text-base"
+                  className="flex justify-center items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full bg-[#F49F3F] hover:bg-[#F49F3F]/90 text-white text-sm md:text-base"
                 >
                   <MdOutlineFileDownload size={24} /> {btn1.label}
                 </a>
@@ -85,7 +85,7 @@ export default function InvestorsHeroBanner() {
               {btn2.label && (
                 <a
                   href={btn2.link || "#"}
-                  className="flex justify-center items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full bg-white text-[#0A4A60] text-sm md:text-base"
+                  className="flex justify-center items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full bg-white hover:bg-white/90 text-[#0A4A60] text-sm md:text-base"
                 >
                   <MdLocalPhone size={24} /> {btn2.label}
                 </a>

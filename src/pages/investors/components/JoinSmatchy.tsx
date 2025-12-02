@@ -23,7 +23,7 @@ export default function JoinSmatchy() {
   console.log(ctaDownload);
   return (
     <div
-      className="relative z-20 w-full h-[300px] lg:h-[360px] mb-40 lg:mb-80 bg-cover bg-bottom"
+      className="relative z-30 w-full h-[300px] lg:h-[360px] mb-40 lg:mb-80 bg-cover bg-bottom"
       style={{
         backgroundImage: `url(${background})`,
         backgroundRepeat: "no-repeat",
@@ -45,7 +45,7 @@ export default function JoinSmatchy() {
                 }}
               />
               <img
-                className="absolute -top-10 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-8 md:w-12 lg:w-auto"
+                className="absolute -top-10 -right-8 md:-top-12 md:-right-10 lg:-top-20 lg:-right-20 w-12 md:w-16 lg:w-auto"
                 src={Yay}
                 alt=""
               />
@@ -71,7 +71,7 @@ export default function JoinSmatchy() {
               disabled={!ctaDownload.link}
               data-aos="fade-right"
               data-aos-duration="1000"
-              className="flex justify-center items-center gap-2 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full bg-[#F49F3F] text-white text-xs md:text-sm lg:text-base"
+              className="flex justify-center items-center gap-2 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full cursor-pointer bg-[#F49F3F] hover:bg-[#F49F3F]/90 text-white text-xs md:text-sm lg:text-base"
             >
               <MdOutlineFileDownload size={20} /> {ctaDownload.label}
             </button>
@@ -92,7 +92,7 @@ export default function JoinSmatchy() {
               disabled={!ctaSchedule.link}
               data-aos="fade-left"
               data-aos-duration="1000"
-              className="flex justify-center items-center gap-2 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full bg-white text-[#0A4A60] text-xs md:text-sm lg:text-base"
+              className="flex justify-center items-center gap-2 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full cursor-pointer bg-white hover:bg-white/90 text-[#0A4A60] text-xs md:text-sm lg:text-base"
             >
               <MdLocalPhone size={20} /> {ctaSchedule.label}
             </button>

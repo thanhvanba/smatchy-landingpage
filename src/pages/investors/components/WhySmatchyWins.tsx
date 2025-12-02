@@ -81,7 +81,7 @@ export default function WhySmatchyWins() {
                     }}
                   />
                   <img
-                    className="absolute -top-10 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-8 md:w-12 lg:w-auto"
+                    className="absolute -top-10 -right-8 md:-top-16 md:-right-14 lg:-top-20 lg:-right-20 w-12 md:w-20 lg:w-auto"
                     src={Yay}
                     alt=""
                   />

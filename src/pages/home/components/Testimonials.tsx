@@ -5,7 +5,6 @@ import Yay from "/Yay.png";
 // import avt1 from "/avt1.png";
 // import avt2 from "/avt2.png";
 import quotation from "/quotation.png";
-import quotation2 from "/quotation2.png";
 import Loading from "../../../components/Loading";
 import { useTestimonials } from "../../../hooks/useTestimonials";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -97,7 +96,7 @@ export default function Testimonials() {
               YOUR
               <span className="text-[#FCA13B] ml-1 md:ml-2"> TESTIMONIALS</span>
               <img
-                className="absolute -top-6 -right-2 md:-top-20 md:-right-12 lg:-top-24 lg:-right-16 w-8 md:w-auto"
+                className="absolute -top-8 -right-4 md:-top-14 md:-right-10 lg:-top-24 lg:-right-16 w-12 md:w-20 lg:w-auto"
                 src={Yay}
                 alt=""
               />
@@ -120,7 +119,7 @@ export default function Testimonials() {
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
-              depth: 100,
+              depth: 200,
               modifier: 2.5,
               slideShadows: false,
             }}
@@ -134,10 +133,28 @@ export default function Testimonials() {
                   slideShadows: false,
                 },
               },
+              768: {
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: 520,
+                  depth: 150,
+                  modifier: 2.5,
+                  slideShadows: false,
+                },
+              },
               1024: {
                 coverflowEffect: {
                   rotate: 0,
-                  stretch: 700,
+                  stretch: 500,
+                  depth: 250,
+                  modifier: 2.5,
+                  slideShadows: false,
+                },
+              },
+              1280: {
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: 600,
                   depth: 250,
                   modifier: 2.5,
                   slideShadows: false,
@@ -157,23 +174,19 @@ export default function Testimonials() {
                   data-aos="fade-up"
                   data-aos-duration="1000"
                 >
-                  <div className="slide-item bg-[#E2F6F6] rounded-xl md:rounded-2xl p-4 md:p-8 text-center transition-all duration-300">
+                  <div className="space-y-3 slide-item bg-[#E2F6F6] rounded-xl md:rounded-2xl p-4 md:p-8 text-center transition-all duration-300">
                     <div className="relative">
-                      <img
-                        className="absolute top-0 left-0 w-4 md:w-10 "
-                        src={quotation}
-                        alt=""
-                      />
-                      <p className="text-[#0A4A60] font-semibold mb-3 md:mb-4 text-xs md:text-base lg:text-xl px-6 md:px-12 line-clamp-2">
+                      <img className="w-4 md:w-10 " src={quotation} alt="" />
+                      <p className="text-left text-[#0A4A60] font-semibold mb-3 md:mb-4 text-xs md:text-base lg:text-xl pt-2 md:pt-4">
                         {testimonial.text}
                       </p>
-                      <img
+                      {/* <img
                         className="absolute bottom-0 right-0 w-4 md:w-10 "
                         src={quotation2}
                         alt=""
-                      />
+                      /> */}
                     </div>
-                    <div className="flex  md:flex-row items-center gap-2 md:gap-3">
+                    {/* <div className="flex md:flex-row items-center gap-2 md:gap-3">
                       <img
                         src={`https://strapi.annk.info${testimonial.image}`}
                         alt={testimonial.name}
@@ -187,7 +200,11 @@ export default function Testimonials() {
                           - {testimonial.name}
                         </h3>
                       </div>
-                    </div>
+                    </div> */}
+                    <div className="border border-t-[#0A4A60]" />
+                    <h3 className="text-[#0F262E] text-start text-xs md:text-xl font-semibold">
+                      {testimonial.name}
+                    </h3>
                   </div>
                 </div>
               </SwiperSlide>

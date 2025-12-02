@@ -9,7 +9,7 @@ export default function LittleStory() {
         <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-8 md:mb-10 lg:mb-12">
           THE LITTLE <span className="text-[#FCA13B] ml-1 md:ml-2">STORY</span>
           <img
-            className="absolute -top-10 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-8 md:w-12 lg:w-auto"
+            className="absolute -top-10 -right-8 md:-top-14 md:-right-14 lg:-top-20 lg:-right-20 w-8 md:w-20 lg:w-auto"
             src={Yay}
             alt=""
           />

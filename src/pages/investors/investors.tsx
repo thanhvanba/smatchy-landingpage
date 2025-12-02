@@ -54,7 +54,7 @@ export default function InvestorsPage() {
             <div className="relative flex items-end justify-end text-center bg-[#F49F3F] rounded-[20px] md:rounded-[30px] text-white font-bold text-xl md:text-2xl lg:text-[32px] w-full md-[w-720px] lg:w-[930px] p-4 md:p-6">
               {block.title}
               <img
-                className="absolute -top-3 -left-2 md:left-1 w-14 md:w-auto"
+                className="absolute -top-3 left-4 md:left-10 w-12 md:w-20 lg:w-auto"
                 src={Yay2}
                 alt=""
               />

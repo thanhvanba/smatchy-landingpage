@@ -87,7 +87,7 @@ export default function RoadmapSection() {
               }}
             />{" "}
             <img
-              className="absolute -top-8 -right-8 md:-top-12 md:-right-12 lg:-top-10 lg:-right-10 w-6 md:w-10 lg:w-16 h-6 md:h-10 lg:h-16"
+              className="absolute -top-8 -right-8 md:-top-10 md:-right-10 lg:-top-10 lg:-right-10 w-12 md:w-16 lg:w-auto"
               src={Yay3}
               alt="decor"
             />

@@ -101,7 +101,7 @@ export default function PeopleSay() {
                 }}
               />
               <img
-                className="absolute -top-12 -right-12 md:-top-20 md:-right-20 w-8 md:w-auto"
+                className="absolute -top-10 -right-10 md:-top-12 lg:-top-20 md:-right-14 lg:-right-20 w-12 md:w-20 lg:w-auto"
                 src={Yay3}
                 alt=""
               />
@@ -132,7 +132,7 @@ export default function PeopleSay() {
                 window.open(ctaButton.link, "_blank", "noopener,noreferrer")
               }
               disabled={!ctaButton.link}
-              className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold bg-[#FCA13B] transition"
+              className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-sm md:text-base font-semibold cursor-pointer hover:bg-[#FCA13B] bg-[#FCA13B]/90 transition"
             >
               {ctaButton.label} <FaArrowRightLong />
             </button>
@@ -154,7 +154,7 @@ export default function PeopleSay() {
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
-            depth: 100,
+            depth: 200,
             modifier: 2.5,
             slideShadows: false,
           }}
@@ -168,10 +168,28 @@ export default function PeopleSay() {
                 slideShadows: false,
               },
             },
+            768: {
+              coverflowEffect: {
+                rotate: 0,
+                stretch: 520,
+                depth: 150,
+                modifier: 2.5,
+                slideShadows: false,
+              },
+            },
             1024: {
               coverflowEffect: {
                 rotate: 0,
-                stretch: 700,
+                stretch: 500,
+                depth: 250,
+                modifier: 2.5,
+                slideShadows: false,
+              },
+            },
+            1280: {
+              coverflowEffect: {
+                rotate: 0,
+                stretch: 600,
                 depth: 250,
                 modifier: 2.5,
                 slideShadows: false,
@@ -191,37 +209,37 @@ export default function PeopleSay() {
                 data-aos="fade-up"
                 data-aos-duration="1000"
               >
-                <div className="slide-item bg-[#E2F6F6] rounded-xl md:rounded-2xl p-4 md:p-8 text-center transition-all duration-300">
+                <div className="space-y-3 slide-item bg-[#E2F6F6] rounded-xl md:rounded-2xl p-4 md:p-8 text-center transition-all duration-300">
                   <div className="relative">
-                    <img
-                      className="absolute top-0 left-0 w-4 md:w-10 "
-                      src={quotation}
-                      alt=""
-                    />
-                    <p className="text-[#0A4A60] font-semibold mb-3 md:mb-4 text-xs md:text-base lg:text-xl px-6 md:px-12 line-clamp-2">
+                    <img className="w-4 md:w-10 " src={quotation} alt="" />
+                    <p className="text-left text-[#0A4A60] font-semibold mb-3 md:mb-4 text-xs md:text-base lg:text-xl pt-2 md:pt-4">
                       {testimonial.text}
                     </p>
-                    <img
-                      className="absolute bottom-0 right-0 w-4 md:w-10 "
-                      src={quotation2}
-                      alt=""
-                    />
+                    {/* <img
+                        className="absolute bottom-0 right-0 w-4 md:w-10 "
+                        src={quotation2}
+                        alt=""
+                      /> */}
                   </div>
-                  <div className="flex  md:flex-row items-center gap-2 md:gap-3">
-                    <img
-                      src={`https://strapi.annk.info${testimonial.image}`}
-                      alt={testimonial.name}
-                      className="w-10 h-10 md:w-20 md:h-20 rounded-full object-cover"
-                    />
-                    <div className="flex-1">
-                      <div className="text-lg md:text-3xl flex justify-start">
-                        {renderStars(testimonial.rating)}
+                  {/* <div className="flex md:flex-row items-center gap-2 md:gap-3">
+                      <img
+                        src={`https://strapi.annk.info${testimonial.image}`}
+                        alt={testimonial.name}
+                        className="w-10 h-10 md:w-20 md:h-20 rounded-full object-cover"
+                      />
+                      <div className="flex-1">
+                        <div className="text-lg md:text-3xl flex justify-start">
+                          {renderStars(testimonial.rating)}
+                        </div>
+                        <h3 className="text-[#0A4A60] text-start text-xs md:text-2xl lg:text-[32px] font-semibold">
+                          - {testimonial.name}
+                        </h3>
                       </div>
-                      <h3 className="text-[#0A4A60] text-start text-xs md:text-2xl lg:text-[32px] font-semibold">
-                        - {testimonial.name}
-                      </h3>
-                    </div>
-                  </div>
+                    </div> */}
+                  <div className="border border-t-[#0A4A60]" />
+                  <h3 className="text-[#0F262E] text-start text-xs md:text-xl font-semibold">
+                    {testimonial.name}
+                  </h3>
                 </div>
               </div>
             </SwiperSlide>
