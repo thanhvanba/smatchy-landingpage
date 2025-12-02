@@ -45,6 +45,7 @@ const renderStars = (rating: number) => {
 };
 export default function PeopleSay() {
   const swiperRef = useRef<any>(null);
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
 
   const {

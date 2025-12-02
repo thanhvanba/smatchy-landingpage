@@ -6,6 +6,7 @@ import level from "/events/level.png";
 import PriceActive from "./PriceActive";
 
 export default function EventCard({ event }: { event: Event }) {
+   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   console.log(event);
   return (
     <div className="group max-w-sm rounded-2xl overflow-hidden shadow-lg cursor-pointer">
@@ -42,7 +43,7 @@ export default function EventCard({ event }: { event: Event }) {
                 <p className="flex gap-0.5 md:gap-1">
                   <img
                     className="w-4 md:w-4 lg:w-[18px] h-4 md:h-4 lg:h-[18px]"
-                    src={`https://strapi.annk.info${event.iconType}`}
+                    src={`${assetUrl}${event.iconType}`}
                     alt=""
                   />{" "}
                   {event.type}

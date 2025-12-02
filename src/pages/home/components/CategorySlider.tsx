@@ -39,7 +39,7 @@ import { useSport } from "../../../hooks/useSport";
 
 export default function CategorySlider() {
   const { data, isLoading, error } = useSport();
-
+ const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
 
   if (error) {
@@ -133,7 +133,7 @@ export default function CategorySlider() {
             <SwiperSlide key={idx}>
               <div className="relative w-[342px] h-[237px] aspect-video md:aspect-237/342 group">
                 <img
-                  src={`https://strapi.annk.info${slide.image}`}
+                  src={`${assetUrl}${slide.image}`}
                   alt={slide.name}
                   className="w-full h-full rounded-[15px] md:rounded-[30px] object-cover"
                 />

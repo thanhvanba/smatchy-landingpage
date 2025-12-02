@@ -46,6 +46,7 @@ import { useInvestor } from "../../../hooks/useInvestor";
 // ];
 const TractionProofSection = () => {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
+   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
   if (error) return null;
 
@@ -75,7 +76,7 @@ const TractionProofSection = () => {
 
   const tractionData = tractionBlock
     ? tractionBlock.stats_icon.map((stat: any) => ({
-        icon: `https://strapi.annk.info${stat.icon.url}`,
+        icon: `${assetUrl}${stat.icon.url}`,
         heading: stat.heading,
         sub_heading: stat.sub_heading,
       }))

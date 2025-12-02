@@ -55,6 +55,7 @@ import { useInvestor } from "../../../hooks/useInvestor";
 // ];
 export default function TheTeamSection() {
   const { data, isLoading, error } = useTeam();
+   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const {
     data: basic,
     isLoading: isLoadingStats,
@@ -176,7 +177,7 @@ export default function TheTeamSection() {
                 let avatarUrl = "";
                 if (typeof member.avatar === "object" && member.avatar) {
                   const avatar = member.avatar as { url: string };
-                  avatarUrl = `https://strapi.annk.info${avatar.url}`;
+                  avatarUrl = `${assetUrl}${avatar.url}`;
                 } else if (typeof member.avatar === "string") {
                   avatarUrl = member.avatar;
                 }

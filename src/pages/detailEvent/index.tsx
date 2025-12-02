@@ -228,7 +228,7 @@ const events = [
 export default function DetailEvent() {
   const { slug } = useParams<{ slug: string }>();
   const { data: apiData, isLoading, error } = useEventDetail(slug || "");
-
+ const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
 
   if (error) {
@@ -249,10 +249,10 @@ export default function DetailEvent() {
           participants: apiData[0].participants,
           duration: apiData[0].duration,
           image: apiData[0].sports?.[0]?.image?.url
-            ? `https://strapi.annk.info${apiData[0].sports[0].image.url}`
+            ? `${assetUrl}${apiData[0].sports[0].image.url}`
             : "",
           iconType: apiData[0].sports?.[0]?.iconType?.url
-            ? `https://strapi.annk.info${apiData[0].sports[0].iconType.url}`
+            ? `${assetUrl}${apiData[0].sports[0].iconType.url}`
             : "",
           iconLevel: "",
           desc: apiData[0].desc || "",

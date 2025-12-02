@@ -46,7 +46,7 @@ const renderStars = (rating: number) => {
 export default function Testimonials() {
   const { data, isLoading, error } = useTestimonials("home");
   const swiperRef = useRef<any>(null);
-
+ const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
 
   if (error) {
@@ -188,7 +188,7 @@ export default function Testimonials() {
                     </div>
                     {/* <div className="flex md:flex-row items-center gap-2 md:gap-3">
                       <img
-                        src={`https://strapi.annk.info${testimonial.image}`}
+                        src={`${assetUrl}${testimonial.image}`}
                         alt={testimonial.name}
                         className="w-10 h-10 md:w-20 md:h-20 rounded-full object-cover"
                       />

@@ -50,11 +50,7 @@ export default function TermsUse() {
             </div>
           </div>
 
-          <div>
-            <div dangerouslySetInnerHTML={{__html: post?.contents ? post?.contents : ''}} />
-          </div>
-
-          {/* <div
+          <div
             className="flex flex-col gap-2"
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -88,7 +84,7 @@ export default function TermsUse() {
               be 18 years or older; minors require guardian supervision.
             </p>
           </div>
-          
+
           <div
             className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
             data-aos="fade-up"
@@ -103,7 +99,7 @@ export default function TermsUse() {
               Conditions of Sale.
             </p>
           </div>
-          
+
           <div
             className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
             data-aos="fade-up"
@@ -118,7 +114,7 @@ export default function TermsUse() {
               at any time.
             </p>
           </div>
-          
+
           <div
             className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
             data-aos="fade-up"
@@ -137,7 +133,7 @@ export default function TermsUse() {
               are prohibited.
             </p>
           </div>
-          
+
           <div
             className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
             data-aos="fade-up"
@@ -152,7 +148,7 @@ export default function TermsUse() {
               third-party content. Claims expire after 6 months.
             </p>
           </div>
-          
+
           <div
             className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
             data-aos="fade-up"
@@ -199,7 +195,7 @@ export default function TermsUse() {
               non-transferable personal use rights.
             </p>
           </div>
-          
+
           <div
             className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
             data-aos="fade-up"
@@ -214,7 +210,7 @@ export default function TermsUse() {
               the others
             </p>
           </div>
-          
+
           <div
             className="flex flex-col gap-2"
             data-aos="fade-up"
@@ -227,7 +223,7 @@ export default function TermsUse() {
               The Terms of Use are governed by French law. Disputes fall under
               the jurisdiction of Annecy courts.
             </p>
-          </div> */}
+          </div>
 
           <div
             className="p-6 rounded-xl bg-[#0A4A6026]"
@@ -240,7 +236,6 @@ export default function TermsUse() {
                  March 12, 2025
               </p>
             </div>
-          
           </div>
         </div>
       </div>

@@ -25,6 +25,7 @@ import { useInvestor } from "../../../hooks/useInvestor";
 // ];
 export default function WhySmatchyWins() {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
+   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
   if (error) return null;
   //console.log(data);
@@ -106,7 +107,7 @@ export default function WhySmatchyWins() {
 
                 <div className="flex justify-center px-2 md:px-0">
                   <img
-                    src={`https://strapi.annk.info${attachment.file.url}`}
+                    src={`${assetUrl}${attachment.file.url}`}
                     alt="Smatchy App"
                     className="w-full max-w-xs md:max-w-sm lg:max-w-md rounded-xl shadow-lg"
                   />

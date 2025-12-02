@@ -6,6 +6,7 @@ import { useInvestor } from "../../../hooks/useInvestor";
 import Loading from "../../../components/Loading";
 const DifferentiationSection = () => {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
+   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
   if (error) return null;
   // console.log(data);
@@ -75,7 +76,7 @@ const DifferentiationSection = () => {
         <div className="w-full">
           <img
             className="w-full"
-            src={`https://strapi.annk.info${differentiation.file.url}`}
+            src={`${assetUrl}${differentiation.file.url}`}
             alt=""
           />
         </div>

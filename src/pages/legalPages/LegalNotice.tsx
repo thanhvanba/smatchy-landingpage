@@ -1,19 +1,8 @@
 import line from "/line_bg.svg";
 import heroBanner from "/hero-banner.png";
 import Yay3 from "/Yay3.png";
-import { usePostBySlug } from "../../hooks/usePost";
-import Loading from "../../components/Loading";
 
 export default function LegalNotice() {
-  const { data, isLoading, isError, error } = usePostBySlug("legal-notices");
-  const post = data?.data?.[0];
-
-  if (isLoading) return <Loading />;
-
-  if (isError) {
-    return <div className="container">Error: {error?.message}</div>;
-  }
-  
   return (
     <div>
       <div
@@ -51,72 +40,163 @@ export default function LegalNotice() {
             </h2>
           </div>
 
-          {post ? (
-            <>
-              <div
-                className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
-                <div className="inline-flex">
-                  <p className="">
-                    <span className="font-bold text-[#0F262E]">
-                      Reference:{" "}
-                    </span>
-                    {post.title}
-                  </p>
-                </div>
-                <div className="inline-flex">
-                  <p className="">
-                    <span className="font-bold text-[#0F262E]">
-                      Last update:{" "}
-                    </span>
-                    {new Date(post.updatedAt).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
-                </div>
-              </div>
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <div className="inline-flex">
+              <p className="">
+                <span className="font-bold text-[#0F262E]">Reference: </span>
+                Website – SMATCHY
+              </p>
+            </div>
+            <div className="inline-flex">
+              <p className="">
+                <span className="font-bold text-[#0F262E]">Last update: </span>
+                August 1, 2025
+              </p>
+            </div>
+          </div>
 
-              {post.content && post.content.length > 0 && (
-                <div
-                  className="flex flex-col gap-3 md:gap-4 lg:gap-6"
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                >
-                  {post.content.map((block, idx) => (
-                    <div key={idx}>
-                      {block.children && block.children.length > 0 && (
-                        <div className="flex flex-col gap-1 md:gap-1.5 lg:gap-2">
-                          {block.children[0]?.bold ? (
-                            <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
-                              {block.children[0]?.text}
-                            </h3>
-                          ) : (
-                            <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
-                              {block.children.map((child, childIdx) => (
-                                <span key={childIdx}>
-                                  {child.bold ? (
-                                    <strong>{child.text}</strong>
-                                  ) : (
-                                    child.text
-                                  )}
-                                </span>
-                              ))}
-                            </p>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <div className="text-center text-[#0F262E]">No content found</div>
-          )}
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
+              Publisher
+            </h3>
+            <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+              This website, accessible from{" "}
+              <span className="text-[#0A4A60] font-semibold underline">
+                smatchyelementor.cloud
+              </span>
+              , and the Smatchy mobile application, available on the Apple Store
+              and Google Store, are published by LBDC ORGANISATION, a simplified
+              joint-stock company with capital of 216,585€, registered with the
+              Nanterre Trade and Companies Register under number 839 133 814.
+            </p>
+          </div>
+
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <div className="leading-relaxed text-[#0F262E]">
+              <p className="font-bold">LES BORNEES DIGITAL COMPANY</p>
+              <p>5 rue de l’Industrie</p>
+              <p>74000 Annecy</p>
+              <p>
+                Email:{" "}
+                <span className="text-[#0A4A60] font-semibold underline">
+                  support@smatchy.app
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
+              Publication Director
+            </h3>
+            <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+              Maude BAUDIER, acting as legal representative.
+            </p>
+          </div>
+
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
+              Web Host
+            </h3>
+            <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+              3 & 1 IONOS SARL, specialized in professional web hosting,
+              registered with the Sarreguemines Trade and Companies Register
+              under number 8 431 303 775, VAT number FR 134 310 775.
+            </p>
+          </div>
+
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <div className="leading-relaxed text-[#0F262E]">
+              <p>Address: 7 Place de la Gare, 57200 SARREGUEMINES</p>
+              <p>Phone: 0970 808 911</p>
+              <p>
+                Email:{" "}
+                <span className="text-[#0A4A60] font-semibold underline">
+                  info@ionos.fr
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
+              Application Database Host
+            </h3>
+            <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+              MongoDB Limited, registered in the United States, with servers in
+              Europe (Frankfurt).
+            </p>
+          </div>
+
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <div className="leading-relaxed text-[#0F262E]">
+              <p>
+                Building Two, Number One Ballsbridge, Ballsbridge, Dublin 4,
+                Ireland
+              </p>
+              <p>
+                <a className="text-[#0A4A60] font-semibold underline" href="#">
+                  www.mongodb.com/fr-fr/company/contact
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div
+            className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
+              Application Image Host
+            </h3>
+            <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+              AWS, registered in the United States, with servers in Central
+              Europe.
+            </p>
+          </div>
+
+          <div
+            className="p-6 rounded-xl bg-[#0A4A6026]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <div className="leading-relaxed text-[#0F262E]">
+              <p>410 Terry Avenue North, Seattle, Washington, 98109</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

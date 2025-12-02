@@ -37,7 +37,7 @@ import { useHero } from "../../../hooks/useHero";
 // ];
 export default function EventHeroBanner() {
   // const [isHovered, setIsHovered] = useState(false);
-
+ const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const swiperRef = useRef<any>(null);
 
   const { data, isLoading, error } = useHero("gywnpx9at0x32dob6f4n725x");
@@ -75,7 +75,7 @@ export default function EventHeroBanner() {
           <SwiperSlide key={banner.id}>
             <img
               className="w-full h-full object-cover"
-              src={`https://strapi.annk.info${banner.banner}`}
+              src={`${assetUrl}${banner.banner}`}
               alt=""
             />
           </SwiperSlide>

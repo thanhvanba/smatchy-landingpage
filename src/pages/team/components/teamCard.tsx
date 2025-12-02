@@ -35,14 +35,14 @@ const SOCIAL_ICONS: Record<string, React.ElementType> = {
 
 export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
   console.log(teamMember);
-
+ const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const avatar = (teamMember.avatar as { url?: string })?.url;
 
   return (
     <div className="group flex flex-col items-center text-center border-[6px] border-[#FFFFFF5C] rounded-full bg-[#ECEEEF] hover:bg-[#0A4A60] px-6 pb-20 w-full transition-colors duration-300">
       {/* Avatar */}
       <img
-        src={`https://strapi.annk.info${avatar}`}
+        src={`${assetUrl}${avatar}`}
         //src={teamMember.avatar}
         alt={teamMember.name}
         className="object-cover mb-6 rounded-full"

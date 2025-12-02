@@ -29,7 +29,7 @@ export default function AwardsSection() {
   const awardsUrls = awardsItem?.slider_images?.map((img: any) => img) ?? [];
 
   //console.log(awardsUrls);
-
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   return (
     <div data-aos="fade-up" data-aos-duration="1000">
       <div className="container my-12! md:my-20!">
@@ -38,7 +38,7 @@ export default function AwardsSection() {
             <div className="flex justify-center">
               <img
                 key={award.documentId}
-                src={`https://strapi.annk.info${award.url}`}
+                src={`${assetUrl}${award.url}`}
                 alt={award.alternativeText}
                 className="h-auto w-auto z-50"
               />

@@ -5,9 +5,10 @@ import AppStoreImage from "/App_Store_Image.png";
 import image3 from "/image 3.png";
 import Loading from "../../../components/Loading";
 import { useHome } from "../../../hooks/useHome";
+
 export default function HeroBanner() {
   const { isLoading, error, hero } = useHome();
-
+ const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
 
   if (error) {
@@ -15,6 +16,8 @@ export default function HeroBanner() {
   }
 
   //console.log(hero);
+
+ 
 
   //const bg2 = hero?.background_image.url;
   const bg = hero?.background_image.url;
@@ -26,7 +29,7 @@ export default function HeroBanner() {
       <div
         className="w-full pt-10 md:pt-20 z-50"
         style={{
-          backgroundImage: `url(https://strapi.annk.info${bg})`,
+          backgroundImage: `url(${assetUrl}${bg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "bottom",
@@ -38,7 +41,7 @@ export default function HeroBanner() {
               data-aos="fade-right"
               data-aos-duration="1000"
               className="z-50 w-full md:w-1/2 lg:w-auto h-auto hidden md:block"
-              src={`https://strapi.annk.info${main_img}`}
+              src={`${assetUrl}${main_img}`}
               //src={image7}
               alt=""
             />

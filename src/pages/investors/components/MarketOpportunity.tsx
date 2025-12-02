@@ -36,6 +36,7 @@ import { InvestorPopulateType } from "../../../services/strapi";
 
 export default function MarketOpportunity() {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
+   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const {
     data: stats,
     isLoading: isLoadingStats,
@@ -160,7 +161,7 @@ export default function MarketOpportunity() {
                 style={{ borderColor: "#0A4A605C" }}
               >
                 <img
-                  src={`https://strapi.annk.info${item.icon.url}`}
+                  src={`${assetUrl}${item.icon.url}`}
                   alt={item.label}
                   className="w-10 md:w-12 lg:w-14 h-10 md:h-12 lg:h-14 rounded-full object-cover mb-2"
                 />
@@ -188,7 +189,7 @@ export default function MarketOpportunity() {
         {growthImages.slider_images.map((src: any, id: number) => (
           <div key={id} className=" rounded-full overflow-hidden shadow-lg">
             <img
-              src={`https://strapi.annk.info${src.url}`}
+              src={`${assetUrl}${src.url}`}
               alt={`Growth visual ${id + 1}`}
               className="w-full h-full object-cover"
             />

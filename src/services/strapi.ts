@@ -15,8 +15,13 @@ import type { ContactForm } from "./types/contact";
 import type { TestimonialList } from "./types/testimonial";
 import type { Post, PostsResponse, Category } from "./types/post";
 
-const STRAPI_URL =
-  import.meta.env.VITE_STRAPI_URL || "https://strapi.annk.info/api";
+const DEFAULT_STRAPI_URL = "https://strapi.annk.info/api";
+
+const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || DEFAULT_STRAPI_URL;
+
+export const STRAPI_ASSET_URL =
+  import.meta.env.VITE_STRAPI_ASSET_URL ||
+  STRAPI_URL.replace(/\/api$/, "");
 
 const strapiApi = axios.create({
   baseURL: STRAPI_URL,
@@ -29,7 +34,6 @@ strapiApi.interceptors.request.use((config) => {
 });
 
 type StrapiItem<T> = { id: number; attributes: T };
-//type StrapiSingleResponse<T> = { data: StrapiItem<T>; meta: any };
 type StrapiSingleResponse<T> = {
   data: StrapiItem<T>;
   meta?: object;
@@ -101,15 +105,15 @@ export const InvestorPopulateType = {
   TITLE: "title",
 } as const;
 
-export type InvestorPopulateType = typeof InvestorPopulateType[keyof typeof InvestorPopulateType];
+export type InvestorPopulateType =
+  (typeof InvestorPopulateType)[keyof typeof InvestorPopulateType];
 
 const investorEndpoints: Record<InvestorPopulateType, string> = {
   basic: "/investor?populate[blocks][populate]=*",
   stats:
     "/investor?populate[blocks][populate]=*&populate[blocks][on][blocks.stats][populate][stats_item][populate]=*&populate[blocks][on][blocks.stats][populate][stats_icon][populate]=*",
   full: "/investor?populate=*",
-  title:
-    "/investor?populate[blocks][on][blocks.title][populate]=*",
+  title: "/investor?populate[blocks][on][blocks.title][populate]=*",
 };
 
 export const fetchInvestor = async (
@@ -200,7 +204,6 @@ export const fetchTestimonialsByPosition = async (
   );
   return res.data; // Testimonial[]
 };
-
 
 export const fetchPost = async (
   categories?: string | string[],

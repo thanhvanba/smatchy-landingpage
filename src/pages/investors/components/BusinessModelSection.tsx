@@ -51,6 +51,8 @@ const fontColors = [
 
 export default function BusinessModelSection() {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+
   if (isLoading) return <Loading />;
   if (error) return null;
 
@@ -132,7 +134,7 @@ export default function BusinessModelSection() {
             >
               <div className="w-12 md:w-14 lg:w-16 h-12 md:h-14 lg:h-16 mb-4 md:mb-6 lg:mb-8">
                 <img
-                  src={`https://strapi.annk.info${item.icon?.url}`}
+                  src={`${assetUrl}${item.icon?.url}`}
                   alt={item.title}
                   className="w-full h-full object-contain"
                 />

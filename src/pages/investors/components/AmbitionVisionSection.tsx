@@ -35,6 +35,7 @@ import Loading from "../../../components/Loading";
 
 export default function AmbitionVisionSection() {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
+   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
   if (error) return null;
   //console.log(data);
@@ -107,7 +108,7 @@ export default function AmbitionVisionSection() {
             >
               <div className="w-12 md:w-14 lg:w-16 h-12 md:h-14 lg:h-16 mb-2">
                 <img
-                  src={`https://strapi.annk.info${item.icon.url}`}
+                  src={`${assetUrl}${item.icon.url}`}
                   alt={item.phase}
                   className="w-full h-full object-contain"
                 />
