@@ -1,120 +1,106 @@
 import { useState } from "react";
+import { Form, Input, Button, message } from "antd";
 import { useContact } from "../../../hooks/useContact";
 import type { ContactForm } from "../../../services/types/contact";
+import { contactFormConfig } from "../../../config/formConfig";
 
 export default function ContactFormChatBot() {
-  const [formData, setFormData] = useState<ContactForm>({
-    full_name: "",
-    email: "",
-    subject: "",
-    message: "",
-    status_contact: "new",
-  });
+  const [form] = Form.useForm<ContactForm>();
   const [loading, setLoading] = useState(false);
   const mutation = useContact();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onFinish = (values: ContactForm) => {
     setLoading(true);
-
-    mutation.mutate(formData, {
+    const payload = {
+      ...values,
+      status_contact: (values as any).status_contact || "new",
+    } as ContactForm;
+    mutation.mutate(payload, {
       onSuccess: () => {
-        alert("Sent successfully!");
-        setFormData({
-          full_name: "",
-          email: "",
-          subject: "",
-          message: "",
-          status_contact: "new",
-        });
+        message.success("Sent successfully!");
+        form.resetFields();
         setLoading(false);
       },
       onError: () => {
-        alert("Failed to send");
+        message.error("Failed to send");
         setLoading(false);
       },
     });
   };
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-6 w-full">
-      <div className="flex flex-col gap-3">
-        <label className="text-xs md:text-sm lg:text-base [#DADEDF] text-[#0F262E] mb-2">
-          Full name
-        </label>
-        <input
-          type="text"
-          name="full_name"
-          value={formData.full_name}
-          onChange={handleChange}
-          placeholder="Your name"
-          required
-          className="border border-[#DADEDF] bg-white rounded-xl py-3 px-4 outline-none focus:border-[#DADEDF]"
-        />
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label className="text-xs md:text-sm lg:text-base [#DADEDF] text-[#0F262E] mb-2">
-          Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Your email"
-          required
-          className="border border-[#DADEDF] bg-white rounded-xl py-3 px-4 outline-none focus:border-[#DADEDF]"
-        />
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label className="text-xs md:text-sm lg:text-base [#DADEDF] text-[#0F262E] mb-2">
-          Company
-        </label>
-        <input
-          type="text"
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          placeholder="Your company"
-          required
-          className="border border-[#DADEDF] bg-white rounded-xl py-3 px-4 outline-none focus:border-[#DADEDF]"
-        />
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label className="text-xs md:text-sm lg:text-base [#DADEDF] text-[#0F262E] mb-2">
-          Message
-        </label>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Your message"
-          rows={4}
-          required
-          className="border border-[#DADEDF] bg-white rounded-xl py-3 px-4 outline-none resize-none focus:border-[#DADEDF]"
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="bg-[#FCA13B] text-white py-3 rounded-full font-medium transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+    <Form form={form} layout="vertical" onFinish={onFinish} className="w-full">
+      <Form.Item
+        name="full_name"
+        label={
+          <span className="text-xs md:text-sm lg:text-base text-[#0F262E]">
+            {contactFormConfig.full_name.label}
+          </span>
+        }
+        rules={contactFormConfig.full_name.rules as any}
       >
-        {loading ? "Sending..." : "Send Message"}
-      </button>
-    </form>
+        <Input
+          placeholder={contactFormConfig.full_name.placeholder}
+          className="rounded-xl"
+        />
+      </Form.Item>
+
+      <Form.Item
+        name="email"
+        label={
+          <span className="text-xs md:text-sm lg:text-base text-[#0F262E]">
+            {contactFormConfig.email.label}
+          </span>
+        }
+        rules={contactFormConfig.email.rules as any}
+      >
+        <Input
+          placeholder={contactFormConfig.email.placeholder}
+          className="rounded-xl"
+        />
+      </Form.Item>
+
+      <Form.Item
+        name="subject"
+        label={
+          <span className="text-xs md:text-sm lg:text-base text-[#0F262E]">
+            {contactFormConfig.subject.label}
+          </span>
+        }
+        rules={contactFormConfig.subject.rules as any}
+      >
+        <Input
+          placeholder={contactFormConfig.subject.placeholder}
+          className="rounded-xl"
+        />
+      </Form.Item>
+
+      <Form.Item
+        name="message"
+        label={
+          <span className="text-xs md:text-sm lg:text-base text-[#0F262E]">
+            {contactFormConfig.message.label}
+          </span>
+        }
+        rules={contactFormConfig.message.rules as any}
+      >
+        <Input.TextArea
+          rows={4}
+          placeholder={contactFormConfig.message.placeholder}
+          className="rounded-xl"
+        />
+      </Form.Item>
+
+      <Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          loading={loading}
+          className="w-full rounded-full bg-[#FCA13B] border-[#FCA13B]"
+        >
+          Send Message
+        </Button>
+      </Form.Item>
+    </Form>
   );
 }

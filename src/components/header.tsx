@@ -9,7 +9,7 @@ const menu = [
   { title: "Team", link: "/team" },
   { title: "Investors", link: "/investors" },
   { title: "Events", link: "/events" },
-  // { title: "Professional", link: "/professional" },
+  { title: "Professional", link: "/professional" },
   // { title: "Blog", link: "/blog" },
   { title: "Contact", link: "/contact" },
 ];
@@ -44,7 +44,7 @@ export default function Header() {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex flex-1 justify-center">
+        <div className="hidden xl:flex flex-1 justify-center">
           <ul className="flex flex-wrap justify-start items-center border rounded-full p-2 gap-2 sm:gap-3 md:gap-4 border-[#E2E8F0]">
             {menu.map((item) => {
               const isActive =
@@ -81,7 +81,7 @@ export default function Header() {
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white text-2xl focus:outline-none"
+            className="xl:hidden text-white text-2xl focus:outline-none"
           >
             {isOpen ? <HiX /> : <HiMenu />}
           </button>
