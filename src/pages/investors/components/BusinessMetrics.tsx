@@ -9,13 +9,19 @@ const BusinessMetrics = () => {
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  //console.log(data);
+  console.log(data);
 
-  const block = data?.blocks?.find((b: any) => b.id === 130);
+  const block = data?.blocks?.find(
+    (block: any): block is any =>
+      block.__component === "blocks.stats" &&
+      block.title === "Business Metrics"
+  );
+
+  // const block = data?.blocks?.find((b: any) => b.id === 130);
 
   if (!block) return null;
 
-  //console.log(block);
+  console.log(block);
 
   const metrics = block.stats_item.map((item: any) => ({
     title: item.title,
@@ -24,7 +30,7 @@ const BusinessMetrics = () => {
     btn_url: item.button.link,
   }));
 
-  //console.log(metrics);
+  console.log(metrics);
   return (
     <div
       className="relative z-40 container"

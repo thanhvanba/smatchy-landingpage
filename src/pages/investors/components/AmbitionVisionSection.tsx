@@ -2,9 +2,9 @@ import Yay from "/Yay3.png";
 // import short from "/investors/short-term.png";
 // import medium from "/investors/medium-term.png";
 // import long from "/investors/long-term.png";
+import Loading from "../../../components/Loading";
 import { useInvestor } from "../../../hooks/useInvestor";
 import { InvestorPopulateType } from "../../../services/strapi";
-import Loading from "../../../components/Loading";
 
 // const ambitionVisionData = [
 //   {
@@ -35,7 +35,7 @@ import Loading from "../../../components/Loading";
 
 export default function AmbitionVisionSection() {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
-   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
   if (error) return null;
   //console.log(data);
@@ -133,3 +133,4 @@ export default function AmbitionVisionSection() {
     </div>
   );
 }
+

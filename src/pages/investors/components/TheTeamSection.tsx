@@ -62,7 +62,7 @@ export default function TheTeamSection() {
     error: errorStats,
   } = useInvestor(InvestorPopulateType.BASIC);
 
-  console.log("🚀 ~ Members ~ data:", data);
+  //console.log("🚀 ~ Members ~ data:", data);
 
   if (isLoading) return <Loading />;
   if (error) return <p>Error loading team.</p>;
@@ -78,19 +78,19 @@ export default function TheTeamSection() {
       block.__component === "shared.icon-text" && block.title === "The Team"
   );
 
-  const teamMembers = data.teamMembers.map((member: any) => ({
-    name: member.name,
-    title: member.title,
-    avatar: member.avatar?.url,
-    bio: member.bio,
-    order: member.order,
-    excerpt: member.excerpt,
-    social: {
-      facebook: member.facebook,
-      instagram: member.instagram,
-      linkedin: member.linkedin,
-    },
-  }));
+  // const teamMembers = data.teamMembers.map((member: any) => ({
+  //   name: member.name,
+  //   title: member.title,
+  //   avatar: member.avatar?.url,
+  //   bio: member.bio,
+  //   order: member.order,
+  //   excerpt: member.excerpt,
+  //   social: {
+  //     facebook: member.facebook,
+  //     instagram: member.instagram,
+  //     linkedin: member.linkedin,
+  //   },
+  // }));
 
   // Filter team members by name 
   const SELECTED_NAMES = ["Maude Baudier", "Romain Bauer", "Amandine Lecerf", "Emilie Fravallo"];
@@ -103,11 +103,11 @@ export default function TheTeamSection() {
     .map((index) => selectedMembers[index])
     .filter(Boolean);
 
-  console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
-  console.log(
-    "🚀 ~ TheTeamSection ~ filteredTeamMembers:",
-    filteredTeamMembers
-  );
+  // console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
+  // console.log(
+  //   "🚀 ~ TheTeamSection ~ filteredTeamMembers:",
+  //   filteredTeamMembers
+  // );
 
   return (
     <div className="mb-12 md:mb-16 lg:mb-20">

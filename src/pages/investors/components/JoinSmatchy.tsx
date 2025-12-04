@@ -9,7 +9,7 @@ export default function JoinSmatchy() {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
   if (isLoading) return <Loading />;
   if (error) return null;
-  console.log(data);
+  //console.log(data);
 
   const titleBlock = data?.blocks?.find(
     (block: any): block is any =>
@@ -20,7 +20,7 @@ export default function JoinSmatchy() {
   const ctaDownload = titleBlock?.button?.[0];
   const ctaSchedule = titleBlock?.button?.[1];
 
-  console.log(ctaDownload);
+  //console.log(ctaDownload);
   return (
     <div
       className="relative z-30 w-full h-[300px] lg:h-[360px] mb-40 lg:mb-80 bg-cover bg-bottom"

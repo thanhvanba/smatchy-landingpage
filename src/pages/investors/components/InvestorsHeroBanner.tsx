@@ -23,8 +23,8 @@ export default function InvestorsHeroBanner() {
   const btn1 = buttons[0] || {};
   const btn2 = buttons[1] || {};
 
-  console.log("Button 1:", btn1);
-  console.log("Button 2:", btn2);
+  // console.log("Button 1:", btn1);
+  // console.log("Button 2:", btn2);
 
   return (
     <>
