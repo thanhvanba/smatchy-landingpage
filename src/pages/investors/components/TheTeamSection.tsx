@@ -55,14 +55,14 @@ import { useInvestor } from "../../../hooks/useInvestor";
 // ];
 export default function TheTeamSection() {
   const { data, isLoading, error } = useTeam();
-   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const {
     data: basic,
     isLoading: isLoadingStats,
     error: errorStats,
   } = useInvestor(InvestorPopulateType.BASIC);
 
-  //console.log("🚀 ~ Members ~ data:", data);
+  console.log("🚀 ~ Members ~ data:", data);
 
   if (isLoading) return <Loading />;
   if (error) return <p>Error loading team.</p>;
@@ -76,6 +76,37 @@ export default function TheTeamSection() {
   const titleBlock = basic?.blocks?.find(
     (block: any): block is any =>
       block.__component === "shared.icon-text" && block.title === "The Team"
+  );
+
+  const teamMembers = data.teamMembers.map((member: any) => ({
+    name: member.name,
+    title: member.title,
+    avatar: member.avatar?.url,
+    bio: member.bio,
+    order: member.order,
+    excerpt: member.excerpt,
+    social: {
+      facebook: member.facebook,
+      instagram: member.instagram,
+      linkedin: member.linkedin,
+    },
+  }));
+
+  // Filter team members by name 
+  const SELECTED_NAMES = ["Maude Baudier", "Romain Bauer", "Amandine Lecerf", "Emilie Fravallo"];
+  const selectedMembers = data.teamMembers.filter((member: any) =>
+    SELECTED_NAMES.includes(member.name)
+  );
+
+  const ORDER_INDICES = [0, 3, 2, 1];
+  const filteredTeamMembers = ORDER_INDICES
+    .map((index) => selectedMembers[index])
+    .filter(Boolean);
+
+  console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
+  console.log(
+    "🚀 ~ TheTeamSection ~ filteredTeamMembers:",
+    filteredTeamMembers
   );
 
   return (
@@ -166,7 +197,7 @@ export default function TheTeamSection() {
 
           <div className="container relative z-50">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-8">
-              {data.teamMembers.map((member: any, index) => {
+              {filteredTeamMembers.map((member: any, index: number) => {
                 // Convert bio array [{platform, url}] to social object {platform: url}
                 const social =
                   member.bio?.reduce((acc: any, item: any) => {
