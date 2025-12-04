@@ -78,7 +78,7 @@ export default function WhySmatchyWins() {
                 <div className="relative text-center text-2xl md:text-3xl lg:text-5xl text-white font-bold mb-6 md:mb-8 lg:mb-12 uppercase">
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: titleBlock.title ? titleBlock.title : "",
+                      __html: titleBlock.heading ? titleBlock.heading : "",
                     }}
                   />
                   <img
