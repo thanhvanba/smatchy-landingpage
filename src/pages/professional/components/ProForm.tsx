@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Input, Button, Select, message, Modal, Tag } from "antd";
+import { Form, Input, Select, message, Modal, Tag } from "antd";
 import {
   proFormConfig,
   roleOptions,
@@ -11,7 +11,7 @@ const { Option } = Select;
 
 export default function ProForm() {
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [otherRoleText, setOtherRoleText] = useState("");
 
@@ -37,12 +37,12 @@ export default function ProForm() {
   };
 
   const onFinish = (_values: any) => {
-    setLoading(true);
+    // setLoading(true);
     setTimeout(() => {
       message.success("Registration submitted!");
       form.resetFields();
       setOtherRoleText("");
-      setLoading(false);
+      // setLoading(false);
     }, 1000);
   };
 

@@ -1,16 +1,15 @@
-import { useState } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, message } from "antd";
 import { useContact } from "../../../hooks/useContact";
 import type { ContactForm } from "../../../services/types/contact";
 import { contactFormConfig } from "../../../config/formConfig";
 
 export default function ContactFormCard() {
   const [form] = Form.useForm<ContactForm>();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const mutation = useContact();
 
   const onFinish = (values: ContactForm) => {
-    setLoading(true);
+    // setLoading(true);
     // ensure status_contact exists
     const payload = {
       ...values,
@@ -20,11 +19,11 @@ export default function ContactFormCard() {
       onSuccess: () => {
         message.success("Sent successfully!");
         form.resetFields();
-        setLoading(false);
+        // setLoading(false);
       },
       onError: () => {
         message.error("Failed to send");
-        setLoading(false);
+        // setLoading(false);
       },
     });
   };

@@ -55,13 +55,11 @@ interface Message {
 }
 
 let msgId = 0; // đơn giản tạo id unique
-let initialBotText = ""; // lưu message đầu tiên
 
 export default function ChatBot() {
   const [openChatbot, setOpenChatbot] = useState(false);
   const { botText, actions, setStep } = useChatFlow();
   const [history, setHistory] = useState<Message[]>(() => {
-    initialBotText = botText;
     return [{ id: ++msgId, sender: "bot", text: botText }];
   });
 
