@@ -36,11 +36,12 @@ export default function Testimonials() {
       block.title === "YOUR TESTIMONIALS"
   );
 
-  if (!titleBlock) {
-    return <div>No testimonials section found</div>;
-  }
+  // Fallback heading if titleBlock not found
+  const heading = titleBlock?.heading || "YOUR <span style=\"color:#FCA13B\">TESTIMONIALS</span>";
+  // const subHeading = titleBlock?.sub_heading || "";
 
-  console.log(titleBlock.heading);
+  console.log("titleBlock:", titleBlock);
+  console.log("heading:", heading);
 
   const testimonials = data?.map((s) => ({
     id: s.id,
@@ -87,7 +88,7 @@ export default function Testimonials() {
             <div className="relative inline-flex text-2xl md:text-3xl lg:text-5xl text-white font-bold text-center px-4">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: titleBlock.heading ? titleBlock.heading : "",
+                  __html: heading,
                 }}
               />
               <img
