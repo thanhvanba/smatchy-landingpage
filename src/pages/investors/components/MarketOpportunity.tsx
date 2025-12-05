@@ -36,7 +36,7 @@ import { InvestorPopulateType } from "../../../services/strapi";
 
 export default function MarketOpportunity() {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
-   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const {
     data: stats,
     isLoading: isLoadingStats,
@@ -83,38 +83,15 @@ export default function MarketOpportunity() {
   return (
     <div>
       <div className="relative w-full z-20">
-        <div
-          style={{
-            width: "110vw",
-            height: "422.38px",
-            position: "absolute",
-            top: "-50px",
-            left: "0px",
-            transform: "rotate(-4.99deg)",
-            opacity: 1,
-            backgroundColor: "#E2F6F6",
-          }}
-        ></div>
-
-        <div
-          style={{
-            width: "110vw",
-            height: "422.38px",
-            position: "absolute",
-            top: "220px",
-            left: "0px",
-            transform: "rotate(6.24deg)",
-            opacity: 1,
-            backgroundColor: "#E2F6F6",
-          }}
-        ></div>
+        <div className="absolute w-[110vw] h-80 md:h-[422.38px] -top-[50px] -left-5 rotate-[-4.99deg] opacity-100 bg-[#E2F6F6]"></div>
+        <div className="absolute w-[110vw] h-80 md:h-[422.38px] top-[220px] -left-5 rotate-[6.24deg] opacity-100 bg-[#E2F6F6]"></div>
       </div>
       <div
         className="relative z-30 container"
         data-aos="fade-up"
         data-aos-duration="1000"
       >
-        <div className="flex flex-col justify-center items-center py-8 md:py-10 lg:py-12 gap-8 md:gap-10 lg:gap-12">
+        <div className="flex flex-col justify-center items-center py-8 md:py-10 lg:py-24 gap-8 md:gap-10 lg:gap-12">
           {/* Section Title */}
           <div className=" inline-flex">
             <div className="relative z-40 text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold uppercase">

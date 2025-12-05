@@ -39,7 +39,7 @@ import { useSport } from "../../../hooks/useSport";
 
 export default function CategorySlider() {
   const { data, isLoading, error } = useSport();
- const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
 
   if (error) {
@@ -60,31 +60,9 @@ export default function CategorySlider() {
 
   return (
     <div className="relative w-full">
-      <div
-        style={{
-          width: "110vw",
-          height: "422.38px",
-          position: "absolute",
-          top: "-240px",
-          left: "0px",
-          transform: "rotate(-4.99deg)",
-          opacity: 1,
-          backgroundColor: "#E2F6F6",
-        }}
-      ></div>
+      <div className="absolute w-[110vw] h-80 md:h-[422.38px] -top-60 -left-5 -rotate-[4.99deg] bg-[#E2F6F6] opacity-100" />
 
-      <div
-        style={{
-          width: "110vw",
-          height: "422.38px",
-          position: "absolute",
-          top: "-30px",
-          left: "0px",
-          transform: "rotate(6.24deg)",
-          opacity: 1,
-          backgroundColor: "#E2F6F6",
-        }}
-      ></div>
+      <div className="absolute w-[110vw] h-80 md:h-[422.38px] -top-[30px] -left-5 rotate-[6.24deg] bg-[#E2F6F6] opacity-100" />
 
       <div
         className="relative w-full z-50 h-full mt-20"

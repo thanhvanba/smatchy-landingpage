@@ -92,17 +92,23 @@ export default function TheTeamSection() {
   //   },
   // }));
 
-  // Filter team members by name 
-  const SELECTED_NAMES = ["Maude Baudier", "Romain Bauer", "Amandine Lecerf", "Emilie Fravallo"];
+  // Filter team members by name
+  const SELECTED_NAMES = [
+    "Maude Baudier",
+    "Romain Bauer",
+    "Amandine Lecerf",
+    "Emilie Fravallo",
+  ];
   const selectedMembers = data.teamMembers.filter((member: any) =>
     SELECTED_NAMES.includes(member.name)
   );
 
   const ORDER_INDICES = [0, 3, 2, 1];
-  const filteredTeamMembers = ORDER_INDICES
-    .map((index) => selectedMembers[index])
-    .filter(Boolean);
+  const filteredTeamMembers = ORDER_INDICES.map(
+    (index) => selectedMembers[index]
+  ).filter(Boolean);
 
+  // console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
   // console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
   // console.log(
   //   "🚀 ~ TheTeamSection ~ filteredTeamMembers:",
@@ -112,32 +118,10 @@ export default function TheTeamSection() {
   return (
     <div className="mb-12 md:mb-16 lg:mb-20">
       <div className="relative w-full z-20">
-        <div
-          style={{
-            width: "110vw",
-            height: "422.38px",
-            position: "absolute",
-            top: "-50px",
-            left: "0px",
-            transform: "rotate(-4.99deg)",
-            opacity: 1,
-            backgroundColor: "#E2F6F6",
-          }}
-        ></div>
-
-        <div
-          style={{
-            width: "110vw",
-            height: "422.38px",
-            position: "absolute",
-            top: "220px",
-            left: "0px",
-            transform: "rotate(6.24deg)",
-            opacity: 1,
-            backgroundColor: "#E2F6F6",
-          }}
-        ></div>
+        <div className="absolute -left-5 w-[110vw] h-[220px] md:h-[422.38px] -top-[30px] md:-top-[50px] -rotate-[4.99deg] bg-[#E2F6F6] opacity-100" />
+        <div className="absolute -left-5 w-[120vw] h-[220px] md:h-[422.38px] top-[120px] md:top-[220px] rotate-[6.24deg] bg-[#E2F6F6] opacity-100" />
       </div>
+
       <div className="container relative z-30 py-8! md:py-10! lg:py-12!">
         <div className="flex flex-col items-center">
           <div

@@ -10,7 +10,7 @@ export default function CreateEventBanner() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto -top-12 md:-top-16 lg:-top-20 left-[30%] md:left-[36%] lg:left-[42%] scale-[4] md:scale-[5.5] lg:scale-[7.4] origin-top-left px-1.5 rotate-[25.67deg]"
+          className="absolute w-auto -top-12 md:-top-16 lg:-top-32 left-[30%] md:left-[36%] lg:left-[42%] scale-[4] md:scale-[5.5] lg:scale-[7.4] origin-top-left px-1.5 rotate-[25.67deg]"
         />
       </div>
       <div

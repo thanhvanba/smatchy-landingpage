@@ -6,7 +6,7 @@ import { useInvestor } from "../../../hooks/useInvestor";
 import Loading from "../../../components/Loading";
 const DifferentiationSection = () => {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
-   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
   if (error) return null;
   // console.log(data);

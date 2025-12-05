@@ -8,9 +8,11 @@ import "./ReviewSlider.css";
 export default function ReviewSlider({
   testimonials,
   swiperRef,
+  onSlideChange,
 }: {
   testimonials: ReviewSliderProps[];
   swiperRef: React.RefObject<any>;
+  onSlideChange?: (isBeginning: boolean, isEnd: boolean) => void;
 }) {
   return (
     <>
@@ -39,6 +41,8 @@ export default function ReviewSlider({
         }}
         className="mySwiper"
         ref={swiperRef}
+        onSlideChange={(s) => onSlideChange?.(s.isBeginning, s.isEnd)}
+        onInit={(s) => onSlideChange?.(s.isBeginning, s.isEnd)}
       >
         {testimonials?.map((testimonial) => (
           <SwiperSlide
@@ -53,7 +57,7 @@ export default function ReviewSlider({
               <div className="space-y-3 slide-item bg-[#E2F6F6] rounded-xl md:rounded-2xl p-4 md:p-8 text-center transition-all duration-300">
                 <div className="relative">
                   <img className="w-4 md:w-10 " src={quotation} alt="" />
-                  <p className="text-left text-[#0A4A60] font-semibold mb-3 md:mb-4 text-xs md:text-base lg:text-xl h-12 md:h-18 lg:h-21 pt-2 md:pt-4 line-clamp-3">
+                  <p className="text-left text-[#0A4A60] font-semibold text-xs md:text-base lg:text-xl h-14 md:h-18 lg:h-21 pt-2 md:pt-4 line-clamp-3">
                     {testimonial.text}
                   </p>
                 </div>

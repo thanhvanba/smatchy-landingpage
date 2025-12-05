@@ -1,235 +1,19 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import Yay3 from "/Yay3.png";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Grid, Pagination } from "swiper/modules";
-// import event1 from "/events/event1.jpg";
-// import event2 from "/events/event2.png";
-// import event3 from "/events/event3.jpg";
-// import event4 from "/events/event4.jpg";
-// import event5 from "/events/event5.png";
-// import event6 from "/events/event6.jpg";
-// import golf from "/events/golf.png";
 
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import EventCard from "./EventCard";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../../components/Loading";
 import { useEventList } from "../../../hooks/useEvent";
-// const events1 = [
-//   {
-//     id: 1,
-//     title: "Sunday League Clash – 5-a-Side Football",
-//     date: "2025-02-20T10:30:00",
-//     location: "Menthon-Saint-Bernard",
-//     iconType: golf,
-//     type: "Football",
-//     iconLevel: "",
-//     level: 5,
-//     price: 5.0,
-//     image: event1,
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 2,
-//     title: "Drive & Putt Open – Friendly Golf Tournament",
-//     date: "2025-02-21T10:00:00",
-//     location: "Montagne de la Tournette",
-//     type: "Golf · 18 holes",
-//     level: 6,
-//     price: 50.0,
-//     image: event2,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     desc: "Join us for a friendly golf tournament designed for all levels. Whether you’re a beginner or an experienced player, this event is a great opportunity to enjoy a relaxing game, practice your swing, and connect with other golf enthusiasts. The course offers a scenic view and a welcoming atmosphere. Bring your clubs, good energy, and get ready for a fun day on the green!",
-//     duration: "1h00",
-//   },
-//   {
-//     id: 3,
-//     title: "Court Masters – Weekend Tennis Match",
-//     date: "2025-02-22T15:00:00",
-//     location: "Town, Annecy",
-//     type: "Tennis · Double",
-//     level: "Easy",
-//     price: 2.0,
-//     image: event3,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 4,
-//     title: "City Spin Challenge – Urban Road Cycling",
-//     date: "2025-02-23T11:00:00",
-//     location: "Town, Annecy",
-//     type: "Cycling · Urban",
-//     level: 4,
-//     price: 10.0,
-//     image: event4,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 5,
-//     title: "Hoops After Dark – Night Basketball",
-//     date: "2025-02-24T20:00:00",
-//     location: "Lake Annecy",
-//     type: "Basketball · Training",
-//     level: "Training",
-//     price: 20.0,
-//     image: event5,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 6,
-//     title: "Shuttle Smash – Morning Doubles",
-//     date: "2025-02-25T08:00:00",
-//     location: "Annecy Sports Hall",
-//     type: "Badminton · Double",
-//     level: 4,
-//     price: 3.0,
-//     image: event6,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 7,
-//     title: "Peak Pursuit – Boulder Challenge",
-//     date: "2025-10-23T18:00:00",
-//     location: "Roc Altitude Gym, Annecy",
-//     type: "Bouldering",
-//     level: 3,
-//     price: 12.5,
-//     image: event1,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 8,
-//     title: "Summit Stroll – Scenic Ridge Trail",
-//     date: "2025-10-29T10:00:00",
-//     location: "Semnoz Mountain",
-//     type: "Hiking · 10 km",
-//     level: 3,
-//     price: 6.0,
-//     image: event1,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "Embark on a scenic hike through the Semnoz Mountain trails. This 10 km route combines forest paths and panoramic viewpoints overlooking Lake Annecy. Ideal for hikers seeking a moderate challenge, it offers a mix of steady climbs and gentle descents. Expect breathtaking landscapes, crisp mountain air, and a rewarding sense of escape. Bring water, good shoes, and your adventurous spirit for a revitalizing outdoor experience.",
-//   },
-//   {
-//     id: 9,
-//     title: "Sunrise Sprint – Lake Run",
-//     date: "2025-10-21T07:00:00",
-//     location: "Parc Charles Bosson",
-//     type: "Running · 12 km",
-//     level: 4,
-//     price: 5.0,
-//     image: event1,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 10,
-//     title: "Padel Fiesta – Friendly Mixed Doubles",
-//     date: "2025-10-25T18:00:00",
-//     location: "Padel Club Annecy",
-//     type: "Padel · Double",
-//     level: 2,
-//     price: 6.0,
-//     image: event1,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 11,
-//     title: "Aqua Rush – Endurance Laps",
-//     date: "2025-10-26T19:00:00",
-//     location: "Piscine Jean Régis",
-//     type: "Swimming · Double",
-//     level: 3,
-//     price: 5.5,
-//     image: event1,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 12,
-//     title: "Spin Masters – Fast Rally Night",
-//     date: "2025-10-27T20:00:00",
-//     location: "Annecy Table Arena",
-//     type: "Table Tennis · Double",
-//     level: 4,
-//     price: 5.5,
-//     image: event1,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 13,
-//     title: "Wild Run – Forest Trail Circuit",
-//     date: "2025-03-04T08:30:00",
-//     location: "Mont Veyrier",
-//     type: "Trail · 7 km",
-//     level: 5,
-//     price: 8.5,
-//     image: event1,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-//   {
-//     id: 14,
-//     title: "Bounce Boost – Core Air Training",
-//     date: "2025-02-27T09:00:00",
-//     location: "Jump Park Annecy",
-//     type: "Training · Core Air",
-//     level: 2,
-//     price: null,
-//     image: event1,
-//     iconType: golf,
-//     iconLevel: "",
-//     participants: "12/20 registered",
-//     duration: "1h00",
-//     desc: "",
-//   },
-// ];
+
 export default function UpcomingEvents() {
   const navigate = useNavigate();
   const swiperRef = useRef<any>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
   const { data, isLoading, error } = useEventList();
 
@@ -268,36 +52,16 @@ export default function UpcomingEvents() {
   /* ---------- flatten ---------- */
   const flatEvents = Array.isArray(data) ? data.map(flattenEvent) : [];
 
-  console.log(flatEvents);
+  const handleSlideChange = (begin: boolean, end: boolean) => {
+    setIsBeginning(begin);
+    setIsEnd(end);
+  };
 
   return (
     <div className="mb-52">
       <div className="relative w-full z-20">
-        <div
-          style={{
-            width: "110vw",
-            height: "422.38px",
-            position: "absolute",
-            top: "200px",
-            left: "0px",
-            transform: "rotate(-4.99deg)",
-            opacity: 1,
-            backgroundColor: "#E2F6F6",
-          }}
-        ></div>
-
-        <div
-          style={{
-            width: "110vw",
-            height: "422.38px",
-            position: "absolute",
-            top: "410px",
-            left: "0px",
-            transform: "rotate(6.24deg)",
-            opacity: 1,
-            backgroundColor: "#E2F6F6",
-          }}
-        ></div>
+        <div className="absolute w-[110vw] h-80 md:h-[422.38px] top-[200px] -left-5 rotate-[-4.99deg] opacity-100 bg-[#E2F6F6]"></div>
+        <div className="absolute w-[120vw] h-96 md:h-[422.38px] top-[410px] -left-5 rotate-[6.24deg] opacity-100 bg-[#E2F6F6]"></div>
       </div>
 
       <div className="flex flex-col items-center">
@@ -332,20 +96,20 @@ export default function UpcomingEvents() {
             </div>
           </div>
           <button
-            className="text-[#FCA13B] h-10 md:h-12 w-10 md:w-12"
-            data-aos="fade-left"
-            data-aos-duration="1000"
+            className={`h-10 md:h-12 w-10 md:w-12" ${
+              isBeginning ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
+            }`}
             onClick={() => swiperRef.current?.swiper.slidePrev()}
           >
-            <FaArrowLeftLong className="text-6 md:text-8" />
+            <FaArrowLeftLong className="text-2xl md:text-4xl" />
           </button>
           <button
-            className="text-[#FCA13B] h-10 md:h-12 w-10 md:w-12"
-            data-aos="fade-left"
-            data-aos-duration="1000"
+            className={`h-10 md:h-12 w-10 md:w-12" ${
+              isEnd ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
+            }`}
             onClick={() => swiperRef.current?.swiper.slideNext()}
           >
-            <FaArrowRightLong className="text-6 md:text-8" />
+            <FaArrowRightLong className="text-2xl md:text-4xl" />
           </button>
         </div>
 
@@ -390,6 +154,8 @@ export default function UpcomingEvents() {
                 },
               },
             }}
+            onSlideChange={(s) => handleSlideChange?.(s.isBeginning, s.isEnd)}
+            onInit={(s) => handleSlideChange?.(s.isBeginning, s.isEnd)}
           >
             {flatEvents.map((event) => (
               <SwiperSlide key={event.id}>

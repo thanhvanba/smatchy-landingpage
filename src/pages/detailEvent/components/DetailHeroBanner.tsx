@@ -7,7 +7,7 @@ export default function DetailHeroBanner({ detail }: { detail: Event }) {
   return (
     <div>
       <div
-        className="relative w-full h-64 md:h-96 lg:h-[621px] pt-8 md:pt-12 lg:pt-20 z-30"
+        className="relative w-full h-72 md:h-96 lg:h-[621px] pt-8 md:pt-12 lg:pt-20 z-30"
         style={{
           backgroundImage: `url(${detail?.image})`,
           backgroundRepeat: "contain",

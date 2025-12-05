@@ -29,7 +29,7 @@ export default function HomePage() {
       </div>
       <HeroBanner />
       <div
-        className="relative flex items-center justify-center mt-12 md:mt-20 lg:mt-28 px-4"
+        className="relative flex items-center justify-center mt-12 md:mt-20 lg:mt-28 px-4 z-20"
         data-aos="fade-up"
         data-aos-duration="1000"
       >

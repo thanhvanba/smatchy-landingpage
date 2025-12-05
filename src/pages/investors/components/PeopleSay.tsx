@@ -1,47 +1,17 @@
 import Yay3 from "/Yay3.png";
 import { FaArrowRightLong } from "react-icons/fa6";
-// import avt1 from "/avt1.png";
-// import avt2 from "/avt2.png";;
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import { useInvestor } from "../../../hooks/useInvestor";
 import { InvestorPopulateType } from "../../../services/strapi";
 import Loading from "../../../components/Loading";
 import { useTestimonials } from "../../../hooks/useTestimonials";
 import ReviewSlider from "../../../components/ReviewSlider";
-// const testimonials = [
-//   {
-//     id: 1,
-//     name: "Thomas Nguyen",
-//     text: "J'adore cette app, elle me motive à faire du sport tous les jours.",
-//     rating: 5,
-//     image: avt1,
-//   },
-//   {
-//     id: 2,
-//     name: "Robin Delezenne",
-//     text: "Super application avec beaucoup de sport. Trop hâte de rencontrer des cyclistes !",
-//     rating: 5,
-//     image: avt2,
-//   },
-//   {
-//     id: 3,
-//     name: "Alex Martin",
-//     text: "Une expérience incroyable, j'ai trouvé plein de partenaires sportifs.",
-//     rating: 5,
-//     image: avt1,
-//   },
-// ];
 
-// const renderStars = (rating: number) => {
-//   return [...Array(rating)].map((_, index) => (
-//     <span key={index} className="text-yellow-400">
-//       ★
-//     </span>
-//   ));
-// };
 export default function PeopleSay() {
   const swiperRef = useRef<any>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
   // const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
 
@@ -86,8 +56,11 @@ export default function PeopleSay() {
       >
         <div className="container relative flex justify-center items-center z-30">
           <button
-            className="cursor-pointer absolute left-0 top-1/2 z-10 transform -translate-y-1/2 text-[#FCA13B] px-4 py-2 rounded-full"
+            className={`cursor-pointer absolute left-0 top-1/2 z-10 transform -translate-y-1/2  px-4 py-2 rounded-full ${
+              isBeginning ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
+            }`}
             onClick={() => swiperRef.current?.swiper?.slidePrev()}
+            disabled={isBeginning}
           >
             <BsArrowLeftShort className="text-2xl md:text-6xl" />
           </button>
@@ -115,8 +88,11 @@ export default function PeopleSay() {
             </h2> */}
           </div>
           <button
-            className="cursor-pointer absolute right-0 top-1/2 z-10 transform -translate-y-1/2 text-[#FCA13B] px-4 py-2 rounded-full"
+            className={`cursor-pointer absolute right-0 top-1/2 z-10 transform -translate-y-1/2 px-4 py-2 rounded-full ${
+              isEnd ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
+            }`}
             onClick={() => swiperRef.current?.swiper?.slideNext()}
+            disabled={isEnd}
           >
             <BsArrowRightShort className="text-2xl md:text-6xl" />
           </button>
@@ -142,7 +118,14 @@ export default function PeopleSay() {
         data-aos="zoom-in-up"
         data-aos-duration="1000"
       >
-        <ReviewSlider testimonials={testimonials!} swiperRef={swiperRef} />
+        <ReviewSlider
+          testimonials={testimonials!}
+          swiperRef={swiperRef}
+          onSlideChange={(begin, end) => {
+            setIsBeginning(begin);
+            setIsEnd(end);
+          }}
+        />
       </div>
     </div>
   );

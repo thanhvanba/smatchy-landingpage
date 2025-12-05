@@ -55,7 +55,7 @@ export default function Slider() {
       {/* Custom controls */}
       {/* Nút điều hướng trái */}
       <button
-        className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full text-[#F49F3F] transition"
+        className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-10 text-[#F49F3F] transition"
         onClick={() => swiperRef.current?.swiper?.slidePrev()}
       >
         <BsArrowLeftShort size={60} />
@@ -63,7 +63,7 @@ export default function Slider() {
 
       {/* Nút điều hướng phải */}
       <button
-        className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white shadow-md rounded-full text-[#F49F3F] transition"
+        className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-20 text-[#F49F3F] transition"
         onClick={() => swiperRef.current?.swiper?.slideNext()}
       >
         <BsArrowRightShort size={60} />

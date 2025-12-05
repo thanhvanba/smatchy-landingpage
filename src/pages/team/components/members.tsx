@@ -76,28 +76,8 @@ export default function Members() {
   const Template2 = ({ members }: TemplateProps) => (
     <div>
       <div className="relative w-full z-20">
-        <div
-          style={{
-            width: "110vw",
-            height: "422.38px",
-            position: "absolute",
-            top: "-240px",
-            left: "0px",
-            transform: "rotate(-4.99deg)",
-            backgroundColor: "#E2F6F6",
-          }}
-        />
-        <div
-          style={{
-            width: "110vw",
-            height: "422.38px",
-            position: "absolute",
-            top: "-30px",
-            left: "0px",
-            transform: "rotate(6.24deg)",
-            backgroundColor: "#E2F6F6",
-          }}
-        />
+        <div className="absolute w-[110vw] h-80 md:h-[422.38px] -top-60 -left-5 rotate-[-4.99deg] bg-[#E2F6F6]" />
+        <div className="absolute w-[110vw] h-80 md:h-[422.38px] -top-[30px] -left-5 rotate-[6.24deg] bg-[#E2F6F6]" />
       </div>
 
       {/* @ts-expect-error Person[] is compatible with TeamMember[] for display purposes */}
@@ -108,7 +88,7 @@ export default function Members() {
   // 4. Template 3
   const Template3 = ({ members }: TemplateProps) => (
     <div className="relative w-full mt-5">
-      <div className="relative z-30 container">
+      <div className="hidden sm:block relative z-30 container">
         <img
           src={line}
           alt=""

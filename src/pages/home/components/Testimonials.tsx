@@ -1,49 +1,18 @@
 import background from "/background.png";
 import line from "/line_bg.svg";
-import worldmap from "/world-map.svg";
+import worldmap from "/world-map.png";
 import Yay from "/Yay.png";
-// import avt1 from "/avt1.png";
-// import avt2 from "/avt2.png";
 import Loading from "../../../components/Loading";
 import { useTestimonials } from "../../../hooks/useTestimonials";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ReviewSlider from "../../../components/ReviewSlider";
-// const testimonials1 = [
-//   {
-//     id: 1,
-//     name: "Thomas Nguyen",
-//     text: "J'adore cette app, elle me motive à faire du sport tous les jours.",
-//     rating: 5,
-//     image: avt1,
-//   },
-//   {
-//     id: 2,
-//     name: "Robin Delezenne",
-//     text: "Super application avec beaucoup de sport. Trop hâte de rencontrer des cyclistes !",
-//     rating: 5,
-//     image: avt2,
-//   },
-//   {
-//     id: 3,
-//     name: "Alex Martin",
-//     text: "Une expérience incroyable, j'ai trouvé plein de partenaires sportifs.",
-//     rating: 5,
-//     image: avt1,
-//   },
-// ];
-
-// const renderStars = (rating: number) => {
-//   return [...Array(rating)].map((_, index) => (
-//     <span key={index} className="text-yellow-400">
-//       ★
-//     </span>
-//   ));
-// };
 
 export default function Testimonials() {
   const { data, isLoading, error } = useTestimonials("home");
   const swiperRef = useRef<any>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
   // const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
 
@@ -85,8 +54,11 @@ export default function Testimonials() {
             data-aos-duration="1000"
           >
             <button
-              className="cursor-pointer absolute left-0 top-1/2 z-10 transform -translate-y-1/2 text-[#FCA13B] px-4 py-2 rounded-full"
+              className={`cursor-pointer absolute left-0 top-1/2 z-10 transform -translate-y-1/2  px-4 py-2 rounded-full ${
+                isBeginning ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
+              }`}
               onClick={() => swiperRef.current?.swiper?.slidePrev()}
+              disabled={isBeginning}
             >
               <BsArrowLeftShort className="text-2xl md:text-6xl" />
             </button>
@@ -100,19 +72,29 @@ export default function Testimonials() {
               />
             </h2>
             <button
-              className="cursor-pointer absolute right-0 top-1/2 z-10 transform -translate-y-1/2 text-[#FCA13B] px-4 py-2 rounded-full"
+              className={`cursor-pointer absolute right-0 top-1/2 z-10 transform -translate-y-1/2 px-4 py-2 rounded-full ${
+                isEnd ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
+              }`}
               onClick={() => swiperRef.current?.swiper?.slideNext()}
+              disabled={isEnd}
             >
               <BsArrowRightShort className="text-2xl md:text-6xl" />
             </button>
           </div>
 
-          <ReviewSlider testimonials={testimonials!} swiperRef={swiperRef} />
+          <ReviewSlider
+            testimonials={testimonials!}
+            swiperRef={swiperRef}
+            onSlideChange={(begin, end) => {
+              setIsBeginning(begin);
+              setIsEnd(end);
+            }}
+          />
         </div>
       </div>
 
       <div
-        className="container pb-28! md:py-20! lg:py-18! relative flex justify-center z-30"
+        className="container px-4! md:px-8! lg:px-24! pb-28! md:py-20! lg:py-18! relative flex justify-center z-30"
         data-aos="fade-up"
         data-aos-duration="2000"
       >

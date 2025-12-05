@@ -26,31 +26,8 @@ export default function ProductFeatures() {
   return (
     <div className="relative z-30 pt-20">
       <div className="relative w-full z-20">
-        <div
-          style={{
-            width: "110vw",
-            height: "468.38px",
-            position: "absolute",
-            top: "-50px",
-            left: "0px",
-            transform: "rotate(-4.99deg)",
-            opacity: 1,
-            backgroundColor: "#E2F6F6",
-          }}
-        ></div>
-
-        <div
-          style={{
-            width: "110vw",
-            height: "896.38px",
-            position: "absolute",
-            top: "220px",
-            left: "0px",
-            transform: "rotate(6.24deg)",
-            opacity: 1,
-            backgroundColor: "#E2F6F6",
-          }}
-        ></div>
+        <div className="absolute -left-5 w-[110vw] h-80 md:h-[486.38px] -top-[30px] md:-top-[50px] -rotate-[4.99deg] bg-[#E2F6F6] opacity-100" />
+        <div className="absolute -left-5 w-[120vw] h-96 md:h-[896.38px] top-[120px] md:top-[220px] rotate-[6.24deg] bg-[#E2F6F6] opacity-100" />
       </div>
       <div
         className="container relative z-30 py-8! md:py-10!"

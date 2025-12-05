@@ -82,11 +82,11 @@ export default function BusinessModelSection() {
 
   return (
     <div className="relative z-30 w-full min-h-[400px] md:min-h-[500px] lg:min-h-[640px] mb-20 md:mb-28 lg:mb-40">
-      <div className="relative z-30 container">
+      <div className="hidden sm:block relative z-30 container">
         <img
           src={line}
           alt=""
-          className="absolute w-auto top-[-300px] left-[30%] scale-[5] origin-top-left px-1.5 rotate-0"
+          className="absolute w-auto top-[-452px] left-[135%] scale-[7.5] origin-top-left px-1.5 rotate-50"
         />
       </div>
       <div

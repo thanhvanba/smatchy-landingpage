@@ -45,6 +45,7 @@ export default function ContactFormCard() {
         rules={contactFormConfig.full_name.rules as any}
       >
         <Input
+          size="large"
           placeholder={contactFormConfig.full_name.placeholder}
           className="rounded-xl"
         />
@@ -60,6 +61,7 @@ export default function ContactFormCard() {
         rules={contactFormConfig.email.rules as any}
       >
         <Input
+          size="large"
           placeholder={contactFormConfig.email.placeholder}
           className="rounded-xl"
         />
@@ -75,6 +77,7 @@ export default function ContactFormCard() {
         rules={contactFormConfig.subject.rules as any}
       >
         <Input
+          size="large"
           placeholder={contactFormConfig.subject.placeholder}
           className="rounded-xl"
         />
@@ -90,6 +93,7 @@ export default function ContactFormCard() {
         rules={contactFormConfig.message.rules as any}
       >
         <Input.TextArea
+          size="large"
           placeholder={contactFormConfig.message.placeholder}
           rows={4}
           className="rounded-xl"
