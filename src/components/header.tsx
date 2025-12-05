@@ -41,7 +41,7 @@ export default function Header() {
     const iosLink = "https://apps.apple.com/us/app/smatchy/id6473653332";
     const androidLink =
       "https://play.google.com/store/apps/details?id=com.smatchy.app&pcampaignid=web_share";
-    const fallbackLink = "https://smatchy.app";
+    const fallbackLink = "/";
 
     if (/iPad|iPhone|iPod/.test(userAgent)) {
       window.open(iosLink, "_blank", "noopener,noreferrer");
