@@ -19,6 +19,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  // const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  // const isAndroid = /Android/.test(navigator.userAgent);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -29,6 +31,23 @@ export default function Header() {
   const handleNavigate = (item: (typeof menu)[0]) => {
     navigate(item.link);
     setIsOpen(false); // close mobile menu
+  };
+
+  const handleGetAppClick = () => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // iOS detection
+    if (/iPad|iPhone|iPod/.test(userAgent)) {
+      window.location.href = "https://apps.apple.com/us/app/smatchy/id6473653332"; 
+    }
+    // Android detection
+    else if (/Android/.test(userAgent)) {
+      window.location.href =
+        "https://play.google.com/store/apps/details?id=com.smatchy.app&pcampaignid=web_share";
+    }
+    else {
+      alert("Please open this page on a mobile device to download the app.");
+    }
   };
 
   return (
@@ -72,7 +91,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <button
             className="bg-[#FCA13B] hover:bg-[#FCA13B]/90 cursor-pointer text-white rounded-3xl py-1 md:py-3 px-4 text-sm"
-            onClick={() => alert("Get the app clicked")}
+            onClick={handleGetAppClick}
           >
             Get the app
           </button>

@@ -43,15 +43,19 @@ export default function TeamHeroBanner() {
               }}
             />
           </div>
-
-          {/* <h2 className="text-5xl font-bold text-white">
-            MEET <span className="text-[#FCA13B]">OUR TEAM</span>
-            <img className="absolute -top-24 -right-20" src={Yay} alt="" />
-          </h2> */}
-          {/* <p className="text-2xl font-medium text-center text-white mt-4">
-            A passionate team transforming <br /> the world of sport!
-          </p> */}
         </div>
+        <div
+          className="
+    pointer-events-none
+    absolute inset-x-0 bottom-0
+    h-16 sm:h-24
+    z-40
+  "
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255,255,255,0) 8.24%, #FBFBFB 84.56%)",
+          }}
+        />
       </div>
 
       {/* <div className="relative h-[539px] bg-[#0A4A60]"></div>
