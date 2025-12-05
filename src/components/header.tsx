@@ -34,20 +34,26 @@ export default function Header() {
   };
 
   const handleGetAppClick = () => {
-    const userAgent = navigator.userAgent || navigator.vendor;
+    const userAgent =
+      (typeof navigator !== "undefined" &&
+        (navigator.userAgent || navigator.vendor || (window as any).opera)) ||
+      "";
+    const iosLink = "https://apps.apple.com/us/app/smatchy/id6473653332";
+    const androidLink =
+      "https://play.google.com/store/apps/details?id=com.smatchy.app&pcampaignid=web_share";
+    const fallbackLink = "https://smatchy.app";
 
-    // iOS detection
     if (/iPad|iPhone|iPod/.test(userAgent)) {
-      window.location.href = "https://apps.apple.com/us/app/smatchy/id6473653332"; 
+      window.open(iosLink, "_blank", "noopener,noreferrer");
+      return;
     }
-    // Android detection
-    else if (/Android/.test(userAgent)) {
-      window.location.href =
-        "https://play.google.com/store/apps/details?id=com.smatchy.app&pcampaignid=web_share";
+
+    if (/Android/.test(userAgent)) {
+      window.open(androidLink, "_blank", "noopener,noreferrer");
+      return;
     }
-    else {
-      alert("Please open this page on a mobile device to download the app.");
-    }
+
+    window.open(fallbackLink, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -91,7 +97,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <button
             className="bg-[#FCA13B] hover:bg-[#FCA13B]/90 cursor-pointer text-white rounded-3xl py-1 md:py-3 px-4 text-sm"
-            onClick={handleGetAppClick}
+            onClick={() =>handleGetAppClick()}
           >
             Get the app
           </button>
