@@ -16,16 +16,16 @@ const queryClient = new QueryClient({
   },
 });
 
-// createRoot(document.getElementById("root")!).render(
-//   <QueryClientProvider client={queryClient}>
-//     <App />
-//   </QueryClientProvider>
-// );
-
 createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
-    <LangProvider>
-      <App />
-    </LangProvider>
+    <App />
   </QueryClientProvider>
 );
+
+// createRoot(document.getElementById("root")!).render(
+//   <QueryClientProvider client={queryClient}>
+//     <LangProvider>
+//       <App />
+//     </LangProvider>
+//   </QueryClientProvider>
+// );
