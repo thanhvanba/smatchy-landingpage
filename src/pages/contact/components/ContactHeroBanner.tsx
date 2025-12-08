@@ -1,10 +1,17 @@
 import Loading from "../../../components/Loading";
+import { useContactPage } from "../../../hooks/useContactPage";
 import { useHero } from "../../../hooks/useHero";
 //import heroBanner from "/hero-banner.png";
 import Yay from "/Yay.png";
 export default function ContactHeroBanner() {
   const { data, isLoading, error } = useHero("k8pxj4vdpa46rs41wsc94o63");
   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const { data: contact } = useContactPage();
+
+  //console.log(contact);
+
+  const titleBlock = contact?.blocks?.[0];
+  //console.log(titleBlock);
 
   if (isLoading) return <Loading />;
 
@@ -19,7 +26,7 @@ export default function ContactHeroBanner() {
     id: img.id,
     banner: img.url, // url gốc (có thể dùng img.formats.large.url nếu muốn)
   }));
-  console.log(listBaner);
+  //console.log(listBaner);
   return (
     <>
       <div
@@ -37,17 +44,27 @@ export default function ContactHeroBanner() {
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <h2 className="relative font-bold text-2xl md:text-3xl lg:text-5xl leading-8 md:leading-12 lg:leading-14 text-white text-center">
-              <span className="text-[#FCA13B]">CONTACT</span> US
+            <div className="relative font-bold text-2xl md:text-3xl lg:text-5xl leading-8 md:leading-12 lg:leading-14 text-white text-center">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: titleBlock?.heading ? titleBlock?.heading : "",
+                }}
+              />
               <img
                 className="absolute -top-10 -right-8 md:-top-10 md:-right-10 lg:-top-20 lg:-right-20 w-12 md:w-16 lg:w-auto"
                 src={Yay}
                 alt=""
               />
-            </h2>
-            <p className="font-medium text-base md:text-lg lg:text-2xl text-white text-center">
-              A question? A suggestion? We're here to help.
-            </p>
+            </div>
+            <div className="font-medium text-base md:text-lg lg:text-2xl text-white text-center">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: titleBlock?.sub_heading
+                    ? titleBlock?.sub_heading
+                    : "",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

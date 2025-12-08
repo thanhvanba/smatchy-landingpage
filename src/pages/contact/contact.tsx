@@ -1,13 +1,20 @@
+import { contactFormConfig } from "../../config/formConfig";
+import { useLocale } from "../../contexts/LangContext";
+import { useContactPage } from "../../hooks/useContactPage";
+import ChatBot from "./components/ChatBot";
 import ContactFormCard from "./components/ContactFormCard";
 import ContactHeroBanner from "./components/ContactHeroBanner";
 import line from "/line_bg.svg";
 import Yay2 from "/Yay2.png";
-import ChatBot from "./components/ChatBot";
-import { contactFormConfig } from "../../config/formConfig";
-import { useLocale } from "../../contexts/LangContext";
 
 export default function ContactPage() {
-  const { locale } = useLocale()
+  const { locale } = useLocale();
+  const { data: contact } = useContactPage();
+
+  console.log(contact);
+
+  const titleBlock = contact?.blocks?.[1];
+  console.log(titleBlock);
   return (
     <div className="relative pb-4">
       <div className="relative w-full">
@@ -26,8 +33,7 @@ export default function ContactPage() {
           data-aos-duration="1000"
         >
           <div className="relative inline-flex items-center justify-center text-center leading-6 md:leading-8 lg:leading-10 bg-[#F49F3F] rounded-2xl md:rounded-3xl lg:rounded-[30px] text-white font-bold text-sm md:text-lg lg:text-[32px] w-full md:w-[700px] lg:w-[930px] p-4 md:p-5 lg:p-6 ">
-            For any technical questions or assistance with the app, contact us
-            directly via the app or by email.
+            <div dangerouslySetInnerHTML={{ __html: titleBlock?.heading ? titleBlock?.heading : "" }} />
             <img
               className="absolute top-0  md:-top-1 lg:-top-4 left-0 lg:-left-1 w-8 md:w-12 lg:w-auto"
               src={Yay2}

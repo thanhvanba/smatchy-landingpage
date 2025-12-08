@@ -1,3 +1,5 @@
+import { usePro } from "../../../hooks/usePro";
+
 export default function Benefits() {
   const items = [
     {
@@ -20,6 +22,25 @@ export default function Benefits() {
     },
   ];
 
+  const { data } = usePro();
+  //  //const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+
+  console.log(data);
+
+  //   //const bg2 = hero?.background_image.url;
+
+  const titleBlock = data?.blocks?.[2];
+
+  //   console.log(titleBlock);
+
+  const benefitsList = titleBlock?.stats_icon?.map((item: any, index: number) => ({
+    id: index,
+    heading: item.heading,
+    description: item.description,
+  })) || items;
+
+  console.log(benefitsList);
+
   return (
     <div className="container relative z-30">
       <div
@@ -27,14 +48,14 @@ export default function Benefits() {
         data-aos-duration="1000"
         className="grid grid-cols-1 md:grid-cols-3 gap-10"
       >
-        {items.map((item, idx) => (
+        {benefitsList.map((benefit: any, id: number) => (
           <div
-            key={idx}
+            key={id}
             className="flex flex-col items-center text-center gap-4 bg-[#E2F6F6] rounded-2xl shadow-md p-6"
           >
-            <img src={item.icon} alt="" className="w-12 h-12" />
-            <h3 className="text-xl font-bold text-[#0F262E]">{item.title}</h3>
-            <p className="text-sm text-[#0F262E]">{item.description}</p>
+            <img src={benefit.icon || items[id]?.icon} alt="" className="w-12 h-12" />
+            <h3 className="text-xl font-bold text-[#0F262E]">{benefit.heading || benefit.title}</h3>
+            <p className="text-sm text-[#0F262E]">{benefit.description}</p>
           </div>
         ))}
       </div>

@@ -1,15 +1,25 @@
 import Yay from "/Yay.png";
 // import Loading from "../../../components/Loading";
 import { useHome } from "../../../hooks/useHome";
+import { usePro } from "../../../hooks/usePro";
 // import { useHero } from "../../../hooks/useHero";
 
 export default function ProfessionalBanner() {
   const { hero } = useHome();
+  const { data } = usePro();
   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
-  //console.log(hero);
+  //console.log(data);
 
   //const bg2 = hero?.background_image.url;
   const bg = hero?.background_image.url;
+
+  const titleBlock = data?.blocks?.[0];
+  //console.log(titleBlock);
+
+  // Fallback values
+  const heading = titleBlock?.heading || "Become a <span style=\"color:#FCA13B\">Smatchy Pro</span>";
+  const subHeading = titleBlock?.sub_heading || "Earn money by dropping paid events and connect with your community";
+
   // const { data, isLoading, error } = useHero("k8pxj4vdpa46rs41wsc94o63");
   // if (isLoading) return <Loading />;
 
@@ -37,14 +47,14 @@ export default function ProfessionalBanner() {
         >
           <div className="flex flex-col items-center gap-4 md:gap-6 py-16 md:py-32 lg:pb-80">
             <div className="relative font-bold text-2xl md:text-3xl lg:text-5xl leading-8 md:leading-12 lg:leading-14 text-white text-center">
-              {/* <div
-                dangerouslySetInnerHTML={{
-                  __html: slider.heading ? slider.heading : "",
-                }}
-              /> */}
-              <div className="uppercase text-white">
+              <div
+                 dangerouslySetInnerHTML={{
+                   __html: heading,
+                 }}
+              />
+              {/* <div className="uppercase text-white">
                 Become a <span className="text-[#FCA13B]">Smatchy pro</span>
-              </div>
+              </div> */}
               <img
                 className="absolute -top-10 -right-8 md:-top-16 md:-right-14 lg:-top-24 lg:-right-20 w-12 md:w-20 lg:w-auto"
                 src={Yay}
@@ -52,13 +62,13 @@ export default function ProfessionalBanner() {
               />
             </div>
             <div className="font-medium text-lg md:text-xl lg:text-2xl text-white text-center">
-              {/* <div
-                dangerouslySetInnerHTML={{
-                  __html: slider.sub_heading ? slider.sub_heading : "",
-                }}
-              /> */}
-              Earn money by dropping paid events, and connect with your
-              Followers or "Sport" Community
+              <div
+                 dangerouslySetInnerHTML={{
+                   __html: subHeading,
+                 }}
+              />
+              {/* Earn money by dropping paid events, and connect with your
+              Followers or "Sport" Community */}
             </div>
           </div>
         </div>

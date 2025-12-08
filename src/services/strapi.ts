@@ -256,3 +256,27 @@ export const fetchCategories = async (): Promise<Category[]> => {
   );
   return response.data || [];
 };
+
+
+export const fetchPro = async () => {
+  const response = await fetchStrapi<any, { data: Team; meta: any }>(
+    "/professional?populate[blocks][populate]=*"
+  );
+  if (response.data) {
+    return response.data as Team;
+  }
+
+  return null;
+};
+
+
+export const fetchContactPage = async () => {
+  const response = await fetchStrapi<any, { data: Team; meta: any }>(
+    "/contact?populate[blocks][populate]=*"
+  );
+  if (response.data) {
+    return response.data as Team;
+  }
+
+  return null;
+};
