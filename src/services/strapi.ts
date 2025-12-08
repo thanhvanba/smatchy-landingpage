@@ -89,7 +89,7 @@ export const fetchTeamMember = async () => {
 
 export const fetchTeam = async () => {
   const response = await fetchStrapi<any, { data: Team; meta: any }>(
-    "/team?populate=*"
+    "/team?populate[blocks][populate]=*"
   );
   if (response.data) {
     return response.data as Team;

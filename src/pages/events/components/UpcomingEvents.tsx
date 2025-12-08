@@ -8,6 +8,7 @@ import EventCard from "./EventCard";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../../components/Loading";
 import { useEventList } from "../../../hooks/useEvent";
+import { useTeam } from "../../../hooks/useTeam";
 
 export default function UpcomingEvents() {
   const navigate = useNavigate();
@@ -17,13 +18,27 @@ export default function UpcomingEvents() {
 
   const { data, isLoading, error } = useEventList();
 
+  const {
+    data: events,
+    isLoading: isLoadingEvent,
+    error: errorEvent,
+  } = useTeam();
+
+  //console.log("🚀 ~ Members ~ data:", data);
+
+  if (isLoadingEvent) return <Loading />;
+  if (errorEvent) return <p>Error loading team.</p>;
+
   if (isLoading) return <Loading />;
 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(data);
+  //console.log(events);
+
+  const eventHeading = events?.teamPage?.blocks?.[2];
+
 
   const flattenEvent = (api: any) => {
     const levelMatch = (api.level || "").match(/\d+/);
@@ -70,14 +85,14 @@ export default function UpcomingEvents() {
           data-aos="fade-up"
           data-aos-duration="1000"
         >
-          <h2 className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-10">
-            UP COMMING<span className="text-[#FCA13B]"> EVENTS</span>
+          <div className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-10">
+            <div dangerouslySetInnerHTML={{ __html: eventHeading?.heading ? eventHeading?.heading : ""}} />
             <img
               className="absolute -top-8 -right-8 md:-top-10 lg:-top-20 md:-right-10 lg:-right-20 w-12 md:w-16 lg:w-auto"
               src={Yay3}
               alt=""
             />
-          </h2>
+          </div>
         </div>
       </div>
       <div className="realtive container">

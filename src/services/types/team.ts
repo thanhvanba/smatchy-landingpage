@@ -28,4 +28,8 @@ export interface BlocksTeam {
   heading: string;
   sub_heading: string;
   title: string;
+  button: {
+    label: string;
+    link: string;
+  } | null;
 }
