@@ -22,7 +22,7 @@ export default function CreateEventBanner() {
   // Fallback values
   const heading = eventCreate?.heading;
   const subHeading = eventCreate?.sub_heading || "";
-  const buttonLink = eventCreate?.button?.link || "";
+  // const buttonLink = eventCreate?.button?.link || "";
   const buttonLabel = eventCreate?.button?.label;
 
   const handleGetAppClick = () => {
