@@ -17,7 +17,7 @@ export default function LangSwitch() {
     <div className="relative inline-block">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-2 rounded-lg px-3 py-2 focus:outline-none bg-white/10 hover:bg-white/20 transition border border-white/30"
+        className="flex items-center gap-2 rounded-lg px-3 py-2 focus:outline-none bg-white/10 hover:bg-white/20 transition border border-white/30 cursor-pointer disabled:cursor-not-allowed"
         aria-label="Change language"
       >
         <FaGlobe className="w-5 h-5 text-white" />
@@ -48,7 +48,7 @@ export default function LangSwitch() {
                 setLocale(lng as any);
                 setOpen(false);
               }}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 transition text-left ${
+              className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 transition text-left cursor-pointer disabled:cursor-not-allowed ${
                 lng === locale ? "bg-blue-50 font-semibold text-[#0A4A60]" : "text-gray-700"
               }`}
             >
