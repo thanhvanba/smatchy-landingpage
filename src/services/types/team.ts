@@ -32,4 +32,6 @@ export interface BlocksTeam {
     label: string;
     link: string;
   } | null;
+  slider_images: any;
+  stats_icon: any;
 }

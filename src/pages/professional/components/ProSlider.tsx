@@ -28,14 +28,15 @@ export default function ProSlider() {
 
   const titleBlock = data?.blocks?.[1];
 
-  const slides = titleBlock?.slider_images?.map((image: any, index: number) => ({
-    id: image.id || index,
-    image: `${assetUrl}${image.url}`,
-    badge: BADGE_IMAGES[index % BADGE_IMAGES.length],
-    name: image.name,
-  })) || DEFAULT_SLIDES;
+  const slides =
+    titleBlock?.slider_images?.map((image: any, index: number) => ({
+      id: image.id || index,
+      image: `${assetUrl}${image.url}`,
+      badge: BADGE_IMAGES[index % BADGE_IMAGES.length],
+      name: image.name,
+    })) || DEFAULT_SLIDES;
 
-  console.log(slides)
+  console.log(slides);
 
   return (
     <div className="relative w-full h-full z-40">
@@ -51,7 +52,7 @@ export default function ProSlider() {
         ref={swiperRef}
         className="w-full overflow-hidden"
       >
-        {slides.map((slide) => (
+        {slides.map((slide: any) => (
           <SwiperSlide key={slide.id}>
             <div className="relative w-full flex justify-center items-center  z-50">
               <img src={slide.image} alt="Phone" className="w-full" />
