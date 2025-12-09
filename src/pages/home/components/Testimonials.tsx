@@ -28,7 +28,7 @@ export default function Testimonials() {
     return <div>Error: {errorHome.message}</div>;
   }
 
-  console.log(titles);
+  //console.log(titles);
 
   const titleBlock = titles?.find(
     (block: any): block is any =>
@@ -37,19 +37,36 @@ export default function Testimonials() {
   );
 
   // Fallback heading if titleBlock not found
-  const heading = titleBlock?.heading || "YOUR <span style=\"color:#FCA13B\">TESTIMONIALS</span>";
+  const heading =
+    titleBlock?.heading ||
+    'YOUR <span style="color:#FCA13B">TESTIMONIALS</span>';
   // const subHeading = titleBlock?.sub_heading || "";
 
-  console.log("titleBlock:", titleBlock);
-  console.log("heading:", heading);
+  // console.log("titleBlock:", titleBlock);
+  // console.log("heading:", heading);
 
-  const testimonials = data?.map((s) => ({
-    id: s.id,
-    name: s.author,
-    text: s.content,
-    rating: 5, // default
-    image: s.avatar?.url, // "/uploads/avatar1_d95a6afcff.png"
-  }));
+  // const testimonials = data?.map((s) => ({
+  //   id: s.id,
+  //   name: s.author,
+  //   text: s.content,
+  //   rating: 5, // default
+  //   image: s.avatar?.url, // "/uploads/avatar1_d95a6afcff.png"
+  // }));
+
+  console.log(data)
+
+  const testimonials = [...(data ?? [])] // Tạo bản sao tránh mutate mảng gốc
+    .sort((a, b) => (a.index ?? 0) - (b.index ?? 0)) // Sắp xếp theo index (thấp → cao)
+    .map((s) => ({
+      id: s.id,
+      name: s.author,
+      text: s.content,
+      rating: 5,
+      image: s.avatar?.url,
+    }));
+
+
+  console.log(testimonials);
 
   return (
     <div className="relative w-full overflow-hidden">

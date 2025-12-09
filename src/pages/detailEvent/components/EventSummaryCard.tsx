@@ -6,6 +6,29 @@ import user from "/events/user.png";
 import download from "/events/download.png";
 import pictureEvent from "/events/picture-event.png";
 export default function EventSummaryCard({ detail }: { detail: Event }) {
+  const handleGetAppClick = () => {
+    const userAgent =
+      (typeof navigator !== "undefined" &&
+        (navigator.userAgent || navigator.vendor || (window as any).opera)) ||
+      "";
+    const iosLink = "https://apps.apple.com/us/app/smatchy/id6473653332";
+    const androidLink =
+      "https://play.google.com/store/apps/details?id=com.smatchy.app&pcampaignid=web_share";
+    const fallbackLink = "/";
+
+    if (/iPad|iPhone|iPod/.test(userAgent)) {
+      window.open(iosLink, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    if (/Android/.test(userAgent)) {
+      window.open(androidLink, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    window.open(fallbackLink, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div>
       {detail.price && (
@@ -114,7 +137,10 @@ export default function EventSummaryCard({ detail }: { detail: Event }) {
             Discover more exciting sports experiences on the Smatchy app
           </p>
         </div>
-        <button className="flex justify-center items-center gap-2 md:gap-3 lg:gap-4 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full bg-[#F49F3F] text-white text-xs md:text-sm lg:text-base font-medium">
+        <button
+          onClick={() => handleGetAppClick()}
+          className="flex justify-center items-center gap-2 md:gap-3 lg:gap-4 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full bg-[#F49F3F] text-white text-xs md:text-sm lg:text-base font-medium hover:bg-[#F49F3F]/90 transition"
+        >
           Download Now
         </button>
       </div>
