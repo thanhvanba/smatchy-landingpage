@@ -1,7 +1,7 @@
 // Shared layout translations for header and footer
 export const headerTexts = {
   menu: [
-    { link: "/", label: { en: "Home", fr: "Accueil" } },
+    { link: "/", label: { en: "Home", fr: "Maison" } },
     { link: "/team", label: { en: "Team", fr: "Équipe" } },
     { link: "/investors", label: { en: "Investors", fr: "Investisseurs" } },
     { link: "/events", label: { en: "Events", fr: "Événements" } },
@@ -27,10 +27,18 @@ export const footerTexts = {
     fr: "Chargement des liens sociaux...",
   },
   legalLinks: [
-    { path: "/legal-notices", label: { en: "Legal Notices", fr: "Mentions légales" } },
-    { path: "/terms-of-use", label: { en: "Terms of Use", fr: "Conditions d'utilisation" } },
-    { path: "/privacy-policy", label: { en: "Privacy Policy", fr: "Politique de confidentialité" } },
+    {
+      path: "/legal-notices",
+      label: { en: "Legal Notices", fr: "Mentions légales" },
+    },
+    {
+      path: "/terms-of-use",
+      label: { en: "Terms of Use", fr: "Conditions d'utilisation" },
+    },
+    {
+      path: "/privacy-policy",
+      label: { en: "Privacy Policy", fr: "Politique de confidentialité" },
+    },
     { path: "/cookie-policy", label: { en: "Cookies", fr: "Cookies" } },
   ],
 };
-

@@ -47,7 +47,7 @@ export default function HeroBanner() {
             <div
               data-aos="fade-up"
               data-aos-duration="1000"
-              className="flex flex-col mb-8 md:mb-0 items-center gap-6 md:gap-10 w-full md:w-1/2 z-50"
+              className="flex flex-col mb-8 md:mb-0 items-center gap-6 md:gap-10 w-full z-50"
             >
               <div className="relative font-bold text-3xl md:text-4xl lg:text-5xl leading-10 md:leading-[50px] lg:leading-[55px] text-white text-center mt-8 md:mt-20 lg:mt-48">
                 <img

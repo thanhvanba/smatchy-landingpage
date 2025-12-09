@@ -37,7 +37,9 @@ export default function Testimonials() {
   );
 
   // Fallback heading if titleBlock not found
-  const heading = titleBlock?.heading || "YOUR <span style=\"color:#FCA13B\">TESTIMONIALS</span>";
+  const heading =
+    titleBlock?.heading ||
+    'YOUR <span style="color:#FCA13B">TESTIMONIALS</span>';
   // const subHeading = titleBlock?.sub_heading || "";
 
   console.log("titleBlock:", titleBlock);
