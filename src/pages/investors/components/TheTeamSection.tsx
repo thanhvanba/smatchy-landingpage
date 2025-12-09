@@ -104,7 +104,7 @@ export default function TheTeamSection() {
   
   const filteredTeamMembers = SELECTED_NAMES_ORDER
     .map((name) => 
-      data.teamMembers.find((member: any) => member.name === name)
+      data?.teamMembers?.find((member: any) => member.name === name)
     )
     .filter(Boolean);
 
