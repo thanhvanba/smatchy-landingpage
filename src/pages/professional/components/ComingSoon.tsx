@@ -4,7 +4,19 @@ import image3 from "/image 3.png";
 import Yay from "/Yay.png";
 import line from "/line_bg.svg";
 import { Link } from "react-router-dom";
+import { usePro } from "../../../hooks/usePro";
 export default function ComingSoon() {
+  const { data } = usePro();
+  console.log(data);
+
+  const titleBlock = data?.blocks?.[3];
+
+  // Fallback values
+  const heading =
+    titleBlock?.heading ||
+    'Coming Soon: <span style="color:#FCA13B">Download</span> the App';
+  const subHeading = titleBlock?.sub_heading || "";
+
   return (
     <div className="relative w-full overflow-hidden">
       <div className="relative container z-20">
@@ -32,13 +44,13 @@ export default function ComingSoon() {
               data-aos-duration="1000"
             >
               <div className="relative uppercase text-center text-2xl md:text-3xl lg:text-5xl text-white font-bold mb-4 md:mb-6 lg:mb-12">
-                {/* <div
-                dangerouslySetInnerHTML={{
-                  __html: titleBlock.heading ? titleBlock.heading : "",
-                }}
-              /> */}
-                Coming Soon: <span className="text-[#FCA13B]">Download</span>{" "}
-                the App
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: heading,
+                  }}
+                />
+                {/* Coming Soon: <span className="text-[#FCA13B]">Download</span>{" "}
+                the App */}
                 <img
                   className="absolute -top-10 -right-8 md:-top-12 md:-right-10 lg:-top-20 lg:-right-20 w-12 md:w-16 lg:w-auto"
                   src={Yay}
@@ -51,14 +63,14 @@ export default function ComingSoon() {
               data-aos="fade-up"
               data-aos-duration="1000"
             >
-              {/* <div
-              dangerouslySetInnerHTML={{
-                __html: titleBlock.sub_heading ? titleBlock.sub_heading : "",
-              }}
-            /> */}
-              Once paid events go live, this section will feature direct
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: subHeading,
+                }}
+              />
+              {/* Once paid events go live, this section will feature direct
               download links to the Smatchy app on the App Store and Google
-              Play. Stay tuned!
+              Play. Stay tuned! */}
             </div>
             <div
               data-aos="fade-right"

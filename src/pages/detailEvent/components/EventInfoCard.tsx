@@ -14,8 +14,13 @@ export default function EventInfoCard({ detail }: { detail: Event }) {
           <span className="text-lg md:text-xl lg:text-[28px] text-[#0F262E] font-bold uppercase        ">
             {detail.type}
           </span>
-          <img
+          {/* <img
             className="absolute -top-8 md:-top-10 lg:-top-14 -right-8 md:-right-10 lg:-right-14 h-12 md:h-16 lg:h-24"
+            src={Yay3}
+            alt=""
+          /> */}
+          <img
+            className="absolute -top-6 md:-top-8 lg:-top-12 -right-8 md:-right-10 lg:-right-14 h-12 md:h-16 lg:h-24"
             src={Yay3}
             alt=""
           />
