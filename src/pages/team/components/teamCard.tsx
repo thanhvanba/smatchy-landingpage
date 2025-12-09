@@ -34,7 +34,7 @@ const SOCIAL_ICONS: Record<string, React.ElementType> = {
 };
 
 export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
-  console.log(teamMember);
+  //console.log(teamMember);
   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const avatar = (teamMember.avatar as { url?: string })?.url;
 
@@ -109,7 +109,7 @@ export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
               url?: string;
             };
             const key = platform?.toLowerCase();
-            console.log(key);
+            //console.log(key);
             const Icon = SOCIAL_ICONS[key] || SOCIAL_ICONS.website;
             if (!url) return null;
 

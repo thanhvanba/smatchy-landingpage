@@ -17,6 +17,7 @@ export interface Person {
   description: string;
   avatar: string | null;
   bio: BioLink[];
+  order: number | null;
 }
 
 export interface Team {

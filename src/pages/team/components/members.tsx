@@ -50,11 +50,22 @@ export default function Members() {
   if (error) return <p>Error loading team.</p>;
   if (!data?.teamMembers) return <p>No data available.</p>;
 
+  const sortedTeamMembers = [...data.teamMembers].sort((a, b) => {
+    const orderA = a.order ?? Infinity;
+    const orderB = b.order ?? Infinity;
+    return orderA - orderB;
+  });
+
   const chunkSize = 3;
-  const chunks: (Person[] | null | undefined)[] = [];
-  for (let i = 0; i < data.teamMembers!.length; i += chunkSize) {
-    chunks.push(data.teamMembers!.slice(i, i + chunkSize));
+  const chunks: Person[][] = [];
+  for (let i = 0; i < sortedTeamMembers.length; i += chunkSize) {
+    chunks.push(sortedTeamMembers.slice(i, i + chunkSize));
   }
+  // const chunkSize = 3;
+  // const chunks: (Person[] | null | undefined)[] = [];
+  // for (let i = 0; i < data.teamMembers!.length; i += chunkSize) {
+  //   chunks.push(data.teamMembers!.slice(i, i + chunkSize));
+  // }
 
   // const teamMembers = [];
 

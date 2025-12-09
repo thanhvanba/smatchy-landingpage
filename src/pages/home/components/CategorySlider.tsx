@@ -46,17 +46,23 @@ export default function CategorySlider() {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(data);
+  console.log("CategorySlider data:", data);
 
-  // 2. Helper flatten
-  const slides = (Array.isArray(data) ? data : [data]).map((s) => ({
-    id: s.id,
-    documentId: s.documentId,
-    name: s.name,
-    image: s.image.url, // ← phẳng hóa
-  }));
+  // Flatten and safe access with fallback
+  const slides = (Array.isArray(data) ? data : data ? [data] : [])
+    .filter((s: any) => s?.image?.url) // Filter out items without image
+    .map((s: any) => ({
+      id: s.id,
+      documentId: s.documentId,
+      name: s.name,
+      image: s.image?.url || "/sports/badminton.png", // Fallback image
+    }));
 
-  console.log(slides);
+  console.log("CategorySlider slides:", slides);
+
+  if (!slides || slides.length === 0) {
+    return <div className="text-center py-10">No categories available</div>;
+  }
 
   return (
     <div className="relative w-full">

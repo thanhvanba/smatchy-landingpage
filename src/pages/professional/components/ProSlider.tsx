@@ -24,9 +24,13 @@ const DEFAULT_SLIDES = [
 export default function ProSlider() {
   const swiperRef = useRef<any>(null);
   const { data } = usePro();
-  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL || "https://strapi.annk.info";
+
+  console.log("assetUrl:", assetUrl);
+  console.log("data:", data);
 
   const titleBlock = data?.blocks?.[1];
+  console.log("titleBlock:", titleBlock);
 
   const slides =
     titleBlock?.slider_images?.map((image: any, index: number) => ({
@@ -36,7 +40,7 @@ export default function ProSlider() {
       name: image.name,
     })) || DEFAULT_SLIDES;
 
-  console.log(slides);
+  console.log("final slides:", slides);
 
   return (
     <div className="relative w-full h-full z-40">
@@ -54,8 +58,12 @@ export default function ProSlider() {
       >
         {slides.map((slide: any) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative w-full flex justify-center items-center  z-50">
-              <img src={slide.image} alt="Phone" className="w-full" />
+            <div className="relative w-full flex justify-center items-center z-50">
+              <img 
+                src={slide.image || slide.phone} 
+                alt="Phone" 
+                className="w-full h-auto object-cover" 
+              />
               {/* <img
                 src={slide.badge}
                 alt="Badge"

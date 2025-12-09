@@ -28,7 +28,7 @@ export default function Testimonials() {
     return <div>Error: {errorHome.message}</div>;
   }
 
-  console.log(titles);
+  //console.log(titles);
 
   const titleBlock = titles?.find(
     (block: any): block is any =>
@@ -42,8 +42,8 @@ export default function Testimonials() {
     'YOUR <span style="color:#FCA13B">TESTIMONIALS</span>';
   // const subHeading = titleBlock?.sub_heading || "";
 
-  console.log("titleBlock:", titleBlock);
-  console.log("heading:", heading);
+  // console.log("titleBlock:", titleBlock);
+  // console.log("heading:", heading);
 
   const testimonials = data?.map((s) => ({
     id: s.id,
@@ -52,6 +52,10 @@ export default function Testimonials() {
     rating: 5, // default
     image: s.avatar?.url, // "/uploads/avatar1_d95a6afcff.png"
   }));
+
+  // console.log(data);
+
+  // console.log(testimonials);
 
   return (
     <div className="relative w-full overflow-hidden">
