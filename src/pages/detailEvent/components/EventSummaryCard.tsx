@@ -139,7 +139,7 @@ export default function EventSummaryCard({ detail }: { detail: Event }) {
         </div>
         <button
           onClick={() => handleGetAppClick()}
-          className="flex justify-center items-center gap-2 md:gap-3 lg:gap-4 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full bg-[#F49F3F] text-white text-xs md:text-sm lg:text-base font-medium hover:bg-[#F49F3F]/90 transition"
+          className="flex justify-center items-center gap-2 md:gap-3 lg:gap-4 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full bg-[#F49F3F] text-white text-xs md:text-sm lg:text-base font-medium hover:bg-[#F49F3F]/90 transition cursor-pointer"
         >
           Download Now
         </button>

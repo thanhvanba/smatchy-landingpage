@@ -76,9 +76,9 @@ export default function TheTeamSection() {
   const titleBlock = basic?.blocks?.find(
     (block: any): block is any =>
       (block.__component === "shared.icon-text" &&
-        block.title === "The Team" || block.title === "L'équipe")
+        block.title === "The Team") ||
+      block.title === "L'équipe"
   );
-
 
   // const teamMembers = data.teamMembers.map((member: any) => ({
   //   name: member.name,
@@ -94,28 +94,26 @@ export default function TheTeamSection() {
   //   },
   // }));
 
-  // Filter team members by name
-  const SELECTED_NAMES = [
+  // Filter team members by name and order
+  const SELECTED_NAMES_ORDER = [
     "Maude Baudier",
-    "Romain Bauer",
-    "Amandine Lecerf",
     "Emilie Fravallo",
+    "Amandine Lecerf",
+    "Romain Bauer",
   ];
-  const selectedMembers = data.teamMembers.filter((member: any) =>
-    SELECTED_NAMES.includes(member.name)
+  
+  const filteredTeamMembers = SELECTED_NAMES_ORDER
+    .map((name) => 
+      data?.teamMembers?.find((member: any) => member.name === name)
+    )
+    .filter(Boolean);
+
+  // console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
+  // console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
+  console.log(
+    "🚀 ~ TheTeamSection ~ filteredTeamMembers:",
+    filteredTeamMembers
   );
-
-  const ORDER_INDICES = [0, 3, 2, 1];
-  const filteredTeamMembers = ORDER_INDICES.map(
-    (index) => selectedMembers[index]
-  ).filter(Boolean);
-
-  // console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
-  // console.log("🚀 ~ TheTeamSection ~ teamMembers:", teamMembers);
-  // console.log(
-  //   "🚀 ~ TheTeamSection ~ filteredTeamMembers:",
-  //   filteredTeamMembers
-  // );
 
   return (
     <div className="mb-12 md:mb-16 lg:mb-20">
