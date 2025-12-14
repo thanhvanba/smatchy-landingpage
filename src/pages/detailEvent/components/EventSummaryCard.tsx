@@ -1,9 +1,9 @@
 import type { Event } from "../../events/type";
 import pro from "/events/pro.png";
-import map from "/events/map.png";
-import level from "/events/level.png";
-import user from "/events/user.png";
-import download from "/events/download.png";
+import map from "/events/map.svg";
+import level from "/events/level.svg";
+import user from "/events/user.svg";
+import download from "/events/download.svg";
 import pictureEvent from "/events/picture-event.png";
 export default function EventSummaryCard({ detail }: { detail: Event }) {
   const handleGetAppClick = () => {

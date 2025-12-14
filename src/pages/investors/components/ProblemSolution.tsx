@@ -2,12 +2,12 @@ import ListProblemSolution from "./ListProblemSolution";
 import Loading from "../../../components/Loading";
 import { useInvestor } from "../../../hooks/useInvestor";
 import type { SectionItem } from "../types";
-import problemIcon1 from "/investors/finding-user.png";
-import problemIcon2 from "/investors/team-sport.png";
-import problemIcon3 from "/investors/coach.png";
-import problemIcon4 from "/investors/shake-hands.png";
-import problemIcon5 from "/investors/earn-money.png";
-import problemIcon6 from "/investors/ecosystem.png";
+import problemIcon1 from "/investors/finding-user.svg";
+import problemIcon2 from "/investors/team-sport.svg";
+import problemIcon3 from "/investors/coach.svg";
+import problemIcon4 from "/investors/shake-hands.svg";
+import problemIcon5 from "/investors/earn-money.svg";
+import problemIcon6 from "/investors/ecosystem.svg";
 
 const assetBaseEnv =
   import.meta.env.VITE_STRAPI_ASSET_URL ||

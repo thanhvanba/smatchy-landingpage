@@ -1,5 +1,5 @@
-import LogoFondjaune from "/contact/Logo_fondjaune.svg";
-import Logo3Blanc from "/contact/Logo3_blanc.png";
+import LogoFondjaune from "/contact/Logo2_blanc.svg";
+import Logo3Blanc from "/contact/Logo3_blanc.svg";
 import { HiMiniXMark } from "react-icons/hi2";
 import { BsChatDotsFill } from "react-icons/bs";
 import { TbReload } from "react-icons/tb";
