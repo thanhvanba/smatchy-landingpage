@@ -2,7 +2,8 @@
 //import image7 from "/image 7.png";
 import Yay from "/Yay.png";
 import AppStoreImage from "/App_Store_Image.svg";
-import image3 from "/Google_Play_Image.svg";
+import CHPlay from "/Google_Play_Image.svg";
+
 import Loading from "../../../components/Loading";
 import { useHome } from "../../../hooks/useHome";
 import { Link } from "react-router-dom";
@@ -16,13 +17,12 @@ export default function HeroBanner() {
     return <div>Error: {error.message}</div>;
   }
 
-  //console.log(hero);
+  console.log(hero);
 
   //const bg2 = hero?.background_image.url;
   const bg = hero?.background_image.url;
   const main_img = hero?.main_image.formats?.medium.url;
 
-  // console.log(bg);
   return (
     <>
       <div
@@ -76,7 +76,7 @@ export default function HeroBanner() {
                   />
                 </Link>
                 <Link to="https://play.google.com/store/apps/details?id=com.smatchy.app">
-                  <img src={image3} alt="" className="h-10 lg:h-12 w-auto" />
+                  <img src={CHPlay} alt="" className="h-10 lg:h-12 w-auto" />
                 </Link>
               </div>
             </div>

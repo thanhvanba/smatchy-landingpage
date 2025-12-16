@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "/logo4.svg";
+import logo from "/logo5.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 import LangSwitch from "./LangSwitch";

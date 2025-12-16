@@ -9,6 +9,7 @@ import Tiktok from "/Tiktok.svg";
 import Youtube from "/Youtube.svg";
 import { useLocale } from "../contexts/LangContext";
 import { footerTexts } from "../config/layoutConfig";
+import logo from "/footer-logo.svg";
 
 export default function Footer() {
   const { locale } = useLocale();
@@ -41,7 +42,7 @@ export default function Footer() {
     youtube: Youtube,
   };
 
-  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  //const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const socialData = data?.social || [];
 
   return (
@@ -87,7 +88,8 @@ export default function Footer() {
             {/* Logo column */}
             <div className="w-full md:w-1/5 flex justify-center md:justify-start shrink-0">
               <img
-                src={`${assetUrl}${data?.favicon.url}`}
+                // src={`${assetUrl}${data?.favicon.url}`}
+                src={logo}
                 alt="Company Logo"
                 className="h-10 w-10 md:h-24 md:w-24 object-contain"
                 loading="lazy"
