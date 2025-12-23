@@ -21,7 +21,7 @@ export default function TeamPage() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto -top-56 left-28 scale-[7] origin-top-left z-30 px-1.5 rotate-[3.5deg]"
+          className="hidden lg:block absolute w-auto -top-56 left-28 scale-[7] origin-top-left z-30 px-1.5 rotate-[3.5deg]"
         />
       </div>
       <TeamHeroBanner />

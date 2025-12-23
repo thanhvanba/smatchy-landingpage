@@ -41,7 +41,7 @@ export default function InvestorsPage() {
           <img
             src={line}
             alt=""
-            className="absolute w-auto -top-56 left-28 scale-[7] origin-top-left z-30 px-1.5 rotate-[3.5deg]"
+            className="hidden md:block absolute w-auto -top-56 left-28 scale-[7] origin-top-left z-30 px-1.5 rotate-[3.5deg]"
           />
         </div>
         <InvestorsHeroBanner />
@@ -54,7 +54,7 @@ export default function InvestorsPage() {
             <div className="relative flex items-end justify-end text-center bg-[#F49F3F] rounded-[20px] md:rounded-[30px] text-white font-bold text-xl md:text-2xl lg:text-[32px] w-full md-[w-720px] lg:w-[1080px] p-4 md:p-6">
               {block.heading}
               <img
-                className="absolute -top-3 -left-3 md:-top-4 md:left-2 lg:left-0 w-12 md:w-20 lg:w-auto"
+                className="absolute -top-2 left-6 md:-top-4 md:left-2 lg:left-12 w-12 md:w-20 lg:w-auto"
                 src={Yay2}
                 alt=""
               />

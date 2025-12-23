@@ -59,7 +59,7 @@ export default function WhySmatchyWins() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto top-[-300px] md:-top-[400px] lg:top-[-580px] left-[40%] md:left-[55%] lg:left-[64%] scale-[4] md:scale-[6] lg:scale-[8] origin-top-left px-1.5 rotate-[40.67deg]"
+          className="hidden md:block absolute w-auto top-[-300px] md:-top-[400px] lg:top-[-580px] left-[40%] md:left-[55%] lg:left-[64%] scale-[8] origin-top-left px-1.5 rotate-[40.67deg]"
         />
       </div>
       <div className="relative w-full">

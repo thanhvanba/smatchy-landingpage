@@ -13,7 +13,7 @@ export default function ProfessionalPage() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto -top-24 md:-top-44 left-20 md:left-56 scale-[7.4] rotate-13 origin-top-left z-20 px-1.5"
+          className="hidden md:block absolute w-auto -top-24 md:-top-44 left-20 md:left-56 scale-[7.4] rotate-13 origin-top-left z-20 px-1.5"
         />
       </div>
       <ProfessionalBanner />
@@ -21,7 +21,7 @@ export default function ProfessionalPage() {
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative -mt-12! lg:-mt-60! z-40">
         <ProForm />
 
-        <div className="hidden lg:block md:hidden">
+        <div className="hidden lg:block">
           <ProSlider />
         </div>
       </div>

@@ -115,36 +115,28 @@ export default function CategorySlider() {
         > */}
         <Swiper
           modules={[Autoplay]}
-          spaceBetween={4}
+          spaceBetween={30}
           breakpoints={{
             0: {
-              slidesPerView: 1.1,
-              spaceBetween: 8,
+              slidesPerView: 1,
             },
             640: {
               slidesPerView: 1.6,
-              spaceBetween: 10,
             },
             768: {
               slidesPerView: 2.1,
-              spaceBetween: 12,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 14,
             },
             1280: {
-              slidesPerView: 4.1,
-              spaceBetween: 16,
+              slidesPerView: 3.7,
             },
-            // Desktop
             1440: {
               slidesPerView: 4.2,
-              spaceBetween: 18,
             },
             1920: {
               slidesPerView: 5.2,
-              spaceBetween: 20,
             },
           }}
           loop={true}
@@ -158,7 +150,7 @@ export default function CategorySlider() {
         >
           {slides?.map((slide: any, idx: number) => (
             <SwiperSlide key={idx}>
-              <div className="relative w-[342px] h-[237px] aspect-video md:aspect-237/342 group">
+              <div className="relative w-full h-[237px] aspect-video md:aspect-237/342 group">
                 <img
                   src={`${assetUrl}${slide.image}`}
                   alt={slide.name}
