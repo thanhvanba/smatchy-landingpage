@@ -19,7 +19,7 @@ export default function HomePage() {
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
-      <div className="relative container">
+      <div className="relative container md:hidden">
         {/* Line background */}
         <img
           src={line}

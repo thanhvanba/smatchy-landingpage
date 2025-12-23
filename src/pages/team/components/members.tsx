@@ -4,6 +4,7 @@ import TeamList from "./teamList";
 import background from "/background.png";
 import line from "/line_bg.svg";
 import type { Person } from "../../../services/types/team";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
 // import mem2 from "/team/CEO.png";
 // import mem3 from "/team/lead-partner-2.png";
 // import mem1 from "/team/lead-partner.png";
@@ -44,32 +45,46 @@ import type { Person } from "../../../services/types/team";
 // ];
 export default function Members() {
   const { data, isLoading, error } = useTeam();
+  const isMobile = useMediaQuery("(max-width: 767px)");
   console.log("🚀 ~ Members ~ data:", data);
 
   if (isLoading) return <Loading />;
   if (error) return <p>Error loading team.</p>;
   if (!data?.teamMembers) return <p>No data available.</p>;
 
-  const sortedTeamMembers = [...data.teamMembers].sort((a, b) => {
+  // const sortedTeamMembers = [...data.teamMembers].sort((a, b) => {
+  //   const orderA = a.order ?? Infinity;
+  //   const orderB = b.order ?? Infinity;
+  //   return orderA - orderB;
+  // });
+
+  // 1. Sort theo `order` như bình thường
+  const sortedByOrder = [...data.teamMembers].sort((a, b) => {
     const orderA = a.order ?? Infinity;
     const orderB = b.order ?? Infinity;
     return orderA - orderB;
   });
 
-  const chunkSize = 3;
-  const chunks: Person[][] = [];
-  for (let i = 0; i < sortedTeamMembers.length; i += chunkSize) {
-    chunks.push(sortedTeamMembers.slice(i, i + chunkSize));
+  let finalMembers = sortedByOrder;
+  if (isMobile && sortedByOrder.length > 1) {
+    const [first, second, ...rest] = sortedByOrder;
+    finalMembers = [second, first, ...rest]; // đổi chỗ index 0 và 1
   }
+
+
+    const chunkSize = 3;
+  const chunks: Person[][] = [];
+  for (let i = 0; i < finalMembers.length; i += chunkSize) {
+    chunks.push(finalMembers.slice(i, i + chunkSize));
+  }
+
+
   // const chunkSize = 3;
-  // const chunks: (Person[] | null | undefined)[] = [];
-  // for (let i = 0; i < data.teamMembers!.length; i += chunkSize) {
-  //   chunks.push(data.teamMembers!.slice(i, i + chunkSize));
+  // const chunks: Person[][] = [];
+  // for (let i = 0; i < sortedTeamMembers.length; i += chunkSize) {
+  //   chunks.push(sortedTeamMembers.slice(i, i + chunkSize));
   // }
 
-  // const teamMembers = [];
-
-  //console.log(teamMembers)
 
   // 2. Template 1
   interface TemplateProps {

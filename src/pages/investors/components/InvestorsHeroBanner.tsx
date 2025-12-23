@@ -2,7 +2,7 @@ import Loading from "../../../components/Loading";
 import { useHero } from "../../../hooks/useHero";
 //import heroBanner from "/hero-banner.png";
 import Yay from "/Yay.png";
-import { MdLocalPhone, MdOutlineFileDownload } from "react-icons/md";
+import { MdCalendarToday , MdOutlineFileDownload } from "react-icons/md";
 export default function InvestorsHeroBanner() {
   const { data, isLoading, error } = useHero("k8pxj4vdpa46rs41wsc94o63");
 
@@ -90,7 +90,7 @@ export default function InvestorsHeroBanner() {
                   href={btn2.link || "#"}
                   className="flex justify-center items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full bg-white hover:bg-white/90 text-[#0A4A60] text-sm md:text-base"
                 >
-                  <MdLocalPhone size={24} /> {btn2.label}
+                  <MdCalendarToday size={24} /> {btn2.label}
                 </a>
               )}
             </div>

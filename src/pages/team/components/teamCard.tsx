@@ -34,7 +34,7 @@ const SOCIAL_ICONS: Record<string, React.ElementType> = {
 };
 
 export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
-  //console.log(teamMember);
+  console.log(teamMember);
   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const avatar = (teamMember.avatar as { url?: string })?.url;
 
@@ -59,7 +59,7 @@ export default function TeamCard({ teamMember }: { teamMember: TeamMember }) {
       </div>
 
       {/* Bio */}
-      <p className="text-[11px] md:text-xs lg:text-[14px] text-[#0F262E] group-hover:text-white leading-relaxed mb-4 md:mb-5 lg:mb-6 transition-colors duration-300">
+      <p className="md:text-xs lg:text-[14px] text-[#0F262E] group-hover:text-white leading-relaxed mb-4 md:mb-5 lg:mb-6 transition-colors duration-300">
         {teamMember.description}
       </p>
 

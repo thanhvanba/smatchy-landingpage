@@ -1,4 +1,5 @@
 export interface TeamMember {
+  id: string | number;
   name: string;
   title: string;
   avatar: string | { url: string };

@@ -7,7 +7,6 @@ import DifferentiationSection from "./components/DifferentiationSection";
 import InvestorsHeroBanner from "./components/InvestorsHeroBanner";
 import JoinSmatchy from "./components/JoinSmatchy";
 import MarketOpportunity from "./components/MarketOpportunity";
-import PeopleSay from "./components/PeopleSay";
 import ProblemSolution from "./components/ProblemSolution";
 import ProductFeatures from "./components/ProductFeatures";
 import RoadmapSection from "./components/RoadmapSection";
@@ -68,7 +67,6 @@ export default function InvestorsPage() {
         <WhySmatchyWins />
         <DifferentiationSection />
         <TractionProofSection />
-        <PeopleSay />
         <ProductFeatures />
         <UserJourneySection />
         <BusinessModelSection />

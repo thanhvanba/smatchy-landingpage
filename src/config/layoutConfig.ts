@@ -1,7 +1,7 @@
 // Shared layout translations for header and footer
 export const headerTexts = {
   menu: [
-    { link: "/", label: { en: "Home", fr: "Maison" } },
+    { link: "/", label: { en: "Home", fr: "Accueil" } },
     { link: "/team", label: { en: "Team", fr: "Équipe" } },
     { link: "/investors", label: { en: "Investors", fr: "Investisseurs" } },
     { link: "/events", label: { en: "Events", fr: "Événements" } },

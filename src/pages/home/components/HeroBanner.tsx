@@ -1,12 +1,10 @@
 //import heroBanner from "/hero-banner.png";
 //import image7 from "/image 7.png";
 import Yay from "/Yay.png";
-import AppStoreImage from "/App_Store_Image.svg";
-import CHPlay from "/Google_Play_Image.svg";
 
+import HeroButton from "../../../components/HeroButton";
 import Loading from "../../../components/Loading";
 import { useHome } from "../../../hooks/useHome";
-import { Link } from "react-router-dom";
 
 export default function HeroBanner() {
   const { isLoading, error, hero } = useHome();
@@ -67,7 +65,7 @@ export default function HeroBanner() {
                   __html: hero?.sub_heading ? hero.sub_heading : "",
                 }}
               />
-              <div className="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap w-full md:w-auto justify-center md:justify-start">
+              {/* <div className="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap w-full md:w-auto justify-center md:justify-start">
                 <Link to="https://apps.apple.com/us/app/smatchy/id6473653332">
                   <img
                     src={AppStoreImage}
@@ -78,7 +76,8 @@ export default function HeroBanner() {
                 <Link to="https://play.google.com/store/apps/details?id=com.smatchy.app">
                   <img src={CHPlay} alt="" className="h-10 lg:h-12 w-auto" />
                 </Link>
-              </div>
+              </div> */}
+              <HeroButton />
             </div>
           </div>
         </div>

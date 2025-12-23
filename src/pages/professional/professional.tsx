@@ -19,11 +19,11 @@ export default function ProfessionalPage() {
       <ProfessionalBanner />
 
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative -mt-12! lg:-mt-60! z-40">
-        {/* Form đăng ký */}
         <ProForm />
 
-        {/* Slider minh họa */}
-        <ProSlider />
+        <div className="hidden lg:block md:hidden">
+          <ProSlider />
+        </div>
       </div>
       <div className="pt-12">
         <Benefits />

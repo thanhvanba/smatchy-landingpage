@@ -9,7 +9,7 @@ const BusinessMetrics = () => {
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  console.log(data);
+  //console.log(data);
 
   const block = data?.blocks?.find(
     (block: any): block is any =>
@@ -22,7 +22,7 @@ const BusinessMetrics = () => {
 
   if (!block) return null;
 
-  console.log(block);
+  //console.log(block);
 
   const metrics = block.stats_item.map((item: any) => ({
     title: item.title,
@@ -31,7 +31,7 @@ const BusinessMetrics = () => {
     btn_url: item.button.link,
   }));
 
-  // console.log(metrics);
+  console.log(metrics);
   return (
     <div
       className="relative z-40 container"
@@ -57,21 +57,18 @@ const BusinessMetrics = () => {
                   {metric.heading}
                 </p>
               </div>
-              {/* <a href={metric.btn_url} target="_blank" rel="noopener noreferrer">
-                <button className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-xs md:text-sm lg:text-base font-semibold bg-[#D9D9D9A8] transition">
+
+              {/* Chỉ hiển thị button khi index === 1 */}
+              {index === 1 && metric.btn_url && (
+                <button
+                  onClick={() =>
+                    window.open(metric.btn_url, "_blank", "noopener,noreferrer")
+                  }
+                  className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-xs md:text-sm lg:text-base font-semibold bg-[#D9D9D9A8] transition cursor-pointer"
+                >
                   {metric.btn_label} <FaArrowRightLong />
                 </button>
-              </a> */}
-              <button
-                onClick={() =>
-                  metric.btn_url &&
-                  window.open(metric.btn_url, "_blank", "noopener,noreferrer")
-                }
-                disabled={!metric.btn_url}
-                className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-xs md:text-sm lg:text-base font-semibold bg-[#D9D9D9A8] transition cursor-pointer disabled:cursor-not-allowed"
-              >
-                {metric.btn_label} <FaArrowRightLong />
-              </button>
+              )}
             </div>
           ))}
         </div>

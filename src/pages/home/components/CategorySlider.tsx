@@ -46,7 +46,7 @@ export default function CategorySlider() {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log("CategorySlider data:", data);
+  //console.log("CategorySlider data:", data);
 
   // Flatten and safe access with fallback
   const slides = (Array.isArray(data) ? data : data ? [data] : [])
@@ -58,7 +58,7 @@ export default function CategorySlider() {
       image: s.image?.url || "/sports/badminton.png", // Fallback image
     }));
 
-  console.log("CategorySlider slides:", slides);
+  //console.log("CategorySlider slides:", slides);
 
   if (!slides || slides.length === 0) {
     return <div className="text-center py-10">No categories available</div>;
@@ -75,7 +75,7 @@ export default function CategorySlider() {
         data-aos="fade-up"
         data-aos-duration="1000"
       >
-        <Swiper
+        {/* <Swiper
           modules={[Autoplay]}
           spaceBetween={4}
           breakpoints={{
@@ -100,7 +100,7 @@ export default function CategorySlider() {
               spaceBetween: 8,
             },
             640: {
-              slidesPerView: 1,
+              slidesPerView: 2,
               spaceBetween: 4,
             },
           }}
@@ -111,6 +111,49 @@ export default function CategorySlider() {
             disableOnInteraction: false,
           }}
           centeredSlides={false}
+          className="w-full overflow-hidden"
+        > */}
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={4}
+          breakpoints={{
+            0: {
+              slidesPerView: 1.1,
+              spaceBetween: 8,
+            },
+            640: {
+              slidesPerView: 1.6,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 2.1,
+              spaceBetween: 12,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 14,
+            },
+            1280: {
+              slidesPerView: 4.1,
+              spaceBetween: 16,
+            },
+            // Desktop
+            1440: {
+              slidesPerView: 4.2,
+              spaceBetween: 18,
+            },
+            1920: {
+              slidesPerView: 5.2,
+              spaceBetween: 20,
+            },
+          }}
+          loop={true}
+          speed={3000}
+          autoplay={{
+            delay: 1,
+            disableOnInteraction: false,
+          }}
+          centeredSlides={true}
           className="w-full overflow-hidden"
         >
           {slides?.map((slide: any, idx: number) => (

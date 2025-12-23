@@ -8,15 +8,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import banner4 from "/events/banner4.png";
 
 import Yay from "/Yay.png";
-import AppStoreImage from "/App_Store_Image.svg";
-import image3 from "/Google_Play_Image.svg";
 
-import "../event.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { Autoplay } from "swiper/modules";
+import HeroButton from "../../../components/HeroButton";
 import Loading from "../../../components/Loading";
 import { useHero } from "../../../hooks/useHero";
-import { Link } from "react-router-dom";
+import "../event.css";
 
 // const listBaner = [
 //   {
@@ -128,7 +126,7 @@ export default function EventHeroBanner() {
               />
             </div>
             <div className="flex gap-2 md:gap-3 lg:gap-4 flex-wrap md:flex-nowrap">
-              <Link to="https://apps.apple.com/us/app/smatchy/id6473653332">
+              {/* <Link to="https://apps.apple.com/us/app/smatchy/id6473653332">
                 <img
                   src={AppStoreImage}
                   alt=""
@@ -145,7 +143,8 @@ export default function EventHeroBanner() {
                   data-aos-duration="1000"
                   className="h-8 md:h-10 lg:h-auto w-auto"
                 />
-              </Link>
+              </Link> */}
+              <HeroButton />
             </div>
           </div>
         </div>
