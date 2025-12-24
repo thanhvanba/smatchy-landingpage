@@ -2,10 +2,7 @@ import HeroButton from "../../../components/HeroButton";
 import { usePro } from "../../../hooks/usePro";
 import Yay from "/Yay.png";
 import background from "/background.png";
-import Yay from "/Yay.png";
 import line from "/line_bg.svg";
-import { usePro } from "../../../hooks/usePro";
-import HeroButton from "../../../components/HeroButton";
 export default function ComingSoon() {
   const { data } = usePro();
   console.log(data);
