@@ -44,7 +44,7 @@ export default function Presentation() {
                     {item.heading}
                   </div>
                   <div
-                    className="lg:pl-32 text-[#172E36] text-xs md:text-sm lg:text-base"
+                    className="lg:pl-38 text-[#172E36] text-xs md:text-sm lg:text-base"
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   />
                 </div>

@@ -1,20 +1,30 @@
 import { FaArrowRightLong } from "react-icons/fa6";
-import movie from "/investors/movie.png";
-import Yay3 from "/Yay3.png";
-import { InvestorPopulateType } from "../../../services/strapi";
-import { useInvestor } from "../../../hooks/useInvestor";
 import Loading from "../../../components/Loading";
+import { useInvestor } from "../../../hooks/useInvestor";
+import { InvestorPopulateType } from "../../../services/strapi";
+import Yay3 from "/Yay3.png";
+import { useState } from "react";
 export default function ProductFeatures() {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
+  const [videoLoaded, setVideoLoaded] = useState(true);
+
   if (isLoading) return <Loading />;
   if (error) return null;
 
+  const handleVideoError = () => {
+    setVideoLoaded(false);
+  };
+
+  if (!videoLoaded) {
+    return null; // hoặc <div className="w-full h-0"></div> nếu muốn giữ khoảng trống
+  }
   //console.log(data);
 
   const titleBlock = data?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "shared.icon-text" &&
-      block.title === "PRODUCT & FEATURES" || block.title === "PRODUIT ET FONCTIONNALITÉS"
+      (block.__component === "shared.icon-text" &&
+        block.title === "PRODUCT & FEATURES") ||
+      block.title === "PRODUIT ET FONCTIONNALITÉS"
   );
 
   // const videoBlock = data?.blocks?.find(
@@ -89,7 +99,15 @@ export default function ProductFeatures() {
           </div>
 
           <div className="w-full">
-            <img className="w-full" src={movie} alt="" />
+            <video
+              src="/VIDEO_PITCH_SMATCHY.mp4"
+              className="w-full"
+              controls
+              onError={handleVideoError}
+              autoPlay={false}
+              muted={false}
+              playsInline
+            />
           </div>
         </div>
       </div>

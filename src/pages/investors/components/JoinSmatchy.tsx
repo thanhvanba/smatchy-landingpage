@@ -1,4 +1,4 @@
-import { MdLocalPhone, MdOutlineFileDownload } from "react-icons/md";
+import { MdCalendarToday, MdOutlineFileDownload } from "react-icons/md";
 import background from "/background.png";
 import Yay from "/Yay.png";
 import { InvestorPopulateType } from "../../../services/strapi";
@@ -94,7 +94,7 @@ export default function JoinSmatchy() {
               data-aos-duration="1000"
               className="flex justify-center items-center gap-2 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 lg:py-3 rounded-full cursor-pointer bg-white hover:bg-white/90 text-[#0A4A60] text-xs md:text-sm lg:text-base"
             >
-              <MdLocalPhone size={20} /> {ctaSchedule.label}
+              <MdCalendarToday size={20} /> {ctaSchedule.label}
             </button>
           </div>
         </div>

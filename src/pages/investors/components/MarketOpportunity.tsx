@@ -54,20 +54,23 @@ export default function MarketOpportunity() {
 
   const titleBlock = data?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "blocks.title" &&
-      block.title === "Title: Market Opportunity" || block.title === "Title:  Opportunité de marché"
+      (block.__component === "blocks.title" &&
+        block.title === "Title: Market Opportunity") ||
+      block.title === "Title:  Opportunité de marché"
   );
 
   const marketData = stats?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "blocks.stats" &&
-      block.title === "Item: Market Opportunity" || block.title === "Item:  Opportunité de marché"
+      (block.__component === "blocks.stats" &&
+        block.title === "Item: Market Opportunity") ||
+      block.title === "Item:  Opportunité de marché"
   );
 
   const growthImages = data?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "hero.slider" &&
-      block.title === "Image: Market Opportunity" || block.title === "Image: Opportunité de marché"
+      (block.__component === "hero.slider" &&
+        block.title === "Image: Market Opportunity") ||
+      block.title === "Image: Opportunité de marché"
   );
 
   //console.log(growthImages);
@@ -93,7 +96,7 @@ export default function MarketOpportunity() {
       >
         <div className="flex flex-col justify-center items-center py-8 md:py-10 lg:py-24 gap-8 md:gap-10 lg:gap-12">
           {/* Section Title */}
-          <div className=" inline-flex">
+          <div className=" inline-flex pt-5">
             <div className="relative z-40 text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold uppercase">
               <div
                 dangerouslySetInnerHTML={{
@@ -101,19 +104,11 @@ export default function MarketOpportunity() {
                 }}
               />
               <img
-                className="absolute -top-8 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-12 md:w-16 lg:w-auto"
+                className="absolute -top-8 -right-8 md:-top-12 md:-right-12 lg:-top-20 lg:-right-20 w-12 md:w-16 lg:w-auto"
                 src={Yay3}
                 alt=""
               />
             </div>
-            {/* <h2 className="relative z-40 text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold">
-              MARKET & <span className="text-[#FCA13B]\">OPPORTUNITY</span>
-              <img
-                className="absolute -top-10 -right-8 md:-top-16 md:-right-12 lg:-top-20 lg:-right-20 w-8 md:w-12 lg:w-auto"
-                src={Yay3}
-                alt=""
-              />
-            </h2> */}
           </div>
           {titleBlock.button.map((item: any) => (
             <button

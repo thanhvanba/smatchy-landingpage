@@ -26,10 +26,10 @@ export default function HeroButton() {
         setError(null);
         const [playRes, appRes] = await Promise.all([
           PLAY_STORE_ID
-            ? fetch(`${API_BASE_URL}/play-store/${PLAY_STORE_ID}`)
+            ? fetch(`${API_BASE_URL}/ratings/play-store/${PLAY_STORE_ID}`)
             : Promise.resolve(null),
           APP_STORE_ID
-            ? fetch(`${API_BASE_URL}/app-store/${APP_STORE_ID}`)
+            ? fetch(`${API_BASE_URL}/ratings/app-store/${APP_STORE_ID}`)
             : Promise.resolve(null),
         ]);
 

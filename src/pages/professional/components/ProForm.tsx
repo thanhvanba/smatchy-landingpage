@@ -175,7 +175,7 @@ export default function ProForm() {
         </Form.Item>
 
         <Form.Item>
-          <button className="w-full rounded-full text-white font-medium text-xl py-4 bg-[#FCA13B] border-[#FCA13B]">
+          <button className="w-full rounded-full text-white font-medium text-xl py-4 bg-[#FCA13B] border-[#FCA13B] cursor-pointer">
             {(proFormConfig.buttons.submit as any)[locale]}
           </button>
         </Form.Item>
