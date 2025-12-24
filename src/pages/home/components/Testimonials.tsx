@@ -70,7 +70,7 @@ export default function Testimonials() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto -top-20 left-[42%] scale-[3] md:scale-[5] lg:scale-[7.4] origin-top-left px-1.5 rotate-[25.67deg]"
+          className="hidden md:block absolute w-auto -top-20 left-[42%] scale-[7.4] origin-top-left px-1.5 rotate-[25.67deg]"
         />
       </div>
       <div className="">

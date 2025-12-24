@@ -71,20 +71,17 @@ export default function Members() {
     finalMembers = [second, first, ...rest]; // đổi chỗ index 0 và 1
   }
 
-
-    const chunkSize = 3;
+  const chunkSize = 3;
   const chunks: Person[][] = [];
   for (let i = 0; i < finalMembers.length; i += chunkSize) {
     chunks.push(finalMembers.slice(i, i + chunkSize));
   }
-
 
   // const chunkSize = 3;
   // const chunks: Person[][] = [];
   // for (let i = 0; i < sortedTeamMembers.length; i += chunkSize) {
   //   chunks.push(sortedTeamMembers.slice(i, i + chunkSize));
   // }
-
 
   // 2. Template 1
   interface TemplateProps {
@@ -118,7 +115,7 @@ export default function Members() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto -top-32 md:-top-48 lg:-top-64 left-[60%] md:left-[70%] lg:left-[80%] scale-[4] md:scale-[6] lg:scale-[8] origin-top-left px-1.5 rotate-[40.67deg]"
+          className="hidden md:block absolute w-auto -top-32 md:-top-48 lg:-top-64 left-[60%] md:left-[70%] lg:left-[80%] scale-[8] origin-top-left px-1.5 rotate-[40.67deg]"
         />
       </div>
       <div

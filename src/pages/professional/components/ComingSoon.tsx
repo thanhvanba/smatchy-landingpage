@@ -2,7 +2,10 @@ import HeroButton from "../../../components/HeroButton";
 import { usePro } from "../../../hooks/usePro";
 import Yay from "/Yay.png";
 import background from "/background.png";
+import Yay from "/Yay.png";
 import line from "/line_bg.svg";
+import { usePro } from "../../../hooks/usePro";
+import HeroButton from "../../../components/HeroButton";
 export default function ComingSoon() {
   const { data } = usePro();
   console.log(data);
@@ -22,7 +25,7 @@ export default function ComingSoon() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto -top-12 md:-top-16 lg:-top-20 left-[30%] md:left-[36%] lg:left-[42%] scale-[4] md:scale-[5.5] lg:scale-[7.4] origin-top-left px-1.5 rotate-[25.67deg]"
+          className="hidden md:block absolute w-auto -top-12 md:-top-16 lg:-top-20 left-[30%] md:left-[36%] lg:left-[42%] scale-[7.4] origin-top-left px-1.5 rotate-[25.67deg]"
         />
       </div>
       <div
@@ -85,7 +88,7 @@ export default function ComingSoon() {
               <Link to="https://play.google.com/store/apps/details?id=com.smatchy.app">
                 <img src={image3} alt="" className="h-10 lg:h-12 w-auto" />
               </Link> */}
-              <HeroButton/>
+              <HeroButton />
             </div>
           </div>
         </div>

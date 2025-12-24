@@ -2,7 +2,7 @@ import pro from "/events/pro.png";
 
 export default function PriceActive({ price }: { price: number }) {
   return (
-    <div className="bg-[#0A4A60] rounded-lg w-20 md:w-24 lg:w-[130px]">
+    <div className="bg-[#0A4A60] rounded-lg lg:w-[130px]">
       <div className="flex items-center justify-center gap-1 p-0.5 md:p-1 text-white text-[10px] md:text-xs lg:text-xs font-medium">
         <img
           className="h-2 md:h-2.5 lg:h-3 w-2 md:w-2.5 lg:w-3"

@@ -24,7 +24,7 @@ export default function CookiePolicy() {
           <img
             src={line}
             alt=""
-            className="absolute w-auto -top-40 md:-top-48 lg:-top-52 left-10 md:left-16 lg:left-20 scale-[5] md:scale-[6.2] lg:scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
+            className="hidden md:block absolute w-auto -top-40 md:-top-48 lg:-top-52 left-10 md:left-16 lg:left-20 scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
           />
         </div>
         <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-30">
@@ -39,7 +39,7 @@ export default function CookiePolicy() {
               </span>
               {(cookiePolicyTexts.titleEnd as any)[locale]}
               <img
-                className="absolute -top-10 md:-top-12 lg:-top-16 -right-12 md:-right-16 lg:-right-20 w-6 md:w-8 lg:w-auto"
+                className="absolute -top-6 md:-top-8 lg:-top-16 -right-8 md:-right-12 lg:-right-20 w-12 md:w-16 lg:w-auto"
                 src={Yay3}
                 alt=""
               />
@@ -60,9 +60,7 @@ export default function CookiePolicy() {
               </p>
             </div>
             <div className="inline-flex">
-              <p className="">
-                {(cookiePolicyTexts.overview as any)[locale]}
-              </p>
+              <p className="">{(cookiePolicyTexts.overview as any)[locale]}</p>
             </div>
           </div>
 

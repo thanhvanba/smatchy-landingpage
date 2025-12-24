@@ -101,7 +101,7 @@ export default function TermsUse() {
           <img
             src={line}
             alt=""
-            className="absolute w-auto -top-32 md:-top-40 lg:-top-52 left-4 md:left-10 lg:left-20 scale-[3] md:scale-[5] lg:scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
+            className="hidden md:block absolute w-auto -top-32 md:-top-40 lg:-top-52 left-4 md:left-10 lg:left-20 scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
           />
         </div>
         <div className="relative flex flex-col gap-4 md:gap-5 lg:gap-6 bg-[#E2F6F6] shadow rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 mt-10 md:mt-14 lg:mt-20 mb-52 z-30">
@@ -116,7 +116,7 @@ export default function TermsUse() {
               </span>
               {(termsOfUseTexts.titleEnd as any)[locale]}
               <img
-                className="absolute -top-8 -right-8 md:-top-12 md:-right-16 lg:-top-16 lg:-right-20 w-6 md:w-10 lg:w-auto"
+                className="absolute -top-6 md:-top-8 lg:-top-16 -right-8 md:-right-12 lg:-right-20 w-12 md:w-16 lg:w-auto"
                 src={Yay3}
                 alt=""
               />

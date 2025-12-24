@@ -23,7 +23,7 @@ export default function ContactPage() {
           <img
             src={line}
             alt=""
-            className="absolute w-auto -top-28 md:-top-40 lg:-top-56 left-8 md:left-16 lg:left-28 scale-[3.5] md:scale-[5] lg:scale-[7] origin-top-left z-30 px-1.5 rotate-[3.5deg]"
+            className="hidden md:block absolute w-auto -top-28 md:-top-40 lg:-top-56 left-8 md:left-16 lg:left-28 scale-[7] origin-top-left z-30 px-1.5 rotate-[3.5deg]"
           />
         </div>
         <ContactHeroBanner />
@@ -33,7 +33,11 @@ export default function ContactPage() {
           data-aos-duration="1000"
         >
           <div className="relative inline-flex items-center justify-center text-center leading-6 md:leading-8 lg:leading-10 bg-[#F49F3F] rounded-2xl md:rounded-3xl lg:rounded-[30px] text-white font-bold text-sm md:text-lg lg:text-[32px] w-full md:w-[700px] lg:w-[930px] p-4 md:p-5 lg:p-6 ">
-            <div dangerouslySetInnerHTML={{ __html: titleBlock?.heading ? titleBlock?.heading : "" }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: titleBlock?.heading ? titleBlock?.heading : "",
+              }}
+            />
             <img
               className="absolute top-0  md:-top-1 lg:-top-4 left-0 lg:-left-1 w-8 md:w-12 lg:w-auto"
               src={Yay2}

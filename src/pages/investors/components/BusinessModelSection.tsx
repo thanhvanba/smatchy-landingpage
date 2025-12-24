@@ -89,7 +89,7 @@ export default function BusinessModelSection() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto top-[-452px] left-[135%] scale-[7.5] origin-top-left px-1.5 rotate-50"
+          className="hidden md:block absolute w-auto top-[-452px] left-[135%] scale-[7.5] origin-top-left px-1.5 rotate-50"
         />
       </div>
       <div

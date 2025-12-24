@@ -31,6 +31,7 @@ const BusinessMetrics = () => {
     btn_url: item.button.link,
   }));
 
+  const btn = metrics.find((metric: any) => metric.btn_url);
   console.log(metrics);
   return (
     <div
@@ -57,21 +58,21 @@ const BusinessMetrics = () => {
                   {metric.heading}
                 </p>
               </div>
-
-              {/* Chỉ hiển thị button khi index === 1 */}
-              {index === 1 && metric.btn_url && (
-                <button
-                  onClick={() =>
-                    window.open(metric.btn_url, "_blank", "noopener,noreferrer")
-                  }
-                  className="flex justify-center items-center gap-2 text-white rounded-full px-3 md:px-4 py-2 text-xs md:text-sm lg:text-base font-semibold bg-[#D9D9D9A8] transition cursor-pointer"
-                >
-                  {metric.btn_label} <FaArrowRightLong />
-                </button>
-              )}
             </div>
           ))}
         </div>
+        {btn && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() =>
+                window.open(btn.btn_url, "_blank", "noopener,noreferrer")
+              }
+              className="flex justify-center items-center gap-2 text-white rounded-full px-6 md:px-8 py-2 text-xs md:text-sm lg:text-base font-semibold bg-[#D9D9D9A8] transition cursor-pointer"
+            >
+              {btn.btn_label} <FaArrowRightLong />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -93,8 +93,16 @@ export default function ContactFormChatBot() {
       </Form.Item>
 
       <Form.Item>
-        <button className="w-full rounded-full text-white font-medium text-xl py-3 bg-[#FCA13B] border-[#FCA13B]">
-          {(contactFormConfig.buttons.submit as any)[locale]}
+        <button
+          type="submit"
+          disabled={mutation.isPending}
+          className={`cursor-pointer w-full rounded-full text-white font-medium text-xl py-3
+      ${mutation.isPending ? "opacity-70 cursor-not-allowed" : ""}
+      bg-[#FCA13B] border-[#FCA13B]`}
+        >
+          {mutation.isPending
+            ? "Sending..."
+            : (contactFormConfig.buttons.submit as any)[locale]}
         </button>
       </Form.Item>
     </Form>

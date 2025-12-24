@@ -8,6 +8,7 @@ export default function ContactFormCard() {
   const { locale } = useLocale();
   const [form] = Form.useForm<ContactForm>();
   const mutation = useContact();
+  console.log("🚀 ~ ContactFormCard ~ mutation:", mutation);
 
   const onFinish = (values: ContactForm) => {
     const payload = {
@@ -98,8 +99,16 @@ export default function ContactFormCard() {
       </Form.Item>
 
       <Form.Item>
-        <button className="w-full rounded-full text-white font-medium text-xl py-4 bg-[#FCA13B] border-[#FCA13B]">
-          {(contactFormConfig.buttons.sendMessage as any)[locale]}
+        <button
+          type="submit"
+          disabled={mutation.isPending}
+          className={`cursor-pointer w-full rounded-full text-white font-medium text-xl py-4 
+      ${mutation.isPending ? "opacity-70 cursor-not-allowed" : ""}
+      bg-[#FCA13B] border-[#FCA13B]`}
+        >
+          {mutation.isPending
+            ? "Sending..."
+            : (contactFormConfig.buttons.sendMessage as any)[locale]}
         </button>
       </Form.Item>
     </Form>

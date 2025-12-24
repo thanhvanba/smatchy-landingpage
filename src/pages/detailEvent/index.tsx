@@ -228,7 +228,7 @@ const events = [
 export default function DetailEvent() {
   const { slug } = useParams<{ slug: string }>();
   const { data: apiData, isLoading, error } = useEventDetail(slug || "");
- const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
 
   if (error) {
@@ -269,7 +269,7 @@ export default function DetailEvent() {
         <img
           src={line}
           alt=""
-          className="absolute w-auto -top-28 md:-top-40 lg:-top-56 left-8 md:left-16 lg:left-28 scale-[3.5] md:scale-[5] lg:scale-[7] origin-top-left z-20 px-1.5 rotate-[3.5deg]"
+          className="hidden md:block absolute w-auto -top-28 md:-top-40 lg:-top-56 left-8 md:left-16 lg:left-28 scale-[7] origin-top-left z-20 px-1.5 rotate-[3.5deg]"
         />
       </div>
       {detail && (

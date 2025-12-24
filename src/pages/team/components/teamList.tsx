@@ -46,7 +46,7 @@ export default function TeamList({
           <div
             key={member.id ?? index}
             className={`${
-              index === 0 || index === 2 ? "pt-0 sm:pt-0 md:pt-16" : "pt-0"
+              index === 0 || index === 2 ? "pt-0 sm:pt-16" : "pt-0"
             }`}
             data-aos="fade-up"
             data-aos-duration={index === 0 ? "500" : "2000"}

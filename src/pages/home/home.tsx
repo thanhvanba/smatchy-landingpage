@@ -19,12 +19,12 @@ export default function HomePage() {
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
-      <div className="relative container md:hidden">
+      <div className="relative container">
         {/* Line background */}
         <img
           src={line}
           alt=""
-          className="absolute w-auto -top-24 md:-top-44 left-20 md:left-56 scale-[8] rotate-13 origin-top-left z-20 px-1.5"
+          className="hidden md:block absolute w-auto -top-24 md:-top-48 left-20 md:left-56 scale-[7.8] rotate-13 origin-top-left z-20 px-1.5"
         />
       </div>
       <HeroBanner />
