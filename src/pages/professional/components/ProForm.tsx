@@ -146,7 +146,7 @@ export default function ProForm() {
             onChange={handleRoleChange}
           >
             {roleOptions[locale as keyof typeof roleOptions]?.map((opt) => (
-              <Option key={opt.value} value={opt.value}>
+              <Option key={opt.value} value={opt.label}>
                 {opt.label}
               </Option>
             ))}
