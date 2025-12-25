@@ -11,3 +11,13 @@ export interface ContactForm {
   message: string;
   status_contact: string;
 }
+
+export interface ProForm {
+  full_name: string;
+  email: string;
+  role: string;
+  sport: string | string[];
+  comments?: string;
+  status_contact: string;
+  other_role?: string;
+}

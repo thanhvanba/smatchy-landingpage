@@ -8,7 +8,7 @@ export default function ContactFormCard() {
   const { locale } = useLocale();
   const [form] = Form.useForm<ContactForm>();
   const mutation = useContact();
-  console.log("🚀 ~ ContactFormCard ~ mutation:", mutation);
+  //console.log("🚀 ~ ContactFormCard ~ mutation:", mutation);
 
   const onFinish = (values: ContactForm) => {
     const payload = {

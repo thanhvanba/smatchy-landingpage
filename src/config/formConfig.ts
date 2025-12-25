@@ -210,6 +210,10 @@ export const proFormConfig = {
       en: "Please describe your role",
       fr: "Veuillez décrire votre rôle",
     },
+    error: {
+      en: "Failed to send",
+      fr: "Échec de l'envoi",
+    },
   },
 };
 

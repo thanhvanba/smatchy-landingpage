@@ -6,6 +6,8 @@ import {
   roleOptions,
   sportOptions,
 } from "../../../config/formConfig";
+import type { ProForm } from "../../../services/types/contact";
+import { usePreReg } from "../../../hooks/usePreReg";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -15,6 +17,7 @@ export default function ProForm() {
   const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [otherRoleText, setOtherRoleText] = useState("");
+  const mutation = usePreReg();
 
   const handleRoleChange = (value: string) => {
     if (value === "other") {
@@ -24,8 +27,9 @@ export default function ProForm() {
 
   const handleModalOk = () => {
     if (otherRoleText.trim()) {
-      form.setFieldValue("role_description", otherRoleText);
+      form.setFieldValue("other_role", otherRoleText);
       setIsModalOpen(false);
+      setOtherRoleText("");
     } else {
       message.warning((proFormConfig.messages.warning as any)[locale]);
     }
@@ -34,15 +38,33 @@ export default function ProForm() {
   const handleModalCancel = () => {
     setIsModalOpen(false);
     form.setFieldValue("role", undefined);
+    form.setFieldValue("other_role", undefined);
     setOtherRoleText("");
   };
 
-  const onFinish = (_values: any) => {
-    setTimeout(() => {
-      message.success((proFormConfig.messages.success as any)[locale]);
-      form.resetFields();
-      setOtherRoleText("");
-    }, 1000);
+  // const onFinish = (_values: any) => {
+  //   setTimeout(() => {
+  //     message.success((proFormConfig.messages.success as any)[locale]);
+  //     form.resetFields();
+  //     setOtherRoleText("");
+  //   }, 1000);
+  // };
+
+  const onFinish = (values: ProForm) => {
+    const payload = {
+      ...values,
+      status_contact: (values as any).status_contact || "new",
+    } as ProForm;
+    mutation.mutate(payload, {
+      onSuccess: () => {
+        message.success((proFormConfig.messages.success as any)[locale]);
+        form.resetFields();
+        setOtherRoleText("");
+      },
+      onError: () => {
+        message.error((proFormConfig.messages.error as any)[locale]);
+      },
+    });
   };
 
   const tagRender = (props: any) => {
@@ -131,6 +153,10 @@ export default function ProForm() {
           </Select>
         </Form.Item>
 
+        <Form.Item name="other_role" noStyle>
+          <Input type="hidden" />
+        </Form.Item>
+
         <Form.Item
           name="sport"
           label={
@@ -179,6 +205,19 @@ export default function ProForm() {
             {(proFormConfig.buttons.submit as any)[locale]}
           </button>
         </Form.Item>
+        {/* <Form.Item>
+          <button
+            type="submit"
+            disabled={mutation.isPending}
+            className={`cursor-pointer w-full rounded-full text-white font-medium text-xl py-4 
+              ${mutation.isPending ? "opacity-70 cursor-not-allowed" : ""}
+              bg-[#FCA13B] border-[#FCA13B]`}
+          >
+            {mutation.isPending
+              ? "Sending..."
+              : (proFormConfig.buttons.submit as any)[locale]}
+          </button>
+        </Form.Item> */}
       </Form>
 
       <Modal

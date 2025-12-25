@@ -11,7 +11,7 @@ import type {
   ISport,
 } from "./types/global";
 import type { Person, Team } from "./types/team";
-import type { ContactForm } from "./types/contact";
+import type { ContactForm, ProForm } from "./types/contact";
 import type { TestimonialList } from "./types/testimonial";
 import type { Post, PostsResponse, Category } from "./types/post";
 
@@ -20,8 +20,7 @@ const DEFAULT_STRAPI_URL = "https://strapi.annk.info/api";
 const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || DEFAULT_STRAPI_URL;
 
 export const STRAPI_ASSET_URL =
-  import.meta.env.VITE_STRAPI_ASSET_URL ||
-  STRAPI_URL.replace(/\/api$/, "");
+  import.meta.env.VITE_STRAPI_ASSET_URL || STRAPI_URL.replace(/\/api$/, "");
 
 const strapiApi = axios.create({
   baseURL: STRAPI_URL,
@@ -186,6 +185,19 @@ export const postContact = async (payload: ContactForm) => {
   }
 };
 
+export const postPreReg = async (payload: ProForm) => {
+  try {
+    const response = await strapiApi.post<ProForm>(
+      "/pre-register-form",
+      payload
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error posting pre-register:", error);
+    throw error;
+  }
+};
+
 export const fetchSport = async () => {
   const response = await fetchStrapi<any, { data: ISport; meta: any }>(
     "/sports?fields[0]=name&populate[image][fields][0]=url"
@@ -257,7 +269,6 @@ export const fetchCategories = async (): Promise<Category[]> => {
   return response.data || [];
 };
 
-
 export const fetchPro = async () => {
   const response = await fetchStrapi<any, { data: Team; meta: any }>(
     "/professional?populate[blocks][populate]=*"
@@ -268,7 +279,6 @@ export const fetchPro = async () => {
 
   return null;
 };
-
 
 export const fetchContactPage = async () => {
   const response = await fetchStrapi<any, { data: Team; meta: any }>(
