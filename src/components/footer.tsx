@@ -16,14 +16,6 @@ export default function Footer() {
   const { locale } = useLocale();
   const { data, isLoading, error } = useGlobal();
   console.log("🚀 ~ Footer ~ data:", data);
-  //const { data: postsResponse } = usePost();
-  //const posts = postsResponse?.data || [];
-  //console.log(posts);
-  // const sortedLegal = useReorder(
-  //   posts,
-  //   ["legal-notices", "terms-of-use", "privacy-policy", "cookies"],
-  //   "slug"
-  // );
 
   const navigate = useNavigate();
   if (isLoading) return <Loading />;
@@ -144,12 +136,12 @@ export default function Footer() {
 
               {/* Legal links row */}
               <nav aria-label="Legal pages" className="pt-2 md:pt-4">
-                <ul className="grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-6 text-xs md:text-sm">
+                <ul className="flex flex-wrap justify-center md:justify-start gap-x-10 gap-y-3">
                   {(footerTexts.legalLinks as any).map((link: any) => (
-                    <li key={link.path} className="text-center md:text-left">
+                    <li key={link.path} className="text-center">
                       <button
                         onClick={() => navigate(link.path)}
-                        className="text-white/90 hover:text-white transition-colors py-2 px-1 hover:underline underline-offset-4 w-full md:w-auto cursor-pointer"
+                        className="text-white/90 hover:text-white transition-colors py-2 px-1 hover:underline underline-offset-4 w-full"
                       >
                         {(link.label as any)[locale]}
                       </button>
