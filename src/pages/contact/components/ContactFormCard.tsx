@@ -1,14 +1,14 @@
-import { Form, Input, message } from "antd";
+import { Form, Input } from "antd";
 import { useContact } from "../../../hooks/useContact";
 import { useLocale } from "../../../contexts/LangContext";
 import type { ContactForm } from "../../../services/types/contact";
 import { contactFormConfig } from "../../../config/formConfig";
+import { toast } from "react-toastify";
 
 export default function ContactFormCard() {
   const { locale } = useLocale();
   const [form] = Form.useForm<ContactForm>();
   const mutation = useContact();
-  //console.log("🚀 ~ ContactFormCard ~ mutation:", mutation);
 
   const onFinish = (values: ContactForm) => {
     const payload = {
@@ -17,11 +17,17 @@ export default function ContactFormCard() {
     } as ContactForm;
     mutation.mutate(payload, {
       onSuccess: () => {
-        message.success((contactFormConfig.messages.success as any)[locale]);
+        toast.success((contactFormConfig.messages.success as any)[locale], {
+          position: "top-right",
+          autoClose: 3000,
+        });
         form.resetFields();
       },
       onError: () => {
-        message.error((contactFormConfig.messages.error as any)[locale]);
+        toast.error((contactFormConfig.messages.error as any)[locale], {
+          position: "top-right",
+          autoClose: 3000,
+        });
       },
     });
   };

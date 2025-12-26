@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Form, Input, Select, message, Modal, Tag } from "antd";
+import { Form, Input, Select, Modal, Tag } from "antd";
+import { toast } from "react-toastify";
 import { useLocale } from "../../../contexts/LangContext";
 import {
   proFormConfig,
@@ -31,7 +32,10 @@ export default function ProForm() {
       setIsModalOpen(false);
       setOtherRoleText("");
     } else {
-      message.warning((proFormConfig.messages.warning as any)[locale]);
+      toast.warning((proFormConfig.messages.warning as any)[locale], {
+        position: "top-right",
+        autoClose: 3000,
+      });
     }
   };
 
@@ -57,12 +61,18 @@ export default function ProForm() {
     } as ProForm;
     mutation.mutate(payload, {
       onSuccess: () => {
-        message.success((proFormConfig.messages.success as any)[locale]);
+        toast.success((proFormConfig.messages.success as any)[locale], {
+          position: "top-right",
+          autoClose: 3000,
+        });
         form.resetFields();
         setOtherRoleText("");
       },
       onError: () => {
-        message.error((proFormConfig.messages.error as any)[locale]);
+        toast.error((proFormConfig.messages.error as any)[locale], {
+          position: "top-right",
+          autoClose: 3000,
+        });
       },
     });
   };

@@ -6,6 +6,7 @@ import AppRoutes from "./routes";
 import ScrollToTop from "./components/ScrollToTop";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ToastContainer } from "react-toastify";
 
 AOS.init();
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Header />
             <AppRoutes />
             <Footer />
+            <ToastContainer />
           </div>
         </div>
       </BrowserRouter>
