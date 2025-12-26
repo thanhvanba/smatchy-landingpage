@@ -1,9 +1,13 @@
 import { useEffect } from "react";
-import logo from "/logo.svg";
+import logo from "/footer-logo.svg";
 
 export default function AppLaunchPrompt() {
   const userAgent = navigator.userAgent || navigator.vendor || "";
   const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+  const isInternalBrowser =
+    userAgent.includes("FBAN") ||
+    userAgent.includes("FBAV") ||
+    userAgent.includes("Instagram");
 
   const playStoreUrl =
     "https://play.google.com/store/apps/details?id=com.smatchy.app";
@@ -19,12 +23,21 @@ export default function AppLaunchPrompt() {
 
   useEffect(() => {
     const fullPath = window.location.pathname + window.location.search;
-    const customScheme =
-      "smatchy://" + fullPath.replace(/^\//, "").replace(/^open\//, "");
-    const iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = customScheme;
-    document.body.appendChild(iframe);
+
+    const loadApp = () => {
+      const customScheme =
+        "smatchy://" + fullPath.replace(/^\//, "").replace(/^open\//, "");
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = customScheme;
+      document.body.appendChild(iframe);
+    };
+
+    loadApp();
+
+    if (!isInternalBrowser) {
+      handleDownloadClick();
+    }
   }, []);
 
   return (
