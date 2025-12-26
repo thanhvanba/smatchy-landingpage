@@ -11,6 +11,7 @@ import PrivacyPolicy from "../pages/legalPages/PrivacyPolicy";
 import CookiePolicy from "../pages/legalPages/CookiePolicy";
 import Blog from "../pages/blog/blog";
 import ProfessionalPage from "../pages/professional/professional";
+import FAQ from "../pages/FAQ";
 // import AnNK from "../components/AnNK";
 
 export default function AppRoutes() {
@@ -29,6 +30,7 @@ export default function AppRoutes() {
       <Route path="terms-of-use" element={<TermsUse />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route path="cookie-policy" element={<CookiePolicy />} />
+      <Route path="faq" element={<FAQ />} />
       {/* <Route path="annk" element={<AnNK />} /> */}
 
       {/* <Route path="/posts/:slug" element={<Navigate to=".." replace />} />

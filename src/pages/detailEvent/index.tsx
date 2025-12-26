@@ -242,7 +242,7 @@ export default function DetailEvent() {
           id: apiData[0].id,
           title: apiData[0].title,
           date: apiData[0].date,
-          location: apiData[0].location?.replace(" ", "-") || "",
+          location: apiData[0].location,
           type: apiData[0].type,
           level: Number(apiData[0].level?.replace(/\D/g, "") || 0),
           price: apiData[0].price,
@@ -261,7 +261,6 @@ export default function DetailEvent() {
           (e) => e.title.toLowerCase().replace(/[^\w]/g, "-") === slug
         );
 
-  console.log(detail);
   return (
     <div className="relative w-full min-h-screen">
       <div className="relative container">

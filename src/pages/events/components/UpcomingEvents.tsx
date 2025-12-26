@@ -12,7 +12,7 @@ import { useTeam } from "../../../hooks/useTeam";
 import { useLocale } from "../../../contexts/LangContext";
 
 export default function UpcomingEvents() {
-  const { locale } = useLocale()
+  const { locale } = useLocale();
   const navigate = useNavigate();
   const swiperRef = useRef<any>(null);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -41,7 +41,6 @@ export default function UpcomingEvents() {
 
   const eventHeading = events?.teamPage?.blocks?.[2];
 
-
   const flattenEvent = (api: any) => {
     const levelMatch = (api.level || "").match(/\d+/);
     const levelNum = levelMatch ? Number(levelMatch[0]) : 0;
@@ -52,7 +51,7 @@ export default function UpcomingEvents() {
       id: api.id,
       title: api.title,
       date: api.date,
-      location: api.location?.replaceAll(" ", "-") ?? api.location,
+      location: api.location,
       type: api.type || sport.name || "",
       level: levelNum,
       price: api.price,
@@ -88,7 +87,11 @@ export default function UpcomingEvents() {
           data-aos-duration="1000"
         >
           <div className="relative text-center text-2xl md:text-3xl lg:text-5xl text-[#0A4A60] font-bold mb-10">
-            <div dangerouslySetInnerHTML={{ __html: eventHeading?.heading ? eventHeading?.heading : "" }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: eventHeading?.heading ? eventHeading?.heading : "",
+              }}
+            />
             <img
               className="absolute -top-8 -right-8 md:-top-10 lg:-top-20 md:-right-10 lg:-right-20 w-12 md:w-16 lg:w-auto"
               src={Yay3}
@@ -113,15 +116,17 @@ export default function UpcomingEvents() {
             </div>
           </div>
           <button
-            className={`h-10 md:h-12 w-10 md:w-12 cursor-pointer ${isBeginning ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
-              }`}
+            className={`h-10 md:h-12 w-10 md:w-12 cursor-pointer ${
+              isBeginning ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
+            }`}
             onClick={() => swiperRef.current?.swiper.slidePrev()}
           >
             <FaArrowLeftLong className="text-2xl md:text-4xl" />
           </button>
           <button
-            className={`h-10 md:h-12 w-10 md:w-12 cursor-pointer ${isEnd ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
-              }`}
+            className={`h-10 md:h-12 w-10 md:w-12 cursor-pointer ${
+              isEnd ? "text-[#C7CDCF]/60" : "text-[#FCA13B]"
+            }`}
             onClick={() => swiperRef.current?.swiper.slideNext()}
           >
             <FaArrowRightLong className="text-2xl md:text-4xl" />

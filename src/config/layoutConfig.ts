@@ -40,5 +40,6 @@ export const footerTexts = {
       label: { en: "Privacy Policy", fr: "Politique de confidentialité" },
     },
     { path: "/cookie-policy", label: { en: "Cookies", fr: "Cookies" } },
+    { path: "/faq", label: { en: "FAQ", fr: "FAQ" } },
   ],
 };

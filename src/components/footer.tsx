@@ -9,6 +9,7 @@ import Tiktok from "/Tiktok.svg";
 import Youtube from "/Youtube.svg";
 import { useLocale } from "../contexts/LangContext";
 import { footerTexts } from "../config/layoutConfig";
+console.log("🚀 ~ footerTexts:", footerTexts);
 import logo from "/footer-logo.svg";
 
 export default function Footer() {
@@ -53,7 +54,7 @@ export default function Footer() {
           width: "120vw",
           height: "497.33px",
           position: "absolute",
-          top: "-132px",
+          top: "-180px",
           left: "0px",
           transform: "rotate(-7.67deg)",
           opacity: 1,
@@ -143,7 +144,7 @@ export default function Footer() {
 
               {/* Legal links row */}
               <nav aria-label="Legal pages" className="pt-2 md:pt-4">
-                <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 text-xs md:text-sm">
+                <ul className="grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-6 text-xs md:text-sm">
                   {(footerTexts.legalLinks as any).map((link: any) => (
                     <li key={link.path} className="text-center md:text-left">
                       <button
