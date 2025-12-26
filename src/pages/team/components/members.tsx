@@ -68,7 +68,8 @@ export default function Members() {
   let finalMembers = sortedByOrder;
   if (isMobile && sortedByOrder.length > 1) {
     const [first, second, ...rest] = sortedByOrder;
-    finalMembers = [first, second, ...rest]; // đổi chỗ index 0 và 1
+    finalMembers = [first,second, ...rest]; // đổi chỗ index 0 và 1
+    console.log(finalMembers)
   }
 
   const chunkSize = 3;

@@ -14,7 +14,7 @@ export default function EventSummaryCard({ detail }: { detail: Event }) {
     const iosLink = "https://apps.apple.com/us/app/smatchy/id6473653332";
     const androidLink =
       "https://play.google.com/store/apps/details?id=com.smatchy.app&pcampaignid=web_share";
-    const fallbackLink = "/";
+    const fallbackLink = "https://linktr.ee/smatchyapp";
 
     if (/iPad|iPhone|iPod/.test(userAgent)) {
       window.open(iosLink, "_blank", "noopener,noreferrer");

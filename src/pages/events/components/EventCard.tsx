@@ -13,7 +13,7 @@ export default function EventCard({ event }: { event: Event }) {
       <div
         className="relative h-[297px] w-[337px ] bg-cover bg-center rounded-2xl"
         style={{
-          backgroundImage: `url(https://strapi.annk.info${event.image})`,
+          backgroundImage: `url(${assetUrl}${event.image})`,
         }}
       >
         <button className="hidden group-hover:block absolute top-4 right-2 text-white bg-[#FCA13B] rounded-full p-2">

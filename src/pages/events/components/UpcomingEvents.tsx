@@ -46,7 +46,6 @@ export default function UpcomingEvents() {
     const levelNum = levelMatch ? Number(levelMatch[0]) : 0;
 
     const sport = api.sports?.[0] ?? {};
-
     return {
       id: api.id,
       title: api.title,
@@ -67,7 +66,7 @@ export default function UpcomingEvents() {
 
   /* ---------- flatten ---------- */
   const flatEvents = Array.isArray(data) ? data.map(flattenEvent) : [];
-
+  console.log(flatEvents)
   const handleSlideChange = (begin: boolean, end: boolean) => {
     setIsBeginning(begin);
     setIsEnd(end);
