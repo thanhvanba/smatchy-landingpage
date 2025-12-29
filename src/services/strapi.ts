@@ -9,6 +9,7 @@ import type {
   //IContact,
   IHero,
   ISport,
+  IFAQ,
 } from "./types/global";
 import type { Person, Team } from "./types/team";
 import type { ContactForm, ProForm } from "./types/contact";
@@ -288,5 +289,15 @@ export const fetchContactPage = async () => {
     return response.data as Team;
   }
 
+  return null;
+};
+
+export const fetchFAQ = async () => {
+  const response = await fetchStrapi<any, { data: IFAQ; meta: any }>(
+    "/faqs?populate=category"
+  );
+  if (response.data) {
+    return response.data as IFAQ;
+  }
   return null;
 };

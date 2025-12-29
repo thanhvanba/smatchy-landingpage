@@ -81,6 +81,20 @@ interface ISport {
   publishedAt: string;
 }
 
+interface IFAQ {
+  id: number;
+  question: string;
+  answer: string;
+  category: {
+    data: {
+      attributes: {
+        slug: string;
+        name: string;
+      };
+    };
+  };
+}
+
 export type {
   IGlobalAttributes,
   IHomePage,
@@ -90,4 +104,5 @@ export type {
   IContact,
   IHero,
   ISport,
+  IFAQ,
 };
