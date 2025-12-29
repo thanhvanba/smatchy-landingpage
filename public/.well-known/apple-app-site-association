@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "3885JUWCNH.com.smatchy.app",
+        "paths": ["/open/*"]
+      },
+      {
+        "appID": "3FCVNKMYT3.com.amagumolabs.smatchy.dev",
+        "paths": ["/open/*"]
+      }
+    ]
+  }
+}
+
