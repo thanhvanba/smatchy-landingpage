@@ -1,0 +1,23 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.smatchy.app",
+      "sha256_cert_fingerprints": [
+        "7A:81:59:BC:32:C4:84:9F:85:2B:2D:D8:52:11:FB:24:0E:1D:97:66:81:8D:C9:69:45:C4:C0:85:4D:99:20:DE",
+        "D4:62:6C:28:38:36:15:AC:AF:D6:61:0A:49:1D:5B:56:FC:E3:72:C1:74:4E:D5:D7:AC:C8:7D:38:F9:51:3C:8E"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.amagumolabs.smatchy.dev",
+      "sha256_cert_fingerprints": [
+        "4C:CD:9A:71:7E:05:B2:36:3E:C9:BC:66:2E:38:19:3D:AF:14:E2:80:F3:CF:35:94:D8:FF:5B:57:BB:1C:8D:71"
+      ]
+    }
+  }
+]
