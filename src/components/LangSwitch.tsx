@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaGlobe } from "react-icons/fa";
 import { useLocale } from "../contexts/LangContext";
 
@@ -10,11 +10,31 @@ const LABELS: Record<string, string> = {
 export default function LangSwitch() {
   const { locale, setLocale } = useLocale();
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const languages = ["en", "fr"] as const;
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
+
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block"  ref={dropdownRef}>
       <button
         onClick={() => setOpen((o) => !o)}
         className="flex items-center gap-2 rounded-lg px-3 py-2 focus:outline-none bg-white/10 hover:bg-white/20 transition border border-white/30 cursor-pointer disabled:cursor-not-allowed"
@@ -49,7 +69,9 @@ export default function LangSwitch() {
                 setOpen(false);
               }}
               className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 transition text-left cursor-pointer disabled:cursor-not-allowed ${
-                lng === locale ? "bg-blue-50 font-semibold text-[#0A4A60]" : "text-gray-700"
+                lng === locale
+                  ? "bg-blue-50 font-semibold text-[#0A4A60]"
+                  : "text-gray-700"
               }`}
             >
               <span className="text-sm">{LABELS[lng]}</span>
