@@ -5,6 +5,7 @@ import { useFAQ } from "../../hooks/useFAQ";
 import Yay3 from "/Yay3.png";
 import heroBanner from "/hero-banner.png";
 import line from "/line_bg.svg";
+import { FQATexts } from "../../config/layoutConfig";
 interface FAQItem {
   question: string;
   answer: string;
@@ -81,10 +82,14 @@ const FAQ: React.FC = () => {
     return [allLabel, ...Array.from(unique)] as string[];
   }, [faqs, allLabel]);
 
-  //console.log(categories);
+  console.log(categories);
 
-  const toggle = (index: number): void => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+  // const toggle = (index: number): void => {
+  //   setOpenIndex((prev) => (prev === index ? null : index));
+  // };
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   useEffect(() => {
@@ -117,9 +122,15 @@ const FAQ: React.FC = () => {
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <h2 className="relative text-center text-xl md:text-2xl lg:text-5xl text-[#0A4A60] font-bold pt-2 md:pt-3 lg:pt-4">
-              <span className="text-[#FCA13B]">FREQUENTLY </span>
-              ASKED QUESTIONS
+            <h2 className="relative text-left text-xl md:text-2xl lg:text-5xl text-[#0A4A60] font-bold pt-2 md:pt-3 lg:pt-4">
+              {/* <span className="text-[#FCA13B]">FREQUENTLY </span>
+              ASKED QUESTIONS */}
+
+              <span className="text-[#FCA13B]">
+                {(FQATexts.titleStart as any)[locale]}{" "}
+              </span>
+              {(FQATexts.titleEnd as any)[locale]}
+
               <img
                 className="absolute -top-6 md:-top-8 lg:-top-16 -right-8 md:-right-12 lg:-right-20 w-12 md:w-16 lg:w-auto"
                 src={Yay3}
@@ -192,13 +203,22 @@ const FAQ: React.FC = () => {
                       isOpen ? "bg-white" : "hover:bg-[#FFF]"
                     }`}
                   >
-                    <button
+                    {/* <button
                       type="button"
                       onClick={() => toggle(index)}
                       className={`w-full flex items-center justify-between text-left text-xl font-medium transition-colors duration-200 cursor-pointer ${
                         isOpen
-                          ? "text-[#0A4A60] font-bold"
+                          ? "text-[#0A4A60] font-weight-bold"
                           : "text-[#0F262E] group-hover:text-[#FCA13B]"
+                      }`}
+                    > */}
+                    <button
+                      type="button"
+                      onClick={() => toggle(index)}
+                      className={`w-full flex items-center justify-between text-left text-xl transition-colors duration-200 cursor-pointer ${
+                        isOpen
+                          ? "text-[#0A4A60] font-bold"
+                          : "text-[#0F262E] font-medium group-hover:text-[#FCA13B]"
                       }`}
                     >
                       <span className="pr-2">{item.question}</span>

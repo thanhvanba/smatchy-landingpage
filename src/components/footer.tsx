@@ -57,7 +57,7 @@ export default function Footer() {
       <div
         // className="relative z-10 bg-cover bg-no-repeat bg-top"
         // style={{ backgroundImage: `url(${backgroundFooter})` }}
-        className="relative w-full h-auto lg:h-[280px] mt-4 z-30"
+        className="relative w-full h-auto lg:h-[280px] z-30"
         style={{
           backgroundImage: `url(${backgroundFooter})`,
           backgroundRepeat: "no-repeat",

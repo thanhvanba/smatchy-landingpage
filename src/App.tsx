@@ -20,14 +20,26 @@ function AppContent() {
   }
 
   return (
+    // <div className="relative w-full min-h-screen overflow-hidden">
+    //   {/* Main content */}
+    //   <div className="relative">
+    //     <Header />
+    //     <AppRoutes />
+    //     <Footer />
+    //     <ToastContainer />
+    //   </div>
+    // </div>
     <div className="relative w-full min-h-screen overflow-hidden">
-      {/* Main content */}
-      <div className="relative">
-        <Header />
+      {/* Header */}
+      <Header />
+
+      <main className="relative flex-grow">
         <AppRoutes />
-        <Footer />
-        <ToastContainer />
-      </div>
+      </main>
+
+      <Footer />
+
+      <ToastContainer />
     </div>
   );
 }

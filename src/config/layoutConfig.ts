@@ -43,3 +43,14 @@ export const footerTexts = {
     { path: "/faq", label: { en: "FAQ", fr: "FAQ" } },
   ],
 };
+
+export const FQATexts = {
+  titleStart: {
+    en: "FREQUENTLY",
+    fr: "FOIRE",
+  },
+   titleEnd: {
+    en: "ASKED QUESTIONS",
+    fr: "AUX QUESTIONS",
+  },
+};
