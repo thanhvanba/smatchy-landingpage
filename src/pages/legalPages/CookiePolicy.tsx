@@ -3,9 +3,19 @@ import heroBanner from "/hero-banner.png";
 import Yay3 from "/Yay3.png";
 import { useLocale } from "../../contexts/LangContext";
 import { cookiePolicyTexts } from "../../config/legalPagesConfig";
+import { usePostBySlug } from "../../hooks/usePost";
+import Loading from "../../components/Loading";
 
 export default function CookiePolicy() {
   const { locale } = useLocale();
+  const { data, isLoading, isError, error } = usePostBySlug("cookies");
+  const post = data?.data?.[0].content;
+
+  if (isLoading) return <Loading />;
+
+  if (isError) {
+    return <div className="container">Error: {error?.message}</div>;
+  }
 
   return (
     <div>
@@ -47,6 +57,13 @@ export default function CookiePolicy() {
           </div>
 
           <div
+            className="prose max-w-none"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            dangerouslySetInnerHTML={{ __html: post || "" }}
+          />
+
+          {/* <div
             className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -64,9 +81,9 @@ export default function CookiePolicy() {
                 {(cookiePolicyTexts.overview as any)[locale]}
               </p>
             </div>
-          </div>
+          </div> */}
 
-          {(cookiePolicyTexts.sections as any)[locale].map(
+          {/* {(cookiePolicyTexts.sections as any)[locale].map(
             (section: any, index: number) => (
               <div
                 key={index}
@@ -96,9 +113,9 @@ export default function CookiePolicy() {
                 )}
               </div>
             )
-          )}
+          )} */}
 
-          <div
+          {/* <div
             className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]"
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -111,7 +128,7 @@ export default function CookiePolicy() {
                 {(cookiePolicyTexts.lastUpdatedDate as any)[locale]}
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

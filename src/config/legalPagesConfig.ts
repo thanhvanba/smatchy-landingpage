@@ -254,7 +254,7 @@ export const cookiePolicyTexts = {
   },
   publisherValue: {
     en: 'LBDC Organisation ("Smatchy")',
-    fr: 'LBDC Organisation (« Smatchy »)',
+    fr: "LBDC Organisation (« Smatchy »)",
   },
   overview: {
     en: "Cookies are stored on users' devices to facilitate navigation and improve functionality.",
@@ -278,11 +278,18 @@ export const cookiePolicyTexts = {
       },
       {
         title: "Third-Party Tools",
-        list: ["Google Analytics", "Matomo", "Facebook Pixel", "SendinBlue", "Jetpack"],
+        list: [
+          "Google Analytics",
+          "Matomo",
+          "Facebook Pixel",
+          "SendinBlue",
+          "Jetpack",
+        ],
       },
       {
         title: "Retention",
-        content: "Cookies are stored from 6 to 13 months depending on category.",
+        content:
+          "Cookies are stored from 6 to 13 months depending on category.",
       },
       {
         title: "Consent",
@@ -307,11 +314,18 @@ export const cookiePolicyTexts = {
       },
       {
         title: "Outils tiers",
-        list: ["Google Analytics", "Matomo", "Facebook Pixel", "SendinBlue", "Jetpack"],
+        list: [
+          "Google Analytics",
+          "Matomo",
+          "Facebook Pixel",
+          "SendinBlue",
+          "Jetpack",
+        ],
       },
       {
         title: "Durée de conservation",
-        content: "Les cookies sont conservés de 6 à 13 mois selon la catégorie.",
+        content:
+          "Les cookies sont conservés de 6 à 13 mois selon la catégorie.",
       },
       {
         title: "Consentement",
@@ -378,7 +392,8 @@ export const legalNoticeTexts = {
       },
       {
         title: "Application Database Host",
-        content: "MongoDB Limited, registered in the United States, with servers in Europe (Frankfurt).",
+        content:
+          "MongoDB Limited, registered in the United States, with servers in Europe (Frankfurt).",
         cardLines: [
           "Building Two, Number One Ballsbridge, Ballsbridge, Dublin 4, Ireland",
           "www.mongodb.com/fr-fr/company/contact",
@@ -386,7 +401,8 @@ export const legalNoticeTexts = {
       },
       {
         title: "Application Image Host",
-        content: "AWS, registered in the United States, with servers in Central Europe.",
+        content:
+          "AWS, registered in the United States, with servers in Central Europe.",
         cardLines: ["410 Terry Avenue North, Seattle, Washington, 98109"],
       },
     ],

@@ -5,11 +5,12 @@ import { usePostBySlug } from "../../hooks/usePost";
 import Loading from "../../components/Loading";
 import { useLocale } from "../../contexts/LangContext";
 import { termsOfUseTexts } from "../../config/legalPagesConfig";
+import "./style.css";
 
 export default function TermsUse() {
   const { locale } = useLocale();
   const { data, isLoading, isError, error } = usePostBySlug("terms-of-use");
-  const post = data?.data?.[0];
+  const post = data?.data?.[0].content;
 
   if (isLoading) return <Loading />;
 
@@ -17,72 +18,72 @@ export default function TermsUse() {
     return <div className="container">Error: {error?.message}</div>;
   }
   console.log(post);
-  const renderContent = (text: string) => {
-    const nodes: React.ReactNode[] = [];
-    const regex =
-      /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b|\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}\b|(?<!")Smatchy(?!")/g;
+  // const renderContent = (text: string) => {
+  //   const nodes: React.ReactNode[] = [];
+  //   const regex =
+  //     /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b|\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}\b|(?<!")Smatchy(?!")/g;
 
-    let lastIndex = 0;
-    let matchIndex = 0;
-    let match: RegExpExecArray | null;
+  //   let lastIndex = 0;
+  //   let matchIndex = 0;
+  //   let match: RegExpExecArray | null;
 
-    while ((match = regex.exec(text)) !== null) {
-      const index = match.index;
-      const token = match[0];
+  //   while ((match = regex.exec(text)) !== null) {
+  //     const index = match.index;
+  //     const token = match[0];
 
-      // text trước token
-      if (index > lastIndex) {
-        nodes.push(text.slice(lastIndex, index));
-      }
+  //     // text trước token
+  //     if (index > lastIndex) {
+  //       nodes.push(text.slice(lastIndex, index));
+  //     }
 
-      // Smatchy
-      if (token === "Smatchy") {
-        nodes.push(
-          <span key={matchIndex} className="text-[#FCA13B] font-bold">
-            {token}
-          </span>
-        );
-      }
-      // Email
-      else if (token.includes("@")) {
-        nodes.push(
-          <a
-            key={matchIndex}
-            href={`mailto:${token}`}
-            className="text-[#0A4A60] font-bold underline"
-          >
-            {token}
-          </a>
-        );
-      }
-      // Domain
-      else {
-        nodes.push(
-          <a
-            key={matchIndex}
-            href={`https://${token}`}
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#0A4A60] font-bold underline"
-          >
-            {token}
-          </a>
-        );
-      }
+  //     // Smatchy
+  //     if (token === "Smatchy") {
+  //       nodes.push(
+  //         <span key={matchIndex} className="text-[#FCA13B] font-bold">
+  //           {token}
+  //         </span>
+  //       );
+  //     }
+  //     // Email
+  //     else if (token.includes("@")) {
+  //       nodes.push(
+  //         <a
+  //           key={matchIndex}
+  //           href={`mailto:${token}`}
+  //           className="text-[#0A4A60] font-bold underline"
+  //         >
+  //           {token}
+  //         </a>
+  //       );
+  //     }
+  //     // Domain
+  //     else {
+  //       nodes.push(
+  //         <a
+  //           key={matchIndex}
+  //           href={`https://${token}`}
+  //           target="_blank"
+  //           rel="noreferrer"
+  //           className="text-[#0A4A60] font-bold underline"
+  //         >
+  //           {token}
+  //         </a>
+  //       );
+  //     }
 
-      lastIndex = index + token.length;
-      matchIndex++;
-    }
+  //     lastIndex = index + token.length;
+  //     matchIndex++;
+  //   }
 
-    // text còn lại
-    if (lastIndex < text.length) {
-      nodes.push(text.slice(lastIndex));
-    }
+  //   // text còn lại
+  //   if (lastIndex < text.length) {
+  //     nodes.push(text.slice(lastIndex));
+  //   }
 
-    return nodes.map((node, i) =>
-      typeof node === "string" ? <span key={i}>{node}</span> : node
-    );
-  };
+  //   return nodes.map((node, i) =>
+  //     typeof node === "string" ? <span key={i}>{node}</span> : node
+  //   );
+  // };
 
   return (
     <div>
@@ -122,8 +123,13 @@ export default function TermsUse() {
               />
             </h2>
           </div>
-
-          {(termsOfUseTexts.sections as any)[locale].map(
+          <div
+            className="prose max-w-none"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            dangerouslySetInnerHTML={{ __html: post || "" }}
+          />
+          {/* {(termsOfUseTexts.sections as any)[locale].map(
             (section: any, index: number) => {
               return (
                 <div
@@ -141,9 +147,9 @@ export default function TermsUse() {
                 </div>
               );
             }
-          )}
+          )} */}
 
-          <div
+          {/* <div
             className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]"
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -156,7 +162,7 @@ export default function TermsUse() {
                 {" " + (termsOfUseTexts.versionDate as any)[locale]}
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

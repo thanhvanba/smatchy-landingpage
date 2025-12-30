@@ -3,9 +3,19 @@ import heroBanner from "/hero-banner.png";
 import Yay3 from "/Yay3.png";
 import { useLocale } from "../../contexts/LangContext";
 import { privacyPolicyTexts } from "../../config/legalPagesConfig";
-
+import { usePostBySlug } from "../../hooks/usePost";
+import Loading from "../../components/Loading";
+import "./style.css";
 export default function PrivacyPolicy() {
   const { locale } = useLocale();
+  const { data, isLoading, isError, error } = usePostBySlug("privacy-policy");
+  const post = data?.data?.[0].content;
+
+  if (isLoading) return <Loading />;
+
+  if (isError) {
+    return <div className="container">Error: {error?.message}</div>;
+  }
 
   return (
     <div>
@@ -45,7 +55,7 @@ export default function PrivacyPolicy() {
               />
             </h2>
           </div>
-          <div
+          {/* <div
             className="flex flex-col gap-1 md:gap-1.5 lg:gap-2"
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -53,9 +63,14 @@ export default function PrivacyPolicy() {
             <p className="text-xs md:text-sm lg:text-base leading-relaxed text-[#0F262E]">
               {(privacyPolicyTexts.intro as any)[locale]}
             </p>
-          </div>
-
-          {(privacyPolicyTexts.sections as any)[locale].map(
+          </div> */}
+          <div
+            className="prose max-w-none"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            dangerouslySetInnerHTML={{__html: post || "" }}
+          />
+          {/* {(privacyPolicyTexts.sections as any)[locale].map(
             (section: any, index: number) => (
               <div
                 key={index}
@@ -71,9 +86,9 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
             )
-          )}
+          )} */}
 
-          <div
+          {/* <div
             className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]"
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -99,9 +114,9 @@ export default function PrivacyPolicy() {
                 <p>CNIL, 3 Place de Fontenoy, 75334 Paris Cedex 07</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div
+          {/* <div
             className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]"
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -114,7 +129,7 @@ export default function PrivacyPolicy() {
                 {(privacyPolicyTexts.lastUpdatedDate as any)[locale]}
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

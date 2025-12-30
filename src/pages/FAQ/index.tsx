@@ -1,11 +1,10 @@
-import { useState, useMemo, useEffect } from "react";
-import Yay3 from "/Yay3.png";
-import line from "/line_bg.svg";
-import heroBanner from "/hero-banner.png";
+import { useEffect, useMemo, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
-import { useFAQ } from "../../hooks/useFAQ";
 import { useLocale } from "../../contexts/LangContext";
-import { all } from "axios";
+import { useFAQ } from "../../hooks/useFAQ";
+import Yay3 from "/Yay3.png";
+import heroBanner from "/hero-banner.png";
+import line from "/line_bg.svg";
 interface FAQItem {
   question: string;
   answer: string;

@@ -3,69 +3,74 @@ import heroBanner from "/hero-banner.png";
 import Yay3 from "/Yay3.png";
 import { useLocale } from "../../contexts/LangContext";
 import { legalNoticeTexts } from "../../config/legalPagesConfig";
+import { usePostBySlug } from "../../hooks/usePost";
+import "./style.css";
 
 export default function LegalNotice() {
   const { locale } = useLocale();
+  const { data } = usePostBySlug("legal-notices");
+  const post = data?.data[0].content;
+  console.log(data);
 
-  const renderContent = (text: string) => {
-    const nodes: React.ReactNode[] = [];
-    const regex =
-      /(?<!")Smatchy(?!")|\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b|\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})+(?:\/[^\s.,!?")\]]*)?\b/g;
+  // const renderContent = (text: string) => {
+  //   const nodes: React.ReactNode[] = [];
+  //   const regex =
+  //     /(?<!")Smatchy(?!")|\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b|\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})+(?:\/[^\s.,!?")\]]*)?\b/g;
 
-    let lastIndex = 0;
-    let matchIndex = 0;
-    let match: RegExpExecArray | null;
+  //   let lastIndex = 0;
+  //   let matchIndex = 0;
+  //   let match: RegExpExecArray | null;
 
-    while ((match = regex.exec(text)) !== null) {
-      const index = match.index;
-      const token = match[0];
+  //   while ((match = regex.exec(text)) !== null) {
+  //     const index = match.index;
+  //     const token = match[0];
 
-      if (index > lastIndex) {
-        nodes.push(text.slice(lastIndex, index));
-      }
+  //     if (index > lastIndex) {
+  //       nodes.push(text.slice(lastIndex, index));
+  //     }
 
-      if (token === "Smatchy") {
-        nodes.push(
-          <span key={matchIndex} className="text-[#FCA13B] font-bold">
-            {token}
-          </span>
-        );
-      } else if (token.includes("@")) {
-        nodes.push(
-          <a
-            key={matchIndex}
-            href={`mailto:${token}`}
-            className="text-[#0A4A60] font-bold underline"
-          >
-            {token}
-          </a>
-        );
-      } else {
-        nodes.push(
-          <a
-            key={matchIndex}
-            href={`https://${token}`}
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#0A4A60] font-bold underline"
-          >
-            {token}
-          </a>
-        );
-      }
+  //     if (token === "Smatchy") {
+  //       nodes.push(
+  //         <span key={matchIndex} className="text-[#FCA13B] font-bold">
+  //           {token}
+  //         </span>
+  //       );
+  //     } else if (token.includes("@")) {
+  //       nodes.push(
+  //         <a
+  //           key={matchIndex}
+  //           href={`mailto:${token}`}
+  //           className="text-[#0A4A60] font-bold underline"
+  //         >
+  //           {token}
+  //         </a>
+  //       );
+  //     } else {
+  //       nodes.push(
+  //         <a
+  //           key={matchIndex}
+  //           href={`https://${token}`}
+  //           target="_blank"
+  //           rel="noreferrer"
+  //           className="text-[#0A4A60] font-bold underline"
+  //         >
+  //           {token}
+  //         </a>
+  //       );
+  //     }
 
-      lastIndex = index + token.length;
-      matchIndex++;
-    }
+  //     lastIndex = index + token.length;
+  //     matchIndex++;
+  //   }
 
-    if (lastIndex < text.length) {
-      nodes.push(text.slice(lastIndex));
-    }
+  //   if (lastIndex < text.length) {
+  //     nodes.push(text.slice(lastIndex));
+  //   }
 
-    return nodes.map((node, i) =>
-      typeof node === "string" ? <span key={i}>{node}</span> : node
-    );
-  };
+  //   return nodes.map((node, i) =>
+  //     typeof node === "string" ? <span key={i}>{node}</span> : node
+  //   );
+  // };
 
   return (
     <div>
@@ -111,7 +116,7 @@ export default function LegalNotice() {
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            {(legalNoticeTexts.infoRows as any).map(
+            {/* {(legalNoticeTexts.infoRows as any).map(
               (row: any, index: number) => (
                 <div key={index} className="inline-flex">
                   <p className="text-xs md:text-sm lg:text-base">
@@ -122,10 +127,16 @@ export default function LegalNotice() {
                   </p>
                 </div>
               )
-            )}
+            )} */}
+            <div
+              className="prose max-w-none"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              dangerouslySetInnerHTML={{ __html: post || "" }}
+            />
           </div>
 
-          {(legalNoticeTexts.sections as any)[locale].map(
+          {/* {(legalNoticeTexts.sections as any)[locale].map(
             (section: any, index: number) => (
               <div
                 key={index}
@@ -153,7 +164,7 @@ export default function LegalNotice() {
                 )}
               </div>
             )
-          )}
+          )} */}
         </div>
       </div>
     </div>

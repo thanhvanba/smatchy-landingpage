@@ -1,0 +1,18 @@
+.prose blockquote {
+  background-color: #f9fafb;
+  /* background-color: #1a7d9c26; */
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  border-left: 4px solid #fca13b;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #1f2937;
+}
+
+.prose blockquote::before,
+.prose blockquote::after,
+.prose blockquote p::before,
+.prose blockquote p::after {
+  content: "" !important;
+}
