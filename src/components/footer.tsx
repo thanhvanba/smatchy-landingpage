@@ -39,7 +39,7 @@ export default function Footer() {
   const socialData = data?.social || [];
 
   return (
-    <footer className="relative">
+    <footer className="relative w-full">
       <div
         className="z-30"
         style={{
@@ -53,11 +53,10 @@ export default function Footer() {
           backgroundColor: "#E2F6F6",
         }}
       ></div>
+
       {/* Main footer content */}
       <div
-        // className="relative z-10 bg-cover bg-no-repeat bg-top"
-        // style={{ backgroundImage: `url(${backgroundFooter})` }}
-        className="relative w-full h-auto lg:h-[280px] z-30"
+        className="relative z-30 w-full h-auto lg:h-[280px]"
         style={{
           backgroundImage: `url(${backgroundFooter})`,
           backgroundRepeat: "no-repeat",

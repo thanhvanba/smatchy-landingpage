@@ -107,7 +107,7 @@ const FAQ: React.FC = () => {
           backgroundPosition: "top",
         }}
       ></div>
-      <div className="relative pt-32 pb-10 mx-5">
+      <div className="relative mt-8 md:mt-16 lg:mt-20 pb-10 mx-5">
         <div className="relative container">
           <img
             src={line}
@@ -115,7 +115,7 @@ const FAQ: React.FC = () => {
             className="hidden md:block absolute w-auto -top-40 md:-top-48 lg:-top-52 left-10 md:left-16 lg:left-20 scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
           />
         </div>
-        <div className="relative container z-40 bg-[#E2F6F6] rounded-2xl p-4! lg:p-9! shadow-md">
+        <div className="relative container z-40 bg-[#E2F6F6] rounded-2xl p-4! lg:p-9! shadow-md min-h-[100vh]">
           {/* Header */}
           <div
             className="inline-flex"
@@ -192,7 +192,7 @@ const FAQ: React.FC = () => {
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            {filteredFaqs.length > 0 ? (
+            {/*{filteredFaqs.length > 0 ? (
               filteredFaqs.map((item: FAQItem, index: number) => {
                 const isOpen = openIndex === index;
 
@@ -211,7 +211,7 @@ const FAQ: React.FC = () => {
                           ? "text-[#0A4A60] font-weight-bold"
                           : "text-[#0F262E] group-hover:text-[#FCA13B]"
                       }`}
-                    > */}
+                    > 
                     <button
                       type="button"
                       onClick={() => toggle(index)}
@@ -248,7 +248,51 @@ const FAQ: React.FC = () => {
               <p className="text-center text-[#0F262E] py-8">
                 No questions found.
               </p>
-            )}
+            )}*/}
+
+            {filteredFaqs.map((item: FAQItem, index: number) => {
+              const isOpen = openIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  className={`group flex flex-col rounded-xl py-2 px-4 transition-colors duration-200 ${
+                    isOpen ? "bg-white" : "hover:bg-[#FFF]"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggle(index)}
+                    className={`w-full flex items-center justify-between text-left text-xl font-medium transition-colors duration-200 ${
+                      isOpen
+                        ? "text-[#0A4A60] font-bold"
+                        : "text-[#0F262E] group-hover:text-[#FCA13B]"
+                    }`}
+                  >
+                    <span className="pr-2">{item.question}</span>
+                    <span
+                      className={`flex items-center justify-center min-w-6 min-h-6 rounded-full ${
+                        isOpen
+                          ? "bg-[#0A4A60] text-white"
+                          : "bg-[#0A4A60] text-white group-hover:bg-[#FCA13B] group-hover:text-white"
+                      }`}
+                    >
+                      {isOpen ? <FaMinus /> : <FaPlus />}
+                    </span>
+                  </button>
+
+                  {/* Hiển thị tức thì — KHÔNG animation */}
+                  {isOpen && (
+                    <>
+                      <div className="my-4 border border-gray-200"></div>
+                      <p className="text-[#0F262E] leading-relaxed">
+                        {item.answer}
+                      </p>
+                    </>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
