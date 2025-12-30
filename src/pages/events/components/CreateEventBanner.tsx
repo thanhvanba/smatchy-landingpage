@@ -59,7 +59,7 @@ export default function CreateEventBanner() {
         />
       </div>
       <div
-        className="relative z-20 w-full h-[300px] lg:h-[360px] mb-40 lg:mb-72 bg-cover bg-bottom"
+        className="relative z-40 w-full h-[300px] lg:h-[360px] mb-40 lg:mb-72 bg-cover bg-bottom"
         style={{
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",

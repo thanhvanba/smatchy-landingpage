@@ -26,7 +26,7 @@ export default function ComingSoon() {
         />
       </div>
       <div
-        className="relative z-30 w-full h-[300px] lg:h-[386px] mb-40 lg:mb-80 bg-cover bg-bottom"
+        className="relative z-40 w-full h-[300px] lg:h-[386px] mb-40 lg:mb-80 bg-cover bg-bottom"
         style={{
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",

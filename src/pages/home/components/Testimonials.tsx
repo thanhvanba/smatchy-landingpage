@@ -132,7 +132,7 @@ export default function Testimonials() {
       </div>
 
       <div
-        className="container px-4! md:px-8! lg:px-24! pb-28! md:py-20! lg:py-18! relative flex justify-center z-30"
+        className="container px-4! md:px-8! lg:px-24! pb-28! md:py-20! lg:py-18! relative flex justify-center z-40"
         data-aos="fade-up"
         data-aos-duration="2000"
       >

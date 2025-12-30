@@ -44,7 +44,7 @@ export default function AppLaunchPrompt() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-4 py-8">
       <div className="max-w-md w-full flex flex-col items-center text-center gap-3">
         <div className="flex justify-center items-center w-full">
-          <img src={logo} alt="Smatchy" className="h-[128px] w-auto" />
+          <img src={logo} alt="Smatchy" className="h-32 w-auto" />
         </div>
 
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">

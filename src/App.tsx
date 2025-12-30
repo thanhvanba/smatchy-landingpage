@@ -8,7 +8,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer } from "react-toastify";
 import AppLaunchPrompt from "./components/AppLaunchPrompt";
-import { useEffect } from "react";
 
 AOS.init({
   duration: 1000,
@@ -26,23 +25,12 @@ function AppContent() {
   }
 
   return (
-    // <div className="relative w-full min-h-screen overflow-hidden">
-    //   {/* Header */}
-    //   <Header />
-
-    //   <main className="relative flex-grow">
-    //     <AppRoutes />
-    //   </main>
-
-    //   <Footer />
-
-    //   <ToastContainer />
-    // </div>
     <div className="relative w-full min-h-screen overflow-hidden">
-      {/* Main content */}
       <div className="relative">
         <Header />
-        <AppRoutes />
+        <div className="min-h-[120vh]">
+          <AppRoutes />
+        </div>
         <Footer />
         <ToastContainer />
       </div>

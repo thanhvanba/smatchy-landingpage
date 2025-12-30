@@ -46,7 +46,7 @@ export default function Footer() {
           width: "120vw",
           height: "497.33px",
           position: "absolute",
-          top: "-180px",
+          top: "-140px",
           left: "0px",
           transform: "rotate(-7.67deg)",
           opacity: 1,

@@ -46,7 +46,7 @@ import { useInvestor } from "../../../hooks/useInvestor";
 // ];
 const TractionProofSection = () => {
   const { data, isLoading, error } = useInvestor(InvestorPopulateType.BASIC);
-   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   if (isLoading) return <Loading />;
   if (error) return null;
 
@@ -63,13 +63,16 @@ const TractionProofSection = () => {
 
   const titleBlock = data?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "blocks.title" &&
-      block.title === "Section: Traction & Proof" || block.title === "Section: Traction et preuve"
+      (block.__component === "blocks.title" &&
+        block.title === "Section: Traction & Proof") ||
+      block.title === "Section: Traction et preuve"
   );
 
   const tractionBlock = stats?.blocks?.find(
     (block: any): block is any =>
-      block.__component === "blocks.stats" && block.title === "Traction & Proof" || block.title === "Traction et preuve"
+      (block.__component === "blocks.stats" &&
+        block.title === "Traction & Proof") ||
+      block.title === "Traction et preuve"
   );
 
   //console.log(tractionBlock);
@@ -92,7 +95,7 @@ const TractionProofSection = () => {
   // console.log(tractionBoxes);
 
   return (
-    <div className="relative min-h-[500px] lg:min-h-[640px] z-30 w-full ">
+    <div className="relative min-h-[500px] lg:min-h-[640px] z-30 w-full mb-20 md:mb-28 lg:mb-40">
       <div
         className="relative h-[500px] lg:h-[640px] z-30 inset-0 bg-cover bg-bottom"
         style={{
