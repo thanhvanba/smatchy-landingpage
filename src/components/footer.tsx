@@ -39,7 +39,7 @@ export default function Footer() {
   const socialData = data?.social || [];
 
   return (
-    <footer className="relative bg-[#E2F6F6">
+    <footer className="relative">
       <div
         className="z-30"
         style={{
@@ -53,22 +53,11 @@ export default function Footer() {
           backgroundColor: "#E2F6F6",
         }}
       ></div>
-      {/* Background rotated layer */}
-      <div
-        className="absolute inset-0 -z-10"
-        aria-hidden="true"
-        style={{
-          backgroundColor: "#E2F6F6",
-          transform: "rotate(-7.67deg) scale(1.1)",
-          top: "-20%",
-          height: "140%",
-        }}
-      />
       {/* Main footer content */}
       <div
         // className="relative z-10 bg-cover bg-no-repeat bg-top"
         // style={{ backgroundImage: `url(${backgroundFooter})` }}
-        className="relative w-full h-auto lg:h-[270px] mt-4 z-30"
+        className="relative w-full h-auto lg:h-[280px] mt-4 z-30"
         style={{
           backgroundImage: `url(${backgroundFooter})`,
           backgroundRepeat: "no-repeat",
@@ -141,7 +130,7 @@ export default function Footer() {
                     <li key={link.path} className="text-center">
                       <button
                         onClick={() => navigate(link.path)}
-                        className="text-white/90 hover:text-white transition-colors py-2 px-1 hover:underline underline-offset-4 w-full"
+                        className="text-white/90 hover:text-white transition-colors py-2 px-1 hover:underline underline-offset-4 w-full cursor-pointer"
                       >
                         {(link.label as any)[locale]}
                       </button>

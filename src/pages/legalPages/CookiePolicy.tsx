@@ -27,7 +27,7 @@ export default function CookiePolicy() {
             className="hidden md:block absolute w-auto -top-40 md:-top-48 lg:-top-52 left-10 md:left-16 lg:left-20 scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
           />
         </div>
-        <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-30">
+        <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-40">
           <div
             className="inline-flex"
             data-aos="fade-up"
@@ -52,7 +52,7 @@ export default function CookiePolicy() {
             data-aos-duration="1000"
           >
             <div className="inline-flex">
-              <p className="">
+              <p className="text-xs md:text-sm lg:text-base">
                 <span className="font-bold text-[#0F262E]">
                   {(cookiePolicyTexts.publisherLabel as any)[locale]}{" "}
                 </span>
@@ -60,7 +60,9 @@ export default function CookiePolicy() {
               </p>
             </div>
             <div className="inline-flex">
-              <p className="">{(cookiePolicyTexts.overview as any)[locale]}</p>
+              <p className="text-xs md:text-sm lg:text-base">
+                {(cookiePolicyTexts.overview as any)[locale]}
+              </p>
             </div>
           </div>
 
@@ -76,14 +78,17 @@ export default function CookiePolicy() {
                   {section.title}
                 </h3>
                 {section.content && (
-                  <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+                  <p className="text-xs md:text-sm lg:text-base leading-relaxed text-[#0F262E]">
                     {section.content}
                   </p>
                 )}
                 {section.list && (
                   <ul className="flex flex-col gap-2 list-disc marker:text-[#0A4A60]">
                     {section.list.map((item: string, itemIndex: number) => (
-                      <li key={itemIndex} className="ml-6">
+                      <li
+                        key={itemIndex}
+                        className="ml-6 text-xs md:text-sm lg:text-base"
+                      >
                         {item}
                       </li>
                     ))}
@@ -94,11 +99,11 @@ export default function CookiePolicy() {
           )}
 
           <div
-            className="p-6 rounded-xl bg-[#0A4A6026]"
+            className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]"
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <div className="leading-relaxed text-[#0F262E]">
+            <div className="leading-relaxed text-[#0F262E] text-xs md:text-sm lg:text-base">
               <p>
                 <span className="font-bold">
                   {(cookiePolicyTexts.lastUpdated as any)[locale]}{" "}

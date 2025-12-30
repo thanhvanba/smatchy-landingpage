@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
             className="hidden md:block absolute w-auto -top-40 md:-top-48 lg:-top-52 left-10 md:left-16 lg:left-20 scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
           />
         </div>
-        <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-30">
+        <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-40">
           <div
             className="inline-flex"
             data-aos="fade-up"
@@ -50,7 +50,7 @@ export default function PrivacyPolicy() {
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+            <p className="text-xs md:text-sm lg:text-base leading-relaxed text-[#0F262E]">
               {(privacyPolicyTexts.intro as any)[locale]}
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
                 <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
                   {section.title}
                 </h3>
-                <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+                <p className="text-xs md:text-sm lg:text-base leading-relaxed text-[#0F262E]">
                   {section.content}
                 </p>
               </div>
@@ -74,11 +74,11 @@ export default function PrivacyPolicy() {
           )}
 
           <div
-            className="p-6 rounded-xl bg-[#0A4A6026]"
+            className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]"
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <div className="leading-relaxed text-[#0F262E] space-y-3">
+            <div className="leading-relaxed text-[#0F262E] space-y-3 text-xs md:text-sm lg:text-base">
               <div>
                 <h3 className="font-bold">
                   {(privacyPolicyTexts.contact as any)[locale]}
@@ -102,11 +102,11 @@ export default function PrivacyPolicy() {
           </div>
 
           <div
-            className="p-6 rounded-xl bg-[#0A4A6026]"
+            className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]"
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <div className="leading-relaxed text-[#0F262E]">
+            <div className="leading-relaxed text-[#0F262E] text-xs md:text-sm lg:text-base">
               <p>
                 <span className="font-bold">
                   {(privacyPolicyTexts.lastUpdated as any)[locale]}{" "}
