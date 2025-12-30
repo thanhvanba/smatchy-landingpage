@@ -104,13 +104,13 @@ export default function TermsUse() {
             className="hidden md:block absolute w-auto -top-32 md:-top-40 lg:-top-52 left-4 md:left-10 lg:left-20 scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
           />
         </div>
-        <div className="relative flex flex-col gap-4 md:gap-5 lg:gap-6 bg-[#E2F6F6] shadow rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 mt-10 md:mt-14 lg:mt-20 mb-52 z-30">
+        <div className="relative flex flex-col gap-4 md:gap-5 lg:gap-6 bg-[#E2F6F6] shadow rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 mt-10 md:mt-14 lg:mt-20 mb-52 z-40">
           <div
             className="inline-flex"
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <div className="relative text-center text-xl md:text-2xl lg:text-5xl text-[#0A4A60] font-bold pt-2 md:pt-3 lg:pt-4">
+            <h2 className="relative text-center text-xl md:text-2xl lg:text-5xl text-[#0A4A60] font-bold pt-2 md:pt-3 lg:pt-4">
               <span className="text-[#FCA13B]">
                 {(termsOfUseTexts.titleHighlight as any)[locale]}
               </span>
@@ -120,7 +120,7 @@ export default function TermsUse() {
                 src={Yay3}
                 alt=""
               />
-            </div>
+            </h2>
           </div>
 
           {(termsOfUseTexts.sections as any)[locale].map(
@@ -135,7 +135,7 @@ export default function TermsUse() {
                   <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
                     {section.title}
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+                  <p className="text-xs md:text-sm lg:text-base leading-relaxed text-[#0F262E]">
                     {renderContent(section.content)}
                   </p>
                 </div>
@@ -144,12 +144,12 @@ export default function TermsUse() {
           )}
 
           <div
-            className="p-6 rounded-xl bg-[#0A4A6026]"
+            className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]"
             data-aos="fade-up"
             data-aos-duration="1000"
           >
             <div className="leading-relaxed text-[#0F262E]">
-              <p className="">
+              <p className="text-xs md:text-sm lg:text-base">
                 <span className="font-bold">
                   {(termsOfUseTexts.version as any)[locale]}
                 </span>

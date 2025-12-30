@@ -130,7 +130,7 @@ const FAQ: React.FC = () => {
           </div>
 
           {/* Search & Filter */}
-          <div className="mt-6">
+          <div className="mt-6" data-aos="fade-up" data-aos-duration="1000">
             {/* Search - full width, centered, with search icon */}
             <div className="relative w-full mx-auto">
               <svg
@@ -177,7 +177,11 @@ const FAQ: React.FC = () => {
           </div>
 
           {/* FAQ List */}
-          <div className="space-y-6 mt-6">
+          <div
+            className="space-y-6 mt-6"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             {filteredFaqs.length > 0 ? (
               filteredFaqs.map((item: FAQItem, index: number) => {
                 const isOpen = openIndex === index;

@@ -87,7 +87,7 @@ export default function LegalNotice() {
             className="hidden md:block absolute w-auto -top-40 md:-top-48 lg:-top-52 left-10 md:left-16 lg:left-20 scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
           />
         </div>
-        <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-30">
+        <div className="relative flex flex-col gap-3 md:gap-4 lg:gap-6 bg-[#E2F6F6] shadow rounded-2xl p-4 md:p-6 lg:p-8 mt-8 md:mt-16 lg:mt-20 mb-52 z-40">
           <div
             className="inline-flex"
             data-aos="fade-up"
@@ -114,7 +114,7 @@ export default function LegalNotice() {
             {(legalNoticeTexts.infoRows as any).map(
               (row: any, index: number) => (
                 <div key={index} className="inline-flex">
-                  <p className="">
+                  <p className="text-xs md:text-sm lg:text-base">
                     <span className="font-bold text-[#0F262E]">
                       {row.label[locale]}{" "}
                     </span>
@@ -136,13 +136,13 @@ export default function LegalNotice() {
                 <h3 className="font-bold text-base md:text-lg lg:text-xl text-[#0A4A60]">
                   {section.title}
                 </h3>
-                <p className="text-xs md:text-sm lg:text-sm leading-relaxed text-[#0F262E]">
+                <p className="text-xs md:text-sm lg:text-base leading-relaxed text-[#0F262E]">
                   {renderContent(section.content)}
                 </p>
 
                 {section.cardLines && (
-                  <div className="p-6 rounded-xl bg-[#0A4A6026]">
-                    <div className="leading-relaxed text-[#0F262E] space-y-1.5">
+                  <div className="p-2 md:p-4 lg:p-6 rounded-xl bg-[#0A4A6026]">
+                    <div className="leading-relaxed text-[#0F262E] space-y-1.5 text-xs md:text-sm lg:text-base">
                       {section.cardLines.map(
                         (line: string, lineIndex: number) => (
                           <p key={lineIndex}>{renderContent(line)}</p>
