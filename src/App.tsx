@@ -21,29 +21,31 @@ function AppContent() {
   const location = useLocation();
   const isOpenPath = location.pathname.startsWith("/open/");
 
-  // Refresh AOS khi route change
-  useEffect(() => {
-    AOS.refresh();
-  }, [location.pathname]);
-
   if (isOpenPath) {
     return <AppLaunchPrompt />;
   }
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col overflow-hidden">
-      {/* Header */}
-      <Header />
+    // <div className="relative w-full min-h-screen overflow-hidden">
+    //   {/* Header */}
+    //   <Header />
 
-      {/* Main content - flex-grow để đẩy footer xuống */}
-      <main className="relative flex-grow">
+    //   <main className="relative flex-grow">
+    //     <AppRoutes />
+    //   </main>
+
+    //   <Footer />
+
+    //   <ToastContainer />
+    // </div>
+    <div className="relative w-full min-h-screen overflow-hidden">
+      {/* Main content */}
+      <div className="relative">
+        <Header />
         <AppRoutes />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-
-      <ToastContainer />
+        <Footer />
+        <ToastContainer />
+      </div>
     </div>
   );
 }
@@ -60,3 +62,47 @@ function App() {
 }
 
 export default App;
+
+// function AppContent() {
+//   const location = useLocation();
+//   const isOpenPath = location.pathname.startsWith("/open/");
+
+//   // Refresh AOS khi route change
+//   useEffect(() => {
+//     AOS.refresh();
+//   }, [location.pathname]);
+
+//   if (isOpenPath) {
+//     return <AppLaunchPrompt />;
+//   }
+
+//   return (
+//     <div className="relative w-full min-h-screen flex flex-col overflow-hidden">
+//       {/* Header */}
+//       <Header />
+
+//       {/* Main content - flex-grow để đẩy footer xuống */}
+//       <main className="relative flex-grow">
+//         <AppRoutes />
+//       </main>
+
+//       {/* Footer */}
+//       <Footer />
+
+//       <ToastContainer />
+//     </div>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <>
+//       <BrowserRouter>
+//         <ScrollToTop />
+//         <AppContent />
+//       </BrowserRouter>
+//     </>
+//   );
+// }
+
+// export default App;

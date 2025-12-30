@@ -115,7 +115,7 @@ const FAQ: React.FC = () => {
             className="hidden md:block absolute w-auto -top-40 md:-top-48 lg:-top-52 left-10 md:left-16 lg:left-20 scale-[7.4] origin-top-left rotate-[2.93deg] z-20 px-1.5"
           />
         </div>
-        <div className="relative container z-40 bg-[#E2F6F6] rounded-2xl p-4! lg:p-9! shadow-md min-h-[100vh]">
+        <div className="relative container z-40 bg-[#E2F6F6] rounded-2xl p-4! lg:p-9! shadow-md min-h-[750px]">
           {/* Header */}
           <div
             className="inline-flex"
