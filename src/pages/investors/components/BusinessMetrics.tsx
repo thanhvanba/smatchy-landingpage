@@ -67,7 +67,7 @@ const BusinessMetrics = () => {
               onClick={() =>
                 window.open(btn.btn_url, "_blank", "noopener,noreferrer")
               }
-              className="flex justify-center items-center gap-2 text-white rounded-full px-6 md:px-8 py-2 text-xs md:text-sm lg:text-base font-semibold bg-[#D9D9D9A8] transition cursor-pointer"
+              className="flex justify-center items-center gap-2 text-white rounded-full px-6 md:px-8 py-2 text-xs md:text-sm lg:text-base font-semibold bg-[#D9D9D9A8] hover:bg-[#D9D9D9A8]/80 transition cursor-pointer"
             >
               {btn.btn_label} <FaArrowRightLong />
             </button>

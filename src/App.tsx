@@ -9,12 +9,7 @@ import "aos/dist/aos.css";
 import { ToastContainer } from "react-toastify";
 import AppLaunchPrompt from "./components/AppLaunchPrompt";
 
-AOS.init({
-  duration: 1000,
-  once: true,
-  offset: 100,
-  disable: "phone", // Disable AOS trên mobile
-});
+AOS.init();
 
 function AppContent() {
   const location = useLocation();
