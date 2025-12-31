@@ -256,14 +256,14 @@ const FAQ: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className={`group flex flex-col rounded-xl py-2 px-4 transition-colors duration-200 ${
+                  className={`group flex flex-col rounded-xl py-2 px-4 transition-colors duration-200 cursor-pointer ${
                     isOpen ? "bg-white" : "hover:bg-[#FFF]"
                   }`}
                 >
                   <button
                     type="button"
                     onClick={() => toggle(index)}
-                    className={`w-full flex items-center justify-between text-left text-xl1 transition-colors duration-200 ${
+                    className={`w-full flex items-center justify-between text-left text-xl1 transition-colors cursor-pointer duration-200 ${
                       isOpen
                         ? "text-[#0A4A60] font-bold"
                         : "text-[#0F262E] group-hover:text-[#FCA13B]"
