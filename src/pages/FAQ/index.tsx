@@ -263,7 +263,7 @@ const FAQ: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => toggle(index)}
-                    className={`w-full flex items-center justify-between text-left text-xl font-medium transition-colors duration-200 ${
+                    className={`w-full flex items-center justify-between text-left text-xl1 transition-colors duration-200 ${
                       isOpen
                         ? "text-[#0A4A60] font-bold"
                         : "text-[#0F262E] group-hover:text-[#FCA13B]"
@@ -273,7 +273,7 @@ const FAQ: React.FC = () => {
                     <span
                       className={`flex items-center justify-center min-w-6 min-h-6 rounded-full ${
                         isOpen
-                          ? "bg-[#0A4A60] text-white"
+                          ? "bg-[#FCA13B] text-white"
                           : "bg-[#0A4A60] text-white group-hover:bg-[#FCA13B] group-hover:text-white"
                       }`}
                     >
