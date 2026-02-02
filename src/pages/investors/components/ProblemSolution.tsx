@@ -12,7 +12,7 @@ import problemIcon6 from "/investors/ecosystem.svg";
 const assetBaseEnv =
   import.meta.env.VITE_STRAPI_ASSET_URL ||
   import.meta.env.VITE_STRAPI_URL?.replace("/api", "") ||
-  "https://strapi.annk.info";
+  "https://smatchy.app/api";
 const STRAPI_ASSET_BASE = assetBaseEnv.replace(/\/$/, "");
 
 const FALLBACK_PROBLEM_ICONS = [problemIcon2, problemIcon1, problemIcon3];
@@ -26,7 +26,7 @@ const toAbsoluteUrl = (url?: string | null) => {
 
 const mapItems = (
   items: any[] | undefined,
-  fallbacks: string[]
+  fallbacks: string[],
 ): SectionItem[] => {
   if (!Array.isArray(items)) return [];
   return items.map((item, index) => ({
@@ -43,7 +43,7 @@ const ProblemSolution = () => {
   if (error) return null;
 
   const block = data?.blocks?.find(
-    (b: any) => b.__component === "blocks.problem-solution"
+    (b: any) => b.__component === "blocks.problem-solution",
   );
 
   if (!block) return null;

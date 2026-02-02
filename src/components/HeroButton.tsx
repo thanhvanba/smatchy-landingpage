@@ -17,8 +17,8 @@ export default function HeroButton() {
   const PLAY_STORE_ID = "com.smatchy.app";
   const APP_STORE_ID = "6473653332";
   // const API_BASE_URL = "https://smatchy-landingpage.amagumolabs.net/api";
-
-  const API_BASE_URL = import.meta.env.VITE_STRAPI_URL;
+  const DEFAULT_STRAPI_URL = "https://smatchy.app/api";
+  const API_BASE_URL = import.meta.env.VITE_STRAPI_URL || DEFAULT_STRAPI_URL;
 
   useEffect(() => {
     const fetchRatings = async () => {
