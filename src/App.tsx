@@ -6,33 +6,33 @@ import AppRoutes from "./routes";
 import ScrollToTop from "./components/ScrollToTop";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { ToastContainer } from "react-toastify";
 import AppLaunchPrompt from "./components/AppLaunchPrompt";
+import StripeConnectRedirect from "./components/StripeConnectRedirect";
 
 AOS.init();
-
 function AppContent() {
   const location = useLocation();
   const isOpenPath = location.pathname.startsWith("/open/");
-
+  const isStripeConnectPath =
+    location.pathname.startsWith("/stripe-connect/return") ||
+    location.pathname.startsWith("/stripe-connect/refresh");
+  if (isStripeConnectPath) {
+    return <StripeConnectRedirect />;
+  }
   if (isOpenPath) {
     return <AppLaunchPrompt />;
   }
-
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
+      {/* Main content */}
       <div className="relative">
         <Header />
-        <div className="min-h-[120vh]">
-          <AppRoutes />
-        </div>
+        <AppRoutes />
         <Footer />
-        <ToastContainer />
       </div>
     </div>
   );
 }
-
 function App() {
   return (
     <>
@@ -43,49 +43,4 @@ function App() {
     </>
   );
 }
-
 export default App;
-
-// function AppContent() {
-//   const location = useLocation();
-//   const isOpenPath = location.pathname.startsWith("/open/");
-
-//   // Refresh AOS khi route change
-//   useEffect(() => {
-//     AOS.refresh();
-//   }, [location.pathname]);
-
-//   if (isOpenPath) {
-//     return <AppLaunchPrompt />;
-//   }
-
-//   return (
-//     <div className="relative w-full min-h-screen flex flex-col overflow-hidden">
-//       {/* Header */}
-//       <Header />
-
-//       {/* Main content - flex-grow để đẩy footer xuống */}
-//       <main className="relative flex-grow">
-//         <AppRoutes />
-//       </main>
-
-//       {/* Footer */}
-//       <Footer />
-
-//       <ToastContainer />
-//     </div>
-//   );
-// }
-
-// function App() {
-//   return (
-//     <>
-//       <BrowserRouter>
-//         <ScrollToTop />
-//         <AppContent />
-//       </BrowserRouter>
-//     </>
-//   );
-// }
-
-// export default App;
