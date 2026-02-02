@@ -15,7 +15,6 @@ import logo from "/footer-logo.svg";
 export default function Footer() {
   const { locale } = useLocale();
   const { data, isLoading, error } = useGlobal();
-  //console.log("🚀 ~ Footer ~ data:", data);
 
   const navigate = useNavigate();
   if (isLoading) return <Loading />;
