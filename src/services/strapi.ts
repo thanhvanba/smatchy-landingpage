@@ -16,7 +16,7 @@ import type { ContactForm, ProForm } from "./types/contact";
 import type { TestimonialList } from "./types/testimonial";
 import type { Post, PostsResponse, Category } from "./types/post";
 
-const DEFAULT_STRAPI_URL = "https://strapi.annk.info/api";
+const DEFAULT_STRAPI_URL = "https://smatchy.app/api";
 
 const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || DEFAULT_STRAPI_URL;
 
@@ -41,7 +41,7 @@ type StrapiSingleResponse<T> = {
 
 // Hàm tiện ích
 const fetchStrapi = async <T, R = StrapiSingleResponse<T>>(
-  endpoint: string
+  endpoint: string,
 ): Promise<R> => {
   const res = await strapiApi.get(endpoint);
 
@@ -57,7 +57,7 @@ export const fetchGlobal = async () => {
     { data: IGlobalAttributes; meta: any }
   >(
     //"/global?fields[0]=siteName&fields[1]=siteDescription&populate[favicon][fields][0]=name&populate[favicon][fields][1]=url"
-    "/global?populate=*"
+    "/global?populate=*",
   );
   if (response.data) {
     return response.data as IGlobalAttributes;
@@ -68,7 +68,7 @@ export const fetchGlobal = async () => {
 
 export const fetchHome = async () => {
   const response = await fetchStrapi<any, { data: IHomePage; meta: any }>(
-    "/home?populate[blocks][populate]=*"
+    "/home?populate[blocks][populate]=*",
   );
   if (response.data) {
     return response.data as IHomePage;
@@ -78,7 +78,7 @@ export const fetchHome = async () => {
 
 export const fetchTeamMember = async () => {
   const response = await fetchStrapi<any, { data: Person[]; meta: any }>(
-    "/team-members?populate=*"
+    "/team-members?populate=*",
   );
   if (response.data) {
     return response.data as Person[];
@@ -89,7 +89,7 @@ export const fetchTeamMember = async () => {
 
 export const fetchTeam = async () => {
   const response = await fetchStrapi<any, { data: Team; meta: any }>(
-    "/team?populate[blocks][populate]=*"
+    "/team?populate[blocks][populate]=*",
   );
   if (response.data) {
     return response.data as Team;
@@ -117,11 +117,11 @@ const investorEndpoints: Record<InvestorPopulateType, string> = {
 };
 
 export const fetchInvestor = async (
-  type: InvestorPopulateType = InvestorPopulateType.BASIC
+  type: InvestorPopulateType = InvestorPopulateType.BASIC,
 ) => {
   const endpoint = investorEndpoints[type];
   const response = await fetchStrapi<any, { data: IInvestorPage; meta: any }>(
-    endpoint
+    endpoint,
   );
   if (response.data) {
     return response.data as IInvestorPage;
@@ -132,7 +132,7 @@ export const fetchInvestor = async (
 
 export const fetchHeroById = async (id: string) => {
   const response = await fetchStrapi<any, { data: IHero; meta: any }>(
-    `/heroes/${id}?populate[heros][populate]=*`
+    `/heroes/${id}?populate[heros][populate]=*`,
   );
   if (response.data) {
     return response.data as IHero;
@@ -142,7 +142,7 @@ export const fetchHeroById = async (id: string) => {
 
 export const fetchEventList = async () => {
   const response = await fetchStrapi<any, { data: IEventPage; meta: any }>(
-    "/events?populate[sports][populate]=*"
+    "/events?populate[sports][populate]=*",
   );
   if (response.data) {
     return response.data as IEventPage;
@@ -152,7 +152,7 @@ export const fetchEventList = async () => {
 
 export const fetchEventDetail = async (slug: string) => {
   const response = await fetchStrapi<any, { data: IEventDetail; meta: any }>(
-    `/events?filters[slug][$eq]=${slug}&populate[sports][populate][0]=image&populate[sports][populate][1]=iconType`
+    `/events?filters[slug][$eq]=${slug}&populate[sports][populate][0]=image&populate[sports][populate][1]=iconType`,
   );
   if (response.data) {
     return response.data as IEventDetail;
@@ -177,7 +177,7 @@ export const postContact = async (payload: ContactForm) => {
   try {
     const response = await strapiApi.post<ContactForm>(
       "/contact-form",
-      payload
+      payload,
     );
     return response.data;
   } catch (error) {
@@ -190,7 +190,7 @@ export const postPreReg = async (payload: ProForm) => {
   try {
     const response = await strapiApi.post<ProForm>(
       "/pre-register-form",
-      payload
+      payload,
     );
     return response.data;
   } catch (error) {
@@ -201,7 +201,7 @@ export const postPreReg = async (payload: ProForm) => {
 
 export const fetchSport = async () => {
   const response = await fetchStrapi<any, { data: ISport; meta: any }>(
-    "/sports?fields[0]=name&populate[image][fields][0]=url"
+    "/sports?fields[0]=name&populate[image][fields][0]=url",
   );
   if (response.data) {
     return response.data as ISport;
@@ -210,21 +210,21 @@ export const fetchSport = async () => {
 };
 
 export const fetchTestimonialsByPosition = async (
-  position: "home" | "investor" | "about"
+  position: "home" | "investor" | "about",
 ) => {
   const res = await fetchStrapi<any, TestimonialList>(
-    `/testimonials?filters[position][$eq]=${position}&populate=*`
+    `/testimonials?filters[position][$eq]=${position}&populate=*`,
   );
   return res.data; // Testimonial[]
 };
 
 export const fetchPost = async (
   categories?: string | string[],
-  populate: string = "*"
+  populate: string = "*",
 ) => {
   const endpoint = buildPostsEndpoint(categories, populate);
   const response = await fetchStrapi<any, { data: Post[]; meta: any }>(
-    endpoint
+    endpoint,
   );
   return response as PostsResponse;
 };
@@ -234,7 +234,7 @@ export const fetchPost = async (
  */
 const buildPostsEndpoint = (
   categories?: string | string[],
-  populate: string = "*"
+  populate: string = "*",
 ): string => {
   const params = new URLSearchParams();
   params.append("populate", populate);
@@ -255,7 +255,7 @@ const buildPostsEndpoint = (
  */
 export const fetchPostBySlug = async (slug: string) => {
   const response = await fetchStrapi<any, { data: Post[]; meta: any }>(
-    `/posts?filters[slug][$eq]=${slug}&populate=*`
+    `/posts?filters[slug][$eq]=${slug}&populate=*`,
   );
   return response as PostsResponse;
 };
@@ -265,14 +265,14 @@ export const fetchPostBySlug = async (slug: string) => {
  */
 export const fetchCategories = async (): Promise<Category[]> => {
   const response = await fetchStrapi<any, { data: Category[]; meta: any }>(
-    "/categories?populate=*"
+    "/categories?populate=*",
   );
   return response.data || [];
 };
 
 export const fetchPro = async () => {
   const response = await fetchStrapi<any, { data: Team; meta: any }>(
-    "/professional?populate[blocks][populate]=*"
+    "/professional?populate[blocks][populate]=*",
   );
   if (response.data) {
     return response.data as Team;
@@ -283,7 +283,7 @@ export const fetchPro = async () => {
 
 export const fetchContactPage = async () => {
   const response = await fetchStrapi<any, { data: Team; meta: any }>(
-    "/contact?populate[blocks][populate]=*"
+    "/contact?populate[blocks][populate]=*",
   );
   if (response.data) {
     return response.data as Team;
@@ -294,7 +294,7 @@ export const fetchContactPage = async () => {
 
 export const fetchFAQ = async () => {
   const response = await fetchStrapi<any, { data: IFAQ; meta: any }>(
-    "/faqs?populate=category"
+    "/faqs?populate=category",
   );
   if (response.data) {
     return response.data as IFAQ;
