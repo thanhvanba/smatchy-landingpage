@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import logo from "/logo5.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 import LangSwitch from "./LangSwitch";
 import { useLocale } from "../contexts/LangContext";
 import { headerTexts } from "../config/layoutConfig";
+import SEO from "./SEO";
+import { useGlobal } from "../hooks/useGlobal";
 
 export default function Header() {
   const { locale } = useLocale();
@@ -12,8 +14,39 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  // const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  // const isAndroid = /Android/.test(navigator.userAgent);
+  const { data } = useGlobal();
+
+  // Lấy dữ liệu SEO từ global data
+  const seoData = useMemo(() => {
+    if (!data?.seo || data.seo.length === 0) {
+      return {
+        title: "Smatchy",
+        description: "Sports Matching Platform",
+        keyword: "sports, matching, events, players",
+        name: "Smatchy",
+      };
+    }
+    const seo = data.seo[0];
+    return {
+      title: seo?.metaTitle || "Smatchy",
+      description: seo?.metaDescription || "Sports Matching Platform",
+      keyword: seo?.keywords || "sports, matching, events, players",
+      name: seo?.metaAuthor || "Smatchy",
+    };
+  }, [data?.seo]);
+
+  const seoContent = useMemo(() => {
+    return (
+      <SEO
+        title={seoData.title}
+        description={seoData.description}
+        keyword={seoData.keyword}
+        name={seoData.name}
+        type="website"
+        ogurl={window.location.href}
+      />
+    );
+  }, [seoData]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -50,63 +83,71 @@ export default function Header() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 py-3 w-full z-100 transition-all duration-300 ${
-        isScrolled ? "bg-[#0A4A60]/90 text-white" : "bg-transparent text-white"
-      }`}
-    >
-      <div className="container mx-auto flex justify-between items-center gap-4 sm:gap-6 md:gap-10">
-        {/* Logo */}
-        <div className="shrink-0 cursor-pointer" onClick={() => navigate("/")}>
-          <img src={logo} alt="Logo" className="h-8 sm:h-10 md:h-12" />
-        </div>
+    <>
+      {/* {seoContent} */}
+      <nav
+        className={`fixed top-0 left-0 py-3 w-full z-100 transition-all duration-300 ${
+          isScrolled
+            ? "bg-[#0A4A60]/90 text-white"
+            : "bg-transparent text-white"
+        }`}
+      >
+        <div className="container mx-auto flex justify-between items-center gap-4 sm:gap-6 md:gap-10">
+          {/* Logo */}
+          <div
+            className="shrink-0 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <img src={logo} alt="Logo" className="h-8 sm:h-10 md:h-12" />
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden xl:flex flex-1 justify-center">
-          <ul className="flex flex-wrap justify-start items-center border rounded-full p-2 gap-2 sm:gap-3 md:gap-4 border-[#E2E8F0]">
-            {headerTexts.menu.map((item) => {
-              const isActive =
-                location.pathname === item.link ||
-                (item.link !== "/" && location.pathname.startsWith(item.link));
-              return (
-                <li
-                  key={item.link}
-                  className={`px-4 py-2 rounded-full cursor-pointer transition text-xs xl:text-sm
+          {/* Desktop Menu */}
+          <div className="hidden xl:flex flex-1 justify-center">
+            <ul className="flex flex-wrap justify-start items-center border rounded-full p-2 gap-2 sm:gap-3 md:gap-4 border-[#E2E8F0]">
+              {headerTexts.menu.map((item) => {
+                const isActive =
+                  location.pathname === item.link ||
+                  (item.link !== "/" &&
+                    location.pathname.startsWith(item.link));
+                return (
+                  <li
+                    key={item.link}
+                    className={`px-4 py-2 rounded-full cursor-pointer transition text-xs xl:text-sm
                     ${
                       isActive
                         ? "bg-[#D9D9D9A8] text-white"
                         : "text-white hover:bg-[#D9D9D9A8]"
                     }`}
-                  onClick={() => handleNavigate(item)}
-                >
-                  {(item.label as any)[locale]}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="flex items-center gap-2">
-          <button
-            className="bg-[#FCA13B] hover:bg-[#FCA13B]/90 cursor-pointer text-white rounded-3xl py-1 md:py-3 px-4 text-sm"
-            onClick={() =>handleGetAppClick()}
-          >
-            {(headerTexts.getApp as any)[locale]}
-          </button>
-          <div className="hidden md:block">
-            <LangSwitch />
+                    onClick={() => handleNavigate(item)}
+                  >
+                    {(item.label as any)[locale]}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="xl:hidden text-white text-2xl focus:outline-none"
-          >
-            {isOpen ? <HiX /> : <HiMenu />}
-          </button>
-        </div>
 
-        {/* Desktop Buttons */}
-        {/* <div className="hidden lg:flex items-center gap-2">
+          {/* Mobile Menu Button */}
+          <div className="flex items-center gap-2">
+            <button
+              className="bg-[#FCA13B] hover:bg-[#FCA13B]/90 cursor-pointer text-white rounded-3xl py-1 md:py-3 px-4 text-sm"
+              onClick={() => handleGetAppClick()}
+            >
+              {(headerTexts.getApp as any)[locale]}
+            </button>
+            <div className="hidden md:block">
+              <LangSwitch />
+            </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="xl:hidden text-white text-2xl focus:outline-none"
+            >
+              {isOpen ? <HiX /> : <HiMenu />}
+            </button>
+          </div>
+
+          {/* Desktop Buttons */}
+          {/* <div className="hidden lg:flex items-center gap-2">
           <button
             className="bg-[#FCA13B] text-white rounded-3xl py-1 px-4 text-sm"
             onClick={() => alert("Get the app clicked")}
@@ -115,40 +156,42 @@ export default function Header() {
           </button>
           <LangSwitch />
         </div> */}
-      </div>
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="xl:hidden fixed inset-0 bg-[#0A4A60]/95 text-white flex flex-col items-center justify-center z-50 transition-all">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-4 right-4 text-3xl text-white"
-          >
-            <HiX />
-          </button>
-          <ul className="flex flex-col gap-2 text-xl">
-            {headerTexts.menu.map((item) => {
-              const isActive =
-                location.pathname === item.link ||
-                (item.link !== "/" && location.pathname.startsWith(item.link));
-              return (
-                <li
-                  key={item.link}
-                  className={`px-6 py-3 rounded-full cursor-pointer transition text-center
+        </div>
+        {/* Mobile Menu Dropdown */}
+        {isOpen && (
+          <div className="xl:hidden fixed inset-0 bg-[#0A4A60]/95 text-white flex flex-col items-center justify-center z-50 transition-all">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 text-3xl text-white"
+            >
+              <HiX />
+            </button>
+            <ul className="flex flex-col gap-2 text-xl">
+              {headerTexts.menu.map((item) => {
+                const isActive =
+                  location.pathname === item.link ||
+                  (item.link !== "/" &&
+                    location.pathname.startsWith(item.link));
+                return (
+                  <li
+                    key={item.link}
+                    className={`px-6 py-3 rounded-full cursor-pointer transition text-center
               ${
                 isActive ? "bg-[#D9D9D9A8] text-white" : "hover:bg-[#D9D9D9A8]"
               }`}
-                  onClick={() => handleNavigate(item)}
-                >
-                  {(item.label as any)[locale]}
-                </li>
-              );
-            })}
-            <li className="text-center md:hidden">
-              <LangSwitch />
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
+                    onClick={() => handleNavigate(item)}
+                  >
+                    {(item.label as any)[locale]}
+                  </li>
+                );
+              })}
+              <li className="text-center md:hidden">
+                <LangSwitch />
+              </li>
+            </ul>
+          </div>
+        )}
+      </nav>
+    </>
   );
 }
