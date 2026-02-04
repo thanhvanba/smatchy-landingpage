@@ -68,12 +68,27 @@ interface HeroImageOnlyBlock {
   background_image: StrapiMedia;
 }
 
+interface SharedSEOBlock {
+  __component: "shared.seo";
+  id: number;
+  metaTitle: string;
+  metaDescription: string;
+  metaRobots?: string;
+  keywords?: string;
+  metaAuthor?: string;
+  metaImage?: StrapiMedia;
+  canonicalURL?: string;
+  structuredData?: string;
+  openGraph?: string;
+}
+
 type HomeBlock =
   | HeroImageTextBlock
   | TitleBlock
   | GroupWhyBlock
   | HeroSliderBlock
-  | HeroImageOnlyBlock;
+  | HeroImageOnlyBlock
+  | SharedSEOBlock;
 
 interface IHomePage {
   id: number;
@@ -95,7 +110,7 @@ export const useHome = () => {
 
   console.log(home);
 
-  // Helpers type guard nhỏ nhỏ
+  // Helpers type guard
   const isHeroImageText = (b: HomeBlock): b is HeroImageTextBlock =>
     b.__component === "hero.image-text";
   const isGroupWhy = (b: HomeBlock): b is GroupWhyBlock =>
@@ -106,6 +121,8 @@ export const useHome = () => {
     b.__component === "hero.image-only";
   const isTitle = (b: HomeBlock): b is TitleBlock =>
     b.__component === "blocks.title";
+  const isSharedSEO = (b: HomeBlock): b is SharedSEOBlock =>
+    b.__component === "shared.seo";
 
   // ✅ Tách section theo component
   const hero = blocks.find(isHeroImageText) || null;
@@ -113,6 +130,7 @@ export const useHome = () => {
   const sliders = blocks.filter(isHeroSlider);
   const imageOnly = blocks.filter(isHeroImageOnly);
   const titles = blocks.filter(isTitle);
+  const seoBlock = blocks.find(isSharedSEO) || null;
 
   return {
     ...query, // giữ nguyên useQuery: data, isLoading, error, refetch,...
@@ -123,5 +141,6 @@ export const useHome = () => {
     sliders,
     imageOnly,
     titles,
+    seoBlock,
   };
 };
