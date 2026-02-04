@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
   return (
     <div>
       <div
-        className="relative w-full h-16 md:h-20 lg:h-24 pt-10 md:pt-16 lg:pt-20 z-50"
+        className="relative w-full h-16 md:h-20 pt-10 md:pt-16 lg:pt-20 z-50"
         style={{
           backgroundImage: `url(${heroBanner})`,
           backgroundRepeat: "no-repeat",
@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
             className="prose max-w-none"
             data-aos="fade-up"
             data-aos-duration="1000"
-            dangerouslySetInnerHTML={{__html: post || "" }}
+            dangerouslySetInnerHTML={{ __html: post || "" }}
           />
           {/* {(privacyPolicyTexts.sections as any)[locale].map(
             (section: any, index: number) => (

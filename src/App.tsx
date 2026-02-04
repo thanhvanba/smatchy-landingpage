@@ -27,7 +27,9 @@ function AppContent() {
       {/* Main content */}
       <div className="relative">
         <Header />
-        <AppRoutes />
+        <div className="min-h-[120vh]">
+          <AppRoutes />
+        </div>
         <Footer />
       </div>
     </div>

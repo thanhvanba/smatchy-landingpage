@@ -9,7 +9,7 @@ export default function EventCard({ event }: { event: Event }) {
   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   console.log(event);
   return (
-    <div className="group w-full rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+    <div className="group w-full rounded-2xl overflow-hidden cursor-pointer border border-[#DADEDF]">
       <div
         className="relative h-[297px] w-[337px ] bg-cover bg-center rounded-2xl"
         style={{

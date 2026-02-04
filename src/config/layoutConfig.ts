@@ -9,6 +9,7 @@ export const headerTexts = {
       link: "/professional",
       label: { en: "Professional", fr: "Professionnels" },
     },
+    { link: "/blogs", label: { en: "Blog", fr: "Blog" } },
     { link: "/contact", label: { en: "Contact", fr: "Contact" } },
   ],
   getApp: {
@@ -49,7 +50,7 @@ export const FQATexts = {
     en: "FREQUENTLY",
     fr: "FOIRE",
   },
-   titleEnd: {
+  titleEnd: {
     en: "ASKED QUESTIONS",
     fr: "AUX QUESTIONS",
   },

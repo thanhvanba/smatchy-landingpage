@@ -1,0 +1,61 @@
+/* Container */
+.custom-pagination .ant-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Item chung */
+.custom-pagination .ant-pagination-item,
+.custom-pagination .ant-pagination-prev,
+.custom-pagination .ant-pagination-next {
+  min-width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #dadedf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+/* Link trong item */
+.custom-pagination .ant-pagination-item a {
+  color: #0f262e;
+  font-weight: 500;
+}
+
+/* Hover */
+.custom-pagination .ant-pagination-item:hover {
+  border-color: #fca13b;
+  color: #fca13b;
+}
+
+/* Active page */
+.custom-pagination .ant-pagination-item-active {
+  background-color: #fca13b;
+  border-color: #fca13b;
+}
+
+.custom-pagination .ant-pagination-item-active a {
+  color: white;
+}
+.custom-pagination .ant-pagination-item-active:hover a {
+  color: white;
+}
+
+.ant-pagination-prev:not(.ant-pagination-disabled):hover,
+.custom-pagination .ant-pagination-next:not(.ant-pagination-disabled):hover {
+  border-color: #fca13b;
+  color: #fca13b;
+}
+
+/* Disable state */
+.custom-pagination .ant-pagination-disabled {
+  background-color: #eceeef;
+  cursor: not-allowed;
+}
+
+.custom-pagination .ant-pagination-disabled .ant-pagination-item-link {
+  color: #a9b8b8;
+}

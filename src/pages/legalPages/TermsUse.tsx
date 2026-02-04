@@ -88,7 +88,7 @@ export default function TermsUse() {
   return (
     <div>
       <div
-        className="relative w-full h-16 md:h-20 lg:h-24 pt-10 md:pt-16 lg:pt-20 z-50"
+        className="relative w-full h-16 md:h-20 pt-10 md:pt-16 lg:pt-20 z-50"
         style={{
           backgroundImage: `url(${heroBanner})`,
           backgroundRepeat: "no-repeat",

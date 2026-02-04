@@ -76,8 +76,8 @@ const FAQ: React.FC = () => {
   const categories = useMemo(() => {
     const unique = Array.from(
       new Set(
-        faqs.map((item: FAQItem) => item.category?.name || "Uncategorized")
-      )
+        faqs.map((item: FAQItem) => item.category?.name || "Uncategorized"),
+      ),
     );
     return [allLabel, ...Array.from(unique)] as string[];
   }, [faqs, allLabel]);
@@ -160,7 +160,7 @@ const FAQ: React.FC = () => {
               <input
                 type="text"
                 placeholder="Search questions..."
-                className="w-full px-4 py-2 pl-10 pr-10 border border-[#0A4A60] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FCA13B]"
+                className="w-full px-4 py-2 pl-10 pr-10 border border-[#0A4A60] rounded-lg focus:border-none focus:outline-none focus:ring-2 focus:ring-[#FCA13B]"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />

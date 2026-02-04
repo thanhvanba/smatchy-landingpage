@@ -9,9 +9,10 @@ import LegalNotice from "../pages/legalPages/LegalNotice";
 import TermsUse from "../pages/legalPages/TermsUse";
 import PrivacyPolicy from "../pages/legalPages/PrivacyPolicy";
 import CookiePolicy from "../pages/legalPages/CookiePolicy";
-import Blog from "../pages/blog/blog";
 import ProfessionalPage from "../pages/professional/professional";
 import FAQ from "../pages/FAQ";
+import Blog from "../pages/blog";
+import BlogDetail from "../pages/detailBlog";
 // import AnNK from "../components/AnNK";
 
 export default function AppRoutes() {
@@ -23,7 +24,8 @@ export default function AppRoutes() {
       <Route path="events" element={<EventsPage />} />
       {/* <Route path="event/:id" element={<DetailEvent />} /> */}
       <Route path="events/:slug" element={<DetailEvent />} />
-      <Route path="blog" element={<Blog />} />
+      <Route path="blogs" element={<Blog />} />
+      <Route path="/blogs/:id" element={<BlogDetail />} />
       <Route path="contact" element={<ContactPage />} />
       <Route path="professional" element={<ProfessionalPage />} />
       <Route path="legal-notices" element={<LegalNotice />} />
