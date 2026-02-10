@@ -1,69 +1,55 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Yay3 from "/Yay3.png";
 import BLogCard from "../../blog/components/BLogCard";
+import type { Post } from "../../../services/types/post";
+import { usePostBySlug, usePost } from "../../../hooks/usePost";
 
-type Article = {
-  id: number;
-  category: string;
-  title: string;
-  description: string;
-  image: string;
-  date: string;
-  readTime: string;
-};
+interface RelatedArticlesProps {
+  currentSlug: string;
+}
 
-const RELATED_ARTICLES: Article[] = [
-  {
-    id: 1,
-    category: "Trail",
-    title: "Connecting Through Trail Experiences",
-    description:
-      "Trail activities bring people together through shared outdoor experiences.",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-    date: "28 Oct 2025",
-    readTime: "10 min read",
-  },
-  {
-    id: 2,
-    category: "Swimming",
-    title: "The Value of Structured Swimming Sessions",
-    description:
-      "Structured swimming sessions lead to better training outcomes.",
-    image: "https://images.unsplash.com/photo-1517649763962-0c623066013b",
-    date: "15 Dec 2025",
-    readTime: "10 min read",
-  },
-  {
-    id: 3,
-    category: "Table Tennis",
-    title: "Why Table Tennis Is Perfect for Social Play",
-    description:
-      "Easy to organize and quick to play, table tennis brings people together.",
-    image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519",
-    date: "11 Nov 2025",
-    readTime: "5 min read",
-  },
-  {
-    id: 4,
-    category: "Padel",
-    title: "How to Monetize Your Padel Sessions",
-    description:
-      "Discover practical ways to monetize padel sessions sustainably.",
-    image: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e",
-    date: "20 Jan 2026",
-    readTime: "3 min read",
-  },
-];
-
-export default function RelatedArticles() {
+export default function RelatedArticles({ currentSlug }: RelatedArticlesProps) {
   const swiperRef = useRef<any>(null);
   const navigate = useNavigate();
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+
+  // Fetch current post để lấy category
+  const { data: currentPostData } = usePostBySlug(currentSlug);
+  const currentPost = currentPostData?.data?.[0];
+
+  // Fetch tất cả posts
+  const { data: allPostsData } = usePost(undefined, "*");
+  const allPosts = allPostsData?.data || [];
+
+  // Filter posts có cùng category, exclude current post
+  const relatedArticles = useMemo(() => {
+    if (!currentPost || !allPosts.length) {
+      return [];
+    }
+
+    const currentCategoryId = currentPost.categories?.[0]?.id;
+    if (!currentCategoryId) return [];
+
+    const filtered = allPosts
+      .filter(
+        (post: Post) =>
+          post.slug !== currentSlug &&
+          post.categories?.some((cat) => cat.id === currentCategoryId)
+      )
+      .slice(0, 4); // Lấy 4 posts
+
+    return filtered;
+  }, [currentPost, allPosts, currentSlug]);
+
+  // Hide section nếu không có related articles
+  if (!relatedArticles.length) {
+    return null;
+  }
 
   return (
     <div className="mt-16">
@@ -123,11 +109,10 @@ export default function RelatedArticles() {
           1024: { slidesPerView: 3 },
         }}
       >
-        {RELATED_ARTICLES.map((article) => (
-          <SwiperSlide key={article.id}>
+        {relatedArticles.map((article) => (
+          <SwiperSlide key={article.slug}>
             <div
-              key={article.id}
-              onClick={() => navigate(`/blogs/${article.id}`)}
+              onClick={() => navigate(`/blogs/${article.slug}`)}
               className="cursor-pointer"
             >
               <BLogCard {...article} />

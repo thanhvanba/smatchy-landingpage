@@ -55,3 +55,10 @@ export const FQATexts = {
     fr: "AUX QUESTIONS",
   },
 };
+
+export const breadcrumbTexts = {
+  blog: {
+    en: "Return to the blog list",
+    fr: "Retour à la liste de blog",
+  },
+};

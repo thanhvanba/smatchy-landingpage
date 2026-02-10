@@ -25,7 +25,7 @@ export default function AppRoutes() {
       {/* <Route path="event/:id" element={<DetailEvent />} /> */}
       <Route path="events/:slug" element={<DetailEvent />} />
       <Route path="blogs" element={<Blog />} />
-      <Route path="/blogs/:id" element={<BlogDetail />} />
+      <Route path="/blogs/:slug" element={<BlogDetail />} />
       <Route path="contact" element={<ContactPage />} />
       <Route path="professional" element={<ProfessionalPage />} />
       <Route path="legal-notices" element={<LegalNotice />} />

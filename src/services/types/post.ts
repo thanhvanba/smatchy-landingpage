@@ -51,14 +51,15 @@ export interface Post {
   documentId: string;
   title: string;
   slug: string;
-  content: ContentBlock[];
-  contents: ContentBlock[];
+  content: string | ContentBlock[];
+  contents?: ContentBlock[];
   excerpt: string | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   featuredImage: FeaturedImage | null;
   categories: Category[];
+  tags?: string[];
 }
 
 // Type cho API response từ Strapi

@@ -3,10 +3,43 @@ import RelatedArticles from "./components/RelatedArticles";
 import heroBanner from "/hero-banner.png";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { usePostBySlug } from "../../hooks/usePost";
+import Loading from "../../components/Loading";
+import { useLocale } from "../../contexts/LangContext";
+import { breadcrumbTexts } from "../../config/layoutConfig";
+
+const ASSET_URL = import.meta.env.VITE_STRAPI_ASSET_URL || "";
 
 export default function BlogDetail() {
   const navigate = useNavigate();
+  const { slug } = useParams<{ slug: string }>();
+  const { data: postData, isLoading } = usePostBySlug(slug || "");
+  const { locale } = useLocale();
+
+  if (isLoading) return <Loading />;
+  if (!postData?.data?.[0])
+    return <div className="container justify-between ">Post not found</div>;
+
+  const post = postData.data[0];
+
+  const image = post.featuredImage
+    ? `${ASSET_URL}${post.featuredImage.url}`
+    : "https://via.placeholder.com/1200x600";
+  const category = post.categories?.[0]?.name || "Uncategorized";
+  const date = post.publishedAt || post.createdAt;
+  const contentStr = typeof post.content === "string" ? post.content : "";
+  const readTime = Math.ceil((contentStr || "").split(" ").length / 200) || 5;
+
+  <style jsx>{`
+    .sticky-breadcrumb {
+      position: sticky;
+      top: 0;
+      transform: translateY(var(--nav-height));
+      margin-top: calc(-1 * var(--nav-height));
+    }
+  `}</style>;
+
   return (
     <>
       <div
@@ -18,28 +51,41 @@ export default function BlogDetail() {
           backgroundPosition: "top",
         }}
       ></div>
-      <div className="min-h-screen mb-40">
-        <div className="sticky bg-whtie top-5 border-b border-[#ECEEEF] py-9 shadow">
-          {/* Back */}
-          <button
-            onClick={() => navigate("/blogs")}
-            className="flex items-center gap-2 cursor-pointer container"
-          >
-            <div className="text-white bg-[#FCA13B] rounded-full p-2">
-              <FaArrowLeft size={20} />
-            </div>
-            <span className="text-[#0F262E] hover:text-[#0F262E]/80 font-bold">
-              Retour à la liste de blog
-            </span>
-          </button>
-        </div>
-        <div className="relative z-40 container space-y-6 mt-7!">
-          <div className="bg-[#E2F6F6] p-5 rounded-2xl">
+      {/* <div className="fixed top-[65px] md:top-[70px] lg:top-[80px] left-0 right-0 z-40 bg-white border-b border-[#ECEEEF] py-2 md:py-3 lg:py-4 shadow"> */}
+      {/* <div className="fixed top-16 md:top-18 lg:top-20 xl:top-24 left-0 right-0 z-40 bg-yellow-500 border-b border-[#ECEEEF] py-2 md:py-3 lg:py-4 shadow">
+        <button
+          onClick={() => navigate("/blogs")}
+          className="flex items-center gap-2 cursor-pointer container"
+        >
+          <div className="text-white bg-[#FCA13B] rounded-full p-1.5 md:p-2 lg:p-2">
+            <FaArrowLeft size={16} className="md:w-5 md:h-5 lg:w-5 lg:h-5" />
+          </div>
+          <span className="text-[#0F262E] hover:text-[#0F262E]/80 font-bold text-sm md:text-base lg:text-base">
+            {(breadcrumbTexts.blog as any)[locale]}
+          </span>
+        </button>
+      </div> */}
+      <div className="fixed top-0 left-0 right-0 z-40 mt-14 md:mt-17 lg:mt-18 xl:mt-19 bg-white border-b border-[#ECEEEF] py-2 md:py-3 lg:py-4 shadow">
+        <button
+          onClick={() => navigate("/blogs")}
+          className="flex items-center gap-2 cursor-pointer container"
+        >
+          <div className="text-white bg-[#FCA13B] rounded-full p-1.5 md:p-2 lg:p-2">
+            <FaArrowLeft size={16} className="md:w-5 md:h-5 lg:w-5 lg:h-5" />
+          </div>
+          <span className="text-[#0F262E] hover:text-[#0F262E]/80 font-bold text-sm md:text-base lg:text-base">
+            {(breadcrumbTexts.blog as any)[locale]}
+          </span>
+        </button>
+      </div>
+      <div className="min-h-screen mb-40 pt-[100px] md:pt-[120px] lg:pt-[125px]">
+        <div className="relative z-30 container space-y-6 mt-7!">
+          <div className="p-5 rounded-2xl">
             {/* Hero */}
             <div className="relative rounded-2xl overflow-hidden shadow mb-6">
               <img
-                src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-                alt="trail"
+                src={image}
+                alt={post.title}
                 className="w-full h-[360px] object-cover"
               />
 
@@ -47,11 +93,9 @@ export default function BlogDetail() {
 
               <div className="absolute bottom-6 left-6 right-6 text-white space-y-3">
                 <span className="inline-block bg-[#FCA13B] text-lg font-semibold px-5 py-1 rounded-full">
-                  Trail
+                  {category}
                 </span>
-                <h1 className="text-4xl font-bold">
-                  Connect through trail experiences
-                </h1>
+                <h1 className="text-4xl font-bold">{post.title}</h1>
               </div>
             </div>
             {/* Meta */}
@@ -64,79 +108,45 @@ export default function BlogDetail() {
                 <div className="flex justify-between text-[#6B797E] group-hover:text-white text-xs md:text-xs lg:text-sm gap-2 md:gap-3 lg:gap-4">
                   <p className="flex justify-center items-center gap-0.5 md:gap-1">
                     <MdOutlineCalendarMonth />
-                    Oct 28, 2025
+                    {date
+                      ? new Date(date).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })
+                      : "Unknown"}
                   </p>
                   <p className="flex justify-center items-center gap-0.5 md:gap-1">
-                    <FaRegClock />6 min read
+                    <FaRegClock />
+                    {readTime} min read
                   </p>
                 </div>
               </div>
             </div>
             {/* Content */}
-            <div className="space-y-4 text-[#0F262E]">
-              <p>
-                In the heart of the wilderness, we find more than just
-                picturesque landscapes; we find each other. Trail experiences
-                have a unique way of stripping away the noise of modern life,
-                leaving only the quiet.
-              </p>
+            <div
+              className="prose max-w-none space-y-4 text-[#0F262E] w-full **:w-auto **:float-none **:margin-0"
+              dangerouslySetInnerHTML={{
+                __html: typeof post.content === "string" ? post.content : "",
+              }}
+            />
 
-              <h2 className="text-xl font-semibold text-[#0A4A60]">
-                The power of shared paths
-              </h2>
-
-              <p>
-                When we set out on the trail together, the goal was simple:
-                finish the section and reach the summit. However, the mountain
-                had other plans.
-              </p>
-
-              {/* Quote */}
-              <blockquote className="bg-[#0A4A60] text-white rounded-xl p-6 text-center text-2xl font-bold">
-                “The mountain doesn’t care about your job title or your
-                followers. It only cares about how you help the person next to
-                you.”
-              </blockquote>
-
-              <h2 className="text-xl font-semibold text-[#0A4A60]">
-                Find your community
-              </h2>
-
-              <p>
-                Through Smatchy, we have witnessed hundreds of these
-                connections. What starts as a weekend hike often transforms into
-                a lifelong support system.
-              </p>
-
-              {/* Image in content */}
-              <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-                alt="group hiking"
-                className="rounded-xl"
-              />
-
-              <p>
-                In those moments, it becomes clear that community is not built
-                through grand gestures, but through small acts of support.
-              </p>
-
-              {/* Tags */}
+            {/* Tags */}
+            {post.tags && post.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 pt-4">
-                {["Smatchy", "Trail", "SharedJourney", "Community"].map(
-                  (tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-sm font-semibold rounded-full bg-white text-[#0A4A60]"
-                    >
-                      #{tag}
-                    </span>
-                  ),
-                )}
+                {post.tags.map((tag: string) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-sm font-semibold rounded-full bg-white text-[#0A4A60]"
+                  >
+                    #{tag}
+                  </span>
+                ))}
               </div>
-            </div>
+            )}
           </div>
 
-          <RelatedArticles />
+          <RelatedArticles currentSlug={slug || ""} />
         </div>
       </div>
     </>

@@ -84,7 +84,7 @@ export default function Header() {
 
   return (
     <>
-      {/* {seoContent} */}
+      {seoContent}
       <nav
         className={`fixed top-0 left-0 py-3 w-full z-100 transition-all duration-300 ${
           isScrolled

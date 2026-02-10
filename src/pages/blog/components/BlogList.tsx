@@ -1,64 +1,177 @@
-import { useState } from "react";
 import { Pagination } from "antd";
-import BLogCard from "./BLogCard";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../../components/Loading";
+import { usePost } from "../../../hooks/usePost";
 import "../blog.css";
+import BLogCard from "./BLogCard";
 
 const PAGE_SIZE = 6;
 
-export default function BlogList() {
-  // Base data
+interface BlogListProps {
+  selectedCategorySlug: string | undefined; // undefined = fetch all
+}
+
+export default function BlogList({ selectedCategorySlug }: BlogListProps) {
+  const navigate = useNavigate();
+  const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Fetch posts từ API theo category slug (undefined = all)
+  const { data, isLoading, isError, error } = usePost(
+    selectedCategorySlug,
+    "*",
+  );
+
+  if (isLoading) return <Loading />;
+
+  if (isError) {
+    return <div className="container">Error: {error?.message}</div>;
+  }
+
+  // Base data (fallback nếu API không trả)
   const BASE_ARTICLES = [
     {
-      category: "Padel",
+      id: 1,
+      documentId: "fallback-1",
+      slug: "how-to-monetize-padel",
       title: "How to Monetize Your Padel Sessions with Smatchy Pro",
-      description:
+      excerpt:
         "Discover practical ways to monetize padel sessions and build sustainable income streams.",
-      image: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e",
-      date: "20 Jan 2026",
-      readTime: "3 min read",
+      featuredImage: null,
+      content: "",
+      contents: [],
+      publishedAt: "2026-01-20T00:00:00Z",
+      createdAt: "2026-01-20T00:00:00Z",
+      updatedAt: "2026-01-20T00:00:00Z",
+      categories: [
+        {
+          id: 1,
+          documentId: "cat-1",
+          name: "Padel",
+          slug: "padel",
+          publishedAt: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+      ],
     },
     {
-      category: "Hiking",
+      id: 2,
+      documentId: "fallback-2",
+      slug: "organized-hikes-smarter-way",
       title:
         "From Casual Walks to Organized Hikes: A Smarter Way to Hike Together",
-      description:
+      excerpt:
         "Learn how organized hiking helps people connect, stay motivated, and explore safely.",
-      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-      date: "18 Jan 2026",
-      readTime: "8 min read",
+      featuredImage: null,
+      content: "",
+      contents: [],
+      publishedAt: "2026-01-18T00:00:00Z",
+      createdAt: "2026-01-18T00:00:00Z",
+      updatedAt: "2026-01-18T00:00:00Z",
+      categories: [
+        {
+          id: 2,
+          documentId: "cat-2",
+          name: "Hiking",
+          slug: "hiking",
+          publishedAt: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+      ],
     },
     {
-      category: "Bike",
+      id: 3,
+      documentId: "fallback-3",
+      slug: "top-tools-bike-riders",
       title: "Top Tools Every Bike Rider Should Know",
-      description:
+      excerpt:
         "Explore practical tools that make bike rides easier, safer, and more enjoyable.",
-      image: "https://images.unsplash.com/photo-1518655048521-f130df041f66",
-      date: "30 Dec 2025",
-      readTime: "5 min read",
+      featuredImage: null,
+      content: "",
+      contents: [],
+      publishedAt: "2025-12-30T00:00:00Z",
+      createdAt: "2025-12-30T00:00:00Z",
+      updatedAt: "2025-12-30T00:00:00Z",
+      categories: [
+        {
+          id: 3,
+          documentId: "cat-3",
+          name: "Bike",
+          slug: "bike",
+          publishedAt: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+      ],
     },
   ];
-  const navigate = useNavigate();
-  // Generate 120 articles → 20 pages
-  const articles = Array.from({ length: 120 }, (_, index) => ({
-    id: index + 1,
-    ...BASE_ARTICLES[index % BASE_ARTICLES.length],
-    title: `${BASE_ARTICLES[index % BASE_ARTICLES.length].title} #${index + 1}`,
-  }));
 
-  const [page, setPage] = useState(1);
+  // API data hoặc fallback, filter những posts có slug và categories
+  let articles = (data?.data || BASE_ARTICLES).filter(
+    (article) =>
+      article.slug &&
+      article.slug.trim() !== "" &&
+      article.categories &&
+      article.categories.length > 0,
+  );
+
+  // Sort by updatedAt descending (newest first)
+  articles = articles.sort(
+    (a, b) =>
+      new Date(b.updatedAt || b.createdAt).getTime() -
+      new Date(a.updatedAt || a.createdAt).getTime(),
+  );
+
+  // Filter by search term
+  if (searchTerm.trim()) {
+    articles = articles.filter(
+      (article) =>
+        article.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
+  }
 
   const startIndex = (page - 1) * PAGE_SIZE;
   const currentArticles = articles.slice(startIndex, startIndex + PAGE_SIZE);
 
   return (
     <div className="relative space-y-10 z-40">
+      {/* Search Input */}
+      <div className="mt-6" data-aos="fade-up" data-aos-duration="1000">
+        <div className="relative w-full mx-auto">
+          <svg
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#0A4A60]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search blog posts..."
+            className="w-full px-4 py-2 pl-10 pr-10 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FCA13B]"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
+
       {/* Blog grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentArticles.map((article) => (
           <div
-            key={article.id}
-            onClick={() => navigate(`/blogs/${article.id}`)}
+            key={article.slug}
+            onClick={() => navigate(`/blogs/${article.slug}`)}
             className="cursor-pointer"
           >
             <BLogCard {...article} />
