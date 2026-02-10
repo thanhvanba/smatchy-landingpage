@@ -31,14 +31,6 @@ export default function BlogDetail() {
   const contentStr = typeof post.content === "string" ? post.content : "";
   const readTime = Math.ceil((contentStr || "").split(" ").length / 200) || 5;
 
-  <style jsx>{`
-    .sticky-breadcrumb {
-      position: sticky;
-      top: 0;
-      transform: translateY(var(--nav-height));
-      margin-top: calc(-1 * var(--nav-height));
-    }
-  `}</style>;
 
   return (
     <>
