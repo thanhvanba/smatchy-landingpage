@@ -55,7 +55,7 @@ export default function Footer() {
 
       {/* Main footer content */}
       <div
-        className="relative z-30 w-full h-auto lg:h-[280px]"
+        className="relative z-30 w-full h-auto lg:h-[300px]"
         style={{
           backgroundImage: `url(${backgroundFooter})`,
           backgroundRepeat: "no-repeat",
@@ -123,7 +123,7 @@ export default function Footer() {
 
               {/* Legal links row */}
               <nav aria-label="Legal pages" className="pt-2 md:pt-4">
-                <ul className="flex flex-wrap justify-center md:justify-start gap-x-10 gap-y-3">
+                <ul className="flex flex-wrap justify-center md:justify-start gap-x-10 gap-y-6">
                   {(footerTexts.legalLinks as any).map((link: any) => (
                     <li key={link.path} className="text-center">
                       <button

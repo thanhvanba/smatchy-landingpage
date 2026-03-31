@@ -8,6 +8,8 @@ import { usePostBySlug } from "../../hooks/usePost";
 import Loading from "../../components/Loading";
 import { useLocale } from "../../contexts/LangContext";
 import { breadcrumbTexts } from "../../config/layoutConfig";
+import { useMemo } from "react";
+import SEO from "../../components/SEO";
 
 const ASSET_URL = import.meta.env.VITE_STRAPI_ASSET_URL || "";
 
@@ -17,25 +19,61 @@ export default function BlogDetail() {
   const { data: postData, isLoading } = usePostBySlug(slug || "");
   const { locale } = useLocale();
 
-  if (isLoading) return <Loading />;
-  if (!postData?.data?.[0])
-    return <div className="container justify-between ">Post not found</div>;
+  const stripHtml = (html: string): string => {
+    const tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  };
 
-  const post = postData.data[0];
 
-  const image = post.featuredImage
+  const post = postData?.data?.[0];
+  // console.log(post)
+  const contentStr = typeof post?.content === "string" ? post.content : "";
+  const image = post?.featuredImage
     ? `${ASSET_URL}${post.featuredImage.url}`
     : "https://via.placeholder.com/1200x600";
+
+  const seoContent = useMemo(() => {
+    if (!post) return null;
+    
+    const seoData = post.seo || {
+      metaTitle: post.title || "Blog",
+      metaDescription: post.excerpt || (contentStr ? stripHtml(contentStr).substring(0, 160) : ""),
+      keywords: post.title ? post.title.split(" ").slice(0, 10).join(", ") : "",
+      metaAuthor: "Smatchy",
+      ogTitle: post.title || "Blog",
+      ogDescription: post.excerpt || (contentStr ? stripHtml(contentStr).substring(0, 160) : ""),
+      ogImage: image,
+    };
+
+    return (
+      <SEO
+        title={seoData.metaTitle}
+        description={seoData.metaDescription}
+        keyword={seoData.keywords}
+        author={seoData.metaAuthor}
+        ogimage={seoData.ogImage}
+        type="article"
+        ogurl={window.location.href}
+      />
+    );
+  }, [post, contentStr, image]);
+
+  
+
+  if (isLoading) return <Loading />;
+  if (!post)
+    return <div className="container justify-between ">Post not found</div>;
+
   const category = post.categories?.[0]?.name || "Uncategorized";
   const date = post.publishedAt || post.createdAt;
-  const contentStr = typeof post.content === "string" ? post.content : "";
   const readTime = Math.ceil((contentStr || "").split(" ").length / 200) || 5;
-
 
   return (
     <>
+      {seoContent}
       <div
-        className="relative w-full h-16 md:h-20 pt-10 md:pt-16 lg:pt-20 z-50"
+        className="relative w-full h-16 md:h-20 pt-10 md:pt-16 lg:pt-20 z-50 bg-amber-700"
         style={{
           backgroundImage: `url(${heroBanner})`,
           backgroundRepeat: "no-repeat",
@@ -57,7 +95,7 @@ export default function BlogDetail() {
           </span>
         </button>
       </div> */}
-      <div className="fixed top-0 left-0 right-0 z-40 mt-14 md:mt-17 lg:mt-18 xl:mt-19 bg-white border-b border-[#ECEEEF] py-2 md:py-3 lg:py-4 shadow">
+      <div className="fixed top-0 left-0 right-0 z-65 mt-14 md:mt-18 lg:mt-18 xl:mt-19 bg-white border-b border-[#ECEEEF] py-4 md:py-4 lg:py-4 shadow">
         <button
           onClick={() => navigate("/blogs")}
           className="flex items-center gap-2 cursor-pointer container"
@@ -70,9 +108,9 @@ export default function BlogDetail() {
           </span>
         </button>
       </div>
-      <div className="min-h-screen mb-40 pt-[100px] md:pt-[120px] lg:pt-[125px]">
+      <div className="relative z-60 min-h-screen mb-40 pt-[30px] md:pt-10 lg:pt-[50px]">
         <div className="relative z-30 container space-y-6 mt-7!">
-          <div className="p-5 rounded-2xl">
+          <div className="p-4 rounded-2xl">
             {/* Hero */}
             <div className="relative rounded-2xl overflow-hidden shadow mb-6">
               <img

@@ -8,7 +8,6 @@ import heroBanner from "/hero-banner.png";
 import Yay3 from "/Yay3.png";
 
 export default function Blog() {
- 
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<
     string | null
   >(null); // null = "All"
@@ -57,7 +56,8 @@ export default function Blog() {
         }}
       ></div>
       <div className="bg-[#FFF]">
-        <div className="container py-14!">
+        {/* <div className="container py-14!"> */}
+        <div className="container py-10! md:py-15! lg:py-16!">
           <div className="flex flex-col">
             <div
               className=" inline-flex"

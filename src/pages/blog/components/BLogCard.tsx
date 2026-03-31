@@ -23,6 +23,8 @@ export default function BLogCard(post: Post) {
   const date = post.publishedAt || post.createdAt;
   const readTime = Math.ceil((contentStr || "").split(" ").length / 200) || 5;
 
+
+
   return (
     <div className="group w-full rounded-2xl overflow-hidden cursor-pointer border border-[#DADEDF]">
       <div
@@ -44,7 +46,7 @@ export default function BLogCard(post: Post) {
                 <h2 className="font-bold text-xs md:text-sm lg:text-base text-[#0F262E] line-clamp-1 group-hover:text-xs md:group-hover:text-sm lg:group-hover:text-base group-hover:text-white mb-3">
                   {post.title}
                 </h2>
-                <p className="font-medium text-[10px] md:text-xs lg:text-sm text-[#6B797E] group-hover:hidden">
+                <p className="font-medium text-[10px] md:text-xs lg:text-sm text-[#6B797E] group-hover:hidden line-clamp-2">
                   {description}
                 </p>
               </div>

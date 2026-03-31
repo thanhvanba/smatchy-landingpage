@@ -45,6 +45,17 @@ export interface FeaturedImage {
   updatedAt: string;
 }
 
+// Type cho SEO metadata
+export interface SEOMetadata {
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string;
+  metaAuthor?: string;
+  ogImage?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
 // Type cho post
 export interface Post {
   id: number;
@@ -60,6 +71,7 @@ export interface Post {
   featuredImage: FeaturedImage | null;
   categories: Category[];
   tags?: string[];
+  seo?: SEOMetadata;
 }
 
 // Type cho API response từ Strapi

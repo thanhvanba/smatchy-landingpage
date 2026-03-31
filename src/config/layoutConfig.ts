@@ -29,6 +29,10 @@ export const footerTexts = {
   },
   legalLinks: [
     {
+      path: "/general-terms-and-conditions",
+      label: { en: "General Terms & Conditions", fr: "CGV" },
+    },
+    {
       path: "/legal-notices",
       label: { en: "Legal Notices", fr: "Mentions légales" },
     },

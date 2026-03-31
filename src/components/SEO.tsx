@@ -4,6 +4,7 @@ interface SEOProps {
   title?: string;
   description?: string;
   keyword?: string;
+  author?: string;
   name?: string;
   type?: string;
   ogurl?: string;
@@ -16,6 +17,7 @@ export default function SEO({
   name,
   type,
   keyword,
+  author,
   ogurl,
   ogimage,
 }: SEOProps) {
@@ -25,6 +27,7 @@ export default function SEO({
       <title>{title}</title>
       <meta name="description" content={description || ""} />
       <meta name="keywords" content={keyword || ""} />
+      <meta name="author" content={author || "Smatchy"}></meta>
       {ogurl && <link rel="canonical" href={ogurl} />}
 
       {/* Open Graph tags (Facebook, LinkedIn) */}
