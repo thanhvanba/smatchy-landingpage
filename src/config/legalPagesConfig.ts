@@ -450,3 +450,14 @@ export const legalNoticeTexts = {
     ],
   },
 };
+
+export const GenTerCon = {
+  titleHighlight: {
+    en: "GENERAL ",
+    fr: "CONDITIONS ",
+  },
+  titleEnd: {
+    en: "CONDITIONS OF SALE (GCS)",
+    fr: "GÉNÉRALE DE VENTE (CGV)",
+  },
+};

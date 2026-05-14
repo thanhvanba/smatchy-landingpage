@@ -1,10 +1,12 @@
 import { Pagination } from "antd";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../../components/Loading";
 import { usePost } from "../../../hooks/usePost";
 import "../blog.css";
 import BLogCard from "./BLogCard";
+import { useHome } from "../../../hooks/useHome";
+import SEO from "../../../components/SEO";
 
 const PAGE_SIZE = 6;
 
@@ -16,6 +18,26 @@ export default function BlogList({ selectedCategorySlug }: BlogListProps) {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const { seoBlock } = useHome();
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+
+  const seoContent = useMemo(() => {
+    const ogImage = seoBlock?.metaImage?.url
+      ? `${assetUrl}${seoBlock.metaImage.url}`
+      : undefined;
+
+    return (
+      <SEO
+        title={seoBlock?.metaTitle || "Smatchy"}
+        description={seoBlock?.metaDescription || "Sports Matching Platform"}
+        keyword={seoBlock?.keywords || "sports, matching, events, players"}
+        name={seoBlock?.metaAuthor || "Smatchy"}
+        type="website"
+        ogurl={typeof window !== "undefined" ? window.location.href : ""}
+        ogimage={ogImage}
+      />
+    );
+  }, [seoBlock, assetUrl]);
 
   // Fetch posts từ API theo category slug (undefined = all)
   const { data, isLoading, isError, error } = usePost(
@@ -138,58 +160,61 @@ export default function BlogList({ selectedCategorySlug }: BlogListProps) {
   const currentArticles = articles.slice(startIndex, startIndex + PAGE_SIZE);
 
   return (
-    <div className="relative space-y-10 z-40">
-      {/* Search Input */}
-      <div className="mt-6" data-aos="fade-up" data-aos-duration="1000">
-        <div className="relative w-full mx-auto">
-          <svg
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#0A4A60]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+    <>
+      {seoContent}
+      <div className="relative space-y-10 z-40">
+        {/* Search Input */}
+        <div className="mt-6" data-aos="fade-up" data-aos-duration="1000">
+          <div className="relative w-full mx-auto">
+            <svg
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#0A4A60]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search blog posts..."
+              className="w-full px-4 py-2 pl-10 pr-10 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FCA13B]"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search blog posts..."
-            className="w-full px-4 py-2 pl-10 pr-10 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FCA13B]"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+          </div>
+        </div>
+
+        {/* Blog grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {currentArticles.map((article) => (
+            <div
+              key={article.slug}
+              onClick={() => navigate(`/blogs/${article.slug}`)}
+              className="cursor-pointer"
+            >
+              <BLogCard {...article} />
+            </div>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center custom-pagination">
+          <Pagination
+            showLessItems
+            current={page}
+            pageSize={PAGE_SIZE}
+            total={articles.length}
+            onChange={(p) => setPage(p)}
+            showSizeChanger={false}
           />
         </div>
       </div>
-
-      {/* Blog grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentArticles.map((article) => (
-          <div
-            key={article.slug}
-            onClick={() => navigate(`/blogs/${article.slug}`)}
-            className="cursor-pointer"
-          >
-            <BLogCard {...article} />
-          </div>
-        ))}
-      </div>
-
-      {/* Pagination */}
-      <div className="flex justify-center custom-pagination">
-        <Pagination
-          showLessItems
-          current={page}
-          pageSize={PAGE_SIZE}
-          total={articles.length}
-          onChange={(p) => setPage(p)}
-          showSizeChanger={false}
-        />
-      </div>
-    </div>
+    </>
   );
 }

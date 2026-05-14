@@ -13,7 +13,6 @@ import Yay2 from "/Yay2.png";
 export default function HomePage() {
   const { isLoading, error, titles, seoBlock } = useHome();
   const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
-
   const seoContent = useMemo(() => {
     const ogImage = seoBlock?.metaImage?.url
       ? `${assetUrl}${seoBlock.metaImage.url}`
@@ -39,7 +38,6 @@ export default function HomePage() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
   return (
     <>
       {seoContent}

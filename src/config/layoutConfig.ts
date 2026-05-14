@@ -29,22 +29,24 @@ export const footerTexts = {
   },
   legalLinks: [
     {
-      path: "/general-terms-and-conditions",
-      label: { en: "General Terms & Conditions", fr: "CGV" },
+      path: "/privacy-policy",
+      label: { en: "Privacy Policy", fr: "Politique de confidentialité" },
     },
     {
-      path: "/legal-notices",
-      label: { en: "Legal Notices", fr: "Mentions légales" },
+      path: "/general-conditions-of-sale",
+      label: { en: "GCS", fr: "CGV" },
     },
     {
       path: "/terms-of-use",
       label: { en: "Terms of Use", fr: "Conditions d'utilisation" },
     },
-    {
-      path: "/privacy-policy",
-      label: { en: "Privacy Policy", fr: "Politique de confidentialité" },
-    },
     { path: "/cookie-policy", label: { en: "Cookies", fr: "Cookies" } },
+
+    {
+      path: "/legal-notices",
+      label: { en: "Legal Notices", fr: "Mentions légales" },
+    },
+
     { path: "/faq", label: { en: "FAQ", fr: "FAQ" } },
   ],
 };

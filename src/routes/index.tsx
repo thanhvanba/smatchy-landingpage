@@ -13,6 +13,7 @@ import ProfessionalPage from "../pages/professional/professional";
 import FAQ from "../pages/FAQ";
 import Blog from "../pages/blog";
 import BlogDetail from "../pages/detailBlog";
+import GeneralTermsConditions from "../pages/legalPages/GeneralTermsConditions";
 // import AnNK from "../components/AnNK";
 
 export default function AppRoutes() {
@@ -32,6 +33,7 @@ export default function AppRoutes() {
       <Route path="terms-of-use" element={<TermsUse />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route path="cookie-policy" element={<CookiePolicy />} />
+      <Route path="general-conditions-of-sale" element={<GeneralTermsConditions />} />
       <Route path="faq" element={<FAQ />} />
       {/* <Route path="annk" element={<AnNK />} /> */}
 

@@ -16,7 +16,9 @@
       "namespace": "android_app",
       "package_name": "com.amagumolabs.smatchy.dev",
       "sha256_cert_fingerprints": [
-        "4C:CD:9A:71:7E:05:B2:36:3E:C9:BC:66:2E:38:19:3D:AF:14:E2:80:F3:CF:35:94:D8:FF:5B:57:BB:1C:8D:71"
+        "4C:CD:9A:71:7E:05:B2:36:3E:C9:BC:66:2E:38:19:3D:AF:14:E2:80:F3:CF:35:94:D8:FF:5B:57:BB:1C:8D:71",
+        "40:4B:D6:03:3C:EE:AA:D4:04:B1:77:68:AD:0B:30:FD:BA:3F:26:74:C8:A5:B8:9B:BA:B8:A4:8E:80:35:90:86",
+        "1C:EB:68:BA:EE:FE:FD:39:59:D0:DE:F7:B4:A6:11:CE:2C:D1:C5:B1:7D:3B:96:EA:60:54:63:A4:F3:53:F0:99"
       ]
     }
   }
