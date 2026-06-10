@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef, useState, useMemo } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import useLocalizedNavigate from "../../../hooks/useLocalizedNavigate";
 import Yay3 from "/Yay3.png";
 import BLogCard from "../../blog/components/BLogCard";
 import type { Post } from "../../../services/types/post";
@@ -13,7 +13,7 @@ interface RelatedArticlesProps {
 
 export default function RelatedArticles({ currentSlug }: RelatedArticlesProps) {
   const swiperRef = useRef<any>(null);
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);

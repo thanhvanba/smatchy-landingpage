@@ -49,10 +49,11 @@ export default function EventHeroBanner() {
 
   const slider = data?.heros?.find((h) => h.__component === "hero.slider");
   if (!slider) return [];
-
+  console.log(slider);
   const listBaner = slider.slider_images.map((img: any) => ({
     id: img.id,
     banner: img.url, // url gốc (có thể dùng img.formats.large.url nếu muốn)
+    alternativeText: img.alternativeText || "",
   }));
 
   //console.log(data?.heros[0].heading);
@@ -75,7 +76,7 @@ export default function EventHeroBanner() {
             <img
               className="w-full h-[260px] md:h-[400px] lg:h-[564px] object-cover"
               src={`${assetUrl}${banner.banner}`}
-              alt=""
+              alt={banner.alternativeText}
             />
           </SwiperSlide>
         ))}

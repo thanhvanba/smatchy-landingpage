@@ -20,7 +20,8 @@ export default function HeroBanner() {
   //const bg2 = hero?.background_image.url;
   const bg = hero?.background_image.url;
   const main_img = hero?.main_image.formats?.medium.url;
-
+  const altText = hero?.main_image.alternativeText || "Hero Image";
+  console.log(altText);
   return (
     <>
       <div
@@ -40,7 +41,7 @@ export default function HeroBanner() {
               className="z-50 w-full md:w-2/5 lg:w-auto h-auto hidden md:block"
               src={`${assetUrl}${main_img}`}
               //src={image7}
-              alt=""
+              alt={altText}
             />
             <div
               data-aos="fade-up"

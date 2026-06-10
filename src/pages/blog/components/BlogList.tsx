@@ -1,12 +1,12 @@
 import { Pagination } from "antd";
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Loading from "../../../components/Loading";
+// import { useHome } from "../../../hooks/useHome";
+import useLocalizedNavigate from "../../../hooks/useLocalizedNavigate";
 import { usePost } from "../../../hooks/usePost";
 import "../blog.css";
 import BLogCard from "./BLogCard";
-import { useHome } from "../../../hooks/useHome";
-import SEO from "../../../components/SEO";
+// import SEO from "../../../components/SEO";
 
 const PAGE_SIZE = 6;
 
@@ -15,29 +15,21 @@ interface BlogListProps {
 }
 
 export default function BlogList({ selectedCategorySlug }: BlogListProps) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const { seoBlock } = useHome();
-  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  // const { seoBlock } = useHome();
 
-  const seoContent = useMemo(() => {
-    const ogImage = seoBlock?.metaImage?.url
-      ? `${assetUrl}${seoBlock.metaImage.url}`
-      : undefined;
-
-    return (
-      <SEO
-        title={seoBlock?.metaTitle || "Smatchy"}
-        description={seoBlock?.metaDescription || "Sports Matching Platform"}
-        keyword={seoBlock?.keywords || "sports, matching, events, players"}
-        name={seoBlock?.metaAuthor || "Smatchy"}
-        type="website"
-        ogurl={typeof window !== "undefined" ? window.location.href : ""}
-        ogimage={ogImage}
-      />
-    );
-  }, [seoBlock, assetUrl]);
+  // const seoContent = useMemo(() => {
+  //   return (
+  //     <SEO
+  //       seo={seoBlock}
+  //       title={seoBlock?.metaTitle || "Smatchy"}
+  //       description={seoBlock?.metaDescription || "Sports Matching Platform"}
+  //       ogurl={typeof window !== "undefined" ? window.location.href : ""}
+  //     />
+  //   );
+  // }, [seoBlock]);
 
   // Fetch posts từ API theo category slug (undefined = all)
   const { data, isLoading, isError, error } = usePost(
@@ -161,7 +153,7 @@ export default function BlogList({ selectedCategorySlug }: BlogListProps) {
 
   return (
     <>
-      {seoContent}
+      {/* {seoContent} */}
       <div className="relative space-y-10 z-40">
         {/* Search Input */}
         <div className="mt-6" data-aos="fade-up" data-aos-duration="1000">

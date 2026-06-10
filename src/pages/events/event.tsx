@@ -1,34 +1,35 @@
 import { useMemo } from "react";
 import Loading from "../../components/Loading";
-import { useHome } from "../../hooks/useHome";
+import { useEventPage } from "../../hooks/useEvent";
 import CreateEventBanner from "./components/CreateEventBanner";
 import EventHeroBanner from "./components/EventHeroBanner";
 import UpcomingEvents from "./components/UpcomingEvents";
 
 import line from "/line_bg.svg";
-import SEO from "../../components/SEO";
+import SEO, { type StrapiSEO } from "../../components/SEO";
 
 export default function EventsPage() {
-  const { seoBlock,isLoading, error } = useHome();
-  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const { data, isLoading, error } = useEventPage();
+
+  const seoBlocks = (data?.blocks ?? []).filter(
+    (b: any): b is StrapiSEO => b?.__component === "shared.seo",
+  );
+
+  const seoBlock =
+    seoBlocks.find((block) => block?.canonicalURL?.includes("/events")) ??
+    seoBlocks[0] ??
+    null;
 
   const seoContent = useMemo(() => {
-    const ogImage = seoBlock?.metaImage?.url
-      ? `${assetUrl}${seoBlock.metaImage.url}`
-      : undefined;
-
     return (
       <SEO
+        seo={seoBlock}
         title={seoBlock?.metaTitle || "Smatchy"}
         description={seoBlock?.metaDescription || "Sports Matching Platform"}
-        keyword={seoBlock?.keywords || "sports, matching, events, players"}
-        name={seoBlock?.metaAuthor || "Smatchy"}
-        type="website"
         ogurl={typeof window !== "undefined" ? window.location.href : ""}
-        ogimage={ogImage}
       />
     );
-  }, [seoBlock, assetUrl]);
+  }, [seoBlock]);
 
   if (isLoading) return <Loading />;
   if (error) return null;

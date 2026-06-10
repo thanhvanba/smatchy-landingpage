@@ -54,6 +54,9 @@ export interface SEOMetadata {
   ogImage?: string;
   ogTitle?: string;
   ogDescription?: string;
+  metaImage?: {
+    url: string;
+  };
 }
 
 // Type cho post

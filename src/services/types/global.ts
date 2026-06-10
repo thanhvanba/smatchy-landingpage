@@ -23,6 +23,7 @@ interface IHomePage {
   siteDescription: string;
   favicon: string;
   defaultSeo: string;
+  blocks?: any[];
 }
 
 interface IInvestorPage {
@@ -38,6 +39,7 @@ interface IEventPage {
   siteDescription: string;
   favicon: string;
   defaultSeo: string;
+  blocks?: any[];
 }
 
 interface IEventDetail {

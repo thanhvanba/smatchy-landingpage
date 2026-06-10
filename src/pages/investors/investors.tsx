@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import Loading from "../../components/Loading";
-import SEO from "../../components/SEO";
-import { useHome } from "../../hooks/useHome";
+import SEO, { type StrapiSEO } from "../../components/SEO";
 import { useInvestor } from "../../hooks/useInvestor";
 import AmbitionVisionSection from "./components/AmbitionVisionSection";
 import BusinessMetrics from "./components/BusinessMetrics";
@@ -22,26 +21,20 @@ import Yay2 from "/Yay2.png";
 
 export default function InvestorsPage() {
   const { data, isLoading, error } = useInvestor();
-  const { seoBlock } = useHome();
-  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+
+  const seoBlock =
+    data?.blocks?.find((b: any): b is StrapiSEO => b?.__component === "shared.seo") ?? null;
 
   const seoContent = useMemo(() => {
-    const ogImage = seoBlock?.metaImage?.url
-      ? `${assetUrl}${seoBlock.metaImage.url}`
-      : undefined;
-
     return (
       <SEO
+        seo={seoBlock}
         title={seoBlock?.metaTitle || "Smatchy"}
         description={seoBlock?.metaDescription || "Sports Matching Platform"}
-        keyword={seoBlock?.keywords || "sports, matching, events, players"}
-        name={seoBlock?.metaAuthor || "Smatchy"}
-        type="website"
         ogurl={typeof window !== "undefined" ? window.location.href : ""}
-        ogimage={ogImage}
       />
     );
-  }, [seoBlock, assetUrl]);
+  }, [seoBlock]);
 
   if (isLoading) return <Loading />;
   if (error) return null;

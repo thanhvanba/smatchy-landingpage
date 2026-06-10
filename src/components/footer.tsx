@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useGlobal } from "../hooks/useGlobal";
 import Loading from "./Loading";
 import backgroundFooter from "/background-footer.png";
@@ -9,14 +8,14 @@ import Tiktok from "/Tiktok.svg";
 import Youtube from "/Youtube.svg";
 import { useLocale } from "../contexts/LangContext";
 import { footerTexts } from "../config/layoutConfig";
-console.log("🚀 ~ footerTexts:", footerTexts);
 import logo from "/footer-logo.svg";
+import useLocalizedNavigate from "../hooks/useLocalizedNavigate";
 
 export default function Footer() {
   const { locale } = useLocale();
   const { data, isLoading, error } = useGlobal();
 
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   if (isLoading) return <Loading />;
 
   if (error) {
@@ -124,13 +123,13 @@ export default function Footer() {
               {/* Legal links row */}
               <nav aria-label="Legal pages" className="pt-2 md:pt-4">
                 <ul className="flex flex-wrap justify-center md:justify-start gap-x-10 gap-y-6">
-                  {(footerTexts.legalLinks as any).map((link: any) => (
-                    <li key={link.path} className="text-center">
+                  {footerTexts.legalLinks.map((link) => (
+                    <li key={link.path.en} className="text-center">
                       <button
-                        onClick={() => navigate(link.path)}
+                        onClick={() => navigate(link.path[locale])}
                         className="text-white/90 hover:text-white transition-colors py-2 px-1 hover:underline underline-offset-4 w-full cursor-pointer"
                       >
-                        {(link.label as any)[locale]}
+                        {link.label[locale]}
                       </button>
                     </li>
                   ))}

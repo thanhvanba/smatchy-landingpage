@@ -1,52 +1,36 @@
 import { useEffect, useMemo, useState } from "react";
 import logo from "/logo5.svg";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 import LangSwitch from "./LangSwitch";
 import { useLocale } from "../contexts/LangContext";
 import { headerTexts } from "../config/layoutConfig";
 import SEO from "./SEO";
 import { useGlobal } from "../hooks/useGlobal";
+import useLocalizedNavigate, { buildLocalizedPath } from "../hooks/useLocalizedNavigate";
 
 export default function Header() {
   const { locale } = useLocale();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const location = useLocation();
   const { data } = useGlobal();
 
   // Lấy dữ liệu SEO từ global data
-  const seoData = useMemo(() => {
-    if (!data?.seo || data.seo.length === 0) {
-      return {
-        title: "Smatchy",
-        description: "Sports Matching Platform",
-        keyword: "sports, matching, events, players",
-        name: "Smatchy",
-      };
-    }
-    const seo = data.seo[0];
-    return {
-      title: seo?.metaTitle || "Smatchy",
-      description: seo?.metaDescription || "Sports Matching Platform",
-      keyword: seo?.keywords || "sports, matching, events, players",
-      name: seo?.metaAuthor || "Smatchy",
-    };
-  }, [data?.seo]);
+  const globalSeo = data?.seo?.[0] || null;
 
   const seoContent = useMemo(() => {
     return (
       <SEO
-        title={seoData.title}
-        description={seoData.description}
-        keyword={seoData.keyword}
-        name={seoData.name}
+        seo={globalSeo}
+        title={globalSeo?.metaTitle || "Smatchy"}
+        description={globalSeo?.metaDescription || "Sports Matching Platform"}
         type="website"
         ogurl={window.location.href}
       />
     );
-  }, [seoData]);
+  }, [globalSeo]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -55,7 +39,8 @@ export default function Header() {
   }, []);
 
   const handleNavigate = (item: (typeof headerTexts.menu)[0]) => {
-    navigate(item.link);
+    const link = item.link[locale];
+    navigate(link);
     setIsOpen(false); // close mobile menu
   };
 
@@ -105,13 +90,15 @@ export default function Header() {
           <div className="hidden xl:flex flex-1 justify-center">
             <ul className="flex flex-wrap justify-start items-center border rounded-full p-2 gap-2 sm:gap-3 md:gap-4 border-[#E2E8F0]">
               {headerTexts.menu.map((item) => {
+                const link = item.link[locale];
+                const localizedLink = buildLocalizedPath(link, locale);
                 const isActive =
-                  location.pathname === item.link ||
-                  (item.link !== "/" &&
-                    location.pathname.startsWith(item.link));
+                  location.pathname === localizedLink ||
+                  (link !== "/" &&
+                    location.pathname.startsWith(localizedLink));
                 return (
                   <li
-                    key={item.link}
+                    key={item.link.en}
                     className={`px-4 py-2 rounded-full cursor-pointer transition text-xs xl:text-sm
                     ${
                       isActive
@@ -120,7 +107,7 @@ export default function Header() {
                     }`}
                     onClick={() => handleNavigate(item)}
                   >
-                    {(item.label as any)[locale]}
+                    {item.label[locale]}
                   </li>
                 );
               })}
@@ -168,20 +155,22 @@ export default function Header() {
             </button>
             <ul className="flex flex-col gap-2 text-xl">
               {headerTexts.menu.map((item) => {
+                const link = item.link[locale];
+                const localizedLink = buildLocalizedPath(link, locale);
                 const isActive =
-                  location.pathname === item.link ||
-                  (item.link !== "/" &&
-                    location.pathname.startsWith(item.link));
+                  location.pathname === localizedLink ||
+                  (link !== "/" &&
+                    location.pathname.startsWith(localizedLink));
                 return (
                   <li
-                    key={item.link}
+                    key={item.link.en}
                     className={`px-6 py-3 rounded-full cursor-pointer transition text-center
               ${
                 isActive ? "bg-[#D9D9D9A8] text-white" : "hover:bg-[#D9D9D9A8]"
               }`}
                     onClick={() => handleNavigate(item)}
                   >
-                    {(item.label as any)[locale]}
+                    {item.label[locale]}
                   </li>
                 );
               })}

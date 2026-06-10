@@ -1,16 +1,34 @@
 // Shared layout translations for header and footer
 export const headerTexts = {
   menu: [
-    { link: "/", label: { en: "Home", fr: "Accueil" } },
-    { link: "/team", label: { en: "Team", fr: "Équipe" } },
-    { link: "/investors", label: { en: "Investors", fr: "Investisseurs" } },
-    { link: "/events", label: { en: "Events", fr: "Événements" } },
     {
-      link: "/professional",
+      link: { en: "/", fr: "/" },
+      label: { en: "Home", fr: "Accueil" },
+    },
+    {
+      link: { en: "/team", fr: "/equipe" },
+      label: { en: "Team", fr: "Équipe" },
+    },
+    {
+      link: { en: "/investors", fr: "/investisseurs" },
+      label: { en: "Investors", fr: "Investisseurs" },
+    },
+    {
+      link: { en: "/events", fr: "/evenements" },
+      label: { en: "Events", fr: "Événements" },
+    },
+    {
+      link: { en: "/professional", fr: "/professionnel" },
       label: { en: "Professional", fr: "Professionnels" },
     },
-    { link: "/blogs", label: { en: "Blog", fr: "Blog" } },
-    { link: "/contact", label: { en: "Contact", fr: "Contact" } },
+    {
+      link: { en: "/blogs", fr: "/blogs" },
+      label: { en: "Blog", fr: "Blog" },
+    },
+    {
+      link: { en: "/contact", fr: "/contact" },
+      label: { en: "Contact", fr: "Contact" },
+    },
   ],
   getApp: {
     en: "Get the app",
@@ -29,25 +47,29 @@ export const footerTexts = {
   },
   legalLinks: [
     {
-      path: "/privacy-policy",
+      path: { en: "/privacy-policy", fr: "/politique-de-confidentialite" },
       label: { en: "Privacy Policy", fr: "Politique de confidentialité" },
     },
     {
-      path: "/general-conditions-of-sale",
+      path: { en: "/general-conditions-of-sale", fr: "/conditions-generales-de-vente" },
       label: { en: "GCS", fr: "CGV" },
     },
     {
-      path: "/terms-of-use",
+      path: { en: "/terms-of-use", fr: "/conditions-utilisation" },
       label: { en: "Terms of Use", fr: "Conditions d'utilisation" },
     },
-    { path: "/cookie-policy", label: { en: "Cookies", fr: "Cookies" } },
-
     {
-      path: "/legal-notices",
+      path: { en: "/cookie-policy", fr: "/politique-cookies" },
+      label: { en: "Cookies", fr: "Cookies" },
+    },
+    {
+      path: { en: "/legal-notices", fr: "/mentions-legales" },
       label: { en: "Legal Notices", fr: "Mentions légales" },
     },
-
-    { path: "/faq", label: { en: "FAQ", fr: "FAQ" } },
+    {
+      path: { en: "/faq", fr: "/faq" },
+      label: { en: "FAQ", fr: "FAQ" },
+    },
   ],
 };
 

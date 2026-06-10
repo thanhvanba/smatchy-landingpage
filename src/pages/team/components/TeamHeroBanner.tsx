@@ -1,22 +1,25 @@
 import Loading from "../../../components/Loading";
 import { useTeam } from "../../../hooks/useTeam";
-import heroBanner from "/team/team-background.jpg";
 import Yay from "/Yay.png";
 export default function TeamHeroBanner() {
   const { data, isLoading, error } = useTeam();
+  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
 
   if (isLoading) return <Loading />;
   if (error) return <p>Error loading team.</p>;
 
   const heading = data?.teamPage?.blocks?.[0].heading;
   const sub_heading = data?.teamPage?.blocks?.[0].sub_heading;
+  const bg = data?.teamPage?.blocks?.[0].background_image?.url;
+
+  console.log("Team Hero Banner Data:", bg);
 
   return (
     <>
       <div
         className="relative inset-0 bg-cover bg-bottom w-full h-[400px] md:h-[564px] pt-10 md:pt-20 z-30"
         style={{
-          backgroundImage: `url(${heroBanner})`,
+          backgroundImage: `url(${assetUrl}${bg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "bottom",

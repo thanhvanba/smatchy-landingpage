@@ -1,35 +1,32 @@
 import { useMemo } from "react";
 import Loading from "../../components/Loading";
-import { useHome } from "../../hooks/useHome";
+import SEO, { type StrapiSEO } from "../../components/SEO";
 import Benefits from "./components/Benefits";
 import ComingSoon from "./components/ComingSoon";
 import ProfessionalBanner from "./components/ProfessionalBanner";
 import ProForm from "./components/ProForm";
 import ProSlider from "./components/ProSlider";
 import line from "/line_bg.svg";
-import SEO from "../../components/SEO";
+import { usePro } from "../../hooks/usePro";
 
 export default function ProfessionalPage() {
-  const { seoBlock, isLoading, error } = useHome();
-  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  const { data, isLoading, error } = usePro();
+
+  const seoBlock =
+    data?.blocks?.find(
+      (b: any): b is StrapiSEO => b?.__component === "shared.seo",
+    ) ?? null;
 
   const seoContent = useMemo(() => {
-    const ogImage = seoBlock?.metaImage?.url
-      ? `${assetUrl}${seoBlock.metaImage.url}`
-      : undefined;
-
     return (
       <SEO
+        seo={seoBlock}
         title={seoBlock?.metaTitle || "Smatchy"}
         description={seoBlock?.metaDescription || "Sports Matching Platform"}
-        keyword={seoBlock?.keywords || "sports, matching, events, players"}
-        name={seoBlock?.metaAuthor || "Smatchy"}
-        type="website"
         ogurl={typeof window !== "undefined" ? window.location.href : ""}
-        ogimage={ogImage}
       />
     );
-  }, [seoBlock, assetUrl]);
+  }, [seoBlock]);
 
   if (isLoading) return <Loading />;
   if (error) return null;

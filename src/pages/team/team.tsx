@@ -1,41 +1,40 @@
 import { useMemo } from "react";
 import Loading from "../../components/Loading";
-import { useHome } from "../../hooks/useHome";
+import SEO, { type StrapiSEO } from "../../components/SEO";
 import { useTeam } from "../../hooks/useTeam";
 import TeamHeroBanner from "./components/TeamHeroBanner";
 import LittleStory from "./components/littleStory";
 import Members from "./components/members";
 import line from "/line_bg.svg";
-import SEO from "../../components/SEO";
 
 export default function TeamPage() {
   const { data, isLoading, error } = useTeam();
-  const { seoBlock } = useHome();
-  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
+  //console.log("Team Data:", data);
+  //const { seoBlock } = useHome();
+
+  const seoBlock =
+    (data?.teamPage?.blocks.find(
+      (b: any) => b?.__component === "shared.seo",
+    ) as StrapiSEO | undefined) ?? null;
 
   const seoContent = useMemo(() => {
-    const ogImage = seoBlock?.metaImage?.url
-      ? `${assetUrl}${seoBlock.metaImage.url}`
-      : undefined;
-
     return (
       <SEO
+        seo={seoBlock}
         title={seoBlock?.metaTitle || "Smatchy"}
         description={seoBlock?.metaDescription || "Sports Matching Platform"}
-        keyword={seoBlock?.keywords || "sports, matching, events, players"}
-        name={seoBlock?.metaAuthor || "Smatchy"}
-        type="website"
         ogurl={typeof window !== "undefined" ? window.location.href : ""}
-        ogimage={ogImage}
       />
     );
-  }, [seoBlock, assetUrl]);
+  }, [seoBlock]);
 
   if (isLoading) return <Loading />;
   if (error) return <p>Error loading team.</p>;
   if (!data) return <p>No team data available.</p>;
 
   //console.log("Team Data:", { teamMembers: data.teamMembers, teamPage: data.teamPage });
+
+
 
   return (
     <>

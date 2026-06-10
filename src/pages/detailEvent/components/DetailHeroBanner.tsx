@@ -1,9 +1,14 @@
 import { formatDateEvent } from "../../../utils/formatDateEvent";
 import { FaArrowLeft } from "react-icons/fa6";
 import type { Event } from "../../events/type";
-import { useNavigate } from "react-router-dom";
+import useLocalizedNavigate from "../../../hooks/useLocalizedNavigate";
+import { useLocale } from "../../../contexts/LangContext";
+import { headerTexts } from "../../../config/layoutConfig";
+
 export default function DetailHeroBanner({ detail }: { detail: Event }) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
+  const { locale } = useLocale();
+  const eventsLink = headerTexts.menu.find((m) => m.link.en === "/events")?.link[locale] || "/events";
   return (
     <div>
       <div
@@ -18,7 +23,7 @@ export default function DetailHeroBanner({ detail }: { detail: Event }) {
         <div className="absolute inset-0 z-40 bg-[#00000054]"></div>
         <div className="container relative z-50 mx-auto mt-8! md:mt-16! lg:mt-32!">
           <button
-            onClick={() => navigate("/events")}
+            onClick={() => navigate(eventsLink)}
             className="flex items-center justify-center text-[#45585E] text-xs md:text-sm lg:text-xl font-medium mb-6 md:mb-8 gap-2 md:gap-3 bg-[#FFFFFF99] px-3 md:px-4 lg:px-6 py-1.5 md:py-2 rounded-lg md:rounded-xl cursor-pointer"
           >
             <FaArrowLeft

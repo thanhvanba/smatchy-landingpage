@@ -1,0 +1,27 @@
+User-agent: *
+
+Allow: /
+
+# Legal pages – noindex in <head>, excluded from crawl here too
+
+Disallow: /en/privacy-policy
+
+Disallow: /fr/politique-de-confidentialite
+
+Disallow: /en/gcs
+
+Disallow: /fr/cgv
+
+Disallow: /en/terms-of-use
+
+Disallow: /fr/cgu
+
+Disallow: /en/cookies
+
+Disallow: /fr/cookies
+
+Disallow: /en/legal-notices
+
+Disallow: /fr/mentions-legales
+
+Sitemap: https://smatchy.app/sitemap.xml

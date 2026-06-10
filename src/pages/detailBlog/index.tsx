@@ -3,10 +3,11 @@ import RelatedArticles from "./components/RelatedArticles";
 import heroBanner from "/hero-banner.png";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { usePostBySlug } from "../../hooks/usePost";
 import Loading from "../../components/Loading";
 import { useLocale } from "../../contexts/LangContext";
+import useLocalizedNavigate from "../../hooks/useLocalizedNavigate";
 import { breadcrumbTexts } from "../../config/layoutConfig";
 import { useMemo } from "react";
 import SEO from "../../components/SEO";
@@ -14,7 +15,7 @@ import SEO from "../../components/SEO";
 const ASSET_URL = import.meta.env.VITE_STRAPI_ASSET_URL || "";
 
 export default function BlogDetail() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { slug } = useParams<{ slug: string }>();
   const { data: postData, isLoading } = usePostBySlug(slug || "");
   const { locale } = useLocale();
@@ -32,32 +33,27 @@ export default function BlogDetail() {
   const image = post?.featuredImage
     ? `${ASSET_URL}${post.featuredImage.url}`
     : "https://via.placeholder.com/1200x600";
+  const seo = post?.seo ?? null;
+  const ogImage = seo?.metaImage?.url ? `${ASSET_URL}${seo.metaImage.url}` : image;
 
   const seoContent = useMemo(() => {
     if (!post) return null;
-    
-    const seoData = post.seo || {
-      metaTitle: post.title || "Blog",
-      metaDescription: post.excerpt || (contentStr ? stripHtml(contentStr).substring(0, 160) : ""),
-      keywords: post.title ? post.title.split(" ").slice(0, 10).join(", ") : "",
-      metaAuthor: "Smatchy",
-      ogTitle: post.title || "Blog",
-      ogDescription: post.excerpt || (contentStr ? stripHtml(contentStr).substring(0, 160) : ""),
-      ogImage: image,
-    };
 
     return (
       <SEO
-        title={seoData.metaTitle}
-        description={seoData.metaDescription}
-        keyword={seoData.keywords}
-        author={seoData.metaAuthor}
-        ogimage={seoData.ogImage}
+        seo={seo}
+        title={seo?.metaTitle || post.title || "Blog"}
+        description={
+          seo?.metaDescription ||
+          post.excerpt ||
+          (contentStr ? stripHtml(contentStr).substring(0, 160) : "")
+        }
+        ogimage={ogImage}
         type="article"
-        ogurl={window.location.href}
+        ogurl={typeof window !== "undefined" ? window.location.href : ""}
       />
     );
-  }, [post, contentStr, image]);
+  }, [seo, post, contentStr, ogImage]);
 
   
 

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FaGlobe } from "react-icons/fa";
-import { useLocale } from "../contexts/LangContext";
+import { useLocale, SUPPORTED_LOCALES, type Lang } from "../contexts/LangContext";
+import { useLocation, useNavigate } from "react-router-dom";
+import { translatePath } from "../utils/localePathMap";
 
 const LABELS: Record<string, string> = {
   en: "English",
@@ -12,7 +14,8 @@ export default function LangSwitch() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const languages = ["en", "fr"] as const;
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -33,8 +36,21 @@ export default function LangSwitch() {
     };
   }, [open]);
 
+  const handleSwitch = (newLocale: Lang) => {
+    if (newLocale === locale) {
+      setOpen(false);
+      return;
+    }
+
+    setLocale(newLocale);
+    setOpen(false);
+
+    const newPath = translatePath(location.pathname, locale, newLocale);
+    navigate(newPath + location.search + location.hash);
+  };
+
   return (
-    <div className="relative inline-block"  ref={dropdownRef}>
+    <div className="relative inline-block" ref={dropdownRef}>
       <button
         onClick={() => setOpen((o) => !o)}
         className="flex items-center gap-2 rounded-lg px-3 py-2 focus:outline-none bg-white/10 hover:bg-white/20 transition border border-white/30 cursor-pointer disabled:cursor-not-allowed"
@@ -61,14 +77,11 @@ export default function LangSwitch() {
 
       {open && (
         <div className="absolute top-12 right-0 bg-white rounded-lg shadow-lg py-1 z-50 min-w-[140px] text-black">
-          {languages.map((lng) => (
+          {SUPPORTED_LOCALES.map((lng) => (
             <button
               key={lng}
-              onClick={() => {
-                setLocale(lng as any);
-                setOpen(false);
-              }}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 transition text-left cursor-pointer disabled:cursor-not-allowed ${
+              onClick={() => handleSwitch(lng)}
+              className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 transition text-left cursor-pointer ${
                 lng === locale
                   ? "bg-blue-50 font-semibold text-[#0A4A60]"
                   : "text-gray-700"

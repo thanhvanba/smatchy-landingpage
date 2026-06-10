@@ -73,13 +73,20 @@ interface SharedSEOBlock {
   id: number;
   metaTitle: string;
   metaDescription: string;
-  metaRobots?: string;
+  metaRobots?: string | null;
+  metaViewport?: string | null;
   keywords?: string;
   metaAuthor?: string;
-  metaImage?: StrapiMedia;
-  canonicalURL?: string;
-  structuredData?: string;
-  openGraph?: string;
+  metaImage?: StrapiMedia | null;
+  canonicalURL?: string | null;
+  structuredData?: Record<string, unknown> | null;
+  openGraph?: {
+    id?: number;
+    ogTitle?: string | null;
+    ogDescription?: string | null;
+    ogUrl?: string | null;
+    ogType?: string | null;
+  } | null;
 }
 
 type HomeBlock =

@@ -161,6 +161,16 @@ export const fetchEventDetail = async (slug: string) => {
   return null;
 };
 
+export const fetchEventPage = async () => {
+  const response = await fetchStrapi<any, { data: IEventPage; meta: any }>(
+    "/events-page?populate=*",
+  );
+  if (response.data) {
+    return response.data as IEventPage;
+  }
+  return null;
+};
+
 // export const fetchContact = async () => {
 //   const response = await fetchStrapi<any, { data: IContact; meta: any }>(
 //     "/contact?populate=*"
@@ -255,7 +265,7 @@ const buildPostsEndpoint = (
  */
 export const fetchPostBySlug = async (slug: string) => {
   const response = await fetchStrapi<any, { data: Post[]; meta: any }>(
-    `/posts?filters[slug][$eq]=${slug}&populate=*`,
+    `/posts?filters[slug][$eq]=${slug}&populate[seo][populate]=*`,
   );
   return response as PostsResponse;
 };

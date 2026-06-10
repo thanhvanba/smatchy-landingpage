@@ -6,6 +6,9 @@ import BlogList from "./components/BlogList";
 import CategoryBlog from "./components/CategoryBlog";
 import heroBanner from "/hero-banner.png";
 import Yay3 from "/Yay3.png";
+import { useEventPage } from "../../hooks/useEvent";
+import type { StrapiSEO } from "../../components/SEO";
+import SEO from "../../components/SEO";
 
 export default function Blog() {
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<
@@ -13,6 +16,11 @@ export default function Blog() {
   >(null); // null = "All"
   const { data: postsData } = usePost(undefined, "*");
   const { data, isLoading, error } = useTeam();
+  const { data: eventData } = useEventPage();
+
+  const seoBlocks = (eventData?.blocks ?? []).filter(
+    (b: any): b is StrapiSEO => b?.__component === "shared.seo",
+  );
 
   // Extract categories có blog posts
   const availableCategorySlugs = useMemo(() => {
@@ -29,6 +37,24 @@ export default function Blog() {
     return Array.from(categorySet);
   }, [postsData?.data]);
 
+  const seoBlock =
+    seoBlocks.find((block) => block?.canonicalURL?.includes("/blogs")) ??
+    seoBlocks[1] ??
+    null;
+
+    console.log("Blog SEO Block:", seoBlock);
+
+  const seoContent = useMemo(() => {
+    return (
+      <SEO
+        seo={seoBlock}
+        title={seoBlock?.metaTitle || "Smatchy"}
+        description={seoBlock?.metaDescription || "Sports Matching Platform"}
+        ogurl={typeof window !== "undefined" ? window.location.href : ""}
+      />
+    );
+  }, [seoBlock]);
+
   // Handle category selection: null = fetch all posts (pass undefined to usePost)
   const fetchSlug =
     selectedCategorySlug === null ? undefined : selectedCategorySlug;
@@ -44,8 +70,11 @@ export default function Blog() {
   const heading = data?.teamPage?.blocks?.[4];
   //console.log("Blog page", heading);
 
+  if (isLoading) return <Loading />;
+  if (error) return null;
   return (
     <>
+      {seoContent}
       <div
         className="relative w-full h-16 md:h-20 pt-10 md:pt-16 lg:pt-20 z-50"
         style={{

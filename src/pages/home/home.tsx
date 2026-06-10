@@ -12,26 +12,16 @@ import Yay2 from "/Yay2.png";
 
 export default function HomePage() {
   const { isLoading, error, titles, seoBlock } = useHome();
-  const assetUrl = import.meta.env.VITE_STRAPI_ASSET_URL;
   const seoContent = useMemo(() => {
-    const ogImage = seoBlock?.metaImage?.url
-      ? `${assetUrl}${seoBlock.metaImage.url}`
-      : undefined;
-
     return (
       <SEO
+        seo={seoBlock}
         title={seoBlock?.metaTitle || "Smatchy"}
-        description={
-          seoBlock?.metaDescription || "Sports Matching Platform"
-        }
-        keyword={seoBlock?.keywords || "sports, matching, events, players"}
-        name={seoBlock?.metaAuthor || "Smatchy"}
-        type="website"
+        description={seoBlock?.metaDescription || "Sports Matching Platform"}
         ogurl={typeof window !== "undefined" ? window.location.href : ""}
-        ogimage={ogImage}
       />
     );
-  }, [seoBlock, assetUrl]);
+  }, [seoBlock]);
 
   if (isLoading) return <Loading />;
 

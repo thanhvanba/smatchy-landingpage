@@ -35,4 +35,10 @@ export interface BlocksTeam {
   } | null;
   slider_images: any;
   stats_icon: any;
+  metaTitle: string;
+  metaDescription: string;
+  __component: string;
+  background_image: {
+    url: string;
+  } | null;
 }

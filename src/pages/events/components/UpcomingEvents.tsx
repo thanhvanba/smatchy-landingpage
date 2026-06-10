@@ -5,15 +5,16 @@ import { Grid, Pagination } from "swiper/modules";
 
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import EventCard from "./EventCard";
-import { useNavigate } from "react-router-dom";
+import useLocalizedNavigate from "../../../hooks/useLocalizedNavigate";
 import Loading from "../../../components/Loading";
 import { useEventList } from "../../../hooks/useEvent";
 import { useTeam } from "../../../hooks/useTeam";
 import { useLocale } from "../../../contexts/LangContext";
+import { headerTexts } from "../../../config/layoutConfig";
 
 export default function UpcomingEvents() {
   const { locale } = useLocale();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const swiperRef = useRef<any>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -178,7 +179,10 @@ export default function UpcomingEvents() {
           >
             {flatEvents.map((event) => (
               <SwiperSlide key={event.id}>
-                <div onClick={() => navigate(`/events/${event.slug}`)}>
+                <div onClick={() => {
+                  const eventsBase = headerTexts.menu.find((m) => m.link.en === "/events")?.link[locale] || "/events";
+                  navigate(`${eventsBase}/${event.slug}`);
+                }}>
                   <EventCard event={event} />
                 </div>
               </SwiperSlide>

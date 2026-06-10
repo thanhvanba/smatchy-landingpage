@@ -12,10 +12,10 @@ import StripeConnectRedirect from "./components/StripeConnectRedirect";
 AOS.init();
 function AppContent() {
   const location = useLocation();
-  const isOpenPath = location.pathname.startsWith("/open/");
+  const path = location.pathname;
+  const isOpenPath = path.startsWith("/open/") || /^\/[a-z]{2}\/open\//.test(path);
   const isStripeConnectPath =
-    location.pathname.startsWith("/stripe-connect/return") ||
-    location.pathname.startsWith("/stripe-connect/refresh");
+    path.startsWith("/stripe-connect/") || /^\/[a-z]{2}\/stripe-connect\//.test(path);
   if (isStripeConnectPath) {
     return <StripeConnectRedirect />;
   }
